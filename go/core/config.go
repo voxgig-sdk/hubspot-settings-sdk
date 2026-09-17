@@ -196,7 +196,7 @@ func MakeConfig() map[string]any {
 										map[string]any{
 											"example": nil,
 											"kind": "param",
-											"name": "2026_09_id",
+											"name": "team_id",
 											"orig": "team_id",
 											"reqd": true,
 											"type": "`$STRING`",
@@ -225,7 +225,7 @@ func MakeConfig() map[string]any {
 								"orig": "/settings/teams/2026-09/{teamId}/members/{userId}",
 								"rename": map[string]any{
 									"param": map[string]any{
-										"teamId": "2026_09_id",
+										"teamId": "team_id",
 										"userId": "user_id",
 									},
 								},
@@ -240,7 +240,7 @@ func MakeConfig() map[string]any {
 										"lit": "2026-09",
 									},
 									map[string]any{
-										"var": "2026_09_id",
+										"var": "team_id",
 									},
 									map[string]any{
 										"lit": "members",
@@ -251,7 +251,7 @@ func MakeConfig() map[string]any {
 								},
 								"select": map[string]any{
 									"exist": []any{
-										"2026_09_id",
+										"team_id",
 										"type",
 										"user_id",
 									},
@@ -264,7 +264,7 @@ func MakeConfig() map[string]any {
 									"settings",
 									"teams",
 									"2026-09",
-									"{2026_09_id}",
+									"{team_id}",
 									"members",
 									"{user_id}",
 								},
@@ -1587,7 +1587,7 @@ func MakeConfig() map[string]any {
 										map[string]any{
 											"example": nil,
 											"kind": "param",
-											"name": "2026_09_id",
+											"name": "team_id",
 											"orig": "team_id",
 											"reqd": true,
 											"type": "`$STRING`",
@@ -1599,7 +1599,7 @@ func MakeConfig() map[string]any {
 								"orig": "/settings/teams/2026-09/{teamId}/members/batch",
 								"rename": map[string]any{
 									"param": map[string]any{
-										"teamId": "2026_09_id",
+										"teamId": "team_id",
 									},
 								},
 								"segments": []any{
@@ -1613,7 +1613,7 @@ func MakeConfig() map[string]any {
 										"lit": "2026-09",
 									},
 									map[string]any{
-										"var": "2026_09_id",
+										"var": "team_id",
 									},
 									map[string]any{
 										"lit": "members",
@@ -1624,7 +1624,7 @@ func MakeConfig() map[string]any {
 								},
 								"select": map[string]any{
 									"exist": []any{
-										"2026_09_id",
+										"team_id",
 									},
 								},
 								"transform": map[string]any{
@@ -1635,7 +1635,7 @@ func MakeConfig() map[string]any {
 									"settings",
 									"teams",
 									"2026-09",
-									"{2026_09_id}",
+									"{team_id}",
 									"members",
 									"batch",
 								},
@@ -1678,7 +1678,7 @@ func MakeConfig() map[string]any {
 										map[string]any{
 											"example": nil,
 											"kind": "param",
-											"name": "2026_09_id",
+											"name": "team_id",
 											"orig": "team_id",
 											"reqd": true,
 											"type": "`$STRING`",
@@ -1706,7 +1706,7 @@ func MakeConfig() map[string]any {
 								"orig": "/settings/teams/2026-09/{teamId}/members",
 								"rename": map[string]any{
 									"param": map[string]any{
-										"teamId": "2026_09_id",
+										"teamId": "team_id",
 									},
 								},
 								"segments": []any{
@@ -1720,7 +1720,7 @@ func MakeConfig() map[string]any {
 										"lit": "2026-09",
 									},
 									map[string]any{
-										"var": "2026_09_id",
+										"var": "team_id",
 									},
 									map[string]any{
 										"lit": "members",
@@ -1728,9 +1728,9 @@ func MakeConfig() map[string]any {
 								},
 								"select": map[string]any{
 									"exist": []any{
-										"2026_09_id",
 										"after",
 										"limit",
+										"team_id",
 									},
 								},
 								"transform": map[string]any{
@@ -1741,7 +1741,7 @@ func MakeConfig() map[string]any {
 									"settings",
 									"teams",
 									"2026-09",
-									"{2026_09_id}",
+									"{team_id}",
 									"members",
 								},
 							},
@@ -2063,7 +2063,7 @@ func MakeConfig() map[string]any {
 										map[string]any{
 											"example": nil,
 											"kind": "param",
-											"name": "2026_09_id",
+											"name": "team_id",
 											"orig": "team_id",
 											"reqd": true,
 											"type": "`$STRING`",
@@ -2075,7 +2075,7 @@ func MakeConfig() map[string]any {
 								"orig": "/settings/teams/2026-09/{teamId}/members",
 								"rename": map[string]any{
 									"param": map[string]any{
-										"teamId": "2026_09_id",
+										"teamId": "team_id",
 									},
 								},
 								"segments": []any{
@@ -2089,7 +2089,7 @@ func MakeConfig() map[string]any {
 										"lit": "2026-09",
 									},
 									map[string]any{
-										"var": "2026_09_id",
+										"var": "team_id",
 									},
 									map[string]any{
 										"lit": "members",
@@ -2097,7 +2097,7 @@ func MakeConfig() map[string]any {
 								},
 								"select": map[string]any{
 									"exist": []any{
-										"2026_09_id",
+										"team_id",
 									},
 								},
 								"transform": map[string]any{
@@ -2108,7 +2108,7 @@ func MakeConfig() map[string]any {
 									"settings",
 									"teams",
 									"2026-09",
-									"{2026_09_id}",
+									"{team_id}",
 									"members",
 								},
 							},

@@ -803,7 +803,7 @@ Create a new entity with the given data.
 
 ```lua
 local result, err = client:TeamsBatchResponseTeamMember():create({
-  ["2026_09_id"] = --[[ string ]],
+  team_id = --[[ string ]],
   completedAt = --[[ string ]],
   inputs = --[[ table ]],
   results = --[[ table ]],
@@ -1057,7 +1057,7 @@ Create a new entity with the given data.
 
 ```lua
 local result, err = client:TeamsTeamMember():create({
-  ["2026_09_id"] = --[[ string ]],
+  team_id = --[[ string ]],
   type = --[[ string ]],
   userId = --[[ string ]],
 })

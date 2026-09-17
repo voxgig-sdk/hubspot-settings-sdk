@@ -218,7 +218,7 @@ class HubspotSettingsConfig
                       [
                         'example' => null,
                         'kind' => 'param',
-                        'name' => '2026_09_id',
+                        'name' => 'team_id',
                         'orig' => 'team_id',
                         'reqd' => true,
                         'type' => '`$STRING`',
@@ -247,7 +247,7 @@ class HubspotSettingsConfig
                   'orig' => '/settings/teams/2026-09/{teamId}/members/{userId}',
                   'rename' => [
                     'param' => [
-                      'teamId' => '2026_09_id',
+                      'teamId' => 'team_id',
                       'userId' => 'user_id',
                     ],
                   ],
@@ -262,7 +262,7 @@ class HubspotSettingsConfig
                       'lit' => '2026-09',
                     ],
                     [
-                      'var' => '2026_09_id',
+                      'var' => 'team_id',
                     ],
                     [
                       'lit' => 'members',
@@ -273,7 +273,7 @@ class HubspotSettingsConfig
                   ],
                   'select' => [
                     'exist' => [
-                      '2026_09_id',
+                      'team_id',
                       'type',
                       'user_id',
                     ],
@@ -286,7 +286,7 @@ class HubspotSettingsConfig
                     'settings',
                     'teams',
                     '2026-09',
-                    '{2026_09_id}',
+                    '{team_id}',
                     'members',
                     '{user_id}',
                   ],
@@ -1609,7 +1609,7 @@ class HubspotSettingsConfig
                       [
                         'example' => null,
                         'kind' => 'param',
-                        'name' => '2026_09_id',
+                        'name' => 'team_id',
                         'orig' => 'team_id',
                         'reqd' => true,
                         'type' => '`$STRING`',
@@ -1621,7 +1621,7 @@ class HubspotSettingsConfig
                   'orig' => '/settings/teams/2026-09/{teamId}/members/batch',
                   'rename' => [
                     'param' => [
-                      'teamId' => '2026_09_id',
+                      'teamId' => 'team_id',
                     ],
                   ],
                   'segments' => [
@@ -1635,7 +1635,7 @@ class HubspotSettingsConfig
                       'lit' => '2026-09',
                     ],
                     [
-                      'var' => '2026_09_id',
+                      'var' => 'team_id',
                     ],
                     [
                       'lit' => 'members',
@@ -1646,7 +1646,7 @@ class HubspotSettingsConfig
                   ],
                   'select' => [
                     'exist' => [
-                      '2026_09_id',
+                      'team_id',
                     ],
                   ],
                   'transform' => [
@@ -1657,7 +1657,7 @@ class HubspotSettingsConfig
                     'settings',
                     'teams',
                     '2026-09',
-                    '{2026_09_id}',
+                    '{team_id}',
                     'members',
                     'batch',
                   ],
@@ -1700,7 +1700,7 @@ class HubspotSettingsConfig
                       [
                         'example' => null,
                         'kind' => 'param',
-                        'name' => '2026_09_id',
+                        'name' => 'team_id',
                         'orig' => 'team_id',
                         'reqd' => true,
                         'type' => '`$STRING`',
@@ -1728,7 +1728,7 @@ class HubspotSettingsConfig
                   'orig' => '/settings/teams/2026-09/{teamId}/members',
                   'rename' => [
                     'param' => [
-                      'teamId' => '2026_09_id',
+                      'teamId' => 'team_id',
                     ],
                   ],
                   'segments' => [
@@ -1742,7 +1742,7 @@ class HubspotSettingsConfig
                       'lit' => '2026-09',
                     ],
                     [
-                      'var' => '2026_09_id',
+                      'var' => 'team_id',
                     ],
                     [
                       'lit' => 'members',
@@ -1750,9 +1750,9 @@ class HubspotSettingsConfig
                   ],
                   'select' => [
                     'exist' => [
-                      '2026_09_id',
                       'after',
                       'limit',
+                      'team_id',
                     ],
                   ],
                   'transform' => [
@@ -1763,7 +1763,7 @@ class HubspotSettingsConfig
                     'settings',
                     'teams',
                     '2026-09',
-                    '{2026_09_id}',
+                    '{team_id}',
                     'members',
                   ],
                 ],
@@ -2085,7 +2085,7 @@ class HubspotSettingsConfig
                       [
                         'example' => null,
                         'kind' => 'param',
-                        'name' => '2026_09_id',
+                        'name' => 'team_id',
                         'orig' => 'team_id',
                         'reqd' => true,
                         'type' => '`$STRING`',
@@ -2097,7 +2097,7 @@ class HubspotSettingsConfig
                   'orig' => '/settings/teams/2026-09/{teamId}/members',
                   'rename' => [
                     'param' => [
-                      'teamId' => '2026_09_id',
+                      'teamId' => 'team_id',
                     ],
                   ],
                   'segments' => [
@@ -2111,7 +2111,7 @@ class HubspotSettingsConfig
                       'lit' => '2026-09',
                     ],
                     [
-                      'var' => '2026_09_id',
+                      'var' => 'team_id',
                     ],
                     [
                       'lit' => 'members',
@@ -2119,7 +2119,7 @@ class HubspotSettingsConfig
                   ],
                   'select' => [
                     'exist' => [
-                      '2026_09_id',
+                      'team_id',
                     ],
                   ],
                   'transform' => [
@@ -2130,7 +2130,7 @@ class HubspotSettingsConfig
                     'settings',
                     'teams',
                     '2026-09',
-                    '{2026_09_id}',
+                    '{team_id}',
                     'members',
                   ],
                 ],

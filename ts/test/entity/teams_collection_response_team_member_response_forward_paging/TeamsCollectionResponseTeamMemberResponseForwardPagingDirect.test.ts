@@ -47,19 +47,19 @@ describe('TeamsCollectionResponseTeamMemberResponseForwardPagingDirect', async (
     if (liveScenariosActive()) { t.skip('Covered by live operation scenarios'); return }
     const setup = directSetup([{ id: 'direct01' }, { id: 'direct02' }])
     if (maybeSkipControl(t, 'direct', 'direct-list-teams_collection_response_team_member_response_forward_paging', setup.live)) return
-    if (skipIfMissingIds(t, setup, ["2026_0901"])) return
+    if (skipIfMissingIds(t, setup, ["team01"])) return
     const { client, calls } = setup
 
     const params: any = {}
     const query: any = {}
     if (setup.live) {
-      params["2026_09_id"] = setup.idmap['2026_0901']
+      params.team_id = setup.idmap['team01']
     } else {
-      params["2026_09_id"] = 'direct01'
+      params.team_id = 'direct01'
     }
 
     const result: any = await client.direct({
-      path: 'settings/teams/2026-09/{2026_09_id}/members',
+      path: 'settings/teams/2026-09/{team_id}/members',
       method: 'GET',
       params,
       query,

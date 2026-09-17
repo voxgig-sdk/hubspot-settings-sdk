@@ -22,7 +22,7 @@ class TeamsCollectionResponseTeamMemberResponseForwardPagingDirectTest extends T
             return;
         }
         if ($setup["live"]) {
-            foreach (["2026_0901"] as $_liveKey) {
+            foreach (["team01"] as $_liveKey) {
                 if (!isset($setup["idmap"][$_liveKey]) || $setup["idmap"][$_liveKey] === null) {
                     $this->markTestSkipped("live test needs $_liveKey via *_ENTID env var (synthetic IDs only)");
                     return;
@@ -33,13 +33,13 @@ class TeamsCollectionResponseTeamMemberResponseForwardPagingDirectTest extends T
 
         $params = [];
         if ($setup["live"]) {
-            $params["2026_09_id"] = $setup["idmap"]["2026_0901"];
+            $params["team_id"] = $setup["idmap"]["team01"];
         } else {
-            $params["2026_09_id"] = "direct01";
+            $params["team_id"] = "direct01";
         }
 
         $result = $client->direct([
-            "path" => "settings/teams/2026-09/{2026_09_id}/members",
+            "path" => "settings/teams/2026-09/{team_id}/members",
             "method" => "GET",
             "params" => $params,
         ]);

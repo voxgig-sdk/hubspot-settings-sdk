@@ -43,7 +43,7 @@ class TestTeamsTeamMemberEntity:
         teams_team_member_ref01_ent = client.TeamsTeamMember(None)
         teams_team_member_ref01_data = helpers.to_map(vs.getprop(
             vs.getpath(setup["data"], "new.teams_team_member"), "teams_team_member_ref01"))
-        teams_team_member_ref01_data["2026_09_id"] = setup["idmap"]["2026_0901"]
+        teams_team_member_ref01_data["team_id"] = setup["idmap"]["team01"]
 
         teams_team_member_ref01_data = helpers.to_map(runner.entity_data(teams_team_member_ref01_ent.create(teams_team_member_ref01_data, None)))
         assert teams_team_member_ref01_data is not None
@@ -66,7 +66,7 @@ def _teams_team_member_basic_setup(extra):
 
     # Generate idmap via transform.
     idmap = vs.transform(
-        ["teams_team_member01", "teams_team_member02", "teams_team_member03", "2026_0901", "2026_0902", "2026_0903"],
+        ["teams_team_member01", "teams_team_member02", "teams_team_member03", "2026_0901", "2026_0902", "2026_0903", "team01"],
         {
             "`$PACK`": ["", {
                 "`$KEY`": "`$COPY`",

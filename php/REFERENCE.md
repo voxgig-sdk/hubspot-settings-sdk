@@ -805,7 +805,7 @@ Create a new entity with the given data. Throws on error.
 
 ```php
 $result = $client->TeamsBatchResponseTeamMember()->create([
-  "2026_09_id" => null, // string
+  "team_id" => null, // string
   "completedAt" => null, // string
   "inputs" => null, // array
   "results" => null, // array
@@ -1059,7 +1059,7 @@ Create a new entity with the given data. Throws on error.
 
 ```php
 $result = $client->TeamsTeamMember()->create([
-  "2026_09_id" => null, // string
+  "team_id" => null, // string
   "type" => null, // string
   "userId" => null, // string
 ]);

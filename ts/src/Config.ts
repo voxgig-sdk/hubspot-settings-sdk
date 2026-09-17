@@ -293,7 +293,7 @@ class Config {
                   {
                     "example": null,
                     "kind": "param",
-                    "name": "2026_09_id",
+                    "name": "team_id",
                     "orig": "team_id",
                     "reqd": true,
                     "type": "`$STRING`"
@@ -322,7 +322,7 @@ class Config {
               "orig": "/settings/teams/2026-09/{teamId}/members/{userId}",
               "rename": {
                 "param": {
-                  "teamId": "2026_09_id",
+                  "teamId": "team_id",
                   "userId": "user_id"
                 }
               },
@@ -337,7 +337,7 @@ class Config {
                   "lit": "2026-09"
                 },
                 {
-                  "var": "2026_09_id"
+                  "var": "team_id"
                 },
                 {
                   "lit": "members"
@@ -348,7 +348,7 @@ class Config {
               ],
               "select": {
                 "exist": [
-                  "2026_09_id",
+                  "team_id",
                   "type",
                   "user_id"
                 ]
@@ -361,7 +361,7 @@ class Config {
                 "settings",
                 "teams",
                 "2026-09",
-                "{2026_09_id}",
+                "{team_id}",
                 "members",
                 "{user_id}"
               ]
@@ -1684,7 +1684,7 @@ class Config {
                   {
                     "example": null,
                     "kind": "param",
-                    "name": "2026_09_id",
+                    "name": "team_id",
                     "orig": "team_id",
                     "reqd": true,
                     "type": "`$STRING`"
@@ -1696,7 +1696,7 @@ class Config {
               "orig": "/settings/teams/2026-09/{teamId}/members/batch",
               "rename": {
                 "param": {
-                  "teamId": "2026_09_id"
+                  "teamId": "team_id"
                 }
               },
               "segments": [
@@ -1710,7 +1710,7 @@ class Config {
                   "lit": "2026-09"
                 },
                 {
-                  "var": "2026_09_id"
+                  "var": "team_id"
                 },
                 {
                   "lit": "members"
@@ -1721,7 +1721,7 @@ class Config {
               ],
               "select": {
                 "exist": [
-                  "2026_09_id"
+                  "team_id"
                 ]
               },
               "transform": {
@@ -1732,7 +1732,7 @@ class Config {
                 "settings",
                 "teams",
                 "2026-09",
-                "{2026_09_id}",
+                "{team_id}",
                 "members",
                 "batch"
               ]
@@ -1775,7 +1775,7 @@ class Config {
                   {
                     "example": null,
                     "kind": "param",
-                    "name": "2026_09_id",
+                    "name": "team_id",
                     "orig": "team_id",
                     "reqd": true,
                     "type": "`$STRING`"
@@ -1803,7 +1803,7 @@ class Config {
               "orig": "/settings/teams/2026-09/{teamId}/members",
               "rename": {
                 "param": {
-                  "teamId": "2026_09_id"
+                  "teamId": "team_id"
                 }
               },
               "segments": [
@@ -1817,7 +1817,7 @@ class Config {
                   "lit": "2026-09"
                 },
                 {
-                  "var": "2026_09_id"
+                  "var": "team_id"
                 },
                 {
                   "lit": "members"
@@ -1825,9 +1825,9 @@ class Config {
               ],
               "select": {
                 "exist": [
-                  "2026_09_id",
                   "after",
-                  "limit"
+                  "limit",
+                  "team_id"
                 ]
               },
               "transform": {
@@ -1838,7 +1838,7 @@ class Config {
                 "settings",
                 "teams",
                 "2026-09",
-                "{2026_09_id}",
+                "{team_id}",
                 "members"
               ]
             }
@@ -2160,7 +2160,7 @@ class Config {
                   {
                     "example": null,
                     "kind": "param",
-                    "name": "2026_09_id",
+                    "name": "team_id",
                     "orig": "team_id",
                     "reqd": true,
                     "type": "`$STRING`"
@@ -2172,7 +2172,7 @@ class Config {
               "orig": "/settings/teams/2026-09/{teamId}/members",
               "rename": {
                 "param": {
-                  "teamId": "2026_09_id"
+                  "teamId": "team_id"
                 }
               },
               "segments": [
@@ -2186,7 +2186,7 @@ class Config {
                   "lit": "2026-09"
                 },
                 {
-                  "var": "2026_09_id"
+                  "var": "team_id"
                 },
                 {
                   "lit": "members"
@@ -2194,7 +2194,7 @@ class Config {
               ],
               "select": {
                 "exist": [
-                  "2026_09_id"
+                  "team_id"
                 ]
               },
               "transform": {
@@ -2205,7 +2205,7 @@ class Config {
                 "settings",
                 "teams",
                 "2026-09",
-                "{2026_09_id}",
+                "{team_id}",
                 "members"
               ]
             }

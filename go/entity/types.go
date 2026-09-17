@@ -19,6 +19,8 @@ type Basic struct {
 // BasicRemoveMatch is the typed request payload for Basic.RemoveTyped.
 type BasicRemoveMatch struct {
 	TeamId string `json:"team_id"`
+	UserId *string `json:"user_id,omitempty"`
+	Type *string `json:"type,omitempty"`
 }
 
 // ExchangeRate is the typed data model for the exchange_rate entity.
@@ -220,7 +222,7 @@ type TeamsBatchResponseTeamMember struct {
 
 // TeamsBatchResponseTeamMemberCreateData is the typed request payload for TeamsBatchResponseTeamMember.CreateTyped.
 type TeamsBatchResponseTeamMemberCreateData struct {
-	F202609Id string `json:"2026_09_id"`
+	TeamId string `json:"team_id"`
 	CompletedAt string `json:"completedAt"`
 	Errors *[]any `json:"errors,omitempty"`
 	Inputs []any `json:"inputs"`
@@ -240,7 +242,7 @@ type TeamsCollectionResponseTeamMemberResponseForwardPaging struct {
 
 // TeamsCollectionResponseTeamMemberResponseForwardPagingListMatch is the typed request payload for TeamsCollectionResponseTeamMemberResponseForwardPaging.ListTyped.
 type TeamsCollectionResponseTeamMemberResponseForwardPagingListMatch struct {
-	F202609Id string `json:"2026_09_id"`
+	TeamId string `json:"team_id"`
 	After *string `json:"after,omitempty"`
 	Limit *int `json:"limit,omitempty"`
 }
@@ -296,7 +298,7 @@ type TeamsTeamMember struct {
 
 // TeamsTeamMemberCreateData is the typed request payload for TeamsTeamMember.CreateTyped.
 type TeamsTeamMemberCreateData struct {
-	F202609Id string `json:"2026_09_id"`
+	TeamId string `json:"team_id"`
 	Type string `json:"type"`
 	UserId string `json:"userId"`
 }

@@ -890,7 +890,7 @@ Create an instance: `$teams_batch_response_team_member = $client->TeamsBatchResp
 
 ```php
 $teams_batch_response_team_member = $client->TeamsBatchResponseTeamMember()->create([
-    "2026_09_id" => null, // string
+    "team_id" => null, // string
     "completedAt" => null, // string
     "inputs" => null, // array
     "results" => null, // array
@@ -1011,7 +1011,7 @@ Create an instance: `$teams_team_member = $client->TeamsTeamMember();`
 
 ```php
 $teams_team_member = $client->TeamsTeamMember()->create([
-    "2026_09_id" => null, // string
+    "team_id" => null, // string
     "type" => null, // string
     "userId" => null, // string
 ]);

@@ -141,7 +141,7 @@
                         "active": true,
                         "example": null,
                         "kind": "param",
-                        "name": "2026_09_id",
+                        "name": "team_id",
                         "orig": "team_id",
                         "reqd": true,
                         "type": "`$STRING`"
@@ -179,7 +179,7 @@
                   "orig": "/settings/teams/2026-09/{teamId}/members/{userId}",
                   "rename": {
                     "param": {
-                      "teamId": "2026_09_id",
+                      "teamId": "team_id",
                       "userId": "user_id"
                     }
                   },
@@ -194,7 +194,7 @@
                       "lit": "2026-09"
                     },
                     {
-                      "var": "2026_09_id"
+                      "var": "team_id"
                     },
                     {
                       "lit": "members"
@@ -205,7 +205,7 @@
                   ],
                   "select": {
                     "exist": [
-                      "2026_09_id",
+                      "team_id",
                       "type",
                       "user_id"
                     ]
@@ -1661,7 +1661,7 @@
                         "active": true,
                         "example": null,
                         "kind": "param",
-                        "name": "2026_09_id",
+                        "name": "team_id",
                         "orig": "team_id",
                         "reqd": true,
                         "type": "`$STRING`"
@@ -1679,7 +1679,7 @@
                   "orig": "/settings/teams/2026-09/{teamId}/members/batch",
                   "rename": {
                     "param": {
-                      "teamId": "2026_09_id"
+                      "teamId": "team_id"
                     }
                   },
                   "segments": [
@@ -1693,7 +1693,7 @@
                       "lit": "2026-09"
                     },
                     {
-                      "var": "2026_09_id"
+                      "var": "team_id"
                     },
                     {
                       "lit": "members"
@@ -1704,7 +1704,7 @@
                   ],
                   "select": {
                     "exist": [
-                      "2026_09_id"
+                      "team_id"
                     ]
                   },
                   "transform": {
@@ -1758,7 +1758,7 @@
                         "active": true,
                         "example": null,
                         "kind": "param",
-                        "name": "2026_09_id",
+                        "name": "team_id",
                         "orig": "team_id",
                         "reqd": true,
                         "type": "`$STRING`"
@@ -1796,7 +1796,7 @@
                   "orig": "/settings/teams/2026-09/{teamId}/members",
                   "rename": {
                     "param": {
-                      "teamId": "2026_09_id"
+                      "teamId": "team_id"
                     }
                   },
                   "segments": [
@@ -1810,7 +1810,7 @@
                       "lit": "2026-09"
                     },
                     {
-                      "var": "2026_09_id"
+                      "var": "team_id"
                     },
                     {
                       "lit": "members"
@@ -1818,9 +1818,9 @@
                   ],
                   "select": {
                     "exist": [
-                      "2026_09_id",
                       "after",
-                      "limit"
+                      "limit",
+                      "team_id"
                     ]
                   },
                   "transform": {
@@ -2183,7 +2183,7 @@
                         "active": true,
                         "example": null,
                         "kind": "param",
-                        "name": "2026_09_id",
+                        "name": "team_id",
                         "orig": "team_id",
                         "reqd": true,
                         "type": "`$STRING`"
@@ -2201,7 +2201,7 @@
                   "orig": "/settings/teams/2026-09/{teamId}/members",
                   "rename": {
                     "param": {
-                      "teamId": "2026_09_id"
+                      "teamId": "team_id"
                     }
                   },
                   "segments": [
@@ -2215,7 +2215,7 @@
                       "lit": "2026-09"
                     },
                     {
-                      "var": "2026_09_id"
+                      "var": "team_id"
                     },
                     {
                       "lit": "members"
@@ -2223,7 +2223,7 @@
                   ],
                   "select": {
                     "exist": [
-                      "2026_09_id"
+                      "team_id"
                     ]
                   },
                   "transform": {
@@ -4174,7 +4174,7 @@
                 "ref": "teams_batch_response_team_member_ref01"
               },
               "match": {
-                "2026_09_id": "2026_0901"
+                "team_id": "team01"
               },
               "op": "create",
               "spec": [],
@@ -4195,7 +4195,7 @@
               "data": {},
               "input": {},
               "match": {
-                "2026_09_id": "2026_0901"
+                "team_id": "team01"
               },
               "op": "list",
               "spec": [],
@@ -4315,7 +4315,7 @@
                 "ref": "teams_team_member_ref01"
               },
               "match": {
-                "2026_09_id": "2026_0901"
+                "team_id": "team01"
               },
               "op": "create",
               "spec": [],

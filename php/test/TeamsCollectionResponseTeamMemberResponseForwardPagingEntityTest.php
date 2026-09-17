@@ -88,7 +88,7 @@ class TeamsCollectionResponseTeamMemberResponseForwardPagingEntityTest extends T
         // LIST
         $teams_collection_response_team_member_response_forward_paging_ref01_ent = $client->TeamsCollectionResponseTeamMemberResponseForwardPaging(null);
         $teams_collection_response_team_member_response_forward_paging_ref01_match = [
-            "2026_09_id" => $setup["idmap"]["2026_0901"],
+            "team_id" => $setup["idmap"]["team01"],
         ];
 
         $teams_collection_response_team_member_response_forward_paging_ref01_list_result = $teams_collection_response_team_member_response_forward_paging_ref01_ent->list($teams_collection_response_team_member_response_forward_paging_ref01_match, null);
@@ -112,7 +112,7 @@ function teams_collection_response_team_member_response_forward_paging_basic_set
 
     // Generate idmap.
     $idmap = [];
-    foreach (["teams_collection_response_team_member_response_forward_paging01", "teams_collection_response_team_member_response_forward_paging02", "teams_collection_response_team_member_response_forward_paging03", "2026_0901", "2026_0902", "2026_0903"] as $k) {
+    foreach (["teams_collection_response_team_member_response_forward_paging01", "teams_collection_response_team_member_response_forward_paging02", "teams_collection_response_team_member_response_forward_paging03", "2026_0901", "2026_0902", "2026_0903", "team01"] as $k) {
         $idmap[$k] = strtoupper($k);
     }
 

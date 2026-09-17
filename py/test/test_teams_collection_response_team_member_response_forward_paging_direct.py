@@ -22,7 +22,7 @@ class TestTeamsCollectionResponseTeamMemberResponseForwardPagingDirect:
             pytest.skip(_reason or "skipped via sdk-test-control.json")
             return
         if setup["live"]:
-            for _live_key in ["2026_0901"]:
+            for _live_key in ["team01"]:
                 if setup["idmap"].get(_live_key) is None:
                     # pytest already imported at module scope
                     pytest.skip(f"live test needs {_live_key} via *_ENTID env var (synthetic IDs only)")
@@ -32,12 +32,12 @@ class TestTeamsCollectionResponseTeamMemberResponseForwardPagingDirect:
 
         params = {}
         if setup["live"]:
-            params["2026_09_id"] = setup["idmap"]["2026_0901"]
+            params["team_id"] = setup["idmap"]["team01"]
         else:
-            params["2026_09_id"] = "direct01"
+            params["team_id"] = "direct01"
 
         result = client.direct({
-            "path": "settings/teams/2026-09/{2026_09_id}/members",
+            "path": "settings/teams/2026-09/{team_id}/members",
             "method": "GET",
             "params": params,
         })

@@ -42,7 +42,7 @@ class TeamsTeamMemberEntityTest extends TestCase
         $teams_team_member_ref01_ent = $client->TeamsTeamMember(null);
         $teams_team_member_ref01_data = Helpers::to_map(Vs::getprop(
             Vs::getpath($setup["data"], "new.teams_team_member"), "teams_team_member_ref01"));
-        $teams_team_member_ref01_data["2026_09_id"] = $setup["idmap"]["2026_0901"];
+        $teams_team_member_ref01_data["team_id"] = $setup["idmap"]["team01"];
 
         $teams_team_member_ref01_data_result = $teams_team_member_ref01_ent->create($teams_team_member_ref01_data, null);
         $teams_team_member_ref01_data = Helpers::to_map(is_object($teams_team_member_ref01_data_result) && method_exists($teams_team_member_ref01_data_result, 'data_get') ? $teams_team_member_ref01_data_result->data_get() : $teams_team_member_ref01_data_result);
@@ -66,7 +66,7 @@ function teams_team_member_basic_setup($extra)
 
     // Generate idmap.
     $idmap = [];
-    foreach (["teams_team_member01", "teams_team_member02", "teams_team_member03", "2026_0901", "2026_0902", "2026_0903"] as $k) {
+    foreach (["teams_team_member01", "teams_team_member02", "teams_team_member03", "2026_0901", "2026_0902", "2026_0903", "team01"] as $k) {
         $idmap[$k] = strtoupper($k);
     }
 

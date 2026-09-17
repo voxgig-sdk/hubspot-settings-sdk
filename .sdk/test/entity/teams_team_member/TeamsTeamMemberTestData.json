@@ -4,19 +4,19 @@
       "TEAMS_TEAM_MEMBER00": {
         "type": "s14",
         "userId": "s15",
-        "2026_09_id": "2026_0901",
+        "team_id": "TEAM01",
         "id": "TEAMS_TEAM_MEMBER00"
       },
       "TEAMS_TEAM_MEMBER01": {
         "type": "s28",
         "userId": "s29",
-        "2026_09_id": "2026_0901",
+        "team_id": "TEAM01",
         "id": "TEAMS_TEAM_MEMBER01"
       },
       "TEAMS_TEAM_MEMBER02": {
         "type": "s3c",
         "userId": "s3d",
-        "2026_09_id": "2026_0901",
+        "team_id": "TEAM01",
         "id": "TEAMS_TEAM_MEMBER02"
       }
     }

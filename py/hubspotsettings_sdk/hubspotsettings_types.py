@@ -20,8 +20,13 @@ class Basic(TypedDict):
     pass
 
 
-class BasicRemoveMatch(TypedDict):
+class BasicRemoveMatchRequired(TypedDict):
     team_id: str
+
+
+class BasicRemoveMatch(BasicRemoveMatchRequired, total=False):
+    user_id: str
+    type: str
 
 
 class ExchangeRate(TypedDict):
@@ -216,6 +221,7 @@ class TeamsBatchResponseTeamMember(TeamsBatchResponseTeamMemberRequired, total=F
 
 
 class TeamsBatchResponseTeamMemberCreateDataRequired(TypedDict):
+    team_id: str
     completedAt: str
     inputs: list
     results: list
@@ -235,7 +241,11 @@ class TeamsCollectionResponseTeamMemberResponseForwardPaging(TypedDict):
     userId: str
 
 
-class TeamsCollectionResponseTeamMemberResponseForwardPagingListMatch(TypedDict, total=False):
+class TeamsCollectionResponseTeamMemberResponseForwardPagingListMatchRequired(TypedDict):
+    team_id: str
+
+
+class TeamsCollectionResponseTeamMemberResponseForwardPagingListMatch(TeamsCollectionResponseTeamMemberResponseForwardPagingListMatchRequired, total=False):
     after: str
     limit: int
 
@@ -295,6 +305,7 @@ class TeamsTeamMember(TypedDict):
 
 
 class TeamsTeamMemberCreateData(TypedDict):
+    team_id: str
     type: str
     userId: str
 

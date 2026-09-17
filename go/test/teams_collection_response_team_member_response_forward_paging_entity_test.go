@@ -110,7 +110,7 @@ func TestTeamsCollectionResponseTeamMemberResponseForwardPagingEntity(t *testing
 		// LIST
 		teamsCollectionResponseTeamMemberResponseForwardPagingRef01Ent := client.TeamsCollectionResponseTeamMemberResponseForwardPaging(nil)
 		teamsCollectionResponseTeamMemberResponseForwardPagingRef01Match := map[string]any{
-			"2026_09_id": setup.idmap["2026_0901"],
+			"team_id": setup.idmap["team01"],
 		}
 
 		teamsCollectionResponseTeamMemberResponseForwardPagingRef01ListResult, err := teamsCollectionResponseTeamMemberResponseForwardPagingRef01Ent.List(teamsCollectionResponseTeamMemberResponseForwardPagingRef01Match, nil)
@@ -150,7 +150,7 @@ func teams_collection_response_team_member_response_forward_pagingBasicSetup(ext
 
 	// Generate idmap via transform, matching TS pattern.
 	idmap, _ := vs.Transform(
-		[]any{"teams_collection_response_team_member_response_forward_paging01", "teams_collection_response_team_member_response_forward_paging02", "teams_collection_response_team_member_response_forward_paging03", "2026_0901", "2026_0902", "2026_0903"},
+		[]any{"teams_collection_response_team_member_response_forward_paging01", "teams_collection_response_team_member_response_forward_paging02", "teams_collection_response_team_member_response_forward_paging03", "2026_0901", "2026_0902", "2026_0903", "team01"},
 		map[string]any{
 			"`$PACK`": []any{"", map[string]any{
 				"`$KEY`": "`$COPY`",

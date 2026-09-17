@@ -53,7 +53,7 @@ func TestTeamsTeamMemberEntity(t *testing.T) {
 		teamsTeamMemberRef01Ent := client.TeamsTeamMember(nil)
 		teamsTeamMemberRef01Data := core.ToMapAny(vs.GetProp(
 			vs.GetPath(setup.data, []any{"new", "teams_team_member"}), "teams_team_member_ref01"))
-		teamsTeamMemberRef01Data["2026_09_id"] = setup.idmap["2026_0901"]
+		teamsTeamMemberRef01Data["team_id"] = setup.idmap["team01"]
 
 		teamsTeamMemberRef01DataResult, err := teamsTeamMemberRef01Ent.Create(teamsTeamMemberRef01Data, nil)
 		if err != nil {
@@ -92,7 +92,7 @@ func teams_team_memberBasicSetup(extra map[string]any) *entityTestSetup {
 
 	// Generate idmap via transform, matching TS pattern.
 	idmap, _ := vs.Transform(
-		[]any{"teams_team_member01", "teams_team_member02", "teams_team_member03", "2026_0901", "2026_0902", "2026_0903"},
+		[]any{"teams_team_member01", "teams_team_member02", "teams_team_member03", "2026_0901", "2026_0902", "2026_0903", "team01"},
 		map[string]any{
 			"`$PACK`": []any{"", map[string]any{
 				"`$KEY`": "`$COPY`",

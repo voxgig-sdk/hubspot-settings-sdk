@@ -18,7 +18,7 @@ describe("TeamsCollectionResponseTeamMemberResponseForwardPagingDirect", functio
       return
     end
     if setup.live then
-      for _, _live_key in ipairs({"2026_0901"}) do
+      for _, _live_key in ipairs({"team01"}) do
         if setup.idmap[_live_key] == nil then
           pending("live test needs " .. _live_key .. " via *_ENTID env var (synthetic IDs only)")
           return
@@ -29,13 +29,13 @@ describe("TeamsCollectionResponseTeamMemberResponseForwardPagingDirect", functio
 
     local params = {}
     if setup.live then
-      params["2026_09_id"] = setup.idmap["2026_0901"]
+      params["team_id"] = setup.idmap["team01"]
     else
-      params["2026_09_id"] = "direct01"
+      params["team_id"] = "direct01"
     end
 
     local result, err = client:direct({
-      path = "settings/teams/2026-09/{2026_09_id}/members",
+      path = "settings/teams/2026-09/{team_id}/members",
       method = "GET",
       params = params,
     })

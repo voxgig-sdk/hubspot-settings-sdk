@@ -13,6 +13,8 @@
 /**
  * @typedef {Object} BasicRemoveMatch
  * @property {string} team_id
+ * @property {string} [user_id]
+ * @property {string} [type]
  */
 
 /**
@@ -214,7 +216,7 @@
 
 /**
  * @typedef {Object} TeamsBatchResponseTeamMemberCreateData
- * @property {string} "2026_09_id"
+ * @property {string} team_id
  * @property {string} completedAt
  * @property {Array} [errors]
  * @property {Array} inputs
@@ -234,7 +236,7 @@
 
 /**
  * @typedef {Object} TeamsCollectionResponseTeamMemberResponseForwardPagingListMatch
- * @property {string} "2026_09_id"
+ * @property {string} team_id
  * @property {string} [after]
  * @property {number} [limit]
  */
@@ -290,7 +292,7 @@
 
 /**
  * @typedef {Object} TeamsTeamMemberCreateData
- * @property {string} "2026_09_id"
+ * @property {string} team_id
  * @property {string} type
  * @property {string} userId
  */

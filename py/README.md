@@ -875,7 +875,7 @@ Create an instance: `teams_batch_response_team_member = client.TeamsBatchRespons
 
 ```python
 teams_batch_response_team_member = client.TeamsBatchResponseTeamMember().create({
-    "2026_09_id": "example_2026_09_id",  # str
+    "team_id": "example_team_id",  # str
     "completedAt": "example_completedAt",  # str
     "inputs": [],  # list
     "results": [],  # list
@@ -905,7 +905,7 @@ Create an instance: `teams_collection_response_team_member_response_forward_pagi
 #### Example: List
 
 ```python
-teams_collection_response_team_member_response_forward_pagings = client.TeamsCollectionResponseTeamMemberResponseForwardPaging().list({"2026_09_id": "example"})
+teams_collection_response_team_member_response_forward_pagings = client.TeamsCollectionResponseTeamMemberResponseForwardPaging().list({"team_id": "example"})
 ```
 
 
@@ -993,7 +993,7 @@ Create an instance: `teams_team_member = client.TeamsTeamMember()`
 
 ```python
 teams_team_member = client.TeamsTeamMember().create({
-    "2026_09_id": "example_2026_09_id",  # str
+    "team_id": "example_team_id",  # str
     "type": "example_type",  # str
     "userId": "example_userId",  # str
 })

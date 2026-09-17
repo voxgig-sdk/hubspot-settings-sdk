@@ -11,7 +11,7 @@ guide: {
       op: remove: method: *DELETE
     }
     path: "/settings/teams/2026-09/{teamId}/members/{userId}": {
-      rename: param: "teamId": *"2026_09_id"
+      rename: param: "teamId": *"team_id"
       rename: param: "userId": *"user_id"
       op: remove: method: *DELETE
     }
@@ -99,14 +99,14 @@ guide: {
 
   entity: teams_batch_response_team_member: {
     path: "/settings/teams/2026-09/{teamId}/members/batch": {
-      rename: param: "teamId": *"2026_09_id"
+      rename: param: "teamId": *"team_id"
       op: create: method: *POST
     }
   }
 
   entity: teams_collection_response_team_member_response_forward_paging: {
     path: "/settings/teams/2026-09/{teamId}/members": {
-      rename: param: "teamId": *"2026_09_id"
+      rename: param: "teamId": *"team_id"
       op: list: method: *GET
     }
   }
@@ -130,7 +130,7 @@ guide: {
 
   entity: teams_team_member: {
     path: "/settings/teams/2026-09/{teamId}/members": {
-      rename: param: "teamId": *"2026_09_id"
+      rename: param: "teamId": *"team_id"
       op: create: method: *POST
     }
   }

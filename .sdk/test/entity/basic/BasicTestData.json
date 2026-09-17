@@ -2,21 +2,18 @@
   "existing": {
     "basic": {
       "BASIC00": {
-        "2026_09_id": "2026_0901",
-        "user_id": "USER01",
         "team_id": "TEAM01",
+        "user_id": "USER01",
         "id": "BASIC00"
       },
       "BASIC01": {
-        "2026_09_id": "2026_0901",
-        "user_id": "USER01",
         "team_id": "TEAM01",
+        "user_id": "USER01",
         "id": "BASIC01"
       },
       "BASIC02": {
-        "2026_09_id": "2026_0901",
-        "user_id": "USER01",
         "team_id": "TEAM01",
+        "user_id": "USER01",
         "id": "BASIC02"
       }
     }

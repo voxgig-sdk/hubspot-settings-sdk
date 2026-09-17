@@ -21,6 +21,8 @@ class Basic
 class BasicRemoveMatch
 {
     public string $team_id;
+    public ?string $user_id = null;
+    public ?string $type = null;
 }
 
 /** ExchangeRate entity data model. */
@@ -246,6 +248,7 @@ class TeamsBatchResponseTeamMember
 /** Request payload for TeamsBatchResponseTeamMember#create. */
 class TeamsBatchResponseTeamMemberCreateData
 {
+    public string $team_id;
     public string $completedAt;
     public ?array $errors = null;
     public array $inputs;
@@ -267,6 +270,7 @@ class TeamsCollectionResponseTeamMemberResponseForwardPaging
 /** Request payload for TeamsCollectionResponseTeamMemberResponseForwardPaging#list. */
 class TeamsCollectionResponseTeamMemberResponseForwardPagingListMatch
 {
+    public string $team_id;
     public ?string $after = null;
     public ?int $limit = null;
 }
@@ -330,6 +334,7 @@ class TeamsTeamMember
 /** Request payload for TeamsTeamMember#create. */
 class TeamsTeamMemberCreateData
 {
+    public string $team_id;
     public string $type;
     public string $userId;
 }

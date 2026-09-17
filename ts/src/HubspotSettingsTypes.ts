@@ -10,6 +10,8 @@ export interface Basic {
 
 export interface BasicRemoveMatch {
   team_id: string
+  user_id?: string
+  type?: string
 }
 
 export interface ExchangeRate {
@@ -193,7 +195,7 @@ export interface TeamsBatchResponseTeamMember {
 }
 
 export interface TeamsBatchResponseTeamMemberCreateData {
-  "2026_09_id": string
+  team_id: string
   completedAt: string
   errors?: any[]
   inputs: any[]
@@ -211,7 +213,7 @@ export interface TeamsCollectionResponseTeamMemberResponseForwardPaging {
 }
 
 export interface TeamsCollectionResponseTeamMemberResponseForwardPagingListMatch {
-  "2026_09_id": string
+  team_id: string
   after?: string
   limit?: number
 }
@@ -259,7 +261,7 @@ export interface TeamsTeamMember {
 }
 
 export interface TeamsTeamMemberCreateData {
-  "2026_09_id": string
+  team_id: string
   type: string
   userId: string
 }

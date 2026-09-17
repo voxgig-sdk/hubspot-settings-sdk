@@ -221,7 +221,7 @@ def make_config():
                     {
                       "example": None,
                       "kind": "param",
-                      "name": "2026_09_id",
+                      "name": "team_id",
                       "orig": "team_id",
                       "reqd": True,
                       "type": "`$STRING`",
@@ -250,7 +250,7 @@ def make_config():
                 "orig": "/settings/teams/2026-09/{teamId}/members/{userId}",
                 "rename": {
                   "param": {
-                    "teamId": "2026_09_id",
+                    "teamId": "team_id",
                     "userId": "user_id",
                   },
                 },
@@ -265,7 +265,7 @@ def make_config():
                     "lit": "2026-09",
                   },
                   {
-                    "var": "2026_09_id",
+                    "var": "team_id",
                   },
                   {
                     "lit": "members",
@@ -276,7 +276,7 @@ def make_config():
                 ],
                 "select": {
                   "exist": [
-                    "2026_09_id",
+                    "team_id",
                     "type",
                     "user_id",
                   ],
@@ -289,7 +289,7 @@ def make_config():
                   "settings",
                   "teams",
                   "2026-09",
-                  "{2026_09_id}",
+                  "{team_id}",
                   "members",
                   "{user_id}",
                 ],
@@ -1612,7 +1612,7 @@ def make_config():
                     {
                       "example": None,
                       "kind": "param",
-                      "name": "2026_09_id",
+                      "name": "team_id",
                       "orig": "team_id",
                       "reqd": True,
                       "type": "`$STRING`",
@@ -1624,7 +1624,7 @@ def make_config():
                 "orig": "/settings/teams/2026-09/{teamId}/members/batch",
                 "rename": {
                   "param": {
-                    "teamId": "2026_09_id",
+                    "teamId": "team_id",
                   },
                 },
                 "segments": [
@@ -1638,7 +1638,7 @@ def make_config():
                     "lit": "2026-09",
                   },
                   {
-                    "var": "2026_09_id",
+                    "var": "team_id",
                   },
                   {
                     "lit": "members",
@@ -1649,7 +1649,7 @@ def make_config():
                 ],
                 "select": {
                   "exist": [
-                    "2026_09_id",
+                    "team_id",
                   ],
                 },
                 "transform": {
@@ -1660,7 +1660,7 @@ def make_config():
                   "settings",
                   "teams",
                   "2026-09",
-                  "{2026_09_id}",
+                  "{team_id}",
                   "members",
                   "batch",
                 ],
@@ -1703,7 +1703,7 @@ def make_config():
                     {
                       "example": None,
                       "kind": "param",
-                      "name": "2026_09_id",
+                      "name": "team_id",
                       "orig": "team_id",
                       "reqd": True,
                       "type": "`$STRING`",
@@ -1731,7 +1731,7 @@ def make_config():
                 "orig": "/settings/teams/2026-09/{teamId}/members",
                 "rename": {
                   "param": {
-                    "teamId": "2026_09_id",
+                    "teamId": "team_id",
                   },
                 },
                 "segments": [
@@ -1745,7 +1745,7 @@ def make_config():
                     "lit": "2026-09",
                   },
                   {
-                    "var": "2026_09_id",
+                    "var": "team_id",
                   },
                   {
                     "lit": "members",
@@ -1753,9 +1753,9 @@ def make_config():
                 ],
                 "select": {
                   "exist": [
-                    "2026_09_id",
                     "after",
                     "limit",
+                    "team_id",
                   ],
                 },
                 "transform": {
@@ -1766,7 +1766,7 @@ def make_config():
                   "settings",
                   "teams",
                   "2026-09",
-                  "{2026_09_id}",
+                  "{team_id}",
                   "members",
                 ],
               },
@@ -2088,7 +2088,7 @@ def make_config():
                     {
                       "example": None,
                       "kind": "param",
-                      "name": "2026_09_id",
+                      "name": "team_id",
                       "orig": "team_id",
                       "reqd": True,
                       "type": "`$STRING`",
@@ -2100,7 +2100,7 @@ def make_config():
                 "orig": "/settings/teams/2026-09/{teamId}/members",
                 "rename": {
                   "param": {
-                    "teamId": "2026_09_id",
+                    "teamId": "team_id",
                   },
                 },
                 "segments": [
@@ -2114,7 +2114,7 @@ def make_config():
                     "lit": "2026-09",
                   },
                   {
-                    "var": "2026_09_id",
+                    "var": "team_id",
                   },
                   {
                     "lit": "members",
@@ -2122,7 +2122,7 @@ def make_config():
                 ],
                 "select": {
                   "exist": [
-                    "2026_09_id",
+                    "team_id",
                   ],
                 },
                 "transform": {
@@ -2133,7 +2133,7 @@ def make_config():
                   "settings",
                   "teams",
                   "2026-09",
-                  "{2026_09_id}",
+                  "{team_id}",
                   "members",
                 ],
               },

@@ -15,7 +15,7 @@ main: kit: entity: basic: {
               {
                 example: null
                 kind: "param"
-                name: "2026_09_id"
+                name: "team_id"
                 orig: "team_id"
                 reqd: true
                 type: "`$STRING`"
@@ -50,7 +50,7 @@ main: kit: entity: basic: {
           orig: "/settings/teams/2026-09/{teamId}/members/{userId}"
           rename: {
             param: {
-              teamId: "2026_09_id"
+              teamId: "team_id"
               userId: "user_id"
             }
           }
@@ -65,7 +65,7 @@ main: kit: entity: basic: {
               lit: "2026-09"
             }
             {
-              var: "2026_09_id"
+              var: "team_id"
             }
             {
               lit: "members"
@@ -76,7 +76,7 @@ main: kit: entity: basic: {
           ]
           select: {
             exist: [
-              "2026_09_id"
+              "team_id"
               "type"
               "user_id"
             ]

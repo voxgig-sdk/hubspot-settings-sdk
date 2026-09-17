@@ -929,7 +929,7 @@ Create an instance: `teamsBatchResponseTeamMember := client.TeamsBatchResponseTe
 
 ```go
 result, err := client.TeamsBatchResponseTeamMember(nil).Create(map[string]any{
-    "2026_09_id": "example_2026_09_id",
+    "team_id": "example_team_id",
     "completedAt": "example_completedAt",
     "inputs": []any{},
     "results": []any{},
@@ -1067,7 +1067,7 @@ Create an instance: `teamsTeamMember := client.TeamsTeamMember(nil)`
 
 ```go
 result, err := client.TeamsTeamMember(nil).Create(map[string]any{
-    "2026_09_id": "example_2026_09_id",
+    "team_id": "example_team_id",
     "type": "example_type",
     "userId": "example_userId",
 }, nil)

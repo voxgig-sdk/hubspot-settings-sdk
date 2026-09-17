@@ -36,19 +36,19 @@ const utility_1 = require("../../utility");
         const setup = directSetup([{ id: 'direct01' }, { id: 'direct02' }]);
         if ((0, utility_1.maybeSkipControl)(t, 'direct', 'direct-list-teams_collection_response_team_member_response_forward_paging', setup.live))
             return;
-        if ((0, utility_1.skipIfMissingIds)(t, setup, ["2026_0901"]))
+        if ((0, utility_1.skipIfMissingIds)(t, setup, ["team01"]))
             return;
         const { client, calls } = setup;
         const params = {};
         const query = {};
         if (setup.live) {
-            params["2026_09_id"] = setup.idmap['2026_0901'];
+            params.team_id = setup.idmap['team01'];
         }
         else {
-            params["2026_09_id"] = 'direct01';
+            params.team_id = 'direct01';
         }
         const result = await client.direct({
-            path: 'settings/teams/2026-09/{2026_09_id}/members',
+            path: 'settings/teams/2026-09/{team_id}/members',
             method: 'GET',
             params,
             query,

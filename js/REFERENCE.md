@@ -969,7 +969,7 @@ Create a new entity with the given data.
 
 ```ts
 const result = await client.TeamsBatchResponseTeamMember().create({
-  '2026_09_id': 'example_2026_09_id',
+  team_id: 'example_team_id',
   completedAt: 'example_completedAt',
   inputs: [],
   results: [],
@@ -1215,7 +1215,7 @@ Create a new entity with the given data.
 
 ```ts
 const result = await client.TeamsTeamMember().create({
-  '2026_09_id': 'example_2026_09_id',
+  team_id: 'example_team_id',
   type: 'example_type',
   userId: 'example_userId',
 })

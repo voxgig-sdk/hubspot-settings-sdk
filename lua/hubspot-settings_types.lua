@@ -10,6 +10,8 @@
 
 ---@class BasicRemoveMatch
 ---@field team_id string
+---@field user_id? string
+---@field type? string
 
 ---@class ExchangeRate
 
@@ -163,7 +165,7 @@
 ---@field status string
 
 ---@class TeamsBatchResponseTeamMemberCreateData
----@field ["2026_09_id"] string
+---@field team_id string
 ---@field completedAt string
 ---@field errors? table
 ---@field inputs table
@@ -179,7 +181,7 @@
 ---@field userId string
 
 ---@class TeamsCollectionResponseTeamMemberResponseForwardPagingListMatch
----@field ["2026_09_id"] string
+---@field team_id string
 ---@field after? string
 ---@field limit? number
 
@@ -219,7 +221,7 @@
 ---@field userId string
 
 ---@class TeamsTeamMemberCreateData
----@field ["2026_09_id"] string
+---@field team_id string
 ---@field type string
 ---@field userId string
 

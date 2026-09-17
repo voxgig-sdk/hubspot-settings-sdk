@@ -915,7 +915,7 @@ Create an instance: `const teams_batch_response_team_member = client.TeamsBatchR
 
 ```ts
 const teams_batch_response_team_member = await client.TeamsBatchResponseTeamMember().create({
-  '2026_09_id': 'example_2026_09_id',
+  team_id: 'example_team_id',
   completedAt: 'example_completedAt',
   inputs: [],
   results: [],
@@ -945,7 +945,7 @@ Create an instance: `const teams_collection_response_team_member_response_forwar
 #### Example: List
 
 ```ts
-const teams_collection_response_team_member_response_forward_pagings = await client.TeamsCollectionResponseTeamMemberResponseForwardPaging().list({ '2026_09_id': "example" })
+const teams_collection_response_team_member_response_forward_pagings = await client.TeamsCollectionResponseTeamMemberResponseForwardPaging().list({ team_id: "example" })
 ```
 
 
@@ -1033,7 +1033,7 @@ Create an instance: `const teams_team_member = client.TeamsTeamMember()`
 
 ```ts
 const teams_team_member = await client.TeamsTeamMember().create({
-  '2026_09_id': 'example_2026_09_id',
+  team_id: 'example_team_id',
   type: 'example_type',
   userId: 'example_userId',
 })

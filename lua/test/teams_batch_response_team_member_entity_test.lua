@@ -38,7 +38,7 @@ describe("TeamsBatchResponseTeamMemberEntity", function()
     local teams_batch_response_team_member_ref01_ent = client:TeamsBatchResponseTeamMember(nil)
     local teams_batch_response_team_member_ref01_data = helpers.to_map(vs.getprop(
       vs.getpath(setup.data, "new.teams_batch_response_team_member"), "teams_batch_response_team_member_ref01"))
-    teams_batch_response_team_member_ref01_data["2026_09_id"] = setup.idmap["2026_0901"]
+    teams_batch_response_team_member_ref01_data["team_id"] = setup.idmap["team01"]
 
     local teams_batch_response_team_member_ref01_data_result, err = teams_batch_response_team_member_ref01_ent:create(teams_batch_response_team_member_ref01_data, nil)
     assert.is_nil(err)
@@ -68,7 +68,7 @@ function teams_batch_response_team_member_basic_setup(extra)
 
   -- Generate idmap via transform.
   local idmap = vs.transform(
-    { "teams_batch_response_team_member01", "teams_batch_response_team_member02", "teams_batch_response_team_member03", "2026_0901", "2026_0902", "2026_0903" },
+    { "teams_batch_response_team_member01", "teams_batch_response_team_member02", "teams_batch_response_team_member03", "2026_0901", "2026_0902", "2026_0903", "team01" },
     {
       ["`$PACK`"] = { "", {
         ["`$KEY`"] = "`$COPY`",

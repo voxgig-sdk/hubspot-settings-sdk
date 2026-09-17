@@ -30,7 +30,7 @@ main: kit: entity: teams_collection_response_team_member_response_forward_paging
               {
                 example: null
                 kind: "param"
-                name: "2026_09_id"
+                name: "team_id"
                 orig: "team_id"
                 reqd: true
                 type: "`$STRING`"
@@ -65,7 +65,7 @@ main: kit: entity: teams_collection_response_team_member_response_forward_paging
           orig: "/settings/teams/2026-09/{teamId}/members"
           rename: {
             param: {
-              teamId: "2026_09_id"
+              teamId: "team_id"
             }
           }
           segments: [
@@ -79,7 +79,7 @@ main: kit: entity: teams_collection_response_team_member_response_forward_paging
               lit: "2026-09"
             }
             {
-              var: "2026_09_id"
+              var: "team_id"
             }
             {
               lit: "members"
@@ -87,9 +87,9 @@ main: kit: entity: teams_collection_response_team_member_response_forward_paging
           ]
           select: {
             exist: [
-              "2026_09_id"
               "after"
               "limit"
+              "team_id"
             ]
           }
           transform: {

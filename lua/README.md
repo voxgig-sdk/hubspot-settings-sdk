@@ -860,7 +860,7 @@ Create an instance: `local teams_batch_response_team_member = client:TeamsBatchR
 
 ```lua
 local teams_batch_response_team_member, err = client:TeamsBatchResponseTeamMember():create({
-  ["2026_09_id"] = "example_2026_09_id", -- string
+  team_id = "example_team_id", -- string
   completedAt = "example_completedAt", -- string
   inputs = {}, -- table
   results = {}, -- table
@@ -978,7 +978,7 @@ Create an instance: `local teams_team_member = client:TeamsTeamMember(nil)`
 
 ```lua
 local teams_team_member, err = client:TeamsTeamMember():create({
-  ["2026_09_id"] = "example_2026_09_id", -- string
+  team_id = "example_team_id", -- string
   type = "example_type", -- string
   userId = "example_userId", -- string
 })

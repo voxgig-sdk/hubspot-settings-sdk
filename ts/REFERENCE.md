@@ -989,7 +989,7 @@ Create a new entity with the given data.
 
 ```ts
 const result = await client.TeamsBatchResponseTeamMember().create({
-  '2026_09_id': 'example_2026_09_id',
+  team_id: 'example_team_id',
   completedAt: 'example_completedAt',
   inputs: [],
   results: [],
@@ -1046,7 +1046,7 @@ const teams_collection_response_team_member_response_forward_paging = client.Tea
 List entities matching the given criteria. Returns an array.
 
 ```ts
-const results = await client.TeamsCollectionResponseTeamMemberResponseForwardPaging().list({ '2026_09_id': "example" })
+const results = await client.TeamsCollectionResponseTeamMemberResponseForwardPaging().list({ team_id: "example" })
 ```
 
 ### Common Methods
@@ -1235,7 +1235,7 @@ Create a new entity with the given data.
 
 ```ts
 const result = await client.TeamsTeamMember().create({
-  '2026_09_id': 'example_2026_09_id',
+  team_id: 'example_team_id',
   type: 'example_type',
   userId: 'example_userId',
 })

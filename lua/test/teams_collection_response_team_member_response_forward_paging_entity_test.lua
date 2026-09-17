@@ -86,7 +86,7 @@ describe("TeamsCollectionResponseTeamMemberResponseForwardPagingEntity", functio
     -- LIST
     local teams_collection_response_team_member_response_forward_paging_ref01_ent = client:TeamsCollectionResponseTeamMemberResponseForwardPaging(nil)
     local teams_collection_response_team_member_response_forward_paging_ref01_match = {
-      ["2026_09_id"] = setup.idmap["2026_0901"],
+      ["team_id"] = setup.idmap["team01"],
     }
 
     local teams_collection_response_team_member_response_forward_paging_ref01_list_result, err = teams_collection_response_team_member_response_forward_paging_ref01_ent:list(teams_collection_response_team_member_response_forward_paging_ref01_match, nil)
@@ -116,7 +116,7 @@ function teams_collection_response_team_member_response_forward_paging_basic_set
 
   -- Generate idmap via transform.
   local idmap = vs.transform(
-    { "teams_collection_response_team_member_response_forward_paging01", "teams_collection_response_team_member_response_forward_paging02", "teams_collection_response_team_member_response_forward_paging03", "2026_0901", "2026_0902", "2026_0903" },
+    { "teams_collection_response_team_member_response_forward_paging01", "teams_collection_response_team_member_response_forward_paging02", "teams_collection_response_team_member_response_forward_paging03", "2026_0901", "2026_0902", "2026_0903", "team01" },
     {
       ["`$PACK`"] = { "", {
         ["`$KEY`"] = "`$COPY`",

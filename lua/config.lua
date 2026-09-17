@@ -192,7 +192,7 @@ local function make_config()
                     {
                       ["example"] = nil,
                       ["kind"] = "param",
-                      ["name"] = "2026_09_id",
+                      ["name"] = "team_id",
                       ["orig"] = "team_id",
                       ["reqd"] = true,
                       ["type"] = "`$STRING`",
@@ -221,7 +221,7 @@ local function make_config()
                 ["orig"] = "/settings/teams/2026-09/{teamId}/members/{userId}",
                 ["rename"] = {
                   ["param"] = {
-                    ["teamId"] = "2026_09_id",
+                    ["teamId"] = "team_id",
                     ["userId"] = "user_id",
                   },
                 },
@@ -236,7 +236,7 @@ local function make_config()
                     ["lit"] = "2026-09",
                   },
                   {
-                    ["var"] = "2026_09_id",
+                    ["var"] = "team_id",
                   },
                   {
                     ["lit"] = "members",
@@ -247,7 +247,7 @@ local function make_config()
                 },
                 ["select"] = {
                   ["exist"] = {
-                    "2026_09_id",
+                    "team_id",
                     "type",
                     "user_id",
                   },
@@ -260,7 +260,7 @@ local function make_config()
                   "settings",
                   "teams",
                   "2026-09",
-                  "{2026_09_id}",
+                  "{team_id}",
                   "members",
                   "{user_id}",
                 },
@@ -1583,7 +1583,7 @@ local function make_config()
                     {
                       ["example"] = nil,
                       ["kind"] = "param",
-                      ["name"] = "2026_09_id",
+                      ["name"] = "team_id",
                       ["orig"] = "team_id",
                       ["reqd"] = true,
                       ["type"] = "`$STRING`",
@@ -1595,7 +1595,7 @@ local function make_config()
                 ["orig"] = "/settings/teams/2026-09/{teamId}/members/batch",
                 ["rename"] = {
                   ["param"] = {
-                    ["teamId"] = "2026_09_id",
+                    ["teamId"] = "team_id",
                   },
                 },
                 ["segments"] = {
@@ -1609,7 +1609,7 @@ local function make_config()
                     ["lit"] = "2026-09",
                   },
                   {
-                    ["var"] = "2026_09_id",
+                    ["var"] = "team_id",
                   },
                   {
                     ["lit"] = "members",
@@ -1620,7 +1620,7 @@ local function make_config()
                 },
                 ["select"] = {
                   ["exist"] = {
-                    "2026_09_id",
+                    "team_id",
                   },
                 },
                 ["transform"] = {
@@ -1631,7 +1631,7 @@ local function make_config()
                   "settings",
                   "teams",
                   "2026-09",
-                  "{2026_09_id}",
+                  "{team_id}",
                   "members",
                   "batch",
                 },
@@ -1674,7 +1674,7 @@ local function make_config()
                     {
                       ["example"] = nil,
                       ["kind"] = "param",
-                      ["name"] = "2026_09_id",
+                      ["name"] = "team_id",
                       ["orig"] = "team_id",
                       ["reqd"] = true,
                       ["type"] = "`$STRING`",
@@ -1702,7 +1702,7 @@ local function make_config()
                 ["orig"] = "/settings/teams/2026-09/{teamId}/members",
                 ["rename"] = {
                   ["param"] = {
-                    ["teamId"] = "2026_09_id",
+                    ["teamId"] = "team_id",
                   },
                 },
                 ["segments"] = {
@@ -1716,7 +1716,7 @@ local function make_config()
                     ["lit"] = "2026-09",
                   },
                   {
-                    ["var"] = "2026_09_id",
+                    ["var"] = "team_id",
                   },
                   {
                     ["lit"] = "members",
@@ -1724,9 +1724,9 @@ local function make_config()
                 },
                 ["select"] = {
                   ["exist"] = {
-                    "2026_09_id",
                     "after",
                     "limit",
+                    "team_id",
                   },
                 },
                 ["transform"] = {
@@ -1737,7 +1737,7 @@ local function make_config()
                   "settings",
                   "teams",
                   "2026-09",
-                  "{2026_09_id}",
+                  "{team_id}",
                   "members",
                 },
               },
@@ -2059,7 +2059,7 @@ local function make_config()
                     {
                       ["example"] = nil,
                       ["kind"] = "param",
-                      ["name"] = "2026_09_id",
+                      ["name"] = "team_id",
                       ["orig"] = "team_id",
                       ["reqd"] = true,
                       ["type"] = "`$STRING`",
@@ -2071,7 +2071,7 @@ local function make_config()
                 ["orig"] = "/settings/teams/2026-09/{teamId}/members",
                 ["rename"] = {
                   ["param"] = {
-                    ["teamId"] = "2026_09_id",
+                    ["teamId"] = "team_id",
                   },
                 },
                 ["segments"] = {
@@ -2085,7 +2085,7 @@ local function make_config()
                     ["lit"] = "2026-09",
                   },
                   {
-                    ["var"] = "2026_09_id",
+                    ["var"] = "team_id",
                   },
                   {
                     ["lit"] = "members",
@@ -2093,7 +2093,7 @@ local function make_config()
                 },
                 ["select"] = {
                   ["exist"] = {
-                    "2026_09_id",
+                    "team_id",
                   },
                 },
                 ["transform"] = {
@@ -2104,7 +2104,7 @@ local function make_config()
                   "settings",
                   "teams",
                   "2026-09",
-                  "{2026_09_id}",
+                  "{team_id}",
                   "members",
                 },
               },

@@ -11,7 +11,7 @@
         "results": [],
         "startedAt": "s61",
         "status": "s62",
-        "2026_09_id": "2026_0901",
+        "team_id": "TEAM01",
         "id": "TEAMS_BATCH_RESPONSE_TEAM_MEMBER00"
       },
       "TEAMS_BATCH_RESPONSE_TEAM_MEMBER01": {
@@ -24,7 +24,7 @@
         "results": [],
         "startedAt": "sbb",
         "status": "sbc",
-        "2026_09_id": "2026_0901",
+        "team_id": "TEAM01",
         "id": "TEAMS_BATCH_RESPONSE_TEAM_MEMBER01"
       },
       "TEAMS_BATCH_RESPONSE_TEAM_MEMBER02": {
@@ -37,7 +37,7 @@
         "results": [],
         "startedAt": "s115",
         "status": "s116",
-        "2026_09_id": "2026_0901",
+        "team_id": "TEAM01",
         "id": "TEAMS_BATCH_RESPONSE_TEAM_MEMBER02"
       }
     }

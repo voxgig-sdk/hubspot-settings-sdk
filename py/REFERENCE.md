@@ -798,7 +798,7 @@ Create a new entity with the given data. Returns the created entity data and rai
 
 ```python
 result = client.TeamsBatchResponseTeamMember().create({
-    "2026_09_id": "example_2026_09_id",  # str
+    "team_id": "example_team_id",  # str
     "completedAt": "example_completedAt",  # str
     "inputs": [],  # list
     "results": [],  # list
@@ -856,7 +856,7 @@ teams_collection_response_team_member_response_forward_paging = client.TeamsColl
 List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list and raises on error.
 
 ```python
-results = client.TeamsCollectionResponseTeamMemberResponseForwardPaging().list({"2026_09_id": "example"})
+results = client.TeamsCollectionResponseTeamMemberResponseForwardPaging().list({"team_id": "example"})
 for teams_collection_response_team_member_response_forward_paging in results:
     print(teams_collection_response_team_member_response_forward_paging)
 ```
@@ -1052,7 +1052,7 @@ Create a new entity with the given data. Returns the created entity data and rai
 
 ```python
 result = client.TeamsTeamMember().create({
-    "2026_09_id": "example_2026_09_id",  # str
+    "team_id": "example_team_id",  # str
     "type": "example_type",  # str
     "userId": "example_userId",  # str
 })
