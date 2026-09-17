@@ -1,0 +1,28 @@
+# BasicMulticurrencyCentralExchangeRatesInformationFlow
+
+main: kit: flow: BasicMulticurrencyCentralExchangeRatesInformationFlow:
+{
+  entity: "multicurrency_central_exchange_rates_information",
+  kind: "basic",
+  name: "BasicMulticurrencyCentralExchangeRatesInformationFlow",
+  step: [
+    {
+      input: {
+        ref: "multicurrency_central_exchange_rates_information_ref01",
+        srcdatavar: "multicurrency_central_exchange_rates_information_ref01_data",
+        suffix: "_dt0"
+      }
+
+      op: "load",
+      valid: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-multicurrency_central_exchange_rates_information_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicMulticurrencyCentralExchangeRatesInformationFlow"
+}

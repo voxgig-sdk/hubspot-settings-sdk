@@ -1,0 +1,22 @@
+# BasicTeamsBatchResponseTeamMemberFlow
+
+main: kit: flow: BasicTeamsBatchResponseTeamMemberFlow:
+{
+  entity: "teams_batch_response_team_member",
+  kind: "basic",
+  name: "BasicTeamsBatchResponseTeamMemberFlow",
+  step: [
+    {
+      input: {
+        ref: "teams_batch_response_team_member_ref01"
+      }
+
+      match: {
+        "2026_09_id": "2026_0901"
+      }
+
+      op: "create"
+    }
+  ],
+  "key$": "BasicTeamsBatchResponseTeamMemberFlow"
+}

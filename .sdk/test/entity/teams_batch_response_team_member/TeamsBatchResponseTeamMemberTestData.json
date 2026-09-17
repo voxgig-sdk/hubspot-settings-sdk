@@ -1,0 +1,468 @@
+{
+  "existing": {
+    "teams_batch_response_team_member": {
+      "TEAMS_BATCH_RESPONSE_TEAM_MEMBER00": {
+        "completedAt": "s5a",
+        "errors": [],
+        "inputs": [],
+        "links": {},
+        "numErrors": 94,
+        "requestedAt": "s5f",
+        "results": [],
+        "startedAt": "s61",
+        "status": "s62",
+        "2026_09_id": "2026_0901",
+        "id": "TEAMS_BATCH_RESPONSE_TEAM_MEMBER00"
+      },
+      "TEAMS_BATCH_RESPONSE_TEAM_MEMBER01": {
+        "completedAt": "sb4",
+        "errors": [],
+        "inputs": [],
+        "links": {},
+        "numErrors": 184,
+        "requestedAt": "sb9",
+        "results": [],
+        "startedAt": "sbb",
+        "status": "sbc",
+        "2026_09_id": "2026_0901",
+        "id": "TEAMS_BATCH_RESPONSE_TEAM_MEMBER01"
+      },
+      "TEAMS_BATCH_RESPONSE_TEAM_MEMBER02": {
+        "completedAt": "s10e",
+        "errors": [],
+        "inputs": [],
+        "links": {},
+        "numErrors": 274,
+        "requestedAt": "s113",
+        "results": [],
+        "startedAt": "s115",
+        "status": "s116",
+        "2026_09_id": "2026_0901",
+        "id": "TEAMS_BATCH_RESPONSE_TEAM_MEMBER02"
+      }
+    }
+  },
+  "new": {
+    "teams_batch_response_team_member": {
+      "teams_batch_response_team_member_ref01": {
+        "completedAt": "s168",
+        "errors": [],
+        "inputs": [],
+        "links": {},
+        "numErrors": 364,
+        "requestedAt": "s16d",
+        "results": [],
+        "startedAt": "s16f",
+        "status": "s170"
+      }
+    }
+  },
+  "requests": {
+    "POST /settings/teams/2026-09/{teamId}/members/batch": {
+      "provenance": "operation-contract",
+      "contract": {
+        "operationId": "post-/settings/teams/2026-09/{teamId}/members/batch",
+        "parameters": [
+          {
+            "description": "The unique identifier of the team to which members will be assigned.",
+            "explode": false,
+            "in": "path",
+            "name": "teamId",
+            "required": true,
+            "schema": {
+              "example": null,
+              "type": "string"
+            },
+            "style": "simple"
+          }
+        ],
+        "protocol": "http",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "example": null,
+              "schema": {
+                "example": null,
+                "properties": {
+                  "inputs": {
+                    "description": "An array of team member assignments, where each item specifies the details of a team member to be assigned. Each item is of type 'TeamMemberAssignment'.",
+                    "example": null,
+                    "items": {
+                      "example": null,
+                      "properties": {
+                        "type": {
+                          "description": "The type of team member assignment. It is a string and can be either 'DEFAULT' or 'EXTRA'.",
+                          "enum": [
+                            "DEFAULT",
+                            "EXTRA"
+                          ],
+                          "example": null,
+                          "type": "string"
+                        },
+                        "userId": {
+                          "description": "The unique identifier for the user being assigned to the team. It is a string.",
+                          "example": null,
+                          "type": "string"
+                        }
+                      },
+                      "required": [
+                        "type",
+                        "userId"
+                      ],
+                      "type": "object"
+                    },
+                    "type": "array"
+                  }
+                },
+                "required": [
+                  "inputs"
+                ],
+                "type": "object"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "example": null,
+                "schema": {
+                  "example": null,
+                  "properties": {
+                    "completedAt": {
+                      "description": "The date and time when the batch operation was completed, in ISO 8601 format.",
+                      "example": null,
+                      "format": "date-time",
+                      "type": "string"
+                    },
+                    "errors": {
+                      "description": "An array of StandardError objects detailing any errors that occurred during the batch operation.",
+                      "example": null,
+                      "items": {
+                        "description": "Ye olde error",
+                        "example": null,
+                        "properties": {
+                          "category": {
+                            "description": "A string representing the category of the error.",
+                            "example": null,
+                            "type": "string"
+                          },
+                          "context": {
+                            "additionalProperties": {
+                              "example": null,
+                              "items": {
+                                "example": null,
+                                "type": "string"
+                              },
+                              "type": "array"
+                            },
+                            "description": "An object containing additional context about the error condition, with keys as context names and values as arrays of strings.",
+                            "example": null,
+                            "type": "object"
+                          },
+                          "errors": {
+                            "description": "An array of ErrorDetail objects providing further information about the error.",
+                            "example": null,
+                            "items": {
+                              "description": "Represents detailed information about an error that occurred in the API. This component is used to provide additional context and specifics about errors, typically as part of an error response.",
+                              "example": null,
+                              "properties": {
+                                "code": {
+                                  "description": "The status code associated with the error detail.",
+                                  "example": null,
+                                  "type": "string"
+                                },
+                                "context": {
+                                  "additionalProperties": {
+                                    "example": null,
+                                    "items": {
+                                      "example": null,
+                                      "type": "string"
+                                    },
+                                    "type": "array"
+                                  },
+                                  "description": "Context about the error condition, represented as an object with additional properties that are arrays of strings.",
+                                  "example": "{missingScopes=[scope1, scope2]}",
+                                  "type": "object"
+                                },
+                                "in": {
+                                  "description": "The name of the field or parameter in which the error was found.",
+                                  "example": null,
+                                  "type": "string"
+                                },
+                                "message": {
+                                  "description": "A human readable message describing the error along with remediation steps where appropriate. This is a required field.",
+                                  "example": null,
+                                  "type": "string"
+                                },
+                                "subCategory": {
+                                  "description": "A specific category that contains more specific detail about the error.",
+                                  "example": null,
+                                  "type": "string"
+                                }
+                              },
+                              "required": [
+                                "message"
+                              ],
+                              "type": "object"
+                            },
+                            "type": "array"
+                          },
+                          "id": {
+                            "description": "A string that uniquely identifies the error instance.",
+                            "example": null,
+                            "type": "string"
+                          },
+                          "links": {
+                            "additionalProperties": {
+                              "example": null,
+                              "type": "string"
+                            },
+                            "description": "An object mapping link names to associated URIs that contain documentation or recommended remediation steps for the error.",
+                            "example": null,
+                            "type": "object"
+                          },
+                          "message": {
+                            "description": "A string containing a human-readable message describing the error.",
+                            "example": null,
+                            "type": "string"
+                          },
+                          "status": {
+                            "description": "A string indicating the status of the error.",
+                            "example": null,
+                            "type": "string"
+                          },
+                          "subCategory": {
+                            "description": "An object providing more specific details about the error category.",
+                            "example": null,
+                            "properties": {},
+                            "type": "object"
+                          }
+                        },
+                        "required": [
+                          "category",
+                          "context",
+                          "errors",
+                          "links",
+                          "message",
+                          "status"
+                        ],
+                        "type": "object"
+                      },
+                      "type": "array"
+                    },
+                    "links": {
+                      "additionalProperties": {
+                        "example": null,
+                        "type": "string"
+                      },
+                      "description": "A map of link names to associated URIs providing additional information about the batch operation.",
+                      "example": null,
+                      "type": "object"
+                    },
+                    "numErrors": {
+                      "description": "The number of errors encountered during the batch operation.",
+                      "example": null,
+                      "format": "int32",
+                      "type": "integer"
+                    },
+                    "requestedAt": {
+                      "description": "The date and time when the batch operation was requested, in ISO 8601 format.",
+                      "example": null,
+                      "format": "date-time",
+                      "type": "string"
+                    },
+                    "results": {
+                      "description": "An array of TeamMemberResponse objects representing the results of the batch operation.",
+                      "example": null,
+                      "items": {
+                        "example": null,
+                        "properties": {
+                          "type": {
+                            "description": "The type of membership the user has in the team. Valid values are 'DEFAULT' and 'EXTRA'.",
+                            "enum": [
+                              "DEFAULT",
+                              "EXTRA"
+                            ],
+                            "example": null,
+                            "type": "string"
+                          },
+                          "userId": {
+                            "description": "The unique identifier for the user, represented as a string.",
+                            "example": null,
+                            "type": "string"
+                          }
+                        },
+                        "required": [
+                          "type",
+                          "userId"
+                        ],
+                        "type": "object"
+                      },
+                      "type": "array"
+                    },
+                    "startedAt": {
+                      "description": "The date and time when the batch operation started, in ISO 8601 format.",
+                      "example": null,
+                      "format": "date-time",
+                      "type": "string"
+                    },
+                    "status": {
+                      "description": "The current status of the batch operation. Valid values include 'PENDING', 'PROCESSING', 'CANCELED', and 'COMPLETE'.",
+                      "enum": [
+                        "CANCELED",
+                        "COMPLETE",
+                        "PENDING",
+                        "PROCESSING"
+                      ],
+                      "example": null,
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "completedAt",
+                    "results",
+                    "startedAt",
+                    "status"
+                  ],
+                  "type": "object"
+                }
+              }
+            },
+            "description": "successful operation"
+          },
+          "default": {
+            "content": {
+              "*/*": {
+                "example": null,
+                "schema": {
+                  "description": "Represents an error response returned by the API when an operation fails. This component is used in various endpoints to provide detailed information about the error encountered.",
+                  "example": {
+                    "category": "VALIDATION_ERROR",
+                    "correlationId": "aeb5f871-7f07-4993-9211-075dc63e7cbf",
+                    "links": {
+                      "knowledge-base": "https://www.hubspot.com/products/service/knowledge-base"
+                    },
+                    "message": "Invalid input (details will vary based on the error)"
+                  },
+                  "properties": {
+                    "category": {
+                      "description": "The error category, represented as a string.",
+                      "example": null,
+                      "type": "string"
+                    },
+                    "context": {
+                      "additionalProperties": {
+                        "example": null,
+                        "items": {
+                          "example": null,
+                          "type": "string"
+                        },
+                        "type": "array"
+                      },
+                      "description": "An object containing context about the error condition. It includes additional properties where each is an array of strings.",
+                      "example": "{invalidPropertyName=[propertyValue], missingScopes=[scope1, scope2]}",
+                      "type": "object"
+                    },
+                    "correlationId": {
+                      "description": "A unique identifier for the request, formatted as a UUID. This should be included with any error reports or support tickets.",
+                      "example": "aeb5f871-7f07-4993-9211-075dc63e7cbf",
+                      "format": "uuid",
+                      "type": "string"
+                    },
+                    "errors": {
+                      "description": "An array providing further information about the error, with each item being an ErrorDetail object.",
+                      "example": null,
+                      "items": {
+                        "description": "Represents detailed information about an error that occurred in the API. This component is used to provide additional context and specifics about errors, typically as part of an error response.",
+                        "example": null,
+                        "properties": {
+                          "$ref": "#/responses/200/content/application~1json/schema/properties/errors/items/properties/errors/items/properties"
+                        },
+                        "required": {
+                          "$ref": "#/responses/200/content/application~1json/schema/properties/errors/items/properties/errors/items/required"
+                        },
+                        "type": "object"
+                      },
+                      "type": "array"
+                    },
+                    "links": {
+                      "additionalProperties": {
+                        "example": null,
+                        "type": "string"
+                      },
+                      "description": "A map of link names to associated URIs, providing documentation about the error or recommended remediation steps. It is an object with string properties.",
+                      "example": null,
+                      "type": "object"
+                    },
+                    "message": {
+                      "description": "A human readable message describing the error along with remediation steps where appropriate. It is a string.",
+                      "example": "An error occurred",
+                      "type": "string"
+                    },
+                    "subCategory": {
+                      "description": "A specific category that contains more detailed information about the error. It is a string.",
+                      "example": null,
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "category",
+                    "correlationId",
+                    "message"
+                  ],
+                  "type": "object"
+                }
+              }
+            },
+            "description": ""
+          }
+        },
+        "security": [
+          {
+            "oauth2": [
+              "settings.users.teams.write"
+            ]
+          }
+        ],
+        "securitySchemes": {
+          "developer_hapikey": {
+            "in": "query",
+            "name": "hapikey",
+            "type": "apiKey"
+          },
+          "oauth2": {
+            "flows": {
+              "authorizationCode": {
+                "authorizationUrl": "https://app.hubspot.com/oauth/authorize",
+                "scopes": {
+                  "cpq.quotes.read": "",
+                  "cpq.quotes.write": "",
+                  "crm.objects.quotes.read": "",
+                  "crm.objects.quotes.write": "",
+                  "settings.currencies.read": "",
+                  "settings.currencies.write": ""
+                },
+                "tokenUrl": "https://api.hubapi.com/oauth/v1/token"
+              }
+            },
+            "type": "oauth2"
+          },
+          "private_apps": {
+            "in": "header",
+            "name": "private-app",
+            "type": "apiKey"
+          },
+          "private_apps_legacy": {
+            "in": "header",
+            "name": "private-app-legacy",
+            "type": "apiKey"
+          }
+        },
+        "securitySource": "operation"
+      }
+    }
+  }
+}

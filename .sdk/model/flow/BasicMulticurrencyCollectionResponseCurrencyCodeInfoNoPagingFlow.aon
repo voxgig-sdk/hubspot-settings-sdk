@@ -1,0 +1,22 @@
+# BasicMulticurrencyCollectionResponseCurrencyCodeInfoNoPagingFlow
+
+main: kit: flow: BasicMulticurrencyCollectionResponseCurrencyCodeInfoNoPagingFlow:
+{
+  entity: "multicurrency_collection_response_currency_code_info_no_paging",
+  kind: "basic",
+  name: "BasicMulticurrencyCollectionResponseCurrencyCodeInfoNoPagingFlow",
+  step: [
+    {
+      op: "list",
+      valid: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "multicurrency_collection_response_currency_code_info_no_paging_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicMulticurrencyCollectionResponseCurrencyCodeInfoNoPagingFlow"
+}

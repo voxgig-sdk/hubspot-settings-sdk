@@ -1,0 +1,183 @@
+# Guide
+
+guide: {
+  metrics: count: entity: 21
+  metrics: count: path: 24
+  metrics: count: method: 34
+
+  entity: basic: {
+    path: "/settings/teams/2026-09/{teamId}": {
+      rename: param: "teamId": *"team_id"
+      op: remove: method: *DELETE
+    }
+    path: "/settings/teams/2026-09/{teamId}/members/{userId}": {
+      rename: param: "teamId": *"2026_09_id"
+      rename: param: "userId": *"user_id"
+      op: remove: method: *DELETE
+    }
+  }
+
+  entity: exchange_rate: {
+    path: "/settings/currencies/2026-09/exchange-rates/update-visibility": {
+      action: "update_visibility": {}
+      op: create: method: *POST
+    }
+  }
+
+  entity: multicurrency_batch_response_exchange_rate: {
+    path: "/settings/currencies/2026-09/exchange-rates/batch/create": {
+      op: create: method: *POST
+    }
+    path: "/settings/currencies/2026-09/exchange-rates/batch/read": {
+      op: create: method: *POST
+    }
+    path: "/settings/currencies/2026-09/exchange-rates/batch/update": {
+      op: create: method: *POST
+    }
+  }
+
+  entity: multicurrency_central_exchange_rates_information: {
+    path: "/settings/currencies/2026-09/central-fx-rates/information": {
+      op: load: method: *GET
+    }
+  }
+
+  entity: multicurrency_collection_response_currency_code_info_no_paging: {
+    path: "/settings/currencies/2026-09/central-fx-rates/unsupported-currencies": {
+      op: list: method: *GET
+      op: list: transform: res: *("`body.results`")|top
+    }
+    path: "/settings/currencies/2026-09/codes": {
+      op: list: method: *GET
+      op: list: transform: res: *("`body.results`")|top
+    }
+  }
+
+  entity: multicurrency_collection_response_exchange_rate_forward_paging: {
+    path: "/settings/currencies/2026-09/exchange-rates": {
+      op: list: method: *GET
+    }
+  }
+
+  entity: multicurrency_collection_response_exchange_rate_no_paging: {
+    path: "/settings/currencies/2026-09/exchange-rates/current": {
+      op: list: method: *GET
+      op: list: transform: res: *("`body.results`")|top
+    }
+  }
+
+  entity: multicurrency_company_currency: {
+    path: "/settings/currencies/2026-09/company-currency": {
+      op: load: method: *GET
+      op: update: method: *PUT
+    }
+  }
+
+  entity: multicurrency_exchange_rate: {
+    path: "/settings/currencies/2026-09/central-fx-rates/add-currency": {
+      op: create: method: *POST
+    }
+    path: "/settings/currencies/2026-09/exchange-rates": {
+      op: create: method: *POST
+    }
+    path: "/settings/currencies/2026-09/exchange-rates/{exchangeRateId}": {
+      rename: param: "exchangeRateId": *"id"
+      op: load: method: *GET
+      op: patch: method: *PATCH
+    }
+  }
+
+  entity: tax_rate: {
+    path: "/tax-rates/2026-09/tax-rates": {
+      op: list: method: *GET
+    }
+    path: "/tax-rates/2026-09/tax-rates/{taxRateGroupId}": {
+      rename: param: "taxRateGroupId": *"id"
+      op: load: method: *GET
+    }
+  }
+
+  entity: teams_batch_response_team_member: {
+    path: "/settings/teams/2026-09/{teamId}/members/batch": {
+      rename: param: "teamId": *"2026_09_id"
+      op: create: method: *POST
+    }
+  }
+
+  entity: teams_collection_response_team_member_response_forward_paging: {
+    path: "/settings/teams/2026-09/{teamId}/members": {
+      rename: param: "teamId": *"2026_09_id"
+      op: list: method: *GET
+    }
+  }
+
+  entity: teams_collection_response_team_response_forward_paging: {
+    path: "/settings/teams/2026-09": {
+      op: list: method: *GET
+    }
+  }
+
+  entity: teams_team: {
+    path: "/settings/teams/2026-09": {
+      op: create: method: *POST
+    }
+    path: "/settings/teams/2026-09/{teamId}": {
+      rename: param: "teamId": *"team_id"
+      op: load: method: *GET
+      op: patch: method: *PATCH
+    }
+  }
+
+  entity: teams_team_member: {
+    path: "/settings/teams/2026-09/{teamId}/members": {
+      rename: param: "teamId": *"2026_09_id"
+      op: create: method: *POST
+    }
+  }
+
+  entity: user: {
+    path: "/settings/users/2026-09/{userId}": {
+      rename: param: "userId": *"user_id"
+      op: remove: method: *DELETE
+    }
+  }
+
+  entity: user_provisioning_collection_response_public_permission_set_no: {
+    path: "/settings/users/2026-09/roles": {
+      op: list: method: *GET
+      op: list: transform: res: *("`body.results`")|top
+    }
+  }
+
+  entity: user_provisioning_collection_response_public_seat_no_paging: {
+    path: "/settings/users/2026-09/seats": {
+      op: list: method: *GET
+      op: list: transform: res: *("`body.results`")|top
+    }
+  }
+
+  entity: user_provisioning_collection_response_public_team_no_paging: {
+    path: "/settings/users/2026-09/teams": {
+      op: list: method: *GET
+      op: list: transform: res: *("`body.results`")|top
+    }
+  }
+
+  entity: user_provisioning_collection_response_public_user_forward_paging: {
+    path: "/settings/users/2026-09": {
+      op: list: method: *GET
+    }
+  }
+
+  entity: user_provisioning_public_user: {
+    path: "/settings/users/2026-09": {
+      op: create: method: *POST
+    }
+    path: "/settings/users/2026-09/{userId}": {
+      rename: param: "userId": *"user_id"
+      op: load: method: *GET
+      op: update: method: *PUT
+    }
+  }
+
+}

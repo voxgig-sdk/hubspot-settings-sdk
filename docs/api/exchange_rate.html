@@ -1,0 +1,206 @@
+<!doctype html>
+<html lang="en">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>ExchangeRate | HubSpot Settings API</title><link rel="stylesheet" href="../assets/style.css"></head>
+<body><a class="skip" href="#content">Skip to content</a>
+<header class="site-header"><a class="site-title" href="../index.html">HubSpot Settings API<span>SDK documentation</span></a><div class="site-links"><a class="repo-link" href="https://github.com/voxgig-sdk/hubspot-settings-sdk">voxgig-sdk/hubspot-settings-sdk</a></div></header>
+<div class="site-notice" role="note"></div>
+<div class="shell"><nav class="site-nav" aria-label="Documentation"><div class="search"><label for="search">Search documentation</label><input id="search" type="search" data-base="../" placeholder="Find a guide or reference"><div id="results" aria-live="polite"></div></div><details><summary>Overview</summary><a href="../index.html">HubSpot Settings API</a></details>
+<details open><summary>API</summary><a href="../api/index.html">API overview</a>
+<a href="../api/basic.html">Basic</a>
+<a aria-current="page" href="../api/exchange_rate.html">ExchangeRate</a><div class="nav-sections"><a class="nav-section" href="#post-settingscurrencies2026-09exchange-ratesupdate-visibility">POST /settings/currencies/2026-09/exchange-rates/update-visibility</a></div>
+<a href="../api/multicurrency_batch_response_exchange_rate.html">MulticurrencyBatchResponseExchangeRate</a>
+<a href="../api/multicurrency_central_exchange_rates_information.html">MulticurrencyCentralExchangeRatesInformation</a>
+<a href="../api/multicurrency_collection_response_currency_code_info_no_paging.html">MulticurrencyCollectionResponseCurrencyCodeInfoNoPaging</a>
+<a href="../api/multicurrency_collection_response_exchange_rate_forward_paging.html">MulticurrencyCollectionResponseExchangeRateForwardPaging</a>
+<a href="../api/multicurrency_collection_response_exchange_rate_no_paging.html">MulticurrencyCollectionResponseExchangeRateNoPaging</a>
+<a href="../api/multicurrency_company_currency.html">MulticurrencyCompanyCurrency</a>
+<a href="../api/multicurrency_exchange_rate.html">MulticurrencyExchangeRate</a>
+<a href="../api/tax_rate.html">TaxRate</a>
+<a href="../api/teams_batch_response_team_member.html">TeamsBatchResponseTeamMember</a>
+<a href="../api/teams_collection_response_team_member_response_forward_paging.html">TeamsCollectionResponseTeamMemberResponseForwardPaging</a>
+<a href="../api/teams_collection_response_team_response_forward_paging.html">TeamsCollectionResponseTeamResponseForwardPaging</a>
+<a href="../api/teams_team.html">TeamsTeam</a>
+<a href="../api/teams_team_member.html">TeamsTeamMember</a>
+<a href="../api/user.html">User</a>
+<a href="../api/user_provisioning_collection_response_public_permission_set_no.html">UserProvisioningCollectionResponsePublicPermissionSetNo</a>
+<a href="../api/user_provisioning_collection_response_public_seat_no_paging.html">UserProvisioningCollectionResponsePublicSeatNoPaging</a>
+<a href="../api/user_provisioning_collection_response_public_team_no_paging.html">UserProvisioningCollectionResponsePublicTeamNoPaging</a>
+<a href="../api/user_provisioning_collection_response_public_user_forward_paging.html">UserProvisioningCollectionResponsePublicUserForwardPaging</a>
+<a href="../api/user_provisioning_public_user.html">UserProvisioningPublicUser</a></details>
+<details><summary>Guides</summary><a href="../guides/authentication.html">Authentication</a>
+<a href="../guides/first-call.html">Make your first API call</a>
+<a href="../guides/errors.html">Handle errors</a>
+<a href="../guides/concepts.html">Entities, SDKs, and tools</a></details>
+<details><summary>SDKs</summary><a href="../sdks/go.html">Golang</a>
+<a href="../sdks/js.html">JavaScript</a>
+<a href="../sdks/lua.html">Lua</a>
+<a href="../sdks/php.html">PHP</a>
+<a href="../sdks/py.html">Python</a>
+<a href="../sdks/ts.html">TypeScript</a></details>
+<details><summary>Tools</summary><a href="../tools/go-cli.html">Go CLI</a>
+<a href="../tools/go-mcp.html">Go MCP server</a></details>
+<details><summary>Features</summary><a href="../features/debug.html">Request/response capture ring buffer for debugging</a>
+<a href="../features/idempotency.html">Idempotency keys for safe retries of mutating operations</a>
+<a href="../features/metrics.html">Statistics capture: per-operation counters and latency</a>
+<a href="../features/paging.html">Pagination signals for list operations</a>
+<a href="../features/ratelimit.html">Client-side rate limiting via a token bucket</a>
+<a href="../features/retry.html">Automatic retry of transient failures with exponential backoff</a>
+<a href="../features/test.html">In-memory mock transport for testing without a live server</a>
+<a href="../features/timeout.html">Per-request timeout with transport abort</a></details></nav><main id="content"><div class="page-context"><span class="section-dot" aria-hidden="true"></span>API</div><h1 id="exchangerate">ExchangeRate</h1>
+<h2 id="operations">Operations</h2>
+<p>Every route this entity exposes. Each route links to its own reference on this page.</p>
+<table>
+<thead>
+<tr>
+<th>Method</th>
+<th>Route</th>
+<th>SDK operation</th>
+<th>Returns</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>POST</code></td>
+<td><a href="#post-settingscurrencies2026-09exchange-ratesupdate-visibility"><code>/settings/currencies/2026-09/exchange-rates/update-visibility</code></a></td>
+<td><code>create</code></td>
+<td>No content</td>
+</tr>
+</tbody>
+</table>
+<h2 id="fields">Fields</h2>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+</table>
+<h2 id="create">create</h2>
+<h3 id="post-settingscurrencies2026-09exchange-ratesupdate-visibility" class="operation" data-method="post"><code>POST</code> /settings/currencies/2026-09/exchange-rates/update-visibility</h3>
+<p>Operation ID: <code>post-/settings/currencies/2026-09/exchange-rates/update-visibility</code>.</p>
+<p>Authentication: oauth2 (<code>oauth2</code>).</p>
+<h4 id="request-body">Request body</h4>
+<p><code>application/json</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>fromCurrencyCode</code></td>
+<td><code>enum: AED, AFN, ALL, AMD, ANG, AOA, ...</code></td>
+<td>Yes</td>
+<td>This represents the three-letter currency code (such as USD for US Dollar) of the currency you want to convert from.</td>
+</tr>
+<tr>
+<td><code>toCurrencyCode</code></td>
+<td><code>enum: AED, AFN, ALL, AMD, ANG, AOA, ...</code></td>
+<td>Yes</td>
+<td>This represents the three-letter currency code (such as USD for US Dollar) of the currency you want to convert to.</td>
+</tr>
+<tr>
+<td><code>visibleInUI</code></td>
+<td><code>boolean</code></td>
+<td>Yes</td>
+<td>This indicates if the currency pair is shown in the MultiCurrency settings page. Setting this to false will remove the currency pair from the settings page.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="responses">Responses</h4>
+<h5 id="204-no-content" class="status" data-status="2xx">204: No content</h5>
+<h5 id="default">default</h5>
+<p><code>*/*</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>category</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>The error category</td>
+</tr>
+<tr>
+<td><code>context</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>Context about the error condition</td>
+</tr>
+<tr>
+<td><code>correlationId</code></td>
+<td><code>string (uuid)</code></td>
+<td>Yes</td>
+<td>A unique identifier for the request. Include this value with any error reports or support tickets</td>
+</tr>
+<tr>
+<td><code>errors</code></td>
+<td><code>array of object</code></td>
+<td>No</td>
+<td>further information about the error</td>
+</tr>
+<tr>
+<td><code>errors[].code</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The status code associated with the error detail</td>
+</tr>
+<tr>
+<td><code>errors[].context</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>Context about the error condition</td>
+</tr>
+<tr>
+<td><code>errors[].in</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The name of the field or parameter in which the error was found.</td>
+</tr>
+<tr>
+<td><code>errors[].message</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>A human readable message describing the error along with remediation steps where appropriate</td>
+</tr>
+<tr>
+<td><code>errors[].subCategory</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>A specific category that contains more specific detail about the error</td>
+</tr>
+<tr>
+<td><code>links</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>A map of link names to associated URIs containing documentation about the error or recommended remediation steps</td>
+</tr>
+<tr>
+<td><code>message</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>A human readable message describing the error along with remediation steps where appropriate</td>
+</tr>
+<tr>
+<td><code>subCategory</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>A specific category that contains more specific detail about the error</td>
+</tr>
+</tbody>
+</table>
+</main></div>
+<script src="../assets/search.js" defer></script></body></html>

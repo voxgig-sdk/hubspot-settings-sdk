@@ -1,0 +1,18 @@
+# BasicMulticurrencyBatchResponseExchangeRateFlow
+
+main: kit: flow: BasicMulticurrencyBatchResponseExchangeRateFlow:
+{
+  entity: "multicurrency_batch_response_exchange_rate",
+  kind: "basic",
+  name: "BasicMulticurrencyBatchResponseExchangeRateFlow",
+  step: [
+    {
+      input: {
+        ref: "multicurrency_batch_response_exchange_rate_ref01"
+      }
+
+      op: "create"
+    }
+  ],
+  "key$": "BasicMulticurrencyBatchResponseExchangeRateFlow"
+}

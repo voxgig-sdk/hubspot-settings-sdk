@@ -1,0 +1,22 @@
+# BasicMulticurrencyCollectionResponseExchangeRateNoPagingFlow
+
+main: kit: flow: BasicMulticurrencyCollectionResponseExchangeRateNoPagingFlow:
+{
+  entity: "multicurrency_collection_response_exchange_rate_no_paging",
+  kind: "basic",
+  name: "BasicMulticurrencyCollectionResponseExchangeRateNoPagingFlow",
+  step: [
+    {
+      op: "list",
+      valid: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "multicurrency_collection_response_exchange_rate_no_paging_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicMulticurrencyCollectionResponseExchangeRateNoPagingFlow"
+}

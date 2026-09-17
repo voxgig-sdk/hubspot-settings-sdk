@@ -1,0 +1,59 @@
+# BasicTeamsTeamFlow
+
+main: kit: flow: BasicTeamsTeamFlow:
+{
+  entity: "teams_team",
+  kind: "basic",
+  name: "BasicTeamsTeamFlow",
+  step: [
+    {
+      input: {
+        ref: "teams_team_ref01"
+      }
+
+      op: "create"
+    }
+
+    {
+      input: {
+        ref: "teams_team_ref01",
+        srcdatavar: "teams_team_ref01_data",
+        suffix: "_up0",
+        textfield: "name"
+      }
+
+      op: "update",
+      spec: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-teams_team_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      input: {
+        ref: "teams_team_ref01",
+        srcdatavar: "teams_team_ref01_data",
+        suffix: "_dt0"
+      }
+
+      match: {
+        id: "teams_team01"
+      }
+
+      op: "load",
+      valid: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-teams_team_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicTeamsTeamFlow"
+}

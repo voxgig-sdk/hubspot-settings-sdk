@@ -1,0 +1,267 @@
+{
+  "existing": {
+    "user_provisioning_collection_response_public_team_no_paging": {
+      "USER_PROVISIONING_COLLECTION_RESPONSE_PUBLIC_TEAM_NO_PAGING00": {
+        "id": "USER_PROVISIONING_COLLECTION_RESPONSE_PUBLIC_TEAM_NO_PAGING00",
+        "name": "s29",
+        "secondaryUserIds": [],
+        "userIds": []
+      },
+      "USER_PROVISIONING_COLLECTION_RESPONSE_PUBLIC_TEAM_NO_PAGING01": {
+        "id": "USER_PROVISIONING_COLLECTION_RESPONSE_PUBLIC_TEAM_NO_PAGING01",
+        "name": "s51",
+        "secondaryUserIds": [],
+        "userIds": []
+      },
+      "USER_PROVISIONING_COLLECTION_RESPONSE_PUBLIC_TEAM_NO_PAGING02": {
+        "id": "USER_PROVISIONING_COLLECTION_RESPONSE_PUBLIC_TEAM_NO_PAGING02",
+        "name": "s79",
+        "secondaryUserIds": [],
+        "userIds": []
+      }
+    }
+  },
+  "new": {
+    "user_provisioning_collection_response_public_team_no_paging": {
+      "user_provisioning_collection_response_public_team_no_paging_ref01": {
+        "name": "sa1",
+        "secondaryUserIds": [],
+        "userIds": []
+      }
+    }
+  },
+  "requests": {
+    "GET /settings/users/2026-09/teams": {
+      "provenance": "operation-contract",
+      "contract": {
+        "operationId": "get-/settings/users/2026-09/teams",
+        "parameters": [],
+        "protocol": "http",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "example": null,
+                "schema": {
+                  "example": null,
+                  "properties": {
+                    "results": {
+                      "description": "An array of PublicTeam objects, each representing a team with its associated properties.",
+                      "example": null,
+                      "items": {
+                        "example": null,
+                        "properties": {
+                          "id": {
+                            "description": "The unique identifier for the team, represented as a string.",
+                            "example": null,
+                            "type": "string"
+                          },
+                          "name": {
+                            "description": "The name of the team, represented as a string.",
+                            "example": null,
+                            "type": "string"
+                          },
+                          "secondaryUserIds": {
+                            "description": "An array of strings representing the IDs of users who are secondary members of the team.",
+                            "example": null,
+                            "items": {
+                              "example": null,
+                              "type": "string"
+                            },
+                            "type": "array"
+                          },
+                          "userIds": {
+                            "description": "An array of strings representing the IDs of users who are primary members of the team.",
+                            "example": null,
+                            "items": {
+                              "example": null,
+                              "type": "string"
+                            },
+                            "type": "array"
+                          }
+                        },
+                        "required": [
+                          "id",
+                          "name",
+                          "secondaryUserIds",
+                          "userIds"
+                        ],
+                        "type": "object"
+                      },
+                      "type": "array"
+                    }
+                  },
+                  "required": [
+                    "results"
+                  ],
+                  "type": "object"
+                }
+              }
+            },
+            "description": "successful operation"
+          },
+          "default": {
+            "content": {
+              "*/*": {
+                "example": null,
+                "schema": {
+                  "description": "Represents an error response returned by the API when an operation fails. This component is used in various endpoints to provide detailed information about the error encountered.",
+                  "example": {
+                    "category": "VALIDATION_ERROR",
+                    "correlationId": "aeb5f871-7f07-4993-9211-075dc63e7cbf",
+                    "links": {
+                      "knowledge-base": "https://www.hubspot.com/products/service/knowledge-base"
+                    },
+                    "message": "Invalid input (details will vary based on the error)"
+                  },
+                  "properties": {
+                    "category": {
+                      "description": "The error category, providing a general classification of the error.",
+                      "example": null,
+                      "type": "string"
+                    },
+                    "context": {
+                      "additionalProperties": {
+                        "example": null,
+                        "items": {
+                          "example": null,
+                          "type": "string"
+                        },
+                        "type": "array"
+                      },
+                      "description": "Context about the error condition, represented as an object with additional properties that are arrays of strings.",
+                      "example": "{invalidPropertyName=[propertyValue], missingScopes=[scope1, scope2]}",
+                      "type": "object"
+                    },
+                    "correlationId": {
+                      "description": "A unique identifier for the request. Include this value with any error reports or support tickets. It is formatted as a UUID.",
+                      "example": "aeb5f871-7f07-4993-9211-075dc63e7cbf",
+                      "format": "uuid",
+                      "type": "string"
+                    },
+                    "errors": {
+                      "description": "Further information about the error, represented as an array of ErrorDetail objects.",
+                      "example": null,
+                      "items": {
+                        "description": "Represents detailed information about an error that occurred in the API. This component is used to provide additional context and specifics about errors, typically as part of an error response.",
+                        "example": null,
+                        "properties": {
+                          "code": {
+                            "description": "The status code associated with the error detail.",
+                            "example": null,
+                            "type": "string"
+                          },
+                          "context": {
+                            "additionalProperties": {
+                              "example": null,
+                              "items": {
+                                "example": null,
+                                "type": "string"
+                              },
+                              "type": "array"
+                            },
+                            "description": "Context about the error condition, represented as an object with additional properties. Each property is an array of strings providing further context.",
+                            "example": "{missingScopes=[scope1, scope2]}",
+                            "type": "object"
+                          },
+                          "in": {
+                            "description": "The name of the field or parameter in which the error was found.",
+                            "example": null,
+                            "type": "string"
+                          },
+                          "message": {
+                            "description": "A human readable message describing the error along with remediation steps where appropriate. This is a required field.",
+                            "example": null,
+                            "type": "string"
+                          },
+                          "subCategory": {
+                            "description": "A specific category that contains more specific detail about the error.",
+                            "example": null,
+                            "type": "string"
+                          }
+                        },
+                        "required": [
+                          "message"
+                        ],
+                        "type": "object"
+                      },
+                      "type": "array"
+                    },
+                    "links": {
+                      "additionalProperties": {
+                        "example": null,
+                        "type": "string"
+                      },
+                      "description": "A map of link names to associated URIs containing documentation about the error or recommended remediation steps.",
+                      "example": null,
+                      "type": "object"
+                    },
+                    "message": {
+                      "description": "A human readable message describing the error along with remediation steps where appropriate.",
+                      "example": "An error occurred",
+                      "type": "string"
+                    },
+                    "subCategory": {
+                      "description": "A specific category that contains more specific detail about the error.",
+                      "example": null,
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "category",
+                    "correlationId",
+                    "message"
+                  ],
+                  "type": "object"
+                }
+              }
+            },
+            "description": ""
+          }
+        },
+        "security": [
+          {
+            "oauth2": [
+              "settings.users.teams.read"
+            ]
+          }
+        ],
+        "securitySchemes": {
+          "developer_hapikey": {
+            "in": "query",
+            "name": "hapikey",
+            "type": "apiKey"
+          },
+          "oauth2": {
+            "flows": {
+              "authorizationCode": {
+                "authorizationUrl": "https://app.hubspot.com/oauth/authorize",
+                "scopes": {
+                  "cpq.quotes.read": "",
+                  "cpq.quotes.write": "",
+                  "crm.objects.quotes.read": "",
+                  "crm.objects.quotes.write": "",
+                  "settings.currencies.read": "",
+                  "settings.currencies.write": ""
+                },
+                "tokenUrl": "https://api.hubapi.com/oauth/v1/token"
+              }
+            },
+            "type": "oauth2"
+          },
+          "private_apps": {
+            "in": "header",
+            "name": "private-app",
+            "type": "apiKey"
+          },
+          "private_apps_legacy": {
+            "in": "header",
+            "name": "private-app-legacy",
+            "type": "apiKey"
+          }
+        },
+        "securitySource": "operation"
+      }
+    }
+  }
+}

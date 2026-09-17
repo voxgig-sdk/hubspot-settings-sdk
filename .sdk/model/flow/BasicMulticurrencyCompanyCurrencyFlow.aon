@@ -1,0 +1,47 @@
+# BasicMulticurrencyCompanyCurrencyFlow
+
+main: kit: flow: BasicMulticurrencyCompanyCurrencyFlow:
+{
+  entity: "multicurrency_company_currency",
+  kind: "basic",
+  name: "BasicMulticurrencyCompanyCurrencyFlow",
+  step: [
+    {
+      input: {
+        ref: "multicurrency_company_currency_ref01",
+        srcdatavar: "multicurrency_company_currency_ref01_data",
+        suffix: "_up0",
+        textfield: "createdAt"
+      }
+
+      op: "update",
+      spec: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-multicurrency_company_currency_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      input: {
+        ref: "multicurrency_company_currency_ref01",
+        srcdatavar: "multicurrency_company_currency_ref01_data",
+        suffix: "_dt0"
+      }
+
+      op: "load",
+      valid: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-multicurrency_company_currency_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicMulticurrencyCompanyCurrencyFlow"
+}

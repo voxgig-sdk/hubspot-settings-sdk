@@ -1,0 +1,59 @@
+# BasicMulticurrencyExchangeRateFlow
+
+main: kit: flow: BasicMulticurrencyExchangeRateFlow:
+{
+  entity: "multicurrency_exchange_rate",
+  kind: "basic",
+  name: "BasicMulticurrencyExchangeRateFlow",
+  step: [
+    {
+      input: {
+        ref: "multicurrency_exchange_rate_ref01"
+      }
+
+      op: "create"
+    }
+
+    {
+      input: {
+        ref: "multicurrency_exchange_rate_ref01",
+        srcdatavar: "multicurrency_exchange_rate_ref01_data",
+        suffix: "_up0",
+        textfield: "createdAt"
+      }
+
+      op: "update",
+      spec: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-multicurrency_exchange_rate_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      input: {
+        ref: "multicurrency_exchange_rate_ref01",
+        srcdatavar: "multicurrency_exchange_rate_ref01_data",
+        suffix: "_dt0"
+      }
+
+      match: {
+        id: "multicurrency_exchange_rate01"
+      }
+
+      op: "load",
+      valid: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-multicurrency_exchange_rate_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicMulticurrencyExchangeRateFlow"
+}

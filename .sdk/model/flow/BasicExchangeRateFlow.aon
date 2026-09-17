@@ -1,0 +1,18 @@
+# BasicExchangeRateFlow
+
+main: kit: flow: BasicExchangeRateFlow:
+{
+  entity: "exchange_rate",
+  kind: "basic",
+  name: "BasicExchangeRateFlow",
+  step: [
+    {
+      input: {
+        ref: "exchange_rate_ref01"
+      }
+
+      op: "create"
+    }
+  ],
+  "key$": "BasicExchangeRateFlow"
+}
