@@ -1,0 +1,22 @@
+# BasicUnsupportedCurrencyFlow
+
+main: kit: flow: BasicUnsupportedCurrencyFlow:
+{
+  entity: "unsupported_currency",
+  kind: "basic",
+  name: "BasicUnsupportedCurrencyFlow",
+  step: [
+    {
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "unsupported_currency_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicUnsupportedCurrencyFlow"
+}

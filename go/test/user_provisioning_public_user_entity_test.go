@@ -135,7 +135,7 @@ func user_provisioning_public_userBasicSetup(extra map[string]any) *entityTestSe
 
 	// Generate idmap via transform, matching TS pattern.
 	idmap, _ := vs.Transform(
-		[]any{"user_provisioning_public_user01", "user_provisioning_public_user02", "user_provisioning_public_user03", "2026_0901", "2026_0902", "2026_0903"},
+		[]any{"user_provisioning_public_user01", "user_provisioning_public_user02", "user_provisioning_public_user03"},
 		map[string]any{
 			"`$PACK`": []any{"", map[string]any{
 				"`$KEY`": "`$COPY`",

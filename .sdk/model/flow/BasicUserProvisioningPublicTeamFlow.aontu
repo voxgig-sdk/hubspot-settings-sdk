@@ -1,0 +1,22 @@
+# BasicUserProvisioningPublicTeamFlow
+
+main: kit: flow: BasicUserProvisioningPublicTeamFlow:
+{
+  entity: "user_provisioning_public_team",
+  kind: "basic",
+  name: "BasicUserProvisioningPublicTeamFlow",
+  step: [
+    {
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "user_provisioning_public_team_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicUserProvisioningPublicTeamFlow"
+}

@@ -1,0 +1,107 @@
+# Entity: teams_collection_response_team_member_response_forward_paging
+
+main: kit: entity: teams_collection_response_team_member_response_forward_paging: {
+
+  alias: field: {}
+
+  fields: {
+    type: {
+      h: "Type"
+      n: "type"
+      r: true
+      sh: "The type of membership the user has in the team."
+      t: "`$STRING`"
+    }
+    userId: {
+      h: "User Id"
+      n: "userId"
+      r: true
+      sh: "The unique identifier for the user, represented as a string."
+      t: "`$STRING`"
+    }
+  }
+
+  name: "teams_collection_response_team_member_response_forward_paging"
+  op: {
+    list: {
+      name: "list"
+      points: [
+        {
+          co: {
+            id: "GET /settings/teams/2026-09/{teamId}/members"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                ex: null
+                k: "param"
+                n: "team_id"
+                or: "team_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+            query: [
+              {
+                ex: null
+                k: "query"
+                n: "after"
+                or: "after"
+                r: false
+                t: "`$STRING`"
+              }
+              {
+                ex: null
+                k: "query"
+                n: "limit"
+                or: "limit"
+                r: false
+                t: "`$INTEGER`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/settings/teams/2026-09/{teamId}/members"
+          q: {
+            exist: [
+              "after"
+              "limit"
+              "team_id"
+            ]
+          }
+          r: {
+            param: {
+              teamId: "team_id"
+            }
+          }
+          s: [
+            {
+              lit: "settings"
+            }
+            {
+              lit: "teams"
+            }
+            {
+              lit: "2026-09"
+            }
+            {
+              var: "team_id"
+            }
+            {
+              lit: "members"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

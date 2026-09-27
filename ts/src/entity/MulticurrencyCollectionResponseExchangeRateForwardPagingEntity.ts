@@ -19,7 +19,6 @@ import type {
   MulticurrencyCollectionResponseExchangeRateForwardPagingListMatch,
 } from '../HubspotSettingsTypes'
 
-// TODO: needs Entity superclass
 class MulticurrencyCollectionResponseExchangeRateForwardPagingEntity extends HubspotSettingsEntityBase<MulticurrencyCollectionResponseExchangeRateForwardPaging> {
 
   constructor(client: HubspotSettingsSDK, entopts: any) {

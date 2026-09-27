@@ -4,7 +4,7 @@
 
 The Golang SDK for the HubspotSettings API — an entity-oriented client using standard Go conventions. No generics required; data flows as `map[string]any`.
 
-It exposes the API as capitalised, semantic **Entities** — e.g. `client.Basic(nil)` — each with the same small set of operations (`List`, `Load`, `Create`, `Update`, `Remove`) instead of raw URL paths and query strings. You call meaning, not endpoints, which keeps the cognitive load low.
+It exposes the API as capitalised, semantic **Entities** — e.g. `client.AddCurrency(nil)` — each with the same small set of operations (`List`, `Load`, `Create`, `Update`, `Remove`) instead of raw URL paths and query strings. You call meaning, not endpoints, which keeps the cognitive load low.
 
 > Also generated from this model: `go-cli`, `go-mcp`, `js`, `lua`, `php`, `py`, `ts` — see
 > the [top-level README](../README.md).
@@ -53,12 +53,12 @@ func main() {
         "apikey": os.Getenv("HUBSPOT_SETTINGS_APIKEY"),
     })
 
-    // Remove a basic.
-    removed, err := client.Basic(nil).Remove(map[string]any{"team_id": "example_team_id"}, nil)
+    // Create a addCurrency.
+    created, err := client.AddCurrency(nil).Create(map[string]any{"conversionRate": 1, "createdAt": "example_createdAt", "currencyCode": "example_currencyCode", "effectiveAt": "example_effectiveAt", "fromCurrencyCode": "example_fromCurrencyCode", "id": "example_id", "toCurrencyCode": "example_toCurrencyCode", "updatedAt": "example_updatedAt", "visibleInUI": true}, nil)
     if err != nil {
         panic(err)
     }
-    fmt.Println(removed)
+    fmt.Println(created)
 }
 ```
 
@@ -69,12 +69,12 @@ Every entity operation returns `(value, error)`. Check `err` before
 using the value — there is no exception to catch:
 
 ```go
-userprovisioningcollectionresponsepublicteamnopagings, err := client.UserProvisioningCollectionResponsePublicTeamNoPaging(nil).List(nil, nil)
+userprovisioningpublicseats, err := client.UserProvisioningPublicSeat(nil).List(nil, nil)
 if err != nil {
     // handle err
     return
 }
-_ = userprovisioningcollectionresponsepublicteamnopagings
+_ = userprovisioningpublicseats
 ```
 
 `Direct` follows the same `(value, error)` convention:
@@ -138,13 +138,13 @@ Create a mock client for unit testing — no server required:
 ```go
 client := sdk.Test()
 
-userProvisioningCollectionResponsePublicTeamNoPaging, err := client.UserProvisioningCollectionResponsePublicTeamNoPaging(nil).List(
+userProvisioningPublicSeat, err := client.UserProvisioningPublicSeat(nil).List(
     nil, nil,
 )
 if err != nil {
     panic(err)
 }
-fmt.Println(userProvisioningCollectionResponsePublicTeamNoPaging) // the returned mock data
+fmt.Println(userProvisioningPublicSeat) // the returned mock data
 ```
 
 ### Use a custom fetch function
@@ -223,26 +223,27 @@ Creates a test-mode client with mock transport. Both arguments may be `nil`.
 | `GetUtility` | `() *Utility` | Copy of the SDK utility object. |
 | `Prepare` | `(fetchargs map[string]any) (map[string]any, error)` | Build an HTTP request definition without sending. |
 | `Direct` | `(fetchargs map[string]any) (map[string]any, error)` | Build and send an HTTP request. |
+| `AddCurrency` | `(data map[string]any) HubspotSettingsEntity` | Create an AddCurrency entity instance. |
 | `Basic` | `(data map[string]any) HubspotSettingsEntity` | Create a Basic entity instance. |
+| `Code` | `(data map[string]any) HubspotSettingsEntity` | Create a Code entity instance. |
+| `Current` | `(data map[string]any) HubspotSettingsEntity` | Create a Current entity instance. |
 | `ExchangeRate` | `(data map[string]any) HubspotSettingsEntity` | Create an ExchangeRate entity instance. |
 | `MulticurrencyBatchResponseExchangeRate` | `(data map[string]any) HubspotSettingsEntity` | Create a MulticurrencyBatchResponseExchangeRate entity instance. |
 | `MulticurrencyCentralExchangeRatesInformation` | `(data map[string]any) HubspotSettingsEntity` | Create a MulticurrencyCentralExchangeRatesInformation entity instance. |
-| `MulticurrencyCollectionResponseCurrencyCodeInfoNoPaging` | `(data map[string]any) HubspotSettingsEntity` | Create a MulticurrencyCollectionResponseCurrencyCodeInfoNoPaging entity instance. |
 | `MulticurrencyCollectionResponseExchangeRateForwardPaging` | `(data map[string]any) HubspotSettingsEntity` | Create a MulticurrencyCollectionResponseExchangeRateForwardPaging entity instance. |
-| `MulticurrencyCollectionResponseExchangeRateNoPaging` | `(data map[string]any) HubspotSettingsEntity` | Create a MulticurrencyCollectionResponseExchangeRateNoPaging entity instance. |
 | `MulticurrencyCompanyCurrency` | `(data map[string]any) HubspotSettingsEntity` | Create a MulticurrencyCompanyCurrency entity instance. |
-| `MulticurrencyExchangeRate` | `(data map[string]any) HubspotSettingsEntity` | Create a MulticurrencyExchangeRate entity instance. |
 | `TaxRate` | `(data map[string]any) HubspotSettingsEntity` | Create a TaxRate entity instance. |
 | `TeamsBatchResponseTeamMember` | `(data map[string]any) HubspotSettingsEntity` | Create a TeamsBatchResponseTeamMember entity instance. |
 | `TeamsCollectionResponseTeamMemberResponseForwardPaging` | `(data map[string]any) HubspotSettingsEntity` | Create a TeamsCollectionResponseTeamMemberResponseForwardPaging entity instance. |
 | `TeamsCollectionResponseTeamResponseForwardPaging` | `(data map[string]any) HubspotSettingsEntity` | Create a TeamsCollectionResponseTeamResponseForwardPaging entity instance. |
 | `TeamsTeam` | `(data map[string]any) HubspotSettingsEntity` | Create a TeamsTeam entity instance. |
 | `TeamsTeamMember` | `(data map[string]any) HubspotSettingsEntity` | Create a TeamsTeamMember entity instance. |
+| `UnsupportedCurrency` | `(data map[string]any) HubspotSettingsEntity` | Create an UnsupportedCurrency entity instance. |
 | `User` | `(data map[string]any) HubspotSettingsEntity` | Create an User entity instance. |
-| `UserProvisioningCollectionResponsePublicPermissionSetNo` | `(data map[string]any) HubspotSettingsEntity` | Create an UserProvisioningCollectionResponsePublicPermissionSetNo entity instance. |
-| `UserProvisioningCollectionResponsePublicSeatNoPaging` | `(data map[string]any) HubspotSettingsEntity` | Create an UserProvisioningCollectionResponsePublicSeatNoPaging entity instance. |
-| `UserProvisioningCollectionResponsePublicTeamNoPaging` | `(data map[string]any) HubspotSettingsEntity` | Create an UserProvisioningCollectionResponsePublicTeamNoPaging entity instance. |
 | `UserProvisioningCollectionResponsePublicUserForwardPaging` | `(data map[string]any) HubspotSettingsEntity` | Create an UserProvisioningCollectionResponsePublicUserForwardPaging entity instance. |
+| `UserProvisioningPublicPermissionSet` | `(data map[string]any) HubspotSettingsEntity` | Create an UserProvisioningPublicPermissionSet entity instance. |
+| `UserProvisioningPublicSeat` | `(data map[string]any) HubspotSettingsEntity` | Create an UserProvisioningPublicSeat entity instance. |
+| `UserProvisioningPublicTeam` | `(data map[string]any) HubspotSettingsEntity` | Create an UserProvisioningPublicTeam entity instance. |
 | `UserProvisioningPublicUser` | `(data map[string]any) HubspotSettingsEntity` | Create an UserProvisioningPublicUser entity instance. |
 
 ### Entity interface (HubspotSettingsEntity)
@@ -275,14 +276,32 @@ Check `err` first, then use the value directly (or the typed
 `...Typed` variants, which return the entity's model struct and a typed
 slice):
 
-    basic, err := client.Basic(nil).Remove(nil, nil)
+    addCurrency, err := client.AddCurrency(nil).Create(map[string]any{/* fields */}, nil)
     if err != nil { /* handle */ }
-    // basic is the returned record
+    // addCurrency is the returned record
 
 Only `Direct()` returns a response envelope — a `map[string]any` with
 `"ok"`, `"status"`, `"headers"`, and `"data"` keys.
 
 ### Entities
+
+#### AddCurrency
+
+| Field | Description |
+| --- | --- |
+| `"conversionRate"` | The conversion rate between the to and from currency code of this exchange rate. |
+| `"createdAt"` | The date the exchange rate was created. |
+| `"currencyCode"` | The currency code being added to the HubSpot portal for use with central exchange rates. |
+| `"effectiveAt"` | The date the exchange rate is in effect. |
+| `"fromCurrencyCode"` | This represents the three-letter currency code (such as USD for US Dollar) of the currency you are converting from. |
+| `"id"` | A unique identifier for the exchange rate |
+| `"toCurrencyCode"` | This represents the three-letter currency code (such as USD for US Dollar) of the currency you are converting to. |
+| `"updatedAt"` | The date the exchange rate was last updated. |
+| `"visibleInUI"` | This indicates if the exchange rate is shown in the MultiCurrency settings page. |
+
+Operations: Create.
+
+API path: `/settings/currencies/2026-09/central-fx-rates/add-currency`
 
 #### Basic
 
@@ -293,14 +312,50 @@ Operations: Remove.
 
 API path: `/settings/teams/2026-09/{teamId}/members/{userId}`
 
+#### Code
+
+| Field | Description |
+| --- | --- |
+| `"currencyCode"` | The three-letter code representing a specific currency (ex. |
+| `"currencyName"` | The full name of the currency (ex. |
+
+Operations: List.
+
+API path: `/settings/currencies/2026-09/codes`
+
+#### Current
+
+| Field | Description |
+| --- | --- |
+| `"conversionRate"` | The conversion rate between the to and from currency code of this exchange rate. |
+| `"createdAt"` | The date the exchange rate was created. |
+| `"effectiveAt"` | The date the exchange rate is in effect. |
+| `"fromCurrencyCode"` | This represents the three-letter currency code (such as USD for US Dollar) of the currency you are converting from. |
+| `"id"` | A unique identifier for the exchange rate |
+| `"toCurrencyCode"` | This represents the three-letter currency code (such as USD for US Dollar) of the currency you are converting to. |
+| `"updatedAt"` | The date the exchange rate was last updated. |
+| `"visibleInUI"` | This indicates if the exchange rate is shown in the MultiCurrency settings page. |
+
+Operations: List.
+
+API path: `/settings/currencies/2026-09/exchange-rates/current`
+
 #### ExchangeRate
 
 | Field | Description |
 | --- | --- |
+| `"conversionRate"` | The conversion rate between the to and from currency code of this exchange rate. |
+| `"createdAt"` | The date the exchange rate was created. |
+| `"effectiveAt"` | The date the exchange rate is in effect. |
+| `"fromCurrencyCode"` | This represents the three-letter currency code (such as USD for US Dollar) of the currency you are converting from. |
+| `"id"` | A unique identifier for the exchange rate |
+| `"toCurrencyCode"` | This represents the three-letter currency code (such as USD for US Dollar) of the currency you are converting to. |
+| `"updatedAt"` | The date the exchange rate was last updated. |
+| `"visibleInUI"` | This indicates if the exchange rate is shown in the MultiCurrency settings page. |
 
-Operations: Create.
+Operations: Create, Load, Update.
 
-API path: `/settings/currencies/2026-09/exchange-rates/update-visibility`
+API path: `/settings/currencies/2026-09/exchange-rates`
 
 #### MulticurrencyBatchResponseExchangeRate
 
@@ -328,17 +383,6 @@ Operations: Load.
 
 API path: `/settings/currencies/2026-09/central-fx-rates/information`
 
-#### MulticurrencyCollectionResponseCurrencyCodeInfoNoPaging
-
-| Field | Description |
-| --- | --- |
-| `"currencyCode"` | The three-letter code representing a specific currency (ex. |
-| `"currencyName"` | The full name of the currency (ex. |
-
-Operations: List.
-
-API path: `/settings/currencies/2026-09/central-fx-rates/unsupported-currencies`
-
 #### MulticurrencyCollectionResponseExchangeRateForwardPaging
 
 | Field | Description |
@@ -356,23 +400,6 @@ Operations: List.
 
 API path: `/settings/currencies/2026-09/exchange-rates`
 
-#### MulticurrencyCollectionResponseExchangeRateNoPaging
-
-| Field | Description |
-| --- | --- |
-| `"conversionRate"` | The conversion rate between the to and from currency code of this exchange rate. |
-| `"createdAt"` | The date the exchange rate was created. |
-| `"effectiveAt"` | The date the exchange rate is in effect. |
-| `"fromCurrencyCode"` | This represents the three-letter currency code (such as USD for US Dollar) of the currency you are converting from. |
-| `"id"` | A unique identifier for the exchange rate |
-| `"toCurrencyCode"` | This represents the three-letter currency code (such as USD for US Dollar) of the currency you are converting to. |
-| `"updatedAt"` | The date the exchange rate was last updated. |
-| `"visibleInUI"` | This indicates if the exchange rate is shown in the MultiCurrency settings page. |
-
-Operations: List.
-
-API path: `/settings/currencies/2026-09/exchange-rates/current`
-
 #### MulticurrencyCompanyCurrency
 
 | Field | Description |
@@ -384,24 +411,6 @@ API path: `/settings/currencies/2026-09/exchange-rates/current`
 Operations: Load, Update.
 
 API path: `/settings/currencies/2026-09/company-currency`
-
-#### MulticurrencyExchangeRate
-
-| Field | Description |
-| --- | --- |
-| `"conversionRate"` | The conversion rate between the to and from currency code of this exchange rate. |
-| `"createdAt"` | The date the exchange rate was created. |
-| `"currencyCode"` | The currency code being added to the HubSpot portal for use with central exchange rates. |
-| `"effectiveAt"` | The date the exchange rate is in effect. |
-| `"fromCurrencyCode"` | This represents the three-letter currency code (such as USD for US Dollar) of the currency you are converting from. |
-| `"id"` | A unique identifier for the exchange rate |
-| `"toCurrencyCode"` | This represents the three-letter currency code (such as USD for US Dollar) of the currency you are converting to. |
-| `"updatedAt"` | The date the exchange rate was last updated. |
-| `"visibleInUI"` | This indicates if the exchange rate is shown in the MultiCurrency settings page. |
-
-Operations: Create, Load, Update.
-
-API path: `/settings/currencies/2026-09/central-fx-rates/add-currency`
 
 #### TaxRate
 
@@ -484,6 +493,17 @@ Operations: Create.
 
 API path: `/settings/teams/2026-09/{teamId}/members`
 
+#### UnsupportedCurrency
+
+| Field | Description |
+| --- | --- |
+| `"currencyCode"` | The three-letter code representing a specific currency (ex. |
+| `"currencyName"` | The full name of the currency (ex. |
+
+Operations: List.
+
+API path: `/settings/currencies/2026-09/central-fx-rates/unsupported-currencies`
+
 #### User
 
 | Field | Description |
@@ -492,43 +512,6 @@ API path: `/settings/teams/2026-09/{teamId}/members`
 Operations: Remove.
 
 API path: `/settings/users/2026-09/{userId}`
-
-#### UserProvisioningCollectionResponsePublicPermissionSetNo
-
-| Field | Description |
-| --- | --- |
-| `"id"` | The unique identifier for the permission set. |
-| `"name"` | The name of the permission set. |
-| `"requiresBillingWrite"` | A boolean indicating whether the permission set requires billing write access. |
-
-Operations: List.
-
-API path: `/settings/users/2026-09/roles`
-
-#### UserProvisioningCollectionResponsePublicSeatNoPaging
-
-| Field | Description |
-| --- | --- |
-| `"description"` | A string providing additional details about the seat. |
-| `"name"` | The name of the seat. |
-| `"remainingSeats"` | An integer indicating the number of seats that are still available. |
-
-Operations: List.
-
-API path: `/settings/users/2026-09/seats`
-
-#### UserProvisioningCollectionResponsePublicTeamNoPaging
-
-| Field | Description |
-| --- | --- |
-| `"id"` | The unique identifier for the team, represented as a string. |
-| `"name"` | The name of the team, represented as a string. |
-| `"secondaryUserIds"` | An array of strings representing the IDs of users who are secondary members of the team. |
-| `"userIds"` | An array of strings representing the IDs of users who are primary members of the team. |
-
-Operations: List.
-
-API path: `/settings/users/2026-09/teams`
 
 #### UserProvisioningCollectionResponsePublicUserForwardPaging
 
@@ -549,6 +532,43 @@ API path: `/settings/users/2026-09/teams`
 Operations: List.
 
 API path: `/settings/users/2026-09`
+
+#### UserProvisioningPublicPermissionSet
+
+| Field | Description |
+| --- | --- |
+| `"id"` | The unique identifier for the permission set. |
+| `"name"` | The name of the permission set. |
+| `"requiresBillingWrite"` | A boolean indicating whether the permission set requires billing write access. |
+
+Operations: List.
+
+API path: `/settings/users/2026-09/roles`
+
+#### UserProvisioningPublicSeat
+
+| Field | Description |
+| --- | --- |
+| `"description"` | A string providing additional details about the seat. |
+| `"name"` | The name of the seat. |
+| `"remainingSeats"` | An integer indicating the number of seats that are still available. |
+
+Operations: List.
+
+API path: `/settings/users/2026-09/seats`
+
+#### UserProvisioningPublicTeam
+
+| Field | Description |
+| --- | --- |
+| `"id"` | The unique identifier for the team, represented as a string. |
+| `"name"` | The name of the team, represented as a string. |
+| `"secondaryUserIds"` | An array of strings representing the IDs of users who are secondary members of the team. |
+| `"userIds"` | An array of strings representing the IDs of users who are primary members of the team. |
+
+Operations: List.
+
+API path: `/settings/users/2026-09/teams`
 
 #### UserProvisioningPublicUser
 
@@ -575,6 +595,51 @@ API path: `/settings/users/2026-09`
 ## Entities
 
 
+### AddCurrency
+
+Create an instance: `addCurrency := client.AddCurrency(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `Create(data, ctrl)` | Create a new entity with the given data. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `conversionRate` | `float64` | The conversion rate between the to and from currency code of this exchange rate. |
+| `createdAt` | `string` | The date the exchange rate was created. |
+| `currencyCode` | `string` | The currency code being added to the HubSpot portal for use with central exchange rates. |
+| `effectiveAt` | `string` | The date the exchange rate is in effect. |
+| `fromCurrencyCode` | `string` | This represents the three-letter currency code (such as USD for US Dollar) of the currency you are converting from. |
+| `id` | `string` | A unique identifier for the exchange rate |
+| `toCurrencyCode` | `string` | This represents the three-letter currency code (such as USD for US Dollar) of the currency you are converting to. |
+| `updatedAt` | `string` | The date the exchange rate was last updated. |
+| `visibleInUI` | `bool` | This indicates if the exchange rate is shown in the MultiCurrency settings page. |
+
+#### Example: Create
+
+```go
+result, err := client.AddCurrency(nil).Create(map[string]any{
+    "conversionRate": 1,
+    "createdAt": "example_createdAt",
+    "currencyCode": "example_currencyCode",
+    "effectiveAt": "example_effectiveAt",
+    "fromCurrencyCode": "example_fromCurrencyCode",
+    "id": "example_id",
+    "toCurrencyCode": "example_toCurrencyCode",
+    "updatedAt": "example_updatedAt",
+    "visibleInUI": true,
+}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(result)
+```
+
+
 ### Basic
 
 Create an instance: `basic := client.Basic(nil)`
@@ -586,6 +651,68 @@ Create an instance: `basic := client.Basic(nil)`
 | `Remove(match, ctrl)` | Remove the matching entity. |
 
 
+### Code
+
+Create an instance: `code := client.Code(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `List(match, ctrl)` | List entities matching the criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `currencyCode` | `string` | The three-letter code representing a specific currency (ex. |
+| `currencyName` | `string` | The full name of the currency (ex. |
+
+#### Example: List
+
+```go
+codes, err := client.Code(nil).List(nil, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(codes) // the array of records
+```
+
+
+### Current
+
+Create an instance: `current := client.Current(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `List(match, ctrl)` | List entities matching the criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `conversionRate` | `float64` | The conversion rate between the to and from currency code of this exchange rate. |
+| `createdAt` | `string` | The date the exchange rate was created. |
+| `effectiveAt` | `string` | The date the exchange rate is in effect. |
+| `fromCurrencyCode` | `string` | This represents the three-letter currency code (such as USD for US Dollar) of the currency you are converting from. |
+| `id` | `string` | A unique identifier for the exchange rate |
+| `toCurrencyCode` | `string` | This represents the three-letter currency code (such as USD for US Dollar) of the currency you are converting to. |
+| `updatedAt` | `string` | The date the exchange rate was last updated. |
+| `visibleInUI` | `bool` | This indicates if the exchange rate is shown in the MultiCurrency settings page. |
+
+#### Example: List
+
+```go
+currents, err := client.Current(nil).List(nil, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(currents) // the array of records
+```
+
+
 ### ExchangeRate
 
 Create an instance: `exchangeRate := client.ExchangeRate(nil)`
@@ -594,12 +721,45 @@ Create an instance: `exchangeRate := client.ExchangeRate(nil)`
 
 | Method | Description |
 | --- | --- |
+| `Load(match, ctrl)` | Load a single entity by match criteria. |
 | `Create(data, ctrl)` | Create a new entity with the given data. |
+| `Update(data, ctrl)` | Update an existing entity. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `conversionRate` | `float64` | The conversion rate between the to and from currency code of this exchange rate. |
+| `createdAt` | `string` | The date the exchange rate was created. |
+| `effectiveAt` | `string` | The date the exchange rate is in effect. |
+| `fromCurrencyCode` | `string` | This represents the three-letter currency code (such as USD for US Dollar) of the currency you are converting from. |
+| `id` | `string` | A unique identifier for the exchange rate |
+| `toCurrencyCode` | `string` | This represents the three-letter currency code (such as USD for US Dollar) of the currency you are converting to. |
+| `updatedAt` | `string` | The date the exchange rate was last updated. |
+| `visibleInUI` | `bool` | This indicates if the exchange rate is shown in the MultiCurrency settings page. |
+
+#### Example: Load
+
+```go
+exchangeRate, err := client.ExchangeRate(nil).Load(map[string]any{"id": "exchange_rate_id"}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(exchangeRate) // the loaded record
+```
 
 #### Example: Create
 
 ```go
 result, err := client.ExchangeRate(nil).Create(map[string]any{
+    "conversionRate": 1,
+    "createdAt": "example_createdAt",
+    "effectiveAt": "example_effectiveAt",
+    "fromCurrencyCode": "example_fromCurrencyCode",
+    "id": "example_id",
+    "toCurrencyCode": "example_toCurrencyCode",
+    "updatedAt": "example_updatedAt",
+    "visibleInUI": true,
 }, nil)
 if err != nil {
     panic(err)
@@ -674,34 +834,6 @@ fmt.Println(multicurrencyCentralExchangeRatesInformation) // the loaded record
 ```
 
 
-### MulticurrencyCollectionResponseCurrencyCodeInfoNoPaging
-
-Create an instance: `multicurrencyCollectionResponseCurrencyCodeInfoNoPaging := client.MulticurrencyCollectionResponseCurrencyCodeInfoNoPaging(nil)`
-
-#### Operations
-
-| Method | Description |
-| --- | --- |
-| `List(match, ctrl)` | List entities matching the criteria. |
-
-#### Fields
-
-| Field | Type | Description |
-| --- | --- | --- |
-| `currencyCode` | `string` | The three-letter code representing a specific currency (ex. |
-| `currencyName` | `string` | The full name of the currency (ex. |
-
-#### Example: List
-
-```go
-multicurrencyCollectionResponseCurrencyCodeInfoNoPagings, err := client.MulticurrencyCollectionResponseCurrencyCodeInfoNoPaging(nil).List(nil, nil)
-if err != nil {
-    panic(err)
-}
-fmt.Println(multicurrencyCollectionResponseCurrencyCodeInfoNoPagings) // the array of records
-```
-
-
 ### MulticurrencyCollectionResponseExchangeRateForwardPaging
 
 Create an instance: `multicurrencyCollectionResponseExchangeRateForwardPaging := client.MulticurrencyCollectionResponseExchangeRateForwardPaging(nil)`
@@ -736,40 +868,6 @@ fmt.Println(multicurrencyCollectionResponseExchangeRateForwardPagings) // the ar
 ```
 
 
-### MulticurrencyCollectionResponseExchangeRateNoPaging
-
-Create an instance: `multicurrencyCollectionResponseExchangeRateNoPaging := client.MulticurrencyCollectionResponseExchangeRateNoPaging(nil)`
-
-#### Operations
-
-| Method | Description |
-| --- | --- |
-| `List(match, ctrl)` | List entities matching the criteria. |
-
-#### Fields
-
-| Field | Type | Description |
-| --- | --- | --- |
-| `conversionRate` | `float64` | The conversion rate between the to and from currency code of this exchange rate. |
-| `createdAt` | `string` | The date the exchange rate was created. |
-| `effectiveAt` | `string` | The date the exchange rate is in effect. |
-| `fromCurrencyCode` | `string` | This represents the three-letter currency code (such as USD for US Dollar) of the currency you are converting from. |
-| `id` | `string` | A unique identifier for the exchange rate |
-| `toCurrencyCode` | `string` | This represents the three-letter currency code (such as USD for US Dollar) of the currency you are converting to. |
-| `updatedAt` | `string` | The date the exchange rate was last updated. |
-| `visibleInUI` | `bool` | This indicates if the exchange rate is shown in the MultiCurrency settings page. |
-
-#### Example: List
-
-```go
-multicurrencyCollectionResponseExchangeRateNoPagings, err := client.MulticurrencyCollectionResponseExchangeRateNoPaging(nil).List(nil, nil)
-if err != nil {
-    panic(err)
-}
-fmt.Println(multicurrencyCollectionResponseExchangeRateNoPagings) // the array of records
-```
-
-
 ### MulticurrencyCompanyCurrency
 
 Create an instance: `multicurrencyCompanyCurrency := client.MulticurrencyCompanyCurrency(nil)`
@@ -797,63 +895,6 @@ if err != nil {
     panic(err)
 }
 fmt.Println(multicurrencyCompanyCurrency) // the loaded record
-```
-
-
-### MulticurrencyExchangeRate
-
-Create an instance: `multicurrencyExchangeRate := client.MulticurrencyExchangeRate(nil)`
-
-#### Operations
-
-| Method | Description |
-| --- | --- |
-| `Load(match, ctrl)` | Load a single entity by match criteria. |
-| `Create(data, ctrl)` | Create a new entity with the given data. |
-| `Update(data, ctrl)` | Update an existing entity. |
-
-#### Fields
-
-| Field | Type | Description |
-| --- | --- | --- |
-| `conversionRate` | `float64` | The conversion rate between the to and from currency code of this exchange rate. |
-| `createdAt` | `string` | The date the exchange rate was created. |
-| `currencyCode` | `string` | The currency code being added to the HubSpot portal for use with central exchange rates. |
-| `effectiveAt` | `string` | The date the exchange rate is in effect. |
-| `fromCurrencyCode` | `string` | This represents the three-letter currency code (such as USD for US Dollar) of the currency you are converting from. |
-| `id` | `string` | A unique identifier for the exchange rate |
-| `toCurrencyCode` | `string` | This represents the three-letter currency code (such as USD for US Dollar) of the currency you are converting to. |
-| `updatedAt` | `string` | The date the exchange rate was last updated. |
-| `visibleInUI` | `bool` | This indicates if the exchange rate is shown in the MultiCurrency settings page. |
-
-#### Example: Load
-
-```go
-multicurrencyExchangeRate, err := client.MulticurrencyExchangeRate(nil).Load(map[string]any{"id": "multicurrency_exchange_rate_id"}, nil)
-if err != nil {
-    panic(err)
-}
-fmt.Println(multicurrencyExchangeRate) // the loaded record
-```
-
-#### Example: Create
-
-```go
-result, err := client.MulticurrencyExchangeRate(nil).Create(map[string]any{
-    "conversionRate": 1,
-    "createdAt": "example_createdAt",
-    "currencyCode": "example_currencyCode",
-    "effectiveAt": "example_effectiveAt",
-    "fromCurrencyCode": "example_fromCurrencyCode",
-    "id": "example_id",
-    "toCurrencyCode": "example_toCurrencyCode",
-    "updatedAt": "example_updatedAt",
-    "visibleInUI": true,
-}, nil)
-if err != nil {
-    panic(err)
-}
-fmt.Println(result)
 ```
 
 
@@ -1078,6 +1119,34 @@ fmt.Println(result)
 ```
 
 
+### UnsupportedCurrency
+
+Create an instance: `unsupportedCurrency := client.UnsupportedCurrency(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `List(match, ctrl)` | List entities matching the criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `currencyCode` | `string` | The three-letter code representing a specific currency (ex. |
+| `currencyName` | `string` | The full name of the currency (ex. |
+
+#### Example: List
+
+```go
+unsupportedCurrencys, err := client.UnsupportedCurrency(nil).List(nil, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(unsupportedCurrencys) // the array of records
+```
+
+
 ### User
 
 Create an instance: `user := client.User(nil)`
@@ -1087,94 +1156,6 @@ Create an instance: `user := client.User(nil)`
 | Method | Description |
 | --- | --- |
 | `Remove(match, ctrl)` | Remove the matching entity. |
-
-
-### UserProvisioningCollectionResponsePublicPermissionSetNo
-
-Create an instance: `userProvisioningCollectionResponsePublicPermissionSetNo := client.UserProvisioningCollectionResponsePublicPermissionSetNo(nil)`
-
-#### Operations
-
-| Method | Description |
-| --- | --- |
-| `List(match, ctrl)` | List entities matching the criteria. |
-
-#### Fields
-
-| Field | Type | Description |
-| --- | --- | --- |
-| `id` | `string` | The unique identifier for the permission set. |
-| `name` | `string` | The name of the permission set. |
-| `requiresBillingWrite` | `bool` | A boolean indicating whether the permission set requires billing write access. |
-
-#### Example: List
-
-```go
-userProvisioningCollectionResponsePublicPermissionSetNos, err := client.UserProvisioningCollectionResponsePublicPermissionSetNo(nil).List(nil, nil)
-if err != nil {
-    panic(err)
-}
-fmt.Println(userProvisioningCollectionResponsePublicPermissionSetNos) // the array of records
-```
-
-
-### UserProvisioningCollectionResponsePublicSeatNoPaging
-
-Create an instance: `userProvisioningCollectionResponsePublicSeatNoPaging := client.UserProvisioningCollectionResponsePublicSeatNoPaging(nil)`
-
-#### Operations
-
-| Method | Description |
-| --- | --- |
-| `List(match, ctrl)` | List entities matching the criteria. |
-
-#### Fields
-
-| Field | Type | Description |
-| --- | --- | --- |
-| `description` | `string` | A string providing additional details about the seat. |
-| `name` | `string` | The name of the seat. |
-| `remainingSeats` | `int` | An integer indicating the number of seats that are still available. |
-
-#### Example: List
-
-```go
-userProvisioningCollectionResponsePublicSeatNoPagings, err := client.UserProvisioningCollectionResponsePublicSeatNoPaging(nil).List(nil, nil)
-if err != nil {
-    panic(err)
-}
-fmt.Println(userProvisioningCollectionResponsePublicSeatNoPagings) // the array of records
-```
-
-
-### UserProvisioningCollectionResponsePublicTeamNoPaging
-
-Create an instance: `userProvisioningCollectionResponsePublicTeamNoPaging := client.UserProvisioningCollectionResponsePublicTeamNoPaging(nil)`
-
-#### Operations
-
-| Method | Description |
-| --- | --- |
-| `List(match, ctrl)` | List entities matching the criteria. |
-
-#### Fields
-
-| Field | Type | Description |
-| --- | --- | --- |
-| `id` | `string` | The unique identifier for the team, represented as a string. |
-| `name` | `string` | The name of the team, represented as a string. |
-| `secondaryUserIds` | `[]any` | An array of strings representing the IDs of users who are secondary members of the team. |
-| `userIds` | `[]any` | An array of strings representing the IDs of users who are primary members of the team. |
-
-#### Example: List
-
-```go
-userProvisioningCollectionResponsePublicTeamNoPagings, err := client.UserProvisioningCollectionResponsePublicTeamNoPaging(nil).List(nil, nil)
-if err != nil {
-    panic(err)
-}
-fmt.Println(userProvisioningCollectionResponsePublicTeamNoPagings) // the array of records
-```
 
 
 ### UserProvisioningCollectionResponsePublicUserForwardPaging
@@ -1211,6 +1192,94 @@ if err != nil {
     panic(err)
 }
 fmt.Println(userProvisioningCollectionResponsePublicUserForwardPagings) // the array of records
+```
+
+
+### UserProvisioningPublicPermissionSet
+
+Create an instance: `userProvisioningPublicPermissionSet := client.UserProvisioningPublicPermissionSet(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `List(match, ctrl)` | List entities matching the criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `string` | The unique identifier for the permission set. |
+| `name` | `string` | The name of the permission set. |
+| `requiresBillingWrite` | `bool` | A boolean indicating whether the permission set requires billing write access. |
+
+#### Example: List
+
+```go
+userProvisioningPublicPermissionSets, err := client.UserProvisioningPublicPermissionSet(nil).List(nil, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(userProvisioningPublicPermissionSets) // the array of records
+```
+
+
+### UserProvisioningPublicSeat
+
+Create an instance: `userProvisioningPublicSeat := client.UserProvisioningPublicSeat(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `List(match, ctrl)` | List entities matching the criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `description` | `string` | A string providing additional details about the seat. |
+| `name` | `string` | The name of the seat. |
+| `remainingSeats` | `int` | An integer indicating the number of seats that are still available. |
+
+#### Example: List
+
+```go
+userProvisioningPublicSeats, err := client.UserProvisioningPublicSeat(nil).List(nil, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(userProvisioningPublicSeats) // the array of records
+```
+
+
+### UserProvisioningPublicTeam
+
+Create an instance: `userProvisioningPublicTeam := client.UserProvisioningPublicTeam(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `List(match, ctrl)` | List entities matching the criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `string` | The unique identifier for the team, represented as a string. |
+| `name` | `string` | The name of the team, represented as a string. |
+| `secondaryUserIds` | `[]any` | An array of strings representing the IDs of users who are secondary members of the team. |
+| `userIds` | `[]any` | An array of strings representing the IDs of users who are primary members of the team. |
+
+#### Example: List
+
+```go
+userProvisioningPublicTeams, err := client.UserProvisioningPublicTeam(nil).List(nil, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(userProvisioningPublicTeams) // the array of records
 ```
 
 
@@ -1278,14 +1347,14 @@ above:
 
 | Feature | What it does |
 |---|---|
-| [`debug`](#debug) | Request/response capture ring buffer for debugging |
-| [`idempotency`](#idempotency) | Idempotency keys for safe retries of mutating operations |
-| [`metrics`](#metrics) | Statistics capture: per-operation counters and latency |
-| [`paging`](#paging) | Pagination signals for list operations |
-| [`ratelimit`](#ratelimit) | Client-side rate limiting via a token bucket |
-| [`retry`](#retry) | Automatic retry of transient failures with exponential backoff |
-| [`test`](#test) | In-memory mock transport for testing without a live server |
-| [`timeout`](#timeout) | Per-request timeout with transport abort |
+| [`debug`](#debug) | Debug capture |
+| [`idempotency`](#idempotency) | Idempotency |
+| [`metrics`](#metrics) | Metrics |
+| [`paging`](#paging) | Paging |
+| [`ratelimit`](#ratelimit) | Rate limiting |
+| [`retry`](#retry) | Retry |
+| [`test`](#test) | Test transport |
+| [`timeout`](#timeout) | Timeout |
 
 > **Order matters for `ratelimit`, `retry`, `timeout`.** These wrap the
 > transport, so each one wraps whatever is already installed: the order you
@@ -1294,7 +1363,7 @@ above:
 
 ### debug
 
-Request/response capture ring buffer for debugging.
+Debug capture.
 
 | Option | Default |
 |---|---|
@@ -1306,7 +1375,7 @@ Set `feature.debug.active` to enable it, then override any of the options above.
 
 ### idempotency
 
-Idempotency keys for safe retries of mutating operations.
+Idempotency.
 
 | Option | Default |
 |---|---|
@@ -1319,7 +1388,7 @@ Set `feature.idempotency.active` to enable it, then override any of the options 
 
 ### metrics
 
-Statistics capture: per-operation counters and latency.
+Metrics.
 
 | Option | Default |
 |---|---|
@@ -1329,7 +1398,7 @@ Set `feature.metrics.active` to enable it, then override any of the options abov
 
 ### paging
 
-Pagination signals for list operations.
+Paging.
 
 | Option | Default |
 |---|---|
@@ -1345,7 +1414,7 @@ Set `feature.paging.active` to enable it, then override any of the options above
 
 ### ratelimit
 
-Client-side rate limiting via a token bucket.
+Rate limiting.
 
 | Option | Default |
 |---|---|
@@ -1361,7 +1430,7 @@ activated earlier.
 
 ### retry
 
-Automatic retry of transient failures with exponential backoff.
+Retry.
 
 | Option | Default |
 |---|---|
@@ -1380,7 +1449,7 @@ activated earlier.
 
 ### test
 
-In-memory mock transport for testing without a live server.
+Test transport.
 
 | Option | Default |
 |---|---|
@@ -1390,7 +1459,7 @@ Set `feature.test.active` to enable it, then override any of the options above.
 
 ### timeout
 
-Per-request timeout with transport abort.
+Timeout.
 
 | Option | Default |
 |---|---|
@@ -1442,14 +1511,14 @@ stage names.
 
 The SDK ships with built-in features:
 
-- **DebugFeature**: Request/response capture ring buffer for debugging
-- **IdempotencyFeature**: Idempotency keys for safe retries of mutating operations
-- **MetricsFeature**: Statistics capture: per-operation counters and latency
-- **PagingFeature**: Pagination signals for list operations
-- **RatelimitFeature**: Client-side rate limiting via a token bucket
-- **RetryFeature**: Automatic retry of transient failures with exponential backoff
-- **TestFeature**: In-memory mock transport for testing without a live server
-- **TimeoutFeature**: Per-request timeout with transport abort
+- **DebugFeature**: Debug capture
+- **IdempotencyFeature**: Idempotency
+- **MetricsFeature**: Metrics
+- **PagingFeature**: Paging
+- **RatelimitFeature**: Rate limiting
+- **RetryFeature**: Retry
+- **TestFeature**: Test transport
+- **TimeoutFeature**: Timeout
 
 Features are initialized in order. Hooks fire in the order features
 were added, so later features can override earlier ones.
@@ -1484,11 +1553,11 @@ Entity instances are stateful. After a successful `List`, the entity
 stores the returned data and match criteria internally.
 
 ```go
-userprovisioningcollectionresponsepublicteamnopaging := client.UserProvisioningCollectionResponsePublicTeamNoPaging(nil)
-userprovisioningcollectionresponsepublicteamnopaging.List(nil, nil)
+userprovisioningpublicseat := client.UserProvisioningPublicSeat(nil)
+userprovisioningpublicseat.List(nil, nil)
 
-// userprovisioningcollectionresponsepublicteamnopaging.Data() now returns the userprovisioningcollectionresponsepublicteamnopaging data from the last list
-// userprovisioningcollectionresponsepublicteamnopaging.Match() returns the last match criteria
+// userprovisioningpublicseat.Data() now returns the userprovisioningpublicseat data from the last list
+// userprovisioningpublicseat.Match() returns the last match criteria
 ```
 
 Call `Make()` to create a fresh instance with the same configuration

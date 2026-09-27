@@ -1,0 +1,18 @@
+# BasicAddCurrencyFlow
+
+main: kit: flow: BasicAddCurrencyFlow:
+{
+  entity: "add_currency",
+  kind: "basic",
+  name: "BasicAddCurrencyFlow",
+  step: [
+    {
+      i: {
+        ref: "add_currency_ref01"
+      }
+
+      o: "create"
+    }
+  ],
+  "key$": "BasicAddCurrencyFlow"
+}

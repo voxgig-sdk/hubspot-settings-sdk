@@ -341,6 +341,24 @@ class HubspotSettingsSDK
     }
 
 
+    private $_add_currency = null;
+
+    // Canonical facade: $client->AddCurrency()->list() / ->load(["id" => ...]).
+    // PHP method names are case-insensitive, so lowercase $client->add_currency()
+    // resolves here too.
+    public function AddCurrency($data = null)
+    {
+        require_once __DIR__ . '/entity/add_currency_entity.php';
+        if ($data === null) {
+            if ($this->_add_currency === null) {
+                $this->_add_currency = new AddCurrencyEntity($this, null);
+            }
+            return $this->_add_currency;
+        }
+        return new AddCurrencyEntity($this, $data);
+    }
+
+
     private $_basic = null;
 
     // Canonical facade: $client->Basic()->list() / ->load(["id" => ...]).
@@ -356,6 +374,42 @@ class HubspotSettingsSDK
             return $this->_basic;
         }
         return new BasicEntity($this, $data);
+    }
+
+
+    private $_code = null;
+
+    // Canonical facade: $client->Code()->list() / ->load(["id" => ...]).
+    // PHP method names are case-insensitive, so lowercase $client->code()
+    // resolves here too.
+    public function Code($data = null)
+    {
+        require_once __DIR__ . '/entity/code_entity.php';
+        if ($data === null) {
+            if ($this->_code === null) {
+                $this->_code = new CodeEntity($this, null);
+            }
+            return $this->_code;
+        }
+        return new CodeEntity($this, $data);
+    }
+
+
+    private $_current = null;
+
+    // Canonical facade: $client->Current()->list() / ->load(["id" => ...]).
+    // PHP method names are case-insensitive, so lowercase $client->current()
+    // resolves here too.
+    public function Current($data = null)
+    {
+        require_once __DIR__ . '/entity/current_entity.php';
+        if ($data === null) {
+            if ($this->_current === null) {
+                $this->_current = new CurrentEntity($this, null);
+            }
+            return $this->_current;
+        }
+        return new CurrentEntity($this, $data);
     }
 
 
@@ -413,24 +467,6 @@ class HubspotSettingsSDK
     }
 
 
-    private $_multicurrency_collection_response_currency_code_info_no_paging = null;
-
-    // Canonical facade: $client->MulticurrencyCollectionResponseCurrencyCodeInfoNoPaging()->list() / ->load(["id" => ...]).
-    // PHP method names are case-insensitive, so lowercase $client->multicurrency_collection_response_currency_code_info_no_paging()
-    // resolves here too.
-    public function MulticurrencyCollectionResponseCurrencyCodeInfoNoPaging($data = null)
-    {
-        require_once __DIR__ . '/entity/multicurrency_collection_response_currency_code_info_no_paging_entity.php';
-        if ($data === null) {
-            if ($this->_multicurrency_collection_response_currency_code_info_no_paging === null) {
-                $this->_multicurrency_collection_response_currency_code_info_no_paging = new MulticurrencyCollectionResponseCurrencyCodeInfoNoPagingEntity($this, null);
-            }
-            return $this->_multicurrency_collection_response_currency_code_info_no_paging;
-        }
-        return new MulticurrencyCollectionResponseCurrencyCodeInfoNoPagingEntity($this, $data);
-    }
-
-
     private $_multicurrency_collection_response_exchange_rate_forward_paging = null;
 
     // Canonical facade: $client->MulticurrencyCollectionResponseExchangeRateForwardPaging()->list() / ->load(["id" => ...]).
@@ -449,24 +485,6 @@ class HubspotSettingsSDK
     }
 
 
-    private $_multicurrency_collection_response_exchange_rate_no_paging = null;
-
-    // Canonical facade: $client->MulticurrencyCollectionResponseExchangeRateNoPaging()->list() / ->load(["id" => ...]).
-    // PHP method names are case-insensitive, so lowercase $client->multicurrency_collection_response_exchange_rate_no_paging()
-    // resolves here too.
-    public function MulticurrencyCollectionResponseExchangeRateNoPaging($data = null)
-    {
-        require_once __DIR__ . '/entity/multicurrency_collection_response_exchange_rate_no_paging_entity.php';
-        if ($data === null) {
-            if ($this->_multicurrency_collection_response_exchange_rate_no_paging === null) {
-                $this->_multicurrency_collection_response_exchange_rate_no_paging = new MulticurrencyCollectionResponseExchangeRateNoPagingEntity($this, null);
-            }
-            return $this->_multicurrency_collection_response_exchange_rate_no_paging;
-        }
-        return new MulticurrencyCollectionResponseExchangeRateNoPagingEntity($this, $data);
-    }
-
-
     private $_multicurrency_company_currency = null;
 
     // Canonical facade: $client->MulticurrencyCompanyCurrency()->list() / ->load(["id" => ...]).
@@ -482,24 +500,6 @@ class HubspotSettingsSDK
             return $this->_multicurrency_company_currency;
         }
         return new MulticurrencyCompanyCurrencyEntity($this, $data);
-    }
-
-
-    private $_multicurrency_exchange_rate = null;
-
-    // Canonical facade: $client->MulticurrencyExchangeRate()->list() / ->load(["id" => ...]).
-    // PHP method names are case-insensitive, so lowercase $client->multicurrency_exchange_rate()
-    // resolves here too.
-    public function MulticurrencyExchangeRate($data = null)
-    {
-        require_once __DIR__ . '/entity/multicurrency_exchange_rate_entity.php';
-        if ($data === null) {
-            if ($this->_multicurrency_exchange_rate === null) {
-                $this->_multicurrency_exchange_rate = new MulticurrencyExchangeRateEntity($this, null);
-            }
-            return $this->_multicurrency_exchange_rate;
-        }
-        return new MulticurrencyExchangeRateEntity($this, $data);
     }
 
 
@@ -611,6 +611,24 @@ class HubspotSettingsSDK
     }
 
 
+    private $_unsupported_currency = null;
+
+    // Canonical facade: $client->UnsupportedCurrency()->list() / ->load(["id" => ...]).
+    // PHP method names are case-insensitive, so lowercase $client->unsupported_currency()
+    // resolves here too.
+    public function UnsupportedCurrency($data = null)
+    {
+        require_once __DIR__ . '/entity/unsupported_currency_entity.php';
+        if ($data === null) {
+            if ($this->_unsupported_currency === null) {
+                $this->_unsupported_currency = new UnsupportedCurrencyEntity($this, null);
+            }
+            return $this->_unsupported_currency;
+        }
+        return new UnsupportedCurrencyEntity($this, $data);
+    }
+
+
     private $_user = null;
 
     // Canonical facade: $client->User()->list() / ->load(["id" => ...]).
@@ -629,60 +647,6 @@ class HubspotSettingsSDK
     }
 
 
-    private $_user_provisioning_collection_response_public_permission_set_no = null;
-
-    // Canonical facade: $client->UserProvisioningCollectionResponsePublicPermissionSetNo()->list() / ->load(["id" => ...]).
-    // PHP method names are case-insensitive, so lowercase $client->user_provisioning_collection_response_public_permission_set_no()
-    // resolves here too.
-    public function UserProvisioningCollectionResponsePublicPermissionSetNo($data = null)
-    {
-        require_once __DIR__ . '/entity/user_provisioning_collection_response_public_permission_set_no_entity.php';
-        if ($data === null) {
-            if ($this->_user_provisioning_collection_response_public_permission_set_no === null) {
-                $this->_user_provisioning_collection_response_public_permission_set_no = new UserProvisioningCollectionResponsePublicPermissionSetNoEntity($this, null);
-            }
-            return $this->_user_provisioning_collection_response_public_permission_set_no;
-        }
-        return new UserProvisioningCollectionResponsePublicPermissionSetNoEntity($this, $data);
-    }
-
-
-    private $_user_provisioning_collection_response_public_seat_no_paging = null;
-
-    // Canonical facade: $client->UserProvisioningCollectionResponsePublicSeatNoPaging()->list() / ->load(["id" => ...]).
-    // PHP method names are case-insensitive, so lowercase $client->user_provisioning_collection_response_public_seat_no_paging()
-    // resolves here too.
-    public function UserProvisioningCollectionResponsePublicSeatNoPaging($data = null)
-    {
-        require_once __DIR__ . '/entity/user_provisioning_collection_response_public_seat_no_paging_entity.php';
-        if ($data === null) {
-            if ($this->_user_provisioning_collection_response_public_seat_no_paging === null) {
-                $this->_user_provisioning_collection_response_public_seat_no_paging = new UserProvisioningCollectionResponsePublicSeatNoPagingEntity($this, null);
-            }
-            return $this->_user_provisioning_collection_response_public_seat_no_paging;
-        }
-        return new UserProvisioningCollectionResponsePublicSeatNoPagingEntity($this, $data);
-    }
-
-
-    private $_user_provisioning_collection_response_public_team_no_paging = null;
-
-    // Canonical facade: $client->UserProvisioningCollectionResponsePublicTeamNoPaging()->list() / ->load(["id" => ...]).
-    // PHP method names are case-insensitive, so lowercase $client->user_provisioning_collection_response_public_team_no_paging()
-    // resolves here too.
-    public function UserProvisioningCollectionResponsePublicTeamNoPaging($data = null)
-    {
-        require_once __DIR__ . '/entity/user_provisioning_collection_response_public_team_no_paging_entity.php';
-        if ($data === null) {
-            if ($this->_user_provisioning_collection_response_public_team_no_paging === null) {
-                $this->_user_provisioning_collection_response_public_team_no_paging = new UserProvisioningCollectionResponsePublicTeamNoPagingEntity($this, null);
-            }
-            return $this->_user_provisioning_collection_response_public_team_no_paging;
-        }
-        return new UserProvisioningCollectionResponsePublicTeamNoPagingEntity($this, $data);
-    }
-
-
     private $_user_provisioning_collection_response_public_user_forward_paging = null;
 
     // Canonical facade: $client->UserProvisioningCollectionResponsePublicUserForwardPaging()->list() / ->load(["id" => ...]).
@@ -698,6 +662,60 @@ class HubspotSettingsSDK
             return $this->_user_provisioning_collection_response_public_user_forward_paging;
         }
         return new UserProvisioningCollectionResponsePublicUserForwardPagingEntity($this, $data);
+    }
+
+
+    private $_user_provisioning_public_permission_set = null;
+
+    // Canonical facade: $client->UserProvisioningPublicPermissionSet()->list() / ->load(["id" => ...]).
+    // PHP method names are case-insensitive, so lowercase $client->user_provisioning_public_permission_set()
+    // resolves here too.
+    public function UserProvisioningPublicPermissionSet($data = null)
+    {
+        require_once __DIR__ . '/entity/user_provisioning_public_permission_set_entity.php';
+        if ($data === null) {
+            if ($this->_user_provisioning_public_permission_set === null) {
+                $this->_user_provisioning_public_permission_set = new UserProvisioningPublicPermissionSetEntity($this, null);
+            }
+            return $this->_user_provisioning_public_permission_set;
+        }
+        return new UserProvisioningPublicPermissionSetEntity($this, $data);
+    }
+
+
+    private $_user_provisioning_public_seat = null;
+
+    // Canonical facade: $client->UserProvisioningPublicSeat()->list() / ->load(["id" => ...]).
+    // PHP method names are case-insensitive, so lowercase $client->user_provisioning_public_seat()
+    // resolves here too.
+    public function UserProvisioningPublicSeat($data = null)
+    {
+        require_once __DIR__ . '/entity/user_provisioning_public_seat_entity.php';
+        if ($data === null) {
+            if ($this->_user_provisioning_public_seat === null) {
+                $this->_user_provisioning_public_seat = new UserProvisioningPublicSeatEntity($this, null);
+            }
+            return $this->_user_provisioning_public_seat;
+        }
+        return new UserProvisioningPublicSeatEntity($this, $data);
+    }
+
+
+    private $_user_provisioning_public_team = null;
+
+    // Canonical facade: $client->UserProvisioningPublicTeam()->list() / ->load(["id" => ...]).
+    // PHP method names are case-insensitive, so lowercase $client->user_provisioning_public_team()
+    // resolves here too.
+    public function UserProvisioningPublicTeam($data = null)
+    {
+        require_once __DIR__ . '/entity/user_provisioning_public_team_entity.php';
+        if ($data === null) {
+            if ($this->_user_provisioning_public_team === null) {
+                $this->_user_provisioning_public_team = new UserProvisioningPublicTeamEntity($this, null);
+            }
+            return $this->_user_provisioning_public_team;
+        }
+        return new UserProvisioningPublicTeamEntity($this, $data);
     }
 
 

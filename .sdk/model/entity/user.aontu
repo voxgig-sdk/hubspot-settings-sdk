@@ -1,0 +1,81 @@
+# Entity: user
+
+main: kit: entity: user: {
+
+  alias: field: {}
+
+  name: "user"
+  op: {
+    remove: {
+      name: "remove"
+      points: [
+        {
+          co: {
+            id: "DELETE /settings/users/2026-09/{userId}"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                ex: null
+                k: "param"
+                n: "user_id"
+                or: "user_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+            query: [
+              {
+                ex: null
+                k: "query"
+                n: "id_property"
+                or: "id_property"
+                r: false
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "DELETE"
+          o: "/settings/users/2026-09/{userId}"
+          q: {
+            exist: [
+              "id_property"
+              "user_id"
+            ]
+          }
+          r: {
+            param: {
+              userId: "user_id"
+            }
+          }
+          s: [
+            {
+              lit: "settings"
+            }
+            {
+              lit: "users"
+            }
+            {
+              lit: "2026-09"
+            }
+            {
+              var: "user_id"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+  fields: {
+  }
+
+
+
+}

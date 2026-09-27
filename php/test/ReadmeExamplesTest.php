@@ -40,26 +40,27 @@ class ReadmeExamplesTest extends TestCase
 
     // Entity accessor (\$client->Name()) => fixture storage key (lowercase name).
     private const ENTITIES = [
+        "AddCurrency" => "add_currency",
         "Basic" => "basic",
+        "Code" => "code",
+        "Current" => "current",
         "ExchangeRate" => "exchange_rate",
         "MulticurrencyBatchResponseExchangeRate" => "multicurrency_batch_response_exchange_rate",
         "MulticurrencyCentralExchangeRatesInformation" => "multicurrency_central_exchange_rates_information",
-        "MulticurrencyCollectionResponseCurrencyCodeInfoNoPaging" => "multicurrency_collection_response_currency_code_info_no_paging",
         "MulticurrencyCollectionResponseExchangeRateForwardPaging" => "multicurrency_collection_response_exchange_rate_forward_paging",
-        "MulticurrencyCollectionResponseExchangeRateNoPaging" => "multicurrency_collection_response_exchange_rate_no_paging",
         "MulticurrencyCompanyCurrency" => "multicurrency_company_currency",
-        "MulticurrencyExchangeRate" => "multicurrency_exchange_rate",
         "TaxRate" => "tax_rate",
         "TeamsBatchResponseTeamMember" => "teams_batch_response_team_member",
         "TeamsCollectionResponseTeamMemberResponseForwardPaging" => "teams_collection_response_team_member_response_forward_paging",
         "TeamsCollectionResponseTeamResponseForwardPaging" => "teams_collection_response_team_response_forward_paging",
         "TeamsTeam" => "teams_team",
         "TeamsTeamMember" => "teams_team_member",
+        "UnsupportedCurrency" => "unsupported_currency",
         "User" => "user",
-        "UserProvisioningCollectionResponsePublicPermissionSetNo" => "user_provisioning_collection_response_public_permission_set_no",
-        "UserProvisioningCollectionResponsePublicSeatNoPaging" => "user_provisioning_collection_response_public_seat_no_paging",
-        "UserProvisioningCollectionResponsePublicTeamNoPaging" => "user_provisioning_collection_response_public_team_no_paging",
         "UserProvisioningCollectionResponsePublicUserForwardPaging" => "user_provisioning_collection_response_public_user_forward_paging",
+        "UserProvisioningPublicPermissionSet" => "user_provisioning_public_permission_set",
+        "UserProvisioningPublicSeat" => "user_provisioning_public_seat",
+        "UserProvisioningPublicTeam" => "user_provisioning_public_team",
         "UserProvisioningPublicUser" => "user_provisioning_public_user",
     ];
 

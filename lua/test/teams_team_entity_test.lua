@@ -94,7 +94,7 @@ function teams_team_basic_setup(extra)
 
   -- Generate idmap via transform.
   local idmap = vs.transform(
-    { "teams_team01", "teams_team02", "teams_team03", "2026_0901", "2026_0902", "2026_0903" },
+    { "teams_team01", "teams_team02", "teams_team03" },
     {
       ["`$PACK`"] = { "", {
         ["`$KEY`"] = "`$COPY`",

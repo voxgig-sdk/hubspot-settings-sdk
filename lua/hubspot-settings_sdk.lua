@@ -353,6 +353,20 @@ end
 
 
 
+-- Idiomatic facade: client:AddCurrency():list() / client:AddCurrency():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function HubspotSettingsSDK:AddCurrency(data)
+  local EntityMod = require("entity.add_currency_entity")
+  if data == nil then
+    if self._add_currency == nil then
+      self._add_currency = EntityMod.new(self, nil)
+    end
+    return self._add_currency
+  end
+  return EntityMod.new(self, data)
+end
+
+
 -- Idiomatic facade: client:Basic():list() / client:Basic():load({ id = ... })
 -- Entity access is capitalised (PascalCase) for parity with the other SDKs.
 function HubspotSettingsSDK:Basic(data)
@@ -362,6 +376,34 @@ function HubspotSettingsSDK:Basic(data)
       self._basic = EntityMod.new(self, nil)
     end
     return self._basic
+  end
+  return EntityMod.new(self, data)
+end
+
+
+-- Idiomatic facade: client:Code():list() / client:Code():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function HubspotSettingsSDK:Code(data)
+  local EntityMod = require("entity.code_entity")
+  if data == nil then
+    if self._code == nil then
+      self._code = EntityMod.new(self, nil)
+    end
+    return self._code
+  end
+  return EntityMod.new(self, data)
+end
+
+
+-- Idiomatic facade: client:Current():list() / client:Current():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function HubspotSettingsSDK:Current(data)
+  local EntityMod = require("entity.current_entity")
+  if data == nil then
+    if self._current == nil then
+      self._current = EntityMod.new(self, nil)
+    end
+    return self._current
   end
   return EntityMod.new(self, data)
 end
@@ -409,20 +451,6 @@ function HubspotSettingsSDK:MulticurrencyCentralExchangeRatesInformation(data)
 end
 
 
--- Idiomatic facade: client:MulticurrencyCollectionResponseCurrencyCodeInfoNoPaging():list() / client:MulticurrencyCollectionResponseCurrencyCodeInfoNoPaging():load({ id = ... })
--- Entity access is capitalised (PascalCase) for parity with the other SDKs.
-function HubspotSettingsSDK:MulticurrencyCollectionResponseCurrencyCodeInfoNoPaging(data)
-  local EntityMod = require("entity.multicurrency_collection_response_currency_code_info_no_paging_entity")
-  if data == nil then
-    if self._multicurrency_collection_response_currency_code_info_no_paging == nil then
-      self._multicurrency_collection_response_currency_code_info_no_paging = EntityMod.new(self, nil)
-    end
-    return self._multicurrency_collection_response_currency_code_info_no_paging
-  end
-  return EntityMod.new(self, data)
-end
-
-
 -- Idiomatic facade: client:MulticurrencyCollectionResponseExchangeRateForwardPaging():list() / client:MulticurrencyCollectionResponseExchangeRateForwardPaging():load({ id = ... })
 -- Entity access is capitalised (PascalCase) for parity with the other SDKs.
 function HubspotSettingsSDK:MulticurrencyCollectionResponseExchangeRateForwardPaging(data)
@@ -437,20 +465,6 @@ function HubspotSettingsSDK:MulticurrencyCollectionResponseExchangeRateForwardPa
 end
 
 
--- Idiomatic facade: client:MulticurrencyCollectionResponseExchangeRateNoPaging():list() / client:MulticurrencyCollectionResponseExchangeRateNoPaging():load({ id = ... })
--- Entity access is capitalised (PascalCase) for parity with the other SDKs.
-function HubspotSettingsSDK:MulticurrencyCollectionResponseExchangeRateNoPaging(data)
-  local EntityMod = require("entity.multicurrency_collection_response_exchange_rate_no_paging_entity")
-  if data == nil then
-    if self._multicurrency_collection_response_exchange_rate_no_paging == nil then
-      self._multicurrency_collection_response_exchange_rate_no_paging = EntityMod.new(self, nil)
-    end
-    return self._multicurrency_collection_response_exchange_rate_no_paging
-  end
-  return EntityMod.new(self, data)
-end
-
-
 -- Idiomatic facade: client:MulticurrencyCompanyCurrency():list() / client:MulticurrencyCompanyCurrency():load({ id = ... })
 -- Entity access is capitalised (PascalCase) for parity with the other SDKs.
 function HubspotSettingsSDK:MulticurrencyCompanyCurrency(data)
@@ -460,20 +474,6 @@ function HubspotSettingsSDK:MulticurrencyCompanyCurrency(data)
       self._multicurrency_company_currency = EntityMod.new(self, nil)
     end
     return self._multicurrency_company_currency
-  end
-  return EntityMod.new(self, data)
-end
-
-
--- Idiomatic facade: client:MulticurrencyExchangeRate():list() / client:MulticurrencyExchangeRate():load({ id = ... })
--- Entity access is capitalised (PascalCase) for parity with the other SDKs.
-function HubspotSettingsSDK:MulticurrencyExchangeRate(data)
-  local EntityMod = require("entity.multicurrency_exchange_rate_entity")
-  if data == nil then
-    if self._multicurrency_exchange_rate == nil then
-      self._multicurrency_exchange_rate = EntityMod.new(self, nil)
-    end
-    return self._multicurrency_exchange_rate
   end
   return EntityMod.new(self, data)
 end
@@ -563,6 +563,20 @@ function HubspotSettingsSDK:TeamsTeamMember(data)
 end
 
 
+-- Idiomatic facade: client:UnsupportedCurrency():list() / client:UnsupportedCurrency():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function HubspotSettingsSDK:UnsupportedCurrency(data)
+  local EntityMod = require("entity.unsupported_currency_entity")
+  if data == nil then
+    if self._unsupported_currency == nil then
+      self._unsupported_currency = EntityMod.new(self, nil)
+    end
+    return self._unsupported_currency
+  end
+  return EntityMod.new(self, data)
+end
+
+
 -- Idiomatic facade: client:User():list() / client:User():load({ id = ... })
 -- Entity access is capitalised (PascalCase) for parity with the other SDKs.
 function HubspotSettingsSDK:User(data)
@@ -577,48 +591,6 @@ function HubspotSettingsSDK:User(data)
 end
 
 
--- Idiomatic facade: client:UserProvisioningCollectionResponsePublicPermissionSetNo():list() / client:UserProvisioningCollectionResponsePublicPermissionSetNo():load({ id = ... })
--- Entity access is capitalised (PascalCase) for parity with the other SDKs.
-function HubspotSettingsSDK:UserProvisioningCollectionResponsePublicPermissionSetNo(data)
-  local EntityMod = require("entity.user_provisioning_collection_response_public_permission_set_no_entity")
-  if data == nil then
-    if self._user_provisioning_collection_response_public_permission_set_no == nil then
-      self._user_provisioning_collection_response_public_permission_set_no = EntityMod.new(self, nil)
-    end
-    return self._user_provisioning_collection_response_public_permission_set_no
-  end
-  return EntityMod.new(self, data)
-end
-
-
--- Idiomatic facade: client:UserProvisioningCollectionResponsePublicSeatNoPaging():list() / client:UserProvisioningCollectionResponsePublicSeatNoPaging():load({ id = ... })
--- Entity access is capitalised (PascalCase) for parity with the other SDKs.
-function HubspotSettingsSDK:UserProvisioningCollectionResponsePublicSeatNoPaging(data)
-  local EntityMod = require("entity.user_provisioning_collection_response_public_seat_no_paging_entity")
-  if data == nil then
-    if self._user_provisioning_collection_response_public_seat_no_paging == nil then
-      self._user_provisioning_collection_response_public_seat_no_paging = EntityMod.new(self, nil)
-    end
-    return self._user_provisioning_collection_response_public_seat_no_paging
-  end
-  return EntityMod.new(self, data)
-end
-
-
--- Idiomatic facade: client:UserProvisioningCollectionResponsePublicTeamNoPaging():list() / client:UserProvisioningCollectionResponsePublicTeamNoPaging():load({ id = ... })
--- Entity access is capitalised (PascalCase) for parity with the other SDKs.
-function HubspotSettingsSDK:UserProvisioningCollectionResponsePublicTeamNoPaging(data)
-  local EntityMod = require("entity.user_provisioning_collection_response_public_team_no_paging_entity")
-  if data == nil then
-    if self._user_provisioning_collection_response_public_team_no_paging == nil then
-      self._user_provisioning_collection_response_public_team_no_paging = EntityMod.new(self, nil)
-    end
-    return self._user_provisioning_collection_response_public_team_no_paging
-  end
-  return EntityMod.new(self, data)
-end
-
-
 -- Idiomatic facade: client:UserProvisioningCollectionResponsePublicUserForwardPaging():list() / client:UserProvisioningCollectionResponsePublicUserForwardPaging():load({ id = ... })
 -- Entity access is capitalised (PascalCase) for parity with the other SDKs.
 function HubspotSettingsSDK:UserProvisioningCollectionResponsePublicUserForwardPaging(data)
@@ -628,6 +600,48 @@ function HubspotSettingsSDK:UserProvisioningCollectionResponsePublicUserForwardP
       self._user_provisioning_collection_response_public_user_forward_paging = EntityMod.new(self, nil)
     end
     return self._user_provisioning_collection_response_public_user_forward_paging
+  end
+  return EntityMod.new(self, data)
+end
+
+
+-- Idiomatic facade: client:UserProvisioningPublicPermissionSet():list() / client:UserProvisioningPublicPermissionSet():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function HubspotSettingsSDK:UserProvisioningPublicPermissionSet(data)
+  local EntityMod = require("entity.user_provisioning_public_permission_set_entity")
+  if data == nil then
+    if self._user_provisioning_public_permission_set == nil then
+      self._user_provisioning_public_permission_set = EntityMod.new(self, nil)
+    end
+    return self._user_provisioning_public_permission_set
+  end
+  return EntityMod.new(self, data)
+end
+
+
+-- Idiomatic facade: client:UserProvisioningPublicSeat():list() / client:UserProvisioningPublicSeat():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function HubspotSettingsSDK:UserProvisioningPublicSeat(data)
+  local EntityMod = require("entity.user_provisioning_public_seat_entity")
+  if data == nil then
+    if self._user_provisioning_public_seat == nil then
+      self._user_provisioning_public_seat = EntityMod.new(self, nil)
+    end
+    return self._user_provisioning_public_seat
+  end
+  return EntityMod.new(self, data)
+end
+
+
+-- Idiomatic facade: client:UserProvisioningPublicTeam():list() / client:UserProvisioningPublicTeam():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function HubspotSettingsSDK:UserProvisioningPublicTeam(data)
+  local EntityMod = require("entity.user_provisioning_public_team_entity")
+  if data == nil then
+    if self._user_provisioning_public_team == nil then
+      self._user_provisioning_public_team = EntityMod.new(self, nil)
+    end
+    return self._user_provisioning_public_team
   end
   return EntityMod.new(self, data)
 end

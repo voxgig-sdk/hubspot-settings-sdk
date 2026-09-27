@@ -180,30 +180,153 @@ class HubspotSettingsConfig
           'content-type' => 'application/json',
         ],
                 "entity" => [
+                    "add_currency" => [],
                     "basic" => [],
+                    "code" => [],
+                    "current" => [],
                     "exchange_rate" => [],
                     "multicurrency_batch_response_exchange_rate" => [],
                     "multicurrency_central_exchange_rates_information" => [],
-                    "multicurrency_collection_response_currency_code_info_no_paging" => [],
                     "multicurrency_collection_response_exchange_rate_forward_paging" => [],
-                    "multicurrency_collection_response_exchange_rate_no_paging" => [],
                     "multicurrency_company_currency" => [],
-                    "multicurrency_exchange_rate" => [],
                     "tax_rate" => [],
                     "teams_batch_response_team_member" => [],
                     "teams_collection_response_team_member_response_forward_paging" => [],
                     "teams_collection_response_team_response_forward_paging" => [],
                     "teams_team" => [],
                     "teams_team_member" => [],
+                    "unsupported_currency" => [],
                     "user" => [],
-                    "user_provisioning_collection_response_public_permission_set_no" => [],
-                    "user_provisioning_collection_response_public_seat_no_paging" => [],
-                    "user_provisioning_collection_response_public_team_no_paging" => [],
                     "user_provisioning_collection_response_public_user_forward_paging" => [],
+                    "user_provisioning_public_permission_set" => [],
+                    "user_provisioning_public_seat" => [],
+                    "user_provisioning_public_team" => [],
                     "user_provisioning_public_user" => [],
                 ],
             ],
             "entity" => [
+        'add_currency' => [
+          'fields' => [
+            [
+              'name' => 'conversionRate',
+              'title' => 'Conversion Rate',
+              'type' => '`$NUMBER`',
+              'req' => true,
+              'short' => 'The conversion rate between the to and from currency code of this exchange rate.',
+            ],
+            [
+              'name' => 'createdAt',
+              'title' => 'Created At',
+              'type' => '`$STRING`',
+              'req' => true,
+              'short' => 'The date the exchange rate was created.',
+              'format' => 'date-time',
+            ],
+            [
+              'name' => 'currencyCode',
+              'title' => 'Currency Code',
+              'type' => '`$STRING`',
+              'req' => true,
+              'short' => 'The currency code being added to the HubSpot portal for use with central exchange rates.',
+            ],
+            [
+              'name' => 'effectiveAt',
+              'title' => 'Effective At',
+              'type' => '`$STRING`',
+              'req' => true,
+              'short' => 'The date the exchange rate is in effect.',
+              'format' => 'date-time',
+            ],
+            [
+              'name' => 'fromCurrencyCode',
+              'title' => 'From Currency Code',
+              'type' => '`$STRING`',
+              'req' => true,
+              'short' => 'This represents the three-letter currency code (such as USD for US Dollar) of the currency you are converting from.',
+            ],
+            [
+              'name' => 'id',
+              'title' => 'Id',
+              'type' => '`$STRING`',
+              'req' => true,
+              'short' => 'A unique identifier for the exchange rate',
+            ],
+            [
+              'name' => 'toCurrencyCode',
+              'title' => 'To Currency Code',
+              'type' => '`$STRING`',
+              'req' => true,
+              'short' => 'This represents the three-letter currency code (such as USD for US Dollar) of the currency you are converting to.',
+            ],
+            [
+              'name' => 'updatedAt',
+              'title' => 'Updated At',
+              'type' => '`$STRING`',
+              'req' => true,
+              'short' => 'The date the exchange rate was last updated.',
+              'format' => 'date-time',
+            ],
+            [
+              'name' => 'visibleInUI',
+              'title' => 'Visible In Ui',
+              'type' => '`$BOOLEAN`',
+              'req' => true,
+              'short' => 'This indicates if the exchange rate is shown in the MultiCurrency settings page.',
+            ],
+          ],
+          'id' => [
+            'field' => 'id',
+            'name' => 'id',
+          ],
+          'name' => 'add_currency',
+          'op' => [
+            'create' => [
+              'input' => 'data',
+              'name' => 'create',
+              'points' => [
+                [
+                  'kind' => 'http',
+                  'method' => 'POST',
+                  'orig' => '/settings/currencies/2026-09/central-fx-rates/add-currency',
+                  'segments' => [
+                    [
+                      'lit' => 'settings',
+                    ],
+                    [
+                      'lit' => 'currencies',
+                    ],
+                    [
+                      'lit' => '2026-09',
+                    ],
+                    [
+                      'lit' => 'central-fx-rates',
+                    ],
+                    [
+                      'lit' => 'add-currency',
+                    ],
+                  ],
+                  'parts' => [
+                    'settings',
+                    'currencies',
+                    '2026-09',
+                    'central-fx-rates',
+                    'add-currency',
+                  ],
+                  'rename' => [],
+                  'transform' => [
+                    'req' => '`reqdata`',
+                    'res' => '`body`',
+                  ],
+                  'args' => [],
+                  'select' => [],
+                ],
+              ],
+            ],
+          ],
+          'relations' => [
+            'ancestors' => [],
+          ],
+        ],
         'basic' => [
           'fields' => [],
           'name' => 'basic',
@@ -213,44 +336,9 @@ class HubspotSettingsConfig
               'name' => 'remove',
               'points' => [
                 [
-                  'args' => [
-                    'params' => [
-                      [
-                        'example' => null,
-                        'kind' => 'param',
-                        'name' => 'team_id',
-                        'orig' => 'team_id',
-                        'reqd' => true,
-                        'type' => '`$STRING`',
-                      ],
-                      [
-                        'example' => null,
-                        'kind' => 'param',
-                        'name' => 'user_id',
-                        'orig' => 'user_id',
-                        'reqd' => true,
-                        'type' => '`$STRING`',
-                      ],
-                    ],
-                    'query' => [
-                      [
-                        'example' => null,
-                        'kind' => 'query',
-                        'name' => 'type',
-                        'orig' => 'type',
-                        'type' => '`$STRING`',
-                      ],
-                    ],
-                  ],
                   'kind' => 'http',
                   'method' => 'DELETE',
                   'orig' => '/settings/teams/2026-09/{teamId}/members/{userId}',
-                  'rename' => [
-                    'param' => [
-                      'teamId' => 'team_id',
-                      'userId' => 'user_id',
-                    ],
-                  ],
                   'segments' => [
                     [
                       'lit' => 'settings',
@@ -271,17 +359,6 @@ class HubspotSettingsConfig
                       'var' => 'user_id',
                     ],
                   ],
-                  'select' => [
-                    'exist' => [
-                      'team_id',
-                      'type',
-                      'user_id',
-                    ],
-                  ],
-                  'transform' => [
-                    'req' => '`reqdata`',
-                    'res' => '`body`',
-                  ],
                   'parts' => [
                     'settings',
                     'teams',
@@ -290,28 +367,57 @@ class HubspotSettingsConfig
                     'members',
                     '{user_id}',
                   ],
-                ],
-                [
-                  'args' => [
-                    'params' => [
-                      [
-                        'example' => null,
-                        'kind' => 'param',
-                        'name' => 'team_id',
-                        'orig' => 'team_id',
-                        'reqd' => true,
-                        'type' => '`$STRING`',
-                      ],
-                    ],
-                  ],
-                  'kind' => 'http',
-                  'method' => 'DELETE',
-                  'orig' => '/settings/teams/2026-09/{teamId}',
                   'rename' => [
                     'param' => [
                       'teamId' => 'team_id',
+                      'userId' => 'user_id',
                     ],
                   ],
+                  'transform' => [
+                    'req' => '`reqdata`',
+                    'res' => '`body`',
+                  ],
+                  'args' => [
+                    'params' => [
+                      [
+                        'name' => 'team_id',
+                        'orig' => 'team_id',
+                        'type' => '`$STRING`',
+                        'kind' => 'param',
+                        'reqd' => true,
+                        'example' => null,
+                      ],
+                      [
+                        'name' => 'user_id',
+                        'orig' => 'user_id',
+                        'type' => '`$STRING`',
+                        'kind' => 'param',
+                        'reqd' => true,
+                        'example' => null,
+                      ],
+                    ],
+                    'query' => [
+                      [
+                        'name' => 'type',
+                        'orig' => 'type',
+                        'type' => '`$STRING`',
+                        'kind' => 'query',
+                        'example' => null,
+                      ],
+                    ],
+                  ],
+                  'select' => [
+                    'exist' => [
+                      'team_id',
+                      'type',
+                      'user_id',
+                    ],
+                  ],
+                ],
+                [
+                  'kind' => 'http',
+                  'method' => 'DELETE',
+                  'orig' => '/settings/teams/2026-09/{teamId}',
                   'segments' => [
                     [
                       'lit' => 'settings',
@@ -326,39 +432,297 @@ class HubspotSettingsConfig
                       'var' => 'team_id',
                     ],
                   ],
-                  'select' => [
-                    'exist' => [
-                      'team_id',
-                    ],
-                  ],
-                  'transform' => [
-                    'req' => '`reqdata`',
-                    'res' => '`body`',
-                  ],
                   'parts' => [
                     'settings',
                     'teams',
                     '2026-09',
                     '{team_id}',
                   ],
+                  'rename' => [
+                    'param' => [
+                      'teamId' => 'team_id',
+                    ],
+                  ],
+                  'transform' => [
+                    'req' => '`reqdata`',
+                    'res' => '`body`',
+                  ],
+                  'args' => [
+                    'params' => [
+                      [
+                        'name' => 'team_id',
+                        'orig' => 'team_id',
+                        'type' => '`$STRING`',
+                        'kind' => 'param',
+                        'reqd' => true,
+                        'example' => null,
+                      ],
+                    ],
+                  ],
+                  'select' => [
+                    'exist' => [
+                      'team_id',
+                    ],
+                  ],
                 ],
               ],
             ],
           ],
           'relations' => [
-            'ancestors' => [
-              [
-                '2026_09',
-              ],
-              [
-                '2026_09',
-                'member',
+            'ancestors' => [],
+          ],
+        ],
+        'code' => [
+          'fields' => [
+            [
+              'name' => 'currencyCode',
+              'title' => 'Currency Code',
+              'type' => '`$STRING`',
+              'req' => true,
+              'short' => 'The three-letter code representing a specific currency (ex.',
+            ],
+            [
+              'name' => 'currencyName',
+              'title' => 'Currency Name',
+              'type' => '`$STRING`',
+              'req' => true,
+              'short' => 'The full name of the currency (ex.',
+            ],
+          ],
+          'name' => 'code',
+          'op' => [
+            'list' => [
+              'input' => 'data',
+              'name' => 'list',
+              'points' => [
+                [
+                  'kind' => 'http',
+                  'method' => 'GET',
+                  'orig' => '/settings/currencies/2026-09/codes',
+                  'segments' => [
+                    [
+                      'lit' => 'settings',
+                    ],
+                    [
+                      'lit' => 'currencies',
+                    ],
+                    [
+                      'lit' => '2026-09',
+                    ],
+                    [
+                      'lit' => 'codes',
+                    ],
+                  ],
+                  'parts' => [
+                    'settings',
+                    'currencies',
+                    '2026-09',
+                    'codes',
+                  ],
+                  'rename' => [],
+                  'transform' => [
+                    'req' => '`reqdata`',
+                    'res' => '`body.results`',
+                  ],
+                  'args' => [],
+                  'select' => [],
+                ],
               ],
             ],
           ],
+          'relations' => [
+            'ancestors' => [],
+          ],
+        ],
+        'current' => [
+          'fields' => [
+            [
+              'name' => 'conversionRate',
+              'title' => 'Conversion Rate',
+              'type' => '`$NUMBER`',
+              'req' => true,
+              'short' => 'The conversion rate between the to and from currency code of this exchange rate.',
+            ],
+            [
+              'name' => 'createdAt',
+              'title' => 'Created At',
+              'type' => '`$STRING`',
+              'req' => true,
+              'short' => 'The date the exchange rate was created.',
+              'format' => 'date-time',
+            ],
+            [
+              'name' => 'effectiveAt',
+              'title' => 'Effective At',
+              'type' => '`$STRING`',
+              'req' => true,
+              'short' => 'The date the exchange rate is in effect.',
+              'format' => 'date-time',
+            ],
+            [
+              'name' => 'fromCurrencyCode',
+              'title' => 'From Currency Code',
+              'type' => '`$STRING`',
+              'req' => true,
+              'short' => 'This represents the three-letter currency code (such as USD for US Dollar) of the currency you are converting from.',
+            ],
+            [
+              'name' => 'id',
+              'title' => 'Id',
+              'type' => '`$STRING`',
+              'req' => true,
+              'short' => 'A unique identifier for the exchange rate',
+            ],
+            [
+              'name' => 'toCurrencyCode',
+              'title' => 'To Currency Code',
+              'type' => '`$STRING`',
+              'req' => true,
+              'short' => 'This represents the three-letter currency code (such as USD for US Dollar) of the currency you are converting to.',
+            ],
+            [
+              'name' => 'updatedAt',
+              'title' => 'Updated At',
+              'type' => '`$STRING`',
+              'req' => true,
+              'short' => 'The date the exchange rate was last updated.',
+              'format' => 'date-time',
+            ],
+            [
+              'name' => 'visibleInUI',
+              'title' => 'Visible In Ui',
+              'type' => '`$BOOLEAN`',
+              'req' => true,
+              'short' => 'This indicates if the exchange rate is shown in the MultiCurrency settings page.',
+            ],
+          ],
+          'id' => [
+            'field' => 'id',
+            'name' => 'id',
+          ],
+          'name' => 'current',
+          'op' => [
+            'list' => [
+              'input' => 'data',
+              'name' => 'list',
+              'points' => [
+                [
+                  'kind' => 'http',
+                  'method' => 'GET',
+                  'orig' => '/settings/currencies/2026-09/exchange-rates/current',
+                  'segments' => [
+                    [
+                      'lit' => 'settings',
+                    ],
+                    [
+                      'lit' => 'currencies',
+                    ],
+                    [
+                      'lit' => '2026-09',
+                    ],
+                    [
+                      'lit' => 'exchange-rates',
+                    ],
+                    [
+                      'lit' => 'current',
+                    ],
+                  ],
+                  'parts' => [
+                    'settings',
+                    'currencies',
+                    '2026-09',
+                    'exchange-rates',
+                    'current',
+                  ],
+                  'rename' => [],
+                  'transform' => [
+                    'req' => '`reqdata`',
+                    'res' => '`body.results`',
+                  ],
+                  'args' => [],
+                  'select' => [],
+                ],
+              ],
+            ],
+          ],
+          'relations' => [
+            'ancestors' => [],
+          ],
         ],
         'exchange_rate' => [
-          'fields' => [],
+          'fields' => [
+            [
+              'name' => 'conversionRate',
+              'title' => 'Conversion Rate',
+              'type' => '`$NUMBER`',
+              'req' => true,
+              'short' => 'The conversion rate between the to and from currency code of this exchange rate.',
+            ],
+            [
+              'name' => 'createdAt',
+              'title' => 'Created At',
+              'type' => '`$STRING`',
+              'req' => true,
+              'short' => 'The date the exchange rate was created.',
+              'format' => 'date-time',
+            ],
+            [
+              'name' => 'effectiveAt',
+              'title' => 'Effective At',
+              'type' => '`$STRING`',
+              'req' => true,
+              'op' => [
+                'create' => [
+                  'type' => '`$STRING`',
+                ],
+                'update' => [
+                  'type' => '`$STRING`',
+                ],
+              ],
+              'short' => 'The date the exchange rate is in effect.',
+              'format' => 'date-time',
+            ],
+            [
+              'name' => 'fromCurrencyCode',
+              'title' => 'From Currency Code',
+              'type' => '`$STRING`',
+              'req' => true,
+              'short' => 'This represents the three-letter currency code (such as USD for US Dollar) of the currency you are converting from.',
+            ],
+            [
+              'name' => 'id',
+              'title' => 'Id',
+              'type' => '`$STRING`',
+              'req' => true,
+              'short' => 'A unique identifier for the exchange rate',
+            ],
+            [
+              'name' => 'toCurrencyCode',
+              'title' => 'To Currency Code',
+              'type' => '`$STRING`',
+              'req' => true,
+              'short' => 'This represents the three-letter currency code (such as USD for US Dollar) of the currency you are converting to.',
+            ],
+            [
+              'name' => 'updatedAt',
+              'title' => 'Updated At',
+              'type' => '`$STRING`',
+              'req' => true,
+              'short' => 'The date the exchange rate was last updated.',
+              'format' => 'date-time',
+            ],
+            [
+              'name' => 'visibleInUI',
+              'title' => 'Visible In Ui',
+              'type' => '`$BOOLEAN`',
+              'req' => true,
+              'short' => 'This indicates if the exchange rate is shown in the MultiCurrency settings page.',
+            ],
+          ],
+          'id' => [
+            'field' => 'id',
+            'name' => 'id',
+          ],
           'name' => 'exchange_rate',
           'op' => [
             'create' => [
@@ -366,7 +730,38 @@ class HubspotSettingsConfig
               'name' => 'create',
               'points' => [
                 [
+                  'kind' => 'http',
+                  'method' => 'POST',
+                  'orig' => '/settings/currencies/2026-09/exchange-rates',
+                  'segments' => [
+                    [
+                      'lit' => 'settings',
+                    ],
+                    [
+                      'lit' => 'currencies',
+                    ],
+                    [
+                      'lit' => '2026-09',
+                    ],
+                    [
+                      'lit' => 'exchange-rates',
+                    ],
+                  ],
+                  'parts' => [
+                    'settings',
+                    'currencies',
+                    '2026-09',
+                    'exchange-rates',
+                  ],
+                  'rename' => [],
+                  'transform' => [
+                    'req' => '`reqdata`',
+                    'res' => '`body`',
+                  ],
                   'args' => [],
+                  'select' => [],
+                ],
+                [
                   'kind' => 'http',
                   'method' => 'POST',
                   'orig' => '/settings/currencies/2026-09/exchange-rates/update-visibility',
@@ -387,19 +782,143 @@ class HubspotSettingsConfig
                       'lit' => 'update-visibility',
                     ],
                   ],
-                  'select' => [
-                    '$action' => 'update_visibility',
-                  ],
-                  'transform' => [
-                    'req' => '`reqdata`',
-                    'res' => '`body`',
-                  ],
                   'parts' => [
                     'settings',
                     'currencies',
                     '2026-09',
                     'exchange-rates',
                     'update-visibility',
+                  ],
+                  'rename' => [],
+                  'transform' => [
+                    'req' => '`reqdata`',
+                    'res' => '`body`',
+                  ],
+                  'args' => [],
+                  'select' => [
+                    '$action' => 'update_visibility',
+                  ],
+                ],
+              ],
+            ],
+            'load' => [
+              'input' => 'data',
+              'name' => 'load',
+              'points' => [
+                [
+                  'kind' => 'http',
+                  'method' => 'GET',
+                  'orig' => '/settings/currencies/2026-09/exchange-rates/{exchangeRateId}',
+                  'segments' => [
+                    [
+                      'lit' => 'settings',
+                    ],
+                    [
+                      'lit' => 'currencies',
+                    ],
+                    [
+                      'lit' => '2026-09',
+                    ],
+                    [
+                      'lit' => 'exchange-rates',
+                    ],
+                    [
+                      'var' => 'id',
+                    ],
+                  ],
+                  'parts' => [
+                    'settings',
+                    'currencies',
+                    '2026-09',
+                    'exchange-rates',
+                    '{id}',
+                  ],
+                  'rename' => [
+                    'param' => [
+                      'exchangeRateId' => 'id',
+                    ],
+                  ],
+                  'transform' => [
+                    'req' => '`reqdata`',
+                    'res' => '`body`',
+                  ],
+                  'args' => [
+                    'params' => [
+                      [
+                        'name' => 'id',
+                        'orig' => 'exchange_rate_id',
+                        'type' => '`$STRING`',
+                        'kind' => 'param',
+                        'reqd' => true,
+                        'example' => null,
+                      ],
+                    ],
+                  ],
+                  'select' => [
+                    'exist' => [
+                      'id',
+                    ],
+                  ],
+                ],
+              ],
+            ],
+            'update' => [
+              'input' => 'data',
+              'name' => 'update',
+              'points' => [
+                [
+                  'kind' => 'http',
+                  'method' => 'PATCH',
+                  'orig' => '/settings/currencies/2026-09/exchange-rates/{exchangeRateId}',
+                  'segments' => [
+                    [
+                      'lit' => 'settings',
+                    ],
+                    [
+                      'lit' => 'currencies',
+                    ],
+                    [
+                      'lit' => '2026-09',
+                    ],
+                    [
+                      'lit' => 'exchange-rates',
+                    ],
+                    [
+                      'var' => 'id',
+                    ],
+                  ],
+                  'parts' => [
+                    'settings',
+                    'currencies',
+                    '2026-09',
+                    'exchange-rates',
+                    '{id}',
+                  ],
+                  'rename' => [
+                    'param' => [
+                      'exchangeRateId' => 'id',
+                    ],
+                  ],
+                  'transform' => [
+                    'req' => '`reqdata`',
+                    'res' => '`body`',
+                  ],
+                  'args' => [
+                    'params' => [
+                      [
+                        'name' => 'id',
+                        'orig' => 'exchange_rate_id',
+                        'type' => '`$STRING`',
+                        'kind' => 'param',
+                        'reqd' => true,
+                        'example' => null,
+                      ],
+                    ],
+                  ],
+                  'select' => [
+                    'exist' => [
+                      'id',
+                    ],
                   ],
                 ],
               ],
@@ -412,47 +931,54 @@ class HubspotSettingsConfig
         'multicurrency_batch_response_exchange_rate' => [
           'fields' => [
             [
-              'format' => 'date-time',
               'name' => 'completedAt',
+              'title' => 'Completed At',
+              'type' => '`$STRING`',
               'req' => true,
               'short' => 'The datetime the response was completed',
-              'type' => '`$STRING`',
+              'format' => 'date-time',
             ],
             [
               'name' => 'inputs',
+              'title' => 'Inputs',
+              'type' => '`$ARRAY`',
               'req' => true,
               'short' => 'An array of ExchangeRateCreateRequest objects, each representing the details required to create a single exchange rate.',
-              'type' => '`$ARRAY`',
             ],
             [
               'name' => 'links',
-              'short' => 'The link to the next page with exchange rates.',
+              'title' => 'Links',
               'type' => '`$OBJECT`',
+              'short' => 'The link to the next page with exchange rates.',
             ],
             [
-              'format' => 'date-time',
               'name' => 'requestedAt',
-              'short' => 'The datetime the of the request.',
+              'title' => 'Requested At',
               'type' => '`$STRING`',
+              'short' => 'The datetime the of the request.',
+              'format' => 'date-time',
             ],
             [
               'name' => 'results',
+              'title' => 'Results',
+              'type' => '`$ARRAY`',
               'req' => true,
               'short' => 'An array of exchange rate objects that represent the results of the batch operation.',
-              'type' => '`$ARRAY`',
             ],
             [
-              'format' => 'date-time',
               'name' => 'startedAt',
+              'title' => 'Started At',
+              'type' => '`$STRING`',
               'req' => true,
               'short' => 'The datetime the of the request.',
-              'type' => '`$STRING`',
+              'format' => 'date-time',
             ],
             [
               'name' => 'status',
+              'title' => 'Status',
+              'type' => '`$STRING`',
               'req' => true,
               'short' => 'The current status of the response (e.g.',
-              'type' => '`$STRING`',
             ],
           ],
           'name' => 'multicurrency_batch_response_exchange_rate',
@@ -462,7 +988,6 @@ class HubspotSettingsConfig
               'name' => 'create',
               'points' => [
                 [
-                  'args' => [],
                   'kind' => 'http',
                   'method' => 'POST',
                   'orig' => '/settings/currencies/2026-09/exchange-rates/batch/create',
@@ -486,11 +1011,6 @@ class HubspotSettingsConfig
                       'lit' => 'create',
                     ],
                   ],
-                  'select' => [],
-                  'transform' => [
-                    'req' => '`reqdata`',
-                    'res' => '`body`',
-                  ],
                   'parts' => [
                     'settings',
                     'currencies',
@@ -499,9 +1019,15 @@ class HubspotSettingsConfig
                     'batch',
                     'create',
                   ],
+                  'rename' => [],
+                  'transform' => [
+                    'req' => '`reqdata`',
+                    'res' => '`body`',
+                  ],
+                  'args' => [],
+                  'select' => [],
                 ],
                 [
-                  'args' => [],
                   'kind' => 'http',
                   'method' => 'POST',
                   'orig' => '/settings/currencies/2026-09/exchange-rates/batch/read',
@@ -525,11 +1051,6 @@ class HubspotSettingsConfig
                       'lit' => 'read',
                     ],
                   ],
-                  'select' => [],
-                  'transform' => [
-                    'req' => '`reqdata`',
-                    'res' => '`body`',
-                  ],
                   'parts' => [
                     'settings',
                     'currencies',
@@ -538,9 +1059,15 @@ class HubspotSettingsConfig
                     'batch',
                     'read',
                   ],
+                  'rename' => [],
+                  'transform' => [
+                    'req' => '`reqdata`',
+                    'res' => '`body`',
+                  ],
+                  'args' => [],
+                  'select' => [],
                 ],
                 [
-                  'args' => [],
                   'kind' => 'http',
                   'method' => 'POST',
                   'orig' => '/settings/currencies/2026-09/exchange-rates/batch/update',
@@ -564,11 +1091,6 @@ class HubspotSettingsConfig
                       'lit' => 'update',
                     ],
                   ],
-                  'select' => [],
-                  'transform' => [
-                    'req' => '`reqdata`',
-                    'res' => '`body`',
-                  ],
                   'parts' => [
                     'settings',
                     'currencies',
@@ -577,6 +1099,13 @@ class HubspotSettingsConfig
                     'batch',
                     'update',
                   ],
+                  'rename' => [],
+                  'transform' => [
+                    'req' => '`reqdata`',
+                    'res' => '`body`',
+                  ],
+                  'args' => [],
+                  'select' => [],
                 ],
               ],
             ],
@@ -589,9 +1118,10 @@ class HubspotSettingsConfig
           'fields' => [
             [
               'name' => 'centralExchangeRatesEnabled',
+              'title' => 'Central Exchange Rates Enabled',
+              'type' => '`$BOOLEAN`',
               'req' => true,
               'short' => 'Indicates if central exchange rates is enabled for the portal or not.',
-              'type' => '`$BOOLEAN`',
             ],
           ],
           'name' => 'multicurrency_central_exchange_rates_information',
@@ -601,7 +1131,6 @@ class HubspotSettingsConfig
               'name' => 'load',
               'points' => [
                 [
-                  'args' => [],
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/settings/currencies/2026-09/central-fx-rates/information',
@@ -622,11 +1151,6 @@ class HubspotSettingsConfig
                       'lit' => 'information',
                     ],
                   ],
-                  'select' => [],
-                  'transform' => [
-                    'req' => '`reqdata`',
-                    'res' => '`body`',
-                  ],
                   'parts' => [
                     'settings',
                     'currencies',
@@ -634,100 +1158,13 @@ class HubspotSettingsConfig
                     'central-fx-rates',
                     'information',
                   ],
-                ],
-              ],
-            ],
-          ],
-          'relations' => [
-            'ancestors' => [],
-          ],
-        ],
-        'multicurrency_collection_response_currency_code_info_no_paging' => [
-          'fields' => [
-            [
-              'name' => 'currencyCode',
-              'req' => true,
-              'short' => 'The three-letter code representing a specific currency (ex.',
-              'type' => '`$STRING`',
-            ],
-            [
-              'name' => 'currencyName',
-              'req' => true,
-              'short' => 'The full name of the currency (ex.',
-              'type' => '`$STRING`',
-            ],
-          ],
-          'name' => 'multicurrency_collection_response_currency_code_info_no_paging',
-          'op' => [
-            'list' => [
-              'input' => 'data',
-              'name' => 'list',
-              'points' => [
-                [
-                  'args' => [],
-                  'kind' => 'http',
-                  'method' => 'GET',
-                  'orig' => '/settings/currencies/2026-09/central-fx-rates/unsupported-currencies',
-                  'segments' => [
-                    [
-                      'lit' => 'settings',
-                    ],
-                    [
-                      'lit' => 'currencies',
-                    ],
-                    [
-                      'lit' => '2026-09',
-                    ],
-                    [
-                      'lit' => 'central-fx-rates',
-                    ],
-                    [
-                      'lit' => 'unsupported-currencies',
-                    ],
-                  ],
-                  'select' => [],
+                  'rename' => [],
                   'transform' => [
                     'req' => '`reqdata`',
-                    'res' => '`body.results`',
+                    'res' => '`body`',
                   ],
-                  'parts' => [
-                    'settings',
-                    'currencies',
-                    '2026-09',
-                    'central-fx-rates',
-                    'unsupported-currencies',
-                  ],
-                ],
-                [
                   'args' => [],
-                  'kind' => 'http',
-                  'method' => 'GET',
-                  'orig' => '/settings/currencies/2026-09/codes',
-                  'segments' => [
-                    [
-                      'lit' => 'settings',
-                    ],
-                    [
-                      'lit' => 'currencies',
-                    ],
-                    [
-                      'lit' => '2026-09',
-                    ],
-                    [
-                      'lit' => 'codes',
-                    ],
-                  ],
                   'select' => [],
-                  'transform' => [
-                    'req' => '`reqdata`',
-                    'res' => '`body.results`',
-                  ],
-                  'parts' => [
-                    'settings',
-                    'currencies',
-                    '2026-09',
-                    'codes',
-                  ],
                 ],
               ],
             ],
@@ -740,54 +1177,62 @@ class HubspotSettingsConfig
           'fields' => [
             [
               'name' => 'conversionRate',
+              'title' => 'Conversion Rate',
+              'type' => '`$NUMBER`',
               'req' => true,
               'short' => 'The conversion rate between the to and from currency code of this exchange rate.',
-              'type' => '`$NUMBER`',
             ],
             [
-              'format' => 'date-time',
               'name' => 'createdAt',
+              'title' => 'Created At',
+              'type' => '`$STRING`',
               'req' => true,
               'short' => 'The date the exchange rate was created.',
-              'type' => '`$STRING`',
+              'format' => 'date-time',
             ],
             [
-              'format' => 'date-time',
               'name' => 'effectiveAt',
+              'title' => 'Effective At',
+              'type' => '`$STRING`',
               'req' => true,
               'short' => 'The date the exchange rate is in effect.',
-              'type' => '`$STRING`',
+              'format' => 'date-time',
             ],
             [
               'name' => 'fromCurrencyCode',
+              'title' => 'From Currency Code',
+              'type' => '`$STRING`',
               'req' => true,
               'short' => 'This represents the three-letter currency code (such as USD for US Dollar) of the currency you are converting from.',
-              'type' => '`$STRING`',
             ],
             [
               'name' => 'id',
+              'title' => 'Id',
+              'type' => '`$STRING`',
               'req' => true,
               'short' => 'A unique identifier for the exchange rate',
-              'type' => '`$STRING`',
             ],
             [
               'name' => 'toCurrencyCode',
+              'title' => 'To Currency Code',
+              'type' => '`$STRING`',
               'req' => true,
               'short' => 'This represents the three-letter currency code (such as USD for US Dollar) of the currency you are converting to.',
-              'type' => '`$STRING`',
             ],
             [
-              'format' => 'date-time',
               'name' => 'updatedAt',
+              'title' => 'Updated At',
+              'type' => '`$STRING`',
               'req' => true,
               'short' => 'The date the exchange rate was last updated.',
-              'type' => '`$STRING`',
+              'format' => 'date-time',
             ],
             [
               'name' => 'visibleInUI',
+              'title' => 'Visible In Ui',
+              'type' => '`$BOOLEAN`',
               'req' => true,
               'short' => 'This indicates if the exchange rate is shown in the MultiCurrency settings page.',
-              'type' => '`$BOOLEAN`',
             ],
           ],
           'id' => [
@@ -801,38 +1246,6 @@ class HubspotSettingsConfig
               'name' => 'list',
               'points' => [
                 [
-                  'args' => [
-                    'query' => [
-                      [
-                        'example' => null,
-                        'kind' => 'query',
-                        'name' => 'after',
-                        'orig' => 'after',
-                        'type' => '`$STRING`',
-                      ],
-                      [
-                        'example' => null,
-                        'kind' => 'query',
-                        'name' => 'from_currency_code',
-                        'orig' => 'from_currency_code',
-                        'type' => '`$STRING`',
-                      ],
-                      [
-                        'example' => null,
-                        'kind' => 'query',
-                        'name' => 'limit',
-                        'orig' => 'limit',
-                        'type' => '`$INTEGER`',
-                      ],
-                      [
-                        'example' => null,
-                        'kind' => 'query',
-                        'name' => 'to_currency_code',
-                        'orig' => 'to_currency_code',
-                        'type' => '`$STRING`',
-                      ],
-                    ],
-                  ],
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/settings/currencies/2026-09/exchange-rates',
@@ -850,6 +1263,49 @@ class HubspotSettingsConfig
                       'lit' => 'exchange-rates',
                     ],
                   ],
+                  'parts' => [
+                    'settings',
+                    'currencies',
+                    '2026-09',
+                    'exchange-rates',
+                  ],
+                  'rename' => [],
+                  'transform' => [
+                    'req' => '`reqdata`',
+                    'res' => '`body`',
+                  ],
+                  'args' => [
+                    'query' => [
+                      [
+                        'name' => 'after',
+                        'orig' => 'after',
+                        'type' => '`$STRING`',
+                        'kind' => 'query',
+                        'example' => null,
+                      ],
+                      [
+                        'name' => 'from_currency_code',
+                        'orig' => 'from_currency_code',
+                        'type' => '`$STRING`',
+                        'kind' => 'query',
+                        'example' => null,
+                      ],
+                      [
+                        'name' => 'limit',
+                        'orig' => 'limit',
+                        'type' => '`$INTEGER`',
+                        'kind' => 'query',
+                        'example' => null,
+                      ],
+                      [
+                        'name' => 'to_currency_code',
+                        'orig' => 'to_currency_code',
+                        'type' => '`$STRING`',
+                        'kind' => 'query',
+                        'example' => null,
+                      ],
+                    ],
+                  ],
                   'select' => [
                     'exist' => [
                       'after',
@@ -857,122 +1313,6 @@ class HubspotSettingsConfig
                       'limit',
                       'to_currency_code',
                     ],
-                  ],
-                  'transform' => [
-                    'req' => '`reqdata`',
-                    'res' => '`body`',
-                  ],
-                  'parts' => [
-                    'settings',
-                    'currencies',
-                    '2026-09',
-                    'exchange-rates',
-                  ],
-                ],
-              ],
-            ],
-          ],
-          'relations' => [
-            'ancestors' => [],
-          ],
-        ],
-        'multicurrency_collection_response_exchange_rate_no_paging' => [
-          'fields' => [
-            [
-              'name' => 'conversionRate',
-              'req' => true,
-              'short' => 'The conversion rate between the to and from currency code of this exchange rate.',
-              'type' => '`$NUMBER`',
-            ],
-            [
-              'format' => 'date-time',
-              'name' => 'createdAt',
-              'req' => true,
-              'short' => 'The date the exchange rate was created.',
-              'type' => '`$STRING`',
-            ],
-            [
-              'format' => 'date-time',
-              'name' => 'effectiveAt',
-              'req' => true,
-              'short' => 'The date the exchange rate is in effect.',
-              'type' => '`$STRING`',
-            ],
-            [
-              'name' => 'fromCurrencyCode',
-              'req' => true,
-              'short' => 'This represents the three-letter currency code (such as USD for US Dollar) of the currency you are converting from.',
-              'type' => '`$STRING`',
-            ],
-            [
-              'name' => 'id',
-              'req' => true,
-              'short' => 'A unique identifier for the exchange rate',
-              'type' => '`$STRING`',
-            ],
-            [
-              'name' => 'toCurrencyCode',
-              'req' => true,
-              'short' => 'This represents the three-letter currency code (such as USD for US Dollar) of the currency you are converting to.',
-              'type' => '`$STRING`',
-            ],
-            [
-              'format' => 'date-time',
-              'name' => 'updatedAt',
-              'req' => true,
-              'short' => 'The date the exchange rate was last updated.',
-              'type' => '`$STRING`',
-            ],
-            [
-              'name' => 'visibleInUI',
-              'req' => true,
-              'short' => 'This indicates if the exchange rate is shown in the MultiCurrency settings page.',
-              'type' => '`$BOOLEAN`',
-            ],
-          ],
-          'id' => [
-            'field' => 'id',
-            'name' => 'id',
-          ],
-          'name' => 'multicurrency_collection_response_exchange_rate_no_paging',
-          'op' => [
-            'list' => [
-              'input' => 'data',
-              'name' => 'list',
-              'points' => [
-                [
-                  'args' => [],
-                  'kind' => 'http',
-                  'method' => 'GET',
-                  'orig' => '/settings/currencies/2026-09/exchange-rates/current',
-                  'segments' => [
-                    [
-                      'lit' => 'settings',
-                    ],
-                    [
-                      'lit' => 'currencies',
-                    ],
-                    [
-                      'lit' => '2026-09',
-                    ],
-                    [
-                      'lit' => 'exchange-rates',
-                    ],
-                    [
-                      'lit' => 'current',
-                    ],
-                  ],
-                  'select' => [],
-                  'transform' => [
-                    'req' => '`reqdata`',
-                    'res' => '`body.results`',
-                  ],
-                  'parts' => [
-                    'settings',
-                    'currencies',
-                    '2026-09',
-                    'exchange-rates',
-                    'current',
                   ],
                 ],
               ],
@@ -985,23 +1325,26 @@ class HubspotSettingsConfig
         'multicurrency_company_currency' => [
           'fields' => [
             [
-              'format' => 'date-time',
               'name' => 'createdAt',
+              'title' => 'Created At',
+              'type' => '`$STRING`',
               'req' => true,
               'short' => 'The date the company currency was created.',
-              'type' => '`$STRING`',
+              'format' => 'date-time',
             ],
             [
               'name' => 'currencyCode',
+              'title' => 'Currency Code',
+              'type' => '`$STRING`',
               'req' => true,
               'short' => 'The three-letter code representing a specific currency (ex.',
-              'type' => '`$STRING`',
             ],
             [
               'name' => 'id',
+              'title' => 'Id',
+              'type' => '`$STRING`',
               'req' => true,
               'short' => 'The currency code for the company currency',
-              'type' => '`$STRING`',
             ],
           ],
           'id' => [
@@ -1015,7 +1358,6 @@ class HubspotSettingsConfig
               'name' => 'load',
               'points' => [
                 [
-                  'args' => [],
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/settings/currencies/2026-09/company-currency',
@@ -1033,17 +1375,19 @@ class HubspotSettingsConfig
                       'lit' => 'company-currency',
                     ],
                   ],
-                  'select' => [],
-                  'transform' => [
-                    'req' => '`reqdata`',
-                    'res' => '`body`',
-                  ],
                   'parts' => [
                     'settings',
                     'currencies',
                     '2026-09',
                     'company-currency',
                   ],
+                  'rename' => [],
+                  'transform' => [
+                    'req' => '`reqdata`',
+                    'res' => '`body`',
+                  ],
+                  'args' => [],
+                  'select' => [],
                 ],
               ],
             ],
@@ -1052,7 +1396,6 @@ class HubspotSettingsConfig
               'name' => 'update',
               'points' => [
                 [
-                  'args' => [],
                   'kind' => 'http',
                   'method' => 'PUT',
                   'orig' => '/settings/currencies/2026-09/company-currency',
@@ -1070,290 +1413,19 @@ class HubspotSettingsConfig
                       'lit' => 'company-currency',
                     ],
                   ],
-                  'select' => [],
-                  'transform' => [
-                    'req' => '`reqdata`',
-                    'res' => '`body`',
-                  ],
                   'parts' => [
                     'settings',
                     'currencies',
                     '2026-09',
                     'company-currency',
                   ],
-                ],
-              ],
-            ],
-          ],
-          'relations' => [
-            'ancestors' => [],
-          ],
-        ],
-        'multicurrency_exchange_rate' => [
-          'fields' => [
-            [
-              'name' => 'conversionRate',
-              'req' => true,
-              'short' => 'The conversion rate between the to and from currency code of this exchange rate.',
-              'type' => '`$NUMBER`',
-            ],
-            [
-              'format' => 'date-time',
-              'name' => 'createdAt',
-              'req' => true,
-              'short' => 'The date the exchange rate was created.',
-              'type' => '`$STRING`',
-            ],
-            [
-              'name' => 'currencyCode',
-              'req' => true,
-              'short' => 'The currency code being added to the HubSpot portal for use with central exchange rates.',
-              'type' => '`$STRING`',
-            ],
-            [
-              'format' => 'date-time',
-              'name' => 'effectiveAt',
-              'op' => [
-                'create' => [
-                  'type' => '`$STRING`',
-                ],
-                'update' => [
-                  'type' => '`$STRING`',
-                ],
-              ],
-              'req' => true,
-              'short' => 'The date the exchange rate is in effect.',
-              'type' => '`$STRING`',
-            ],
-            [
-              'name' => 'fromCurrencyCode',
-              'req' => true,
-              'short' => 'This represents the three-letter currency code (such as USD for US Dollar) of the currency you are converting from.',
-              'type' => '`$STRING`',
-            ],
-            [
-              'name' => 'id',
-              'req' => true,
-              'short' => 'A unique identifier for the exchange rate',
-              'type' => '`$STRING`',
-            ],
-            [
-              'name' => 'toCurrencyCode',
-              'req' => true,
-              'short' => 'This represents the three-letter currency code (such as USD for US Dollar) of the currency you are converting to.',
-              'type' => '`$STRING`',
-            ],
-            [
-              'format' => 'date-time',
-              'name' => 'updatedAt',
-              'req' => true,
-              'short' => 'The date the exchange rate was last updated.',
-              'type' => '`$STRING`',
-            ],
-            [
-              'name' => 'visibleInUI',
-              'req' => true,
-              'short' => 'This indicates if the exchange rate is shown in the MultiCurrency settings page.',
-              'type' => '`$BOOLEAN`',
-            ],
-          ],
-          'id' => [
-            'field' => 'id',
-            'name' => 'id',
-          ],
-          'name' => 'multicurrency_exchange_rate',
-          'op' => [
-            'create' => [
-              'input' => 'data',
-              'name' => 'create',
-              'points' => [
-                [
+                  'rename' => [],
+                  'transform' => [
+                    'req' => '`reqdata`',
+                    'res' => '`body`',
+                  ],
                   'args' => [],
-                  'kind' => 'http',
-                  'method' => 'POST',
-                  'orig' => '/settings/currencies/2026-09/central-fx-rates/add-currency',
-                  'segments' => [
-                    [
-                      'lit' => 'settings',
-                    ],
-                    [
-                      'lit' => 'currencies',
-                    ],
-                    [
-                      'lit' => '2026-09',
-                    ],
-                    [
-                      'lit' => 'central-fx-rates',
-                    ],
-                    [
-                      'lit' => 'add-currency',
-                    ],
-                  ],
                   'select' => [],
-                  'transform' => [
-                    'req' => '`reqdata`',
-                    'res' => '`body`',
-                  ],
-                  'parts' => [
-                    'settings',
-                    'currencies',
-                    '2026-09',
-                    'central-fx-rates',
-                    'add-currency',
-                  ],
-                ],
-                [
-                  'args' => [],
-                  'kind' => 'http',
-                  'method' => 'POST',
-                  'orig' => '/settings/currencies/2026-09/exchange-rates',
-                  'segments' => [
-                    [
-                      'lit' => 'settings',
-                    ],
-                    [
-                      'lit' => 'currencies',
-                    ],
-                    [
-                      'lit' => '2026-09',
-                    ],
-                    [
-                      'lit' => 'exchange-rates',
-                    ],
-                  ],
-                  'select' => [],
-                  'transform' => [
-                    'req' => '`reqdata`',
-                    'res' => '`body`',
-                  ],
-                  'parts' => [
-                    'settings',
-                    'currencies',
-                    '2026-09',
-                    'exchange-rates',
-                  ],
-                ],
-              ],
-            ],
-            'load' => [
-              'input' => 'data',
-              'name' => 'load',
-              'points' => [
-                [
-                  'args' => [
-                    'params' => [
-                      [
-                        'example' => null,
-                        'kind' => 'param',
-                        'name' => 'id',
-                        'orig' => 'exchange_rate_id',
-                        'reqd' => true,
-                        'type' => '`$STRING`',
-                      ],
-                    ],
-                  ],
-                  'kind' => 'http',
-                  'method' => 'GET',
-                  'orig' => '/settings/currencies/2026-09/exchange-rates/{exchangeRateId}',
-                  'rename' => [
-                    'param' => [
-                      'exchangeRateId' => 'id',
-                    ],
-                  ],
-                  'segments' => [
-                    [
-                      'lit' => 'settings',
-                    ],
-                    [
-                      'lit' => 'currencies',
-                    ],
-                    [
-                      'lit' => '2026-09',
-                    ],
-                    [
-                      'lit' => 'exchange-rates',
-                    ],
-                    [
-                      'var' => 'id',
-                    ],
-                  ],
-                  'select' => [
-                    'exist' => [
-                      'id',
-                    ],
-                  ],
-                  'transform' => [
-                    'req' => '`reqdata`',
-                    'res' => '`body`',
-                  ],
-                  'parts' => [
-                    'settings',
-                    'currencies',
-                    '2026-09',
-                    'exchange-rates',
-                    '{id}',
-                  ],
-                ],
-              ],
-            ],
-            'update' => [
-              'input' => 'data',
-              'name' => 'update',
-              'points' => [
-                [
-                  'args' => [
-                    'params' => [
-                      [
-                        'example' => null,
-                        'kind' => 'param',
-                        'name' => 'id',
-                        'orig' => 'exchange_rate_id',
-                        'reqd' => true,
-                        'type' => '`$STRING`',
-                      ],
-                    ],
-                  ],
-                  'kind' => 'http',
-                  'method' => 'PATCH',
-                  'orig' => '/settings/currencies/2026-09/exchange-rates/{exchangeRateId}',
-                  'rename' => [
-                    'param' => [
-                      'exchangeRateId' => 'id',
-                    ],
-                  ],
-                  'segments' => [
-                    [
-                      'lit' => 'settings',
-                    ],
-                    [
-                      'lit' => 'currencies',
-                    ],
-                    [
-                      'lit' => '2026-09',
-                    ],
-                    [
-                      'lit' => 'exchange-rates',
-                    ],
-                    [
-                      'var' => 'id',
-                    ],
-                  ],
-                  'select' => [
-                    'exist' => [
-                      'id',
-                    ],
-                  ],
-                  'transform' => [
-                    'req' => '`reqdata`',
-                    'res' => '`body`',
-                  ],
-                  'parts' => [
-                    'settings',
-                    'currencies',
-                    '2026-09',
-                    'exchange-rates',
-                    '{id}',
-                  ],
                 ],
               ],
             ],
@@ -1366,47 +1438,54 @@ class HubspotSettingsConfig
           'fields' => [
             [
               'name' => 'active',
+              'title' => 'Active',
+              'type' => '`$BOOLEAN`',
               'req' => true,
               'short' => 'Indicates whether the tax rate group is currently active.',
-              'type' => '`$BOOLEAN`',
             ],
             [
-              'format' => 'date-time',
               'name' => 'createdAt',
+              'title' => 'Created At',
+              'type' => '`$STRING`',
               'req' => true,
               'short' => 'The date and time when the tax rate was created.',
-              'type' => '`$STRING`',
+              'format' => 'date-time',
             ],
             [
               'name' => 'id',
+              'title' => 'Id',
+              'type' => '`$STRING`',
               'req' => true,
               'short' => 'The unique identifier for the tax rate.',
-              'type' => '`$STRING`',
             ],
             [
               'name' => 'label',
+              'title' => 'Label',
+              'type' => '`$STRING`',
               'req' => true,
               'short' => 'The display label for the tax rate.',
-              'type' => '`$STRING`',
             ],
             [
               'name' => 'name',
+              'title' => 'Name',
+              'type' => '`$STRING`',
               'req' => true,
               'short' => 'The name of the tax rate.',
-              'type' => '`$STRING`',
             ],
             [
               'name' => 'percentageRate',
+              'title' => 'Percentage Rate',
+              'type' => '`$NUMBER`',
               'req' => true,
               'short' => 'The percentage rate applied.',
-              'type' => '`$NUMBER`',
             ],
             [
-              'format' => 'date-time',
               'name' => 'updatedAt',
+              'title' => 'Updated At',
+              'type' => '`$STRING`',
               'req' => true,
               'short' => 'The date and time when the tax rate was last updated.',
-              'type' => '`$STRING`',
+              'format' => 'date-time',
             ],
           ],
           'id' => [
@@ -1420,31 +1499,6 @@ class HubspotSettingsConfig
               'name' => 'list',
               'points' => [
                 [
-                  'args' => [
-                    'query' => [
-                      [
-                        'example' => null,
-                        'kind' => 'query',
-                        'name' => 'active',
-                        'orig' => 'active',
-                        'type' => '`$BOOLEAN`',
-                      ],
-                      [
-                        'example' => null,
-                        'kind' => 'query',
-                        'name' => 'after',
-                        'orig' => 'after',
-                        'type' => '`$STRING`',
-                      ],
-                      [
-                        'example' => null,
-                        'kind' => 'query',
-                        'name' => 'limit',
-                        'orig' => 'limit',
-                        'type' => '`$INTEGER`',
-                      ],
-                    ],
-                  ],
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/tax-rates/2026-09/tax-rates',
@@ -1459,21 +1513,47 @@ class HubspotSettingsConfig
                       'lit' => 'tax-rates',
                     ],
                   ],
+                  'parts' => [
+                    'tax-rates',
+                    '2026-09',
+                    'tax-rates',
+                  ],
+                  'rename' => [],
+                  'transform' => [
+                    'req' => '`reqdata`',
+                    'res' => '`body`',
+                  ],
+                  'args' => [
+                    'query' => [
+                      [
+                        'name' => 'active',
+                        'orig' => 'active',
+                        'type' => '`$BOOLEAN`',
+                        'kind' => 'query',
+                        'example' => null,
+                      ],
+                      [
+                        'name' => 'after',
+                        'orig' => 'after',
+                        'type' => '`$STRING`',
+                        'kind' => 'query',
+                        'example' => null,
+                      ],
+                      [
+                        'name' => 'limit',
+                        'orig' => 'limit',
+                        'type' => '`$INTEGER`',
+                        'kind' => 'query',
+                        'example' => null,
+                      ],
+                    ],
+                  ],
                   'select' => [
                     'exist' => [
                       'active',
                       'after',
                       'limit',
                     ],
-                  ],
-                  'transform' => [
-                    'req' => '`reqdata`',
-                    'res' => '`body`',
-                  ],
-                  'parts' => [
-                    'tax-rates',
-                    '2026-09',
-                    'tax-rates',
                   ],
                 ],
               ],
@@ -1483,26 +1563,9 @@ class HubspotSettingsConfig
               'name' => 'load',
               'points' => [
                 [
-                  'args' => [
-                    'params' => [
-                      [
-                        'example' => null,
-                        'kind' => 'param',
-                        'name' => 'id',
-                        'orig' => 'tax_rate_group_id',
-                        'reqd' => true,
-                        'type' => '`$STRING`',
-                      ],
-                    ],
-                  ],
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/tax-rates/2026-09/tax-rates/{taxRateGroupId}',
-                  'rename' => [
-                    'param' => [
-                      'taxRateGroupId' => 'id',
-                    ],
-                  ],
                   'segments' => [
                     [
                       'lit' => 'tax-rates',
@@ -1517,20 +1580,37 @@ class HubspotSettingsConfig
                       'var' => 'id',
                     ],
                   ],
-                  'select' => [
-                    'exist' => [
-                      'id',
+                  'parts' => [
+                    'tax-rates',
+                    '2026-09',
+                    'tax-rates',
+                    '{id}',
+                  ],
+                  'rename' => [
+                    'param' => [
+                      'taxRateGroupId' => 'id',
                     ],
                   ],
                   'transform' => [
                     'req' => '`reqdata`',
                     'res' => '`body`',
                   ],
-                  'parts' => [
-                    'tax-rates',
-                    '2026-09',
-                    'tax-rates',
-                    '{id}',
+                  'args' => [
+                    'params' => [
+                      [
+                        'name' => 'id',
+                        'orig' => 'tax_rate_group_id',
+                        'type' => '`$STRING`',
+                        'kind' => 'param',
+                        'reqd' => true,
+                        'example' => null,
+                      ],
+                    ],
+                  ],
+                  'select' => [
+                    'exist' => [
+                      'id',
+                    ],
                   ],
                 ],
               ],
@@ -1543,58 +1623,67 @@ class HubspotSettingsConfig
         'teams_batch_response_team_member' => [
           'fields' => [
             [
-              'format' => 'date-time',
               'name' => 'completedAt',
+              'title' => 'Completed At',
+              'type' => '`$STRING`',
               'req' => true,
               'short' => 'The date and time when the batch operation was completed, in ISO 8601 format.',
-              'type' => '`$STRING`',
+              'format' => 'date-time',
             ],
             [
               'name' => 'errors',
-              'short' => 'An array of StandardError objects detailing any errors that occurred during the batch operation.',
+              'title' => 'Errors',
               'type' => '`$ARRAY`',
+              'short' => 'An array of StandardError objects detailing any errors that occurred during the batch operation.',
             ],
             [
               'name' => 'inputs',
+              'title' => 'Inputs',
+              'type' => '`$ARRAY`',
               'req' => true,
               'short' => 'An array of team member assignments, where each item specifies the details of a team member to be assigned.',
-              'type' => '`$ARRAY`',
             ],
             [
               'name' => 'links',
-              'short' => 'A map of link names to associated URIs providing additional information about the batch operation.',
+              'title' => 'Links',
               'type' => '`$OBJECT`',
+              'short' => 'A map of link names to associated URIs providing additional information about the batch operation.',
             ],
             [
-              'format' => 'int32',
               'name' => 'numErrors',
-              'short' => 'The number of errors encountered during the batch operation.',
+              'title' => 'Num Errors',
               'type' => '`$INTEGER`',
+              'short' => 'The number of errors encountered during the batch operation.',
+              'format' => 'int32',
             ],
             [
-              'format' => 'date-time',
               'name' => 'requestedAt',
-              'short' => 'The date and time when the batch operation was requested, in ISO 8601 format.',
+              'title' => 'Requested At',
               'type' => '`$STRING`',
+              'short' => 'The date and time when the batch operation was requested, in ISO 8601 format.',
+              'format' => 'date-time',
             ],
             [
               'name' => 'results',
+              'title' => 'Results',
+              'type' => '`$ARRAY`',
               'req' => true,
               'short' => 'An array of TeamMemberResponse objects representing the results of the batch operation.',
-              'type' => '`$ARRAY`',
             ],
             [
-              'format' => 'date-time',
               'name' => 'startedAt',
+              'title' => 'Started At',
+              'type' => '`$STRING`',
               'req' => true,
               'short' => 'The date and time when the batch operation started, in ISO 8601 format.',
-              'type' => '`$STRING`',
+              'format' => 'date-time',
             ],
             [
               'name' => 'status',
+              'title' => 'Status',
+              'type' => '`$STRING`',
               'req' => true,
               'short' => 'The current status of the batch operation.',
-              'type' => '`$STRING`',
             ],
           ],
           'name' => 'teams_batch_response_team_member',
@@ -1604,26 +1693,9 @@ class HubspotSettingsConfig
               'name' => 'create',
               'points' => [
                 [
-                  'args' => [
-                    'params' => [
-                      [
-                        'example' => null,
-                        'kind' => 'param',
-                        'name' => 'team_id',
-                        'orig' => 'team_id',
-                        'reqd' => true,
-                        'type' => '`$STRING`',
-                      ],
-                    ],
-                  ],
                   'kind' => 'http',
                   'method' => 'POST',
                   'orig' => '/settings/teams/2026-09/{teamId}/members/batch',
-                  'rename' => [
-                    'param' => [
-                      'teamId' => 'team_id',
-                    ],
-                  ],
                   'segments' => [
                     [
                       'lit' => 'settings',
@@ -1644,15 +1716,6 @@ class HubspotSettingsConfig
                       'lit' => 'batch',
                     ],
                   ],
-                  'select' => [
-                    'exist' => [
-                      'team_id',
-                    ],
-                  ],
-                  'transform' => [
-                    'req' => '`reqdata`',
-                    'res' => '`body`',
-                  ],
                   'parts' => [
                     'settings',
                     'teams',
@@ -1661,31 +1724,55 @@ class HubspotSettingsConfig
                     'members',
                     'batch',
                   ],
+                  'rename' => [
+                    'param' => [
+                      'teamId' => 'team_id',
+                    ],
+                  ],
+                  'transform' => [
+                    'req' => '`reqdata`',
+                    'res' => '`body`',
+                  ],
+                  'args' => [
+                    'params' => [
+                      [
+                        'name' => 'team_id',
+                        'orig' => 'team_id',
+                        'type' => '`$STRING`',
+                        'kind' => 'param',
+                        'reqd' => true,
+                        'example' => null,
+                      ],
+                    ],
+                  ],
+                  'select' => [
+                    'exist' => [
+                      'team_id',
+                    ],
+                  ],
                 ],
               ],
             ],
           ],
           'relations' => [
-            'ancestors' => [
-              [
-                '2026_09',
-              ],
-            ],
+            'ancestors' => [],
           ],
         ],
         'teams_collection_response_team_member_response_forward_paging' => [
           'fields' => [
             [
               'name' => 'type',
+              'title' => 'Type',
+              'type' => '`$STRING`',
               'req' => true,
               'short' => 'The type of membership the user has in the team.',
-              'type' => '`$STRING`',
             ],
             [
               'name' => 'userId',
+              'title' => 'User Id',
+              'type' => '`$STRING`',
               'req' => true,
               'short' => 'The unique identifier for the user, represented as a string.',
-              'type' => '`$STRING`',
             ],
           ],
           'name' => 'teams_collection_response_team_member_response_forward_paging',
@@ -1695,42 +1782,9 @@ class HubspotSettingsConfig
               'name' => 'list',
               'points' => [
                 [
-                  'args' => [
-                    'params' => [
-                      [
-                        'example' => null,
-                        'kind' => 'param',
-                        'name' => 'team_id',
-                        'orig' => 'team_id',
-                        'reqd' => true,
-                        'type' => '`$STRING`',
-                      ],
-                    ],
-                    'query' => [
-                      [
-                        'example' => null,
-                        'kind' => 'query',
-                        'name' => 'after',
-                        'orig' => 'after',
-                        'type' => '`$STRING`',
-                      ],
-                      [
-                        'example' => null,
-                        'kind' => 'query',
-                        'name' => 'limit',
-                        'orig' => 'limit',
-                        'type' => '`$INTEGER`',
-                      ],
-                    ],
-                  ],
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/settings/teams/2026-09/{teamId}/members',
-                  'rename' => [
-                    'param' => [
-                      'teamId' => 'team_id',
-                    ],
-                  ],
                   'segments' => [
                     [
                       'lit' => 'settings',
@@ -1748,17 +1802,6 @@ class HubspotSettingsConfig
                       'lit' => 'members',
                     ],
                   ],
-                  'select' => [
-                    'exist' => [
-                      'after',
-                      'limit',
-                      'team_id',
-                    ],
-                  ],
-                  'transform' => [
-                    'req' => '`reqdata`',
-                    'res' => '`body`',
-                  ],
                   'parts' => [
                     'settings',
                     'teams',
@@ -1766,36 +1809,79 @@ class HubspotSettingsConfig
                     '{team_id}',
                     'members',
                   ],
+                  'rename' => [
+                    'param' => [
+                      'teamId' => 'team_id',
+                    ],
+                  ],
+                  'transform' => [
+                    'req' => '`reqdata`',
+                    'res' => '`body`',
+                  ],
+                  'args' => [
+                    'params' => [
+                      [
+                        'name' => 'team_id',
+                        'orig' => 'team_id',
+                        'type' => '`$STRING`',
+                        'kind' => 'param',
+                        'reqd' => true,
+                        'example' => null,
+                      ],
+                    ],
+                    'query' => [
+                      [
+                        'name' => 'after',
+                        'orig' => 'after',
+                        'type' => '`$STRING`',
+                        'kind' => 'query',
+                        'example' => null,
+                      ],
+                      [
+                        'name' => 'limit',
+                        'orig' => 'limit',
+                        'type' => '`$INTEGER`',
+                        'kind' => 'query',
+                        'example' => null,
+                      ],
+                    ],
+                  ],
+                  'select' => [
+                    'exist' => [
+                      'after',
+                      'limit',
+                      'team_id',
+                    ],
+                  ],
                 ],
               ],
             ],
           ],
           'relations' => [
-            'ancestors' => [
-              [
-                '2026_09',
-              ],
-            ],
+            'ancestors' => [],
           ],
         ],
         'teams_collection_response_team_response_forward_paging' => [
           'fields' => [
             [
               'name' => 'id',
+              'title' => 'Id',
+              'type' => '`$STRING`',
               'req' => true,
               'short' => 'The unique identifier for the team, represented as a string.',
-              'type' => '`$STRING`',
             ],
             [
               'name' => 'name',
+              'title' => 'Name',
+              'type' => '`$STRING`',
               'req' => true,
               'short' => 'The name of the team, represented as a string.',
-              'type' => '`$STRING`',
             ],
             [
               'name' => 'parentTeamId',
-              'short' => 'The unique identifier of the parent team, if applicable, represented as a string.',
+              'title' => 'Parent Team Id',
               'type' => '`$STRING`',
+              'short' => 'The unique identifier of the parent team, if applicable, represented as a string.',
             ],
           ],
           'id' => [
@@ -1809,24 +1895,6 @@ class HubspotSettingsConfig
               'name' => 'list',
               'points' => [
                 [
-                  'args' => [
-                    'query' => [
-                      [
-                        'example' => null,
-                        'kind' => 'query',
-                        'name' => 'after',
-                        'orig' => 'after',
-                        'type' => '`$STRING`',
-                      ],
-                      [
-                        'example' => null,
-                        'kind' => 'query',
-                        'name' => 'limit',
-                        'orig' => 'limit',
-                        'type' => '`$INTEGER`',
-                      ],
-                    ],
-                  ],
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/settings/teams/2026-09',
@@ -1841,20 +1909,39 @@ class HubspotSettingsConfig
                       'lit' => '2026-09',
                     ],
                   ],
+                  'parts' => [
+                    'settings',
+                    'teams',
+                    '2026-09',
+                  ],
+                  'rename' => [],
+                  'transform' => [
+                    'req' => '`reqdata`',
+                    'res' => '`body`',
+                  ],
+                  'args' => [
+                    'query' => [
+                      [
+                        'name' => 'after',
+                        'orig' => 'after',
+                        'type' => '`$STRING`',
+                        'kind' => 'query',
+                        'example' => null,
+                      ],
+                      [
+                        'name' => 'limit',
+                        'orig' => 'limit',
+                        'type' => '`$INTEGER`',
+                        'kind' => 'query',
+                        'example' => null,
+                      ],
+                    ],
+                  ],
                   'select' => [
                     'exist' => [
                       'after',
                       'limit',
                     ],
-                  ],
-                  'transform' => [
-                    'req' => '`reqdata`',
-                    'res' => '`body`',
-                  ],
-                  'parts' => [
-                    'settings',
-                    'teams',
-                    '2026-09',
                   ],
                 ],
               ],
@@ -1868,24 +1955,29 @@ class HubspotSettingsConfig
           'fields' => [
             [
               'name' => 'id',
+              'title' => 'Id',
+              'type' => '`$STRING`',
               'req' => true,
               'short' => 'The unique identifier for the team, represented as a string.',
-              'type' => '`$STRING`',
             ],
             [
               'name' => 'members',
+              'title' => 'Members',
+              'type' => '`$ARRAY`',
               'req' => true,
               'short' => 'An array of team members to be assigned to the new team.',
-              'type' => '`$ARRAY`',
             ],
             [
               'name' => 'name',
+              'title' => 'Name',
+              'type' => '`$STRING`',
               'req' => true,
               'short' => 'The name of the team, represented as a string.',
-              'type' => '`$STRING`',
             ],
             [
               'name' => 'parentTeamId',
+              'title' => 'Parent Team Id',
+              'type' => '`$STRING`',
               'op' => [
                 'update' => [
                   'req' => true,
@@ -1893,7 +1985,6 @@ class HubspotSettingsConfig
                 ],
               ],
               'short' => 'The unique identifier of the parent team, if applicable, represented as a string.',
-              'type' => '`$STRING`',
             ],
           ],
           'id' => [
@@ -1907,7 +1998,6 @@ class HubspotSettingsConfig
               'name' => 'create',
               'points' => [
                 [
-                  'args' => [],
                   'kind' => 'http',
                   'method' => 'POST',
                   'orig' => '/settings/teams/2026-09',
@@ -1922,16 +2012,18 @@ class HubspotSettingsConfig
                       'lit' => '2026-09',
                     ],
                   ],
-                  'select' => [],
-                  'transform' => [
-                    'req' => '`reqdata`',
-                    'res' => '`body`',
-                  ],
                   'parts' => [
                     'settings',
                     'teams',
                     '2026-09',
                   ],
+                  'rename' => [],
+                  'transform' => [
+                    'req' => '`reqdata`',
+                    'res' => '`body`',
+                  ],
+                  'args' => [],
+                  'select' => [],
                 ],
               ],
             ],
@@ -1940,26 +2032,9 @@ class HubspotSettingsConfig
               'name' => 'load',
               'points' => [
                 [
-                  'args' => [
-                    'params' => [
-                      [
-                        'example' => null,
-                        'kind' => 'param',
-                        'name' => 'team_id',
-                        'orig' => 'team_id',
-                        'reqd' => true,
-                        'type' => '`$STRING`',
-                      ],
-                    ],
-                  ],
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/settings/teams/2026-09/{teamId}',
-                  'rename' => [
-                    'param' => [
-                      'teamId' => 'team_id',
-                    ],
-                  ],
                   'segments' => [
                     [
                       'lit' => 'settings',
@@ -1974,20 +2049,37 @@ class HubspotSettingsConfig
                       'var' => 'team_id',
                     ],
                   ],
-                  'select' => [
-                    'exist' => [
-                      'team_id',
+                  'parts' => [
+                    'settings',
+                    'teams',
+                    '2026-09',
+                    '{team_id}',
+                  ],
+                  'rename' => [
+                    'param' => [
+                      'teamId' => 'team_id',
                     ],
                   ],
                   'transform' => [
                     'req' => '`reqdata`',
                     'res' => '`body`',
                   ],
-                  'parts' => [
-                    'settings',
-                    'teams',
-                    '2026-09',
-                    '{team_id}',
+                  'args' => [
+                    'params' => [
+                      [
+                        'name' => 'team_id',
+                        'orig' => 'team_id',
+                        'type' => '`$STRING`',
+                        'kind' => 'param',
+                        'reqd' => true,
+                        'example' => null,
+                      ],
+                    ],
+                  ],
+                  'select' => [
+                    'exist' => [
+                      'team_id',
+                    ],
                   ],
                 ],
               ],
@@ -1997,26 +2089,9 @@ class HubspotSettingsConfig
               'name' => 'update',
               'points' => [
                 [
-                  'args' => [
-                    'params' => [
-                      [
-                        'example' => null,
-                        'kind' => 'param',
-                        'name' => 'team_id',
-                        'orig' => 'team_id',
-                        'reqd' => true,
-                        'type' => '`$STRING`',
-                      ],
-                    ],
-                  ],
                   'kind' => 'http',
                   'method' => 'PATCH',
                   'orig' => '/settings/teams/2026-09/{teamId}',
-                  'rename' => [
-                    'param' => [
-                      'teamId' => 'team_id',
-                    ],
-                  ],
                   'segments' => [
                     [
                       'lit' => 'settings',
@@ -2031,46 +2106,61 @@ class HubspotSettingsConfig
                       'var' => 'team_id',
                     ],
                   ],
-                  'select' => [
-                    'exist' => [
-                      'team_id',
-                    ],
-                  ],
-                  'transform' => [
-                    'req' => '`reqdata`',
-                    'res' => '`body`',
-                  ],
                   'parts' => [
                     'settings',
                     'teams',
                     '2026-09',
                     '{team_id}',
                   ],
+                  'rename' => [
+                    'param' => [
+                      'teamId' => 'team_id',
+                    ],
+                  ],
+                  'transform' => [
+                    'req' => '`reqdata`',
+                    'res' => '`body`',
+                  ],
+                  'args' => [
+                    'params' => [
+                      [
+                        'name' => 'team_id',
+                        'orig' => 'team_id',
+                        'type' => '`$STRING`',
+                        'kind' => 'param',
+                        'reqd' => true,
+                        'example' => null,
+                      ],
+                    ],
+                  ],
+                  'select' => [
+                    'exist' => [
+                      'team_id',
+                    ],
+                  ],
                 ],
               ],
             ],
           ],
           'relations' => [
-            'ancestors' => [
-              [
-                '2026_09',
-              ],
-            ],
+            'ancestors' => [],
           ],
         ],
         'teams_team_member' => [
           'fields' => [
             [
               'name' => 'type',
+              'title' => 'Type',
+              'type' => '`$STRING`',
               'req' => true,
               'short' => 'The type of team member assignment.',
-              'type' => '`$STRING`',
             ],
             [
               'name' => 'userId',
+              'title' => 'User Id',
+              'type' => '`$STRING`',
               'req' => true,
               'short' => 'The unique identifier for the user being assigned to the team.',
-              'type' => '`$STRING`',
             ],
           ],
           'name' => 'teams_team_member',
@@ -2080,26 +2170,9 @@ class HubspotSettingsConfig
               'name' => 'create',
               'points' => [
                 [
-                  'args' => [
-                    'params' => [
-                      [
-                        'example' => null,
-                        'kind' => 'param',
-                        'name' => 'team_id',
-                        'orig' => 'team_id',
-                        'reqd' => true,
-                        'type' => '`$STRING`',
-                      ],
-                    ],
-                  ],
                   'kind' => 'http',
                   'method' => 'POST',
                   'orig' => '/settings/teams/2026-09/{teamId}/members',
-                  'rename' => [
-                    'param' => [
-                      'teamId' => 'team_id',
-                    ],
-                  ],
                   'segments' => [
                     [
                       'lit' => 'settings',
@@ -2117,15 +2190,6 @@ class HubspotSettingsConfig
                       'lit' => 'members',
                     ],
                   ],
-                  'select' => [
-                    'exist' => [
-                      'team_id',
-                    ],
-                  ],
-                  'transform' => [
-                    'req' => '`reqdata`',
-                    'res' => '`body`',
-                  ],
                   'parts' => [
                     'settings',
                     'teams',
@@ -2133,16 +2197,104 @@ class HubspotSettingsConfig
                     '{team_id}',
                     'members',
                   ],
+                  'rename' => [
+                    'param' => [
+                      'teamId' => 'team_id',
+                    ],
+                  ],
+                  'transform' => [
+                    'req' => '`reqdata`',
+                    'res' => '`body`',
+                  ],
+                  'args' => [
+                    'params' => [
+                      [
+                        'name' => 'team_id',
+                        'orig' => 'team_id',
+                        'type' => '`$STRING`',
+                        'kind' => 'param',
+                        'reqd' => true,
+                        'example' => null,
+                      ],
+                    ],
+                  ],
+                  'select' => [
+                    'exist' => [
+                      'team_id',
+                    ],
+                  ],
                 ],
               ],
             ],
           ],
           'relations' => [
-            'ancestors' => [
-              [
-                '2026_09',
+            'ancestors' => [],
+          ],
+        ],
+        'unsupported_currency' => [
+          'fields' => [
+            [
+              'name' => 'currencyCode',
+              'title' => 'Currency Code',
+              'type' => '`$STRING`',
+              'req' => true,
+              'short' => 'The three-letter code representing a specific currency (ex.',
+            ],
+            [
+              'name' => 'currencyName',
+              'title' => 'Currency Name',
+              'type' => '`$STRING`',
+              'req' => true,
+              'short' => 'The full name of the currency (ex.',
+            ],
+          ],
+          'name' => 'unsupported_currency',
+          'op' => [
+            'list' => [
+              'input' => 'data',
+              'name' => 'list',
+              'points' => [
+                [
+                  'kind' => 'http',
+                  'method' => 'GET',
+                  'orig' => '/settings/currencies/2026-09/central-fx-rates/unsupported-currencies',
+                  'segments' => [
+                    [
+                      'lit' => 'settings',
+                    ],
+                    [
+                      'lit' => 'currencies',
+                    ],
+                    [
+                      'lit' => '2026-09',
+                    ],
+                    [
+                      'lit' => 'central-fx-rates',
+                    ],
+                    [
+                      'lit' => 'unsupported-currencies',
+                    ],
+                  ],
+                  'parts' => [
+                    'settings',
+                    'currencies',
+                    '2026-09',
+                    'central-fx-rates',
+                    'unsupported-currencies',
+                  ],
+                  'rename' => [],
+                  'transform' => [
+                    'req' => '`reqdata`',
+                    'res' => '`body.results`',
+                  ],
+                  'args' => [],
+                  'select' => [],
+                ],
               ],
             ],
+          ],
+          'relations' => [
+            'ancestors' => [],
           ],
         ],
         'user' => [
@@ -2154,35 +2306,9 @@ class HubspotSettingsConfig
               'name' => 'remove',
               'points' => [
                 [
-                  'args' => [
-                    'params' => [
-                      [
-                        'example' => null,
-                        'kind' => 'param',
-                        'name' => 'user_id',
-                        'orig' => 'user_id',
-                        'reqd' => true,
-                        'type' => '`$STRING`',
-                      ],
-                    ],
-                    'query' => [
-                      [
-                        'example' => null,
-                        'kind' => 'query',
-                        'name' => 'id_property',
-                        'orig' => 'id_property',
-                        'type' => '`$STRING`',
-                      ],
-                    ],
-                  ],
                   'kind' => 'http',
                   'method' => 'DELETE',
                   'orig' => '/settings/users/2026-09/{userId}',
-                  'rename' => [
-                    'param' => [
-                      'userId' => 'user_id',
-                    ],
-                  ],
                   'segments' => [
                     [
                       'lit' => 'settings',
@@ -2197,67 +2323,231 @@ class HubspotSettingsConfig
                       'var' => 'user_id',
                     ],
                   ],
-                  'select' => [
-                    'exist' => [
-                      'id_property',
-                      'user_id',
-                    ],
-                  ],
-                  'transform' => [
-                    'req' => '`reqdata`',
-                    'res' => '`body`',
-                  ],
                   'parts' => [
                     'settings',
                     'users',
                     '2026-09',
                     '{user_id}',
                   ],
+                  'rename' => [
+                    'param' => [
+                      'userId' => 'user_id',
+                    ],
+                  ],
+                  'transform' => [
+                    'req' => '`reqdata`',
+                    'res' => '`body`',
+                  ],
+                  'args' => [
+                    'params' => [
+                      [
+                        'name' => 'user_id',
+                        'orig' => 'user_id',
+                        'type' => '`$STRING`',
+                        'kind' => 'param',
+                        'reqd' => true,
+                        'example' => null,
+                      ],
+                    ],
+                    'query' => [
+                      [
+                        'name' => 'id_property',
+                        'orig' => 'id_property',
+                        'type' => '`$STRING`',
+                        'kind' => 'query',
+                        'example' => null,
+                      ],
+                    ],
+                  ],
+                  'select' => [
+                    'exist' => [
+                      'id_property',
+                      'user_id',
+                    ],
+                  ],
                 ],
               ],
             ],
           ],
           'relations' => [
-            'ancestors' => [
-              [
-                '2026_09',
-              ],
-            ],
+            'ancestors' => [],
           ],
         ],
-        'user_provisioning_collection_response_public_permission_set_no' => [
+        'user_provisioning_collection_response_public_user_forward_paging' => [
           'fields' => [
             [
+              'name' => 'email',
+              'title' => 'Email',
+              'type' => '`$STRING`',
+              'req' => true,
+              'short' => 'The email address of the user.',
+            ],
+            [
+              'name' => 'firstName',
+              'title' => 'First Name',
+              'type' => '`$STRING`',
+              'short' => 'The first name of the user, represented as a string.',
+            ],
+            [
               'name' => 'id',
-              'req' => true,
-              'short' => 'The unique identifier for the permission set.',
+              'title' => 'Id',
               'type' => '`$STRING`',
+              'req' => true,
+              'short' => 'The unique identifier for the user, represented as a string.',
             ],
             [
-              'name' => 'name',
-              'req' => true,
-              'short' => 'The name of the permission set.',
+              'name' => 'lastName',
+              'title' => 'Last Name',
               'type' => '`$STRING`',
+              'short' => 'The last name of the user, represented as a string.',
             ],
             [
-              'name' => 'requiresBillingWrite',
+              'name' => 'primaryTeamId',
+              'title' => 'Primary Team Id',
+              'type' => '`$STRING`',
+              'short' => 'The ID of the primary team to which the user belongs, represented as a string.',
+            ],
+            [
+              'name' => 'roleId',
+              'title' => 'Role Id',
+              'type' => '`$STRING`',
+              'short' => 'A string representing a single role ID assigned to the user.',
+            ],
+            [
+              'name' => 'roleIds',
+              'title' => 'Role Ids',
+              'type' => '`$ARRAY`',
               'req' => true,
-              'short' => 'A boolean indicating whether the permission set requires billing write access.',
+              'short' => 'An array of strings representing the IDs of the roles assigned to the user.',
+            ],
+            [
+              'name' => 'seatNames',
+              'title' => 'Seat Names',
+              'type' => '`$ARRAY`',
+              'short' => 'An array of strings representing the names of seats assigned to the user.',
+            ],
+            [
+              'name' => 'secondaryTeamIds',
+              'title' => 'Secondary Team Ids',
+              'type' => '`$ARRAY`',
+              'short' => 'An array of strings representing the IDs of secondary teams to which the user is associated.',
+            ],
+            [
+              'name' => 'sendWelcomeEmail',
+              'title' => 'Send Welcome Email',
               'type' => '`$BOOLEAN`',
+              'short' => 'A boolean indicating whether a welcome email should be sent to the user.',
+            ],
+            [
+              'name' => 'superAdmin',
+              'title' => 'Super Admin',
+              'type' => '`$BOOLEAN`',
+              'req' => true,
+              'short' => 'A boolean indicating whether the user has super admin privileges.',
             ],
           ],
           'id' => [
             'field' => 'id',
             'name' => 'id',
           ],
-          'name' => 'user_provisioning_collection_response_public_permission_set_no',
+          'name' => 'user_provisioning_collection_response_public_user_forward_paging',
           'op' => [
             'list' => [
               'input' => 'data',
               'name' => 'list',
               'points' => [
                 [
-                  'args' => [],
+                  'kind' => 'http',
+                  'method' => 'GET',
+                  'orig' => '/settings/users/2026-09',
+                  'segments' => [
+                    [
+                      'lit' => 'settings',
+                    ],
+                    [
+                      'lit' => 'users',
+                    ],
+                    [
+                      'lit' => '2026-09',
+                    ],
+                  ],
+                  'parts' => [
+                    'settings',
+                    'users',
+                    '2026-09',
+                  ],
+                  'rename' => [],
+                  'transform' => [
+                    'req' => '`reqdata`',
+                    'res' => '`body`',
+                  ],
+                  'args' => [
+                    'query' => [
+                      [
+                        'name' => 'after',
+                        'orig' => 'after',
+                        'type' => '`$STRING`',
+                        'kind' => 'query',
+                        'example' => null,
+                      ],
+                      [
+                        'name' => 'limit',
+                        'orig' => 'limit',
+                        'type' => '`$INTEGER`',
+                        'kind' => 'query',
+                        'example' => null,
+                      ],
+                    ],
+                  ],
+                  'select' => [
+                    'exist' => [
+                      'after',
+                      'limit',
+                    ],
+                  ],
+                ],
+              ],
+            ],
+          ],
+          'relations' => [
+            'ancestors' => [],
+          ],
+        ],
+        'user_provisioning_public_permission_set' => [
+          'fields' => [
+            [
+              'name' => 'id',
+              'title' => 'Id',
+              'type' => '`$STRING`',
+              'req' => true,
+              'short' => 'The unique identifier for the permission set.',
+            ],
+            [
+              'name' => 'name',
+              'title' => 'Name',
+              'type' => '`$STRING`',
+              'req' => true,
+              'short' => 'The name of the permission set.',
+            ],
+            [
+              'name' => 'requiresBillingWrite',
+              'title' => 'Requires Billing Write',
+              'type' => '`$BOOLEAN`',
+              'req' => true,
+              'short' => 'A boolean indicating whether the permission set requires billing write access.',
+            ],
+          ],
+          'id' => [
+            'field' => 'id',
+            'name' => 'id',
+          ],
+          'name' => 'user_provisioning_public_permission_set',
+          'op' => [
+            'list' => [
+              'input' => 'data',
+              'name' => 'list',
+              'points' => [
+                [
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/settings/users/2026-09/roles',
@@ -2275,17 +2565,19 @@ class HubspotSettingsConfig
                       'lit' => 'roles',
                     ],
                   ],
-                  'select' => [],
-                  'transform' => [
-                    'req' => '`reqdata`',
-                    'res' => '`body.results`',
-                  ],
                   'parts' => [
                     'settings',
                     'users',
                     '2026-09',
                     'roles',
                   ],
+                  'rename' => [],
+                  'transform' => [
+                    'req' => '`reqdata`',
+                    'res' => '`body.results`',
+                  ],
+                  'args' => [],
+                  'select' => [],
                 ],
               ],
             ],
@@ -2294,34 +2586,36 @@ class HubspotSettingsConfig
             'ancestors' => [],
           ],
         ],
-        'user_provisioning_collection_response_public_seat_no_paging' => [
+        'user_provisioning_public_seat' => [
           'fields' => [
             [
               'name' => 'description',
-              'short' => 'A string providing additional details about the seat.',
+              'title' => 'Description',
               'type' => '`$STRING`',
+              'short' => 'A string providing additional details about the seat.',
             ],
             [
               'name' => 'name',
+              'title' => 'Name',
+              'type' => '`$STRING`',
               'req' => true,
               'short' => 'The name of the seat.',
-              'type' => '`$STRING`',
             ],
             [
-              'format' => 'int32',
               'name' => 'remainingSeats',
-              'short' => 'An integer indicating the number of seats that are still available.',
+              'title' => 'Remaining Seats',
               'type' => '`$INTEGER`',
+              'short' => 'An integer indicating the number of seats that are still available.',
+              'format' => 'int32',
             ],
           ],
-          'name' => 'user_provisioning_collection_response_public_seat_no_paging',
+          'name' => 'user_provisioning_public_seat',
           'op' => [
             'list' => [
               'input' => 'data',
               'name' => 'list',
               'points' => [
                 [
-                  'args' => [],
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/settings/users/2026-09/seats',
@@ -2339,17 +2633,19 @@ class HubspotSettingsConfig
                       'lit' => 'seats',
                     ],
                   ],
-                  'select' => [],
-                  'transform' => [
-                    'req' => '`reqdata`',
-                    'res' => '`body.results`',
-                  ],
                   'parts' => [
                     'settings',
                     'users',
                     '2026-09',
                     'seats',
                   ],
+                  'rename' => [],
+                  'transform' => [
+                    'req' => '`reqdata`',
+                    'res' => '`body.results`',
+                  ],
+                  'args' => [],
+                  'select' => [],
                 ],
               ],
             ],
@@ -2358,45 +2654,48 @@ class HubspotSettingsConfig
             'ancestors' => [],
           ],
         ],
-        'user_provisioning_collection_response_public_team_no_paging' => [
+        'user_provisioning_public_team' => [
           'fields' => [
             [
               'name' => 'id',
+              'title' => 'Id',
+              'type' => '`$STRING`',
               'req' => true,
               'short' => 'The unique identifier for the team, represented as a string.',
-              'type' => '`$STRING`',
             ],
             [
               'name' => 'name',
+              'title' => 'Name',
+              'type' => '`$STRING`',
               'req' => true,
               'short' => 'The name of the team, represented as a string.',
-              'type' => '`$STRING`',
             ],
             [
               'name' => 'secondaryUserIds',
+              'title' => 'Secondary User Ids',
+              'type' => '`$ARRAY`',
               'req' => true,
               'short' => 'An array of strings representing the IDs of users who are secondary members of the team.',
-              'type' => '`$ARRAY`',
             ],
             [
               'name' => 'userIds',
+              'title' => 'User Ids',
+              'type' => '`$ARRAY`',
               'req' => true,
               'short' => 'An array of strings representing the IDs of users who are primary members of the team.',
-              'type' => '`$ARRAY`',
             ],
           ],
           'id' => [
             'field' => 'id',
             'name' => 'id',
           ],
-          'name' => 'user_provisioning_collection_response_public_team_no_paging',
+          'name' => 'user_provisioning_public_team',
           'op' => [
             'list' => [
               'input' => 'data',
               'name' => 'list',
               'points' => [
                 [
-                  'args' => [],
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/settings/users/2026-09/teams',
@@ -2414,145 +2713,19 @@ class HubspotSettingsConfig
                       'lit' => 'teams',
                     ],
                   ],
-                  'select' => [],
-                  'transform' => [
-                    'req' => '`reqdata`',
-                    'res' => '`body.results`',
-                  ],
                   'parts' => [
                     'settings',
                     'users',
                     '2026-09',
                     'teams',
                   ],
-                ],
-              ],
-            ],
-          ],
-          'relations' => [
-            'ancestors' => [],
-          ],
-        ],
-        'user_provisioning_collection_response_public_user_forward_paging' => [
-          'fields' => [
-            [
-              'name' => 'email',
-              'req' => true,
-              'short' => 'The email address of the user.',
-              'type' => '`$STRING`',
-            ],
-            [
-              'name' => 'firstName',
-              'short' => 'The first name of the user, represented as a string.',
-              'type' => '`$STRING`',
-            ],
-            [
-              'name' => 'id',
-              'req' => true,
-              'short' => 'The unique identifier for the user, represented as a string.',
-              'type' => '`$STRING`',
-            ],
-            [
-              'name' => 'lastName',
-              'short' => 'The last name of the user, represented as a string.',
-              'type' => '`$STRING`',
-            ],
-            [
-              'name' => 'primaryTeamId',
-              'short' => 'The ID of the primary team to which the user belongs, represented as a string.',
-              'type' => '`$STRING`',
-            ],
-            [
-              'name' => 'roleId',
-              'short' => 'A string representing a single role ID assigned to the user.',
-              'type' => '`$STRING`',
-            ],
-            [
-              'name' => 'roleIds',
-              'req' => true,
-              'short' => 'An array of strings representing the IDs of the roles assigned to the user.',
-              'type' => '`$ARRAY`',
-            ],
-            [
-              'name' => 'seatNames',
-              'short' => 'An array of strings representing the names of seats assigned to the user.',
-              'type' => '`$ARRAY`',
-            ],
-            [
-              'name' => 'secondaryTeamIds',
-              'short' => 'An array of strings representing the IDs of secondary teams to which the user is associated.',
-              'type' => '`$ARRAY`',
-            ],
-            [
-              'name' => 'sendWelcomeEmail',
-              'short' => 'A boolean indicating whether a welcome email should be sent to the user.',
-              'type' => '`$BOOLEAN`',
-            ],
-            [
-              'name' => 'superAdmin',
-              'req' => true,
-              'short' => 'A boolean indicating whether the user has super admin privileges.',
-              'type' => '`$BOOLEAN`',
-            ],
-          ],
-          'id' => [
-            'field' => 'id',
-            'name' => 'id',
-          ],
-          'name' => 'user_provisioning_collection_response_public_user_forward_paging',
-          'op' => [
-            'list' => [
-              'input' => 'data',
-              'name' => 'list',
-              'points' => [
-                [
-                  'args' => [
-                    'query' => [
-                      [
-                        'example' => null,
-                        'kind' => 'query',
-                        'name' => 'after',
-                        'orig' => 'after',
-                        'type' => '`$STRING`',
-                      ],
-                      [
-                        'example' => null,
-                        'kind' => 'query',
-                        'name' => 'limit',
-                        'orig' => 'limit',
-                        'type' => '`$INTEGER`',
-                      ],
-                    ],
-                  ],
-                  'kind' => 'http',
-                  'method' => 'GET',
-                  'orig' => '/settings/users/2026-09',
-                  'segments' => [
-                    [
-                      'lit' => 'settings',
-                    ],
-                    [
-                      'lit' => 'users',
-                    ],
-                    [
-                      'lit' => '2026-09',
-                    ],
-                  ],
-                  'select' => [
-                    'exist' => [
-                      'after',
-                      'limit',
-                    ],
-                  ],
+                  'rename' => [],
                   'transform' => [
                     'req' => '`reqdata`',
-                    'res' => '`body`',
+                    'res' => '`body.results`',
                   ],
-                  'parts' => [
-                    'settings',
-                    'users',
-                    '2026-09',
-                  ],
+                  'args' => [],
+                  'select' => [],
                 ],
               ],
             ],
@@ -2565,54 +2738,65 @@ class HubspotSettingsConfig
           'fields' => [
             [
               'name' => 'email',
+              'title' => 'Email',
+              'type' => '`$STRING`',
               'req' => true,
               'short' => 'The email address of the user.',
-              'type' => '`$STRING`',
             ],
             [
               'name' => 'firstName',
-              'short' => 'The first name of the user, represented as a string.',
+              'title' => 'First Name',
               'type' => '`$STRING`',
+              'short' => 'The first name of the user, represented as a string.',
             ],
             [
               'name' => 'id',
+              'title' => 'Id',
+              'type' => '`$STRING`',
               'req' => true,
               'short' => 'The unique identifier for the user, represented as a string.',
-              'type' => '`$STRING`',
             ],
             [
               'name' => 'lastName',
-              'short' => 'The last name of the user, represented as a string.',
+              'title' => 'Last Name',
               'type' => '`$STRING`',
+              'short' => 'The last name of the user, represented as a string.',
             ],
             [
               'name' => 'primaryTeamId',
-              'short' => 'The ID of the primary team to which the user belongs, represented as a string.',
+              'title' => 'Primary Team Id',
               'type' => '`$STRING`',
+              'short' => 'The ID of the primary team to which the user belongs, represented as a string.',
             ],
             [
               'name' => 'roleId',
-              'short' => 'A string representing a single role ID assigned to the user.',
+              'title' => 'Role Id',
               'type' => '`$STRING`',
+              'short' => 'A string representing a single role ID assigned to the user.',
             ],
             [
               'name' => 'roleIds',
+              'title' => 'Role Ids',
+              'type' => '`$ARRAY`',
               'req' => true,
               'short' => 'An array of strings representing the IDs of the roles assigned to the user.',
-              'type' => '`$ARRAY`',
             ],
             [
               'name' => 'seatNames',
-              'short' => 'An array of strings representing the names of seats assigned to the user.',
+              'title' => 'Seat Names',
               'type' => '`$ARRAY`',
+              'short' => 'An array of strings representing the names of seats assigned to the user.',
             ],
             [
               'name' => 'secondaryTeamIds',
-              'short' => 'An array of strings representing the IDs of secondary teams to which the user is associated.',
+              'title' => 'Secondary Team Ids',
               'type' => '`$ARRAY`',
+              'short' => 'An array of strings representing the IDs of secondary teams to which the user is associated.',
             ],
             [
               'name' => 'sendWelcomeEmail',
+              'title' => 'Send Welcome Email',
+              'type' => '`$BOOLEAN`',
               'op' => [
                 'create' => [
                   'req' => true,
@@ -2620,13 +2804,13 @@ class HubspotSettingsConfig
                 ],
               ],
               'short' => 'A boolean indicating whether a welcome email should be sent to the user.',
-              'type' => '`$BOOLEAN`',
             ],
             [
               'name' => 'superAdmin',
+              'title' => 'Super Admin',
+              'type' => '`$BOOLEAN`',
               'req' => true,
               'short' => 'A boolean indicating whether the user has super admin privileges.',
-              'type' => '`$BOOLEAN`',
             ],
           ],
           'id' => [
@@ -2640,7 +2824,6 @@ class HubspotSettingsConfig
               'name' => 'create',
               'points' => [
                 [
-                  'args' => [],
                   'kind' => 'http',
                   'method' => 'POST',
                   'orig' => '/settings/users/2026-09',
@@ -2655,16 +2838,18 @@ class HubspotSettingsConfig
                       'lit' => '2026-09',
                     ],
                   ],
-                  'select' => [],
-                  'transform' => [
-                    'req' => '`reqdata`',
-                    'res' => '`body`',
-                  ],
                   'parts' => [
                     'settings',
                     'users',
                     '2026-09',
                   ],
+                  'rename' => [],
+                  'transform' => [
+                    'req' => '`reqdata`',
+                    'res' => '`body`',
+                  ],
+                  'args' => [],
+                  'select' => [],
                 ],
               ],
             ],
@@ -2673,35 +2858,9 @@ class HubspotSettingsConfig
               'name' => 'load',
               'points' => [
                 [
-                  'args' => [
-                    'params' => [
-                      [
-                        'example' => null,
-                        'kind' => 'param',
-                        'name' => 'user_id',
-                        'orig' => 'user_id',
-                        'reqd' => true,
-                        'type' => '`$STRING`',
-                      ],
-                    ],
-                    'query' => [
-                      [
-                        'example' => null,
-                        'kind' => 'query',
-                        'name' => 'id_property',
-                        'orig' => 'id_property',
-                        'type' => '`$STRING`',
-                      ],
-                    ],
-                  ],
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/settings/users/2026-09/{userId}',
-                  'rename' => [
-                    'param' => [
-                      'userId' => 'user_id',
-                    ],
-                  ],
                   'segments' => [
                     [
                       'lit' => 'settings',
@@ -2716,21 +2875,47 @@ class HubspotSettingsConfig
                       'var' => 'user_id',
                     ],
                   ],
-                  'select' => [
-                    'exist' => [
-                      'id_property',
-                      'user_id',
+                  'parts' => [
+                    'settings',
+                    'users',
+                    '2026-09',
+                    '{user_id}',
+                  ],
+                  'rename' => [
+                    'param' => [
+                      'userId' => 'user_id',
                     ],
                   ],
                   'transform' => [
                     'req' => '`reqdata`',
                     'res' => '`body`',
                   ],
-                  'parts' => [
-                    'settings',
-                    'users',
-                    '2026-09',
-                    '{user_id}',
+                  'args' => [
+                    'params' => [
+                      [
+                        'name' => 'user_id',
+                        'orig' => 'user_id',
+                        'type' => '`$STRING`',
+                        'kind' => 'param',
+                        'reqd' => true,
+                        'example' => null,
+                      ],
+                    ],
+                    'query' => [
+                      [
+                        'name' => 'id_property',
+                        'orig' => 'id_property',
+                        'type' => '`$STRING`',
+                        'kind' => 'query',
+                        'example' => null,
+                      ],
+                    ],
+                  ],
+                  'select' => [
+                    'exist' => [
+                      'id_property',
+                      'user_id',
+                    ],
                   ],
                 ],
               ],
@@ -2740,35 +2925,9 @@ class HubspotSettingsConfig
               'name' => 'update',
               'points' => [
                 [
-                  'args' => [
-                    'params' => [
-                      [
-                        'example' => null,
-                        'kind' => 'param',
-                        'name' => 'user_id',
-                        'orig' => 'user_id',
-                        'reqd' => true,
-                        'type' => '`$STRING`',
-                      ],
-                    ],
-                    'query' => [
-                      [
-                        'example' => null,
-                        'kind' => 'query',
-                        'name' => 'id_property',
-                        'orig' => 'id_property',
-                        'type' => '`$STRING`',
-                      ],
-                    ],
-                  ],
                   'kind' => 'http',
                   'method' => 'PUT',
                   'orig' => '/settings/users/2026-09/{userId}',
-                  'rename' => [
-                    'param' => [
-                      'userId' => 'user_id',
-                    ],
-                  ],
                   'segments' => [
                     [
                       'lit' => 'settings',
@@ -2783,32 +2942,54 @@ class HubspotSettingsConfig
                       'var' => 'user_id',
                     ],
                   ],
-                  'select' => [
-                    'exist' => [
-                      'id_property',
-                      'user_id',
-                    ],
-                  ],
-                  'transform' => [
-                    'req' => '`reqdata`',
-                    'res' => '`body`',
-                  ],
                   'parts' => [
                     'settings',
                     'users',
                     '2026-09',
                     '{user_id}',
                   ],
+                  'rename' => [
+                    'param' => [
+                      'userId' => 'user_id',
+                    ],
+                  ],
+                  'transform' => [
+                    'req' => '`reqdata`',
+                    'res' => '`body`',
+                  ],
+                  'args' => [
+                    'params' => [
+                      [
+                        'name' => 'user_id',
+                        'orig' => 'user_id',
+                        'type' => '`$STRING`',
+                        'kind' => 'param',
+                        'reqd' => true,
+                        'example' => null,
+                      ],
+                    ],
+                    'query' => [
+                      [
+                        'name' => 'id_property',
+                        'orig' => 'id_property',
+                        'type' => '`$STRING`',
+                        'kind' => 'query',
+                        'example' => null,
+                      ],
+                    ],
+                  ],
+                  'select' => [
+                    'exist' => [
+                      'id_property',
+                      'user_id',
+                    ],
+                  ],
                 ],
               ],
             ],
           ],
           'relations' => [
-            'ancestors' => [
-              [
-                '2026_09',
-              ],
-            ],
+            'ancestors' => [],
           ],
         ],
       ],

@@ -1,0 +1,59 @@
+# BasicExchangeRateFlow
+
+main: kit: flow: BasicExchangeRateFlow:
+{
+  entity: "exchange_rate",
+  kind: "basic",
+  name: "BasicExchangeRateFlow",
+  step: [
+    {
+      i: {
+        ref: "exchange_rate_ref01"
+      }
+
+      o: "create"
+    }
+
+    {
+      i: {
+        ref: "exchange_rate_ref01",
+        srcdatavar: "exchange_rate_ref01_data",
+        suffix: "_up0",
+        textfield: "createdAt"
+      }
+
+      o: "update",
+      s: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-exchange_rate_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      i: {
+        ref: "exchange_rate_ref01",
+        srcdatavar: "exchange_rate_ref01_data",
+        suffix: "_dt0"
+      }
+
+      m: {
+        id: "exchange_rate01"
+      }
+
+      o: "load",
+      v: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-exchange_rate_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicExchangeRateFlow"
+}

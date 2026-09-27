@@ -1,7 +1,7 @@
 # Typed models for the HubspotSettings SDK.
 #
-# GENERATED from the API model: main.kit.entity.<e>.fields[] and per-op
-# params (op.<name>.points[].args.params[]). Field/param types come from the
+# GENERATED from the API model: main.kit.entity.<e>.fields{} and per-op
+# params (op.<name>.points[].g.params[]). Field/param types come from the
 # canonical type sentinels via @voxgig/sdkgen canonToType (source of truth:
 # @voxgig/apidef VALID_CANON). Do not edit by hand.
 #
@@ -14,6 +14,30 @@
 from __future__ import annotations
 
 from typing import TypedDict, Any
+
+
+class AddCurrency(TypedDict):
+    conversionRate: float
+    createdAt: str
+    currencyCode: str
+    effectiveAt: str
+    fromCurrencyCode: str
+    id: str
+    toCurrencyCode: str
+    updatedAt: str
+    visibleInUI: bool
+
+
+class AddCurrencyCreateData(TypedDict):
+    conversionRate: float
+    createdAt: str
+    currencyCode: str
+    effectiveAt: str
+    fromCurrencyCode: str
+    id: str
+    toCurrencyCode: str
+    updatedAt: str
+    visibleInUI: bool
 
 
 class Basic(TypedDict):
@@ -29,12 +53,76 @@ class BasicRemoveMatch(BasicRemoveMatchRequired, total=False):
     type: str
 
 
+class Code(TypedDict):
+    currencyCode: str
+    currencyName: str
+
+
+class CodeListMatch(TypedDict, total=False):
+    currencyCode: str
+    currencyName: str
+
+
+class Current(TypedDict):
+    conversionRate: float
+    createdAt: str
+    effectiveAt: str
+    fromCurrencyCode: str
+    id: str
+    toCurrencyCode: str
+    updatedAt: str
+    visibleInUI: bool
+
+
+class CurrentListMatch(TypedDict, total=False):
+    conversionRate: float
+    createdAt: str
+    effectiveAt: str
+    fromCurrencyCode: str
+    id: str
+    toCurrencyCode: str
+    updatedAt: str
+    visibleInUI: bool
+
+
 class ExchangeRate(TypedDict):
-    pass
+    conversionRate: float
+    createdAt: str
+    effectiveAt: str
+    fromCurrencyCode: str
+    id: str
+    toCurrencyCode: str
+    updatedAt: str
+    visibleInUI: bool
+
+
+class ExchangeRateLoadMatch(TypedDict):
+    id: str
 
 
 class ExchangeRateCreateData(TypedDict):
-    pass
+    conversionRate: float
+    createdAt: str
+    effectiveAt: str
+    fromCurrencyCode: str
+    id: str
+    toCurrencyCode: str
+    updatedAt: str
+    visibleInUI: bool
+
+
+class ExchangeRateUpdateDataRequired(TypedDict):
+    id: str
+
+
+class ExchangeRateUpdateData(ExchangeRateUpdateDataRequired, total=False):
+    conversionRate: float
+    createdAt: str
+    effectiveAt: str
+    fromCurrencyCode: str
+    toCurrencyCode: str
+    updatedAt: str
+    visibleInUI: bool
 
 
 class MulticurrencyBatchResponseExchangeRateRequired(TypedDict):
@@ -71,16 +159,6 @@ class MulticurrencyCentralExchangeRatesInformationLoadMatch(TypedDict, total=Fal
     centralExchangeRatesEnabled: bool
 
 
-class MulticurrencyCollectionResponseCurrencyCodeInfoNoPaging(TypedDict):
-    currencyCode: str
-    currencyName: str
-
-
-class MulticurrencyCollectionResponseCurrencyCodeInfoNoPagingListMatch(TypedDict, total=False):
-    currencyCode: str
-    currencyName: str
-
-
 class MulticurrencyCollectionResponseExchangeRateForwardPaging(TypedDict):
     conversionRate: float
     createdAt: str
@@ -97,28 +175,6 @@ class MulticurrencyCollectionResponseExchangeRateForwardPagingListMatch(TypedDic
     from_currency_code: str
     limit: int
     to_currency_code: str
-
-
-class MulticurrencyCollectionResponseExchangeRateNoPaging(TypedDict):
-    conversionRate: float
-    createdAt: str
-    effectiveAt: str
-    fromCurrencyCode: str
-    id: str
-    toCurrencyCode: str
-    updatedAt: str
-    visibleInUI: bool
-
-
-class MulticurrencyCollectionResponseExchangeRateNoPagingListMatch(TypedDict, total=False):
-    conversionRate: float
-    createdAt: str
-    effectiveAt: str
-    fromCurrencyCode: str
-    id: str
-    toCurrencyCode: str
-    updatedAt: str
-    visibleInUI: bool
 
 
 class MulticurrencyCompanyCurrency(TypedDict):
@@ -140,49 +196,6 @@ class MulticurrencyCompanyCurrencyUpdateData(TypedDict, total=False):
     createdAt: str
     currencyCode: str
     id: str
-
-
-class MulticurrencyExchangeRate(TypedDict):
-    conversionRate: float
-    createdAt: str
-    currencyCode: str
-    effectiveAt: str
-    fromCurrencyCode: str
-    id: str
-    toCurrencyCode: str
-    updatedAt: str
-    visibleInUI: bool
-
-
-class MulticurrencyExchangeRateLoadMatch(TypedDict):
-    id: str
-
-
-class MulticurrencyExchangeRateCreateData(TypedDict):
-    conversionRate: float
-    createdAt: str
-    currencyCode: str
-    effectiveAt: str
-    fromCurrencyCode: str
-    id: str
-    toCurrencyCode: str
-    updatedAt: str
-    visibleInUI: bool
-
-
-class MulticurrencyExchangeRateUpdateDataRequired(TypedDict):
-    id: str
-
-
-class MulticurrencyExchangeRateUpdateData(MulticurrencyExchangeRateUpdateDataRequired, total=False):
-    conversionRate: float
-    createdAt: str
-    currencyCode: str
-    effectiveAt: str
-    fromCurrencyCode: str
-    toCurrencyCode: str
-    updatedAt: str
-    visibleInUI: bool
 
 
 class TaxRate(TypedDict):
@@ -310,6 +323,16 @@ class TeamsTeamMemberCreateData(TypedDict):
     userId: str
 
 
+class UnsupportedCurrency(TypedDict):
+    currencyCode: str
+    currencyName: str
+
+
+class UnsupportedCurrencyListMatch(TypedDict, total=False):
+    currencyCode: str
+    currencyName: str
+
+
 class User(TypedDict):
     pass
 
@@ -320,47 +343,6 @@ class UserRemoveMatchRequired(TypedDict):
 
 class UserRemoveMatch(UserRemoveMatchRequired, total=False):
     id_property: str
-
-
-class UserProvisioningCollectionResponsePublicPermissionSetNo(TypedDict):
-    id: str
-    name: str
-    requiresBillingWrite: bool
-
-
-class UserProvisioningCollectionResponsePublicPermissionSetNoListMatch(TypedDict, total=False):
-    id: str
-    name: str
-    requiresBillingWrite: bool
-
-
-class UserProvisioningCollectionResponsePublicSeatNoPagingRequired(TypedDict):
-    name: str
-
-
-class UserProvisioningCollectionResponsePublicSeatNoPaging(UserProvisioningCollectionResponsePublicSeatNoPagingRequired, total=False):
-    description: str
-    remainingSeats: int
-
-
-class UserProvisioningCollectionResponsePublicSeatNoPagingListMatch(TypedDict, total=False):
-    description: str
-    name: str
-    remainingSeats: int
-
-
-class UserProvisioningCollectionResponsePublicTeamNoPaging(TypedDict):
-    id: str
-    name: str
-    secondaryUserIds: list
-    userIds: list
-
-
-class UserProvisioningCollectionResponsePublicTeamNoPagingListMatch(TypedDict, total=False):
-    id: str
-    name: str
-    secondaryUserIds: list
-    userIds: list
 
 
 class UserProvisioningCollectionResponsePublicUserForwardPagingRequired(TypedDict):
@@ -383,6 +365,47 @@ class UserProvisioningCollectionResponsePublicUserForwardPaging(UserProvisioning
 class UserProvisioningCollectionResponsePublicUserForwardPagingListMatch(TypedDict, total=False):
     after: str
     limit: int
+
+
+class UserProvisioningPublicPermissionSet(TypedDict):
+    id: str
+    name: str
+    requiresBillingWrite: bool
+
+
+class UserProvisioningPublicPermissionSetListMatch(TypedDict, total=False):
+    id: str
+    name: str
+    requiresBillingWrite: bool
+
+
+class UserProvisioningPublicSeatRequired(TypedDict):
+    name: str
+
+
+class UserProvisioningPublicSeat(UserProvisioningPublicSeatRequired, total=False):
+    description: str
+    remainingSeats: int
+
+
+class UserProvisioningPublicSeatListMatch(TypedDict, total=False):
+    description: str
+    name: str
+    remainingSeats: int
+
+
+class UserProvisioningPublicTeam(TypedDict):
+    id: str
+    name: str
+    secondaryUserIds: list
+    userIds: list
+
+
+class UserProvisioningPublicTeamListMatch(TypedDict, total=False):
+    id: str
+    name: str
+    secondaryUserIds: list
+    userIds: list
 
 
 class UserProvisioningPublicUserRequired(TypedDict):

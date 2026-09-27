@@ -1,0 +1,263 @@
+# Entity: user_provisioning_public_user
+
+main: kit: entity: user_provisioning_public_user: {
+
+  alias: field: {}
+
+  fields: {
+    email: {
+      h: "Email"
+      n: "email"
+      r: true
+      sh: "The email address of the user."
+      t: "`$STRING`"
+    }
+    firstName: {
+      h: "First Name"
+      n: "firstName"
+      r: false
+      sh: "The first name of the user, represented as a string."
+      t: "`$STRING`"
+    }
+    id: {
+      h: "Id"
+      n: "id"
+      r: true
+      sh: "The unique identifier for the user, represented as a string."
+      t: "`$STRING`"
+    }
+    lastName: {
+      h: "Last Name"
+      n: "lastName"
+      r: false
+      sh: "The last name of the user, represented as a string."
+      t: "`$STRING`"
+    }
+    primaryTeamId: {
+      h: "Primary Team Id"
+      n: "primaryTeamId"
+      r: false
+      sh: "The ID of the primary team to which the user belongs, represented as a string."
+      t: "`$STRING`"
+    }
+    roleId: {
+      h: "Role Id"
+      n: "roleId"
+      r: false
+      sh: "A string representing a single role ID assigned to the user."
+      t: "`$STRING`"
+    }
+    roleIds: {
+      h: "Role Ids"
+      n: "roleIds"
+      r: true
+      sh: "An array of strings representing the IDs of the roles assigned to the user."
+      t: "`$ARRAY`"
+    }
+    seatNames: {
+      h: "Seat Names"
+      n: "seatNames"
+      r: false
+      sh: "An array of strings representing the names of seats assigned to the user."
+      t: "`$ARRAY`"
+    }
+    secondaryTeamIds: {
+      h: "Secondary Team Ids"
+      n: "secondaryTeamIds"
+      r: false
+      sh: "An array of strings representing the IDs of secondary teams to which the user is associated."
+      t: "`$ARRAY`"
+    }
+    sendWelcomeEmail: {
+      h: "Send Welcome Email"
+      n: "sendWelcomeEmail"
+      op: {
+        create: {
+          req: true
+          type: "`$BOOLEAN`"
+        }
+      }
+      r: false
+      sh: "A boolean indicating whether a welcome email should be sent to the user."
+      t: "`$BOOLEAN`"
+    }
+    superAdmin: {
+      h: "Super Admin"
+      n: "superAdmin"
+      r: true
+      sh: "A boolean indicating whether the user has super admin privileges."
+      t: "`$BOOLEAN`"
+    }
+  }
+
+  id: {
+    field: "id"
+    name: "id"
+  }
+
+  name: "user_provisioning_public_user"
+  op: {
+    create: {
+      name: "create"
+      points: [
+        {
+          co: {
+            id: "POST /settings/users/2026-09"
+            source: "openapi3"
+            version: 2
+          }
+          m: "POST"
+          o: "/settings/users/2026-09"
+          s: [
+            {
+              lit: "settings"
+            }
+            {
+              lit: "users"
+            }
+            {
+              lit: "2026-09"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+    load: {
+      name: "load"
+      points: [
+        {
+          co: {
+            id: "GET /settings/users/2026-09/{userId}"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                ex: null
+                k: "param"
+                n: "user_id"
+                or: "user_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+            query: [
+              {
+                ex: null
+                k: "query"
+                n: "id_property"
+                or: "id_property"
+                r: false
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/settings/users/2026-09/{userId}"
+          q: {
+            exist: [
+              "id_property"
+              "user_id"
+            ]
+          }
+          r: {
+            param: {
+              userId: "user_id"
+            }
+          }
+          s: [
+            {
+              lit: "settings"
+            }
+            {
+              lit: "users"
+            }
+            {
+              lit: "2026-09"
+            }
+            {
+              var: "user_id"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+    update: {
+      name: "update"
+      points: [
+        {
+          co: {
+            id: "PUT /settings/users/2026-09/{userId}"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                ex: null
+                k: "param"
+                n: "user_id"
+                or: "user_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+            query: [
+              {
+                ex: null
+                k: "query"
+                n: "id_property"
+                or: "id_property"
+                r: false
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "PUT"
+          o: "/settings/users/2026-09/{userId}"
+          q: {
+            exist: [
+              "id_property"
+              "user_id"
+            ]
+          }
+          r: {
+            param: {
+              userId: "user_id"
+            }
+          }
+          s: [
+            {
+              lit: "settings"
+            }
+            {
+              lit: "users"
+            }
+            {
+              lit: "2026-09"
+            }
+            {
+              var: "user_id"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

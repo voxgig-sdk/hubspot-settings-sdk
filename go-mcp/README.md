@@ -27,11 +27,11 @@ Tool-call arguments (what an agent sends):
 
 ```jsonc
 // hubspot-settings_list: first page of records
-{ "entity": "multicurrency_collection_response_currency_code_info_no_paging" }
-{ "entity": "multicurrency_collection_response_currency_code_info_no_paging", "query": { } }
+{ "entity": "code" }
+{ "entity": "code", "query": { } }
 
 // hubspot-settings_load: one record by id
-{ "entity": "multicurrency_central_exchange_rates_information", "query": { "id": 1 } }
+{ "entity": "exchange_rate", "query": { "id": 1 } }
 ```
 
 > The rest of this guide follows the [Diátaxis](https://diataxis.fr) framework:
@@ -60,8 +60,8 @@ Tool-call arguments (what an agent sends):
    ```
 
 4. **Restart Claude Code.** The `hubspot-settings_list` and `hubspot-settings_load` tools now appear
-   in new sessions. Ask the agent to *"list multicurrency_collection_response_currency_code_info_no_paging using hubspot-settings"*
-   and it calls `hubspot-settings_list` with `{"entity":"multicurrency_collection_response_currency_code_info_no_paging"}`.
+   in new sessions. Ask the agent to *"list code using hubspot-settings"*
+   and it calls `hubspot-settings_list` with `{"entity":"code"}`.
 
 ## How-to guides
 
@@ -92,7 +92,7 @@ Args: `entity` (required), `query` (optional filter map). Returns the first
 page of records as JSON:
 
 ```jsonc
-{ "entity": "multicurrency_collection_response_currency_code_info_no_paging" }
+{ "entity": "code" }
 ```
 
 ### Call the `hubspot-settings_load` tool
@@ -101,7 +101,7 @@ Args: `entity` (required), `query` = `{"id":N}` (required). Returns the single
 record as JSON:
 
 ```jsonc
-{ "entity": "multicurrency_central_exchange_rates_information", "query": { "id": 1 } }
+{ "entity": "exchange_rate", "query": { "id": 1 } }
 ```
 
 ### Cross-compile release binaries
@@ -129,7 +129,7 @@ Both tools take the same argument object:
 
 | Field | Type | Notes |
 |-------|------|-------|
-| `entity` | string | One of the 21 supported entities (see below). |
+| `entity` | string | One of the 22 supported entities (see below). |
 | `query` | object | Optional match map. `{"id":N}` for load; omit or `{}` for list. |
 
 JSON schemas are emitted by the SDK from the `Args` struct's `json` /
@@ -151,9 +151,9 @@ JSON schemas are emitted by the SDK from the `Args` struct's `json` /
 
 ### Entities
 
-The 21 entities valid as the `entity` argument:
+The 22 entities valid as the `entity` argument:
 
-basic | exchange_rate | multicurrency_batch_response_exchange_rate | multicurrency_central_exchange_rates_information | multicurrency_collection_response_currency_code_info_no_paging | multicurrency_collection_response_exchange_rate_forward_paging | multicurrency_collection_response_exchange_rate_no_paging | multicurrency_company_currency | multicurrency_exchange_rate | tax_rate | teams_batch_response_team_member | teams_collection_response_team_member_response_forward_paging | teams_collection_response_team_response_forward_paging | teams_team | teams_team_member | user | user_provisioning_collection_response_public_permission_set_no | user_provisioning_collection_response_public_seat_no_paging | user_provisioning_collection_response_public_team_no_paging | user_provisioning_collection_response_public_user_forward_paging | user_provisioning_public_user
+add_currency | basic | code | current | exchange_rate | multicurrency_batch_response_exchange_rate | multicurrency_central_exchange_rates_information | multicurrency_collection_response_exchange_rate_forward_paging | multicurrency_company_currency | tax_rate | teams_batch_response_team_member | teams_collection_response_team_member_response_forward_paging | teams_collection_response_team_response_forward_paging | teams_team | teams_team_member | unsupported_currency | user | user_provisioning_collection_response_public_user_forward_paging | user_provisioning_public_permission_set | user_provisioning_public_seat | user_provisioning_public_team | user_provisioning_public_user
 
 ### Smoke test via HTTP (raw JSON-RPC)
 
@@ -173,7 +173,7 @@ curl -sN -X POST http://localhost:18080 \
   -H 'Content-Type: application/json' \
   -H 'Accept: application/json, text/event-stream' \
   -H "Mcp-Session-Id: $SESSION" \
-  -d '{"jsonrpc":"2.0","id":2,"method":"tools/call","params":{"name":"hubspot-settings_load","arguments":{"entity":"multicurrency_central_exchange_rates_information","query":{"id":1}}}}'
+  -d '{"jsonrpc":"2.0","id":2,"method":"tools/call","params":{"name":"hubspot-settings_load","arguments":{"entity":"exchange_rate","query":{"id":1}}}}'
 ```
 
 ## Explanation

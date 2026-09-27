@@ -53,8 +53,17 @@ func init() {
 	core.NewTimeoutFeatureFunc = func() core.Feature {
 		return feature.NewTimeoutFeature()
 	}
+	core.NewAddCurrencyEntityFunc = func(client *core.HubspotSettingsSDK, entopts map[string]any) core.HubspotSettingsEntity {
+		return entity.NewAddCurrencyEntity(client, entopts)
+	}
 	core.NewBasicEntityFunc = func(client *core.HubspotSettingsSDK, entopts map[string]any) core.HubspotSettingsEntity {
 		return entity.NewBasicEntity(client, entopts)
+	}
+	core.NewCodeEntityFunc = func(client *core.HubspotSettingsSDK, entopts map[string]any) core.HubspotSettingsEntity {
+		return entity.NewCodeEntity(client, entopts)
+	}
+	core.NewCurrentEntityFunc = func(client *core.HubspotSettingsSDK, entopts map[string]any) core.HubspotSettingsEntity {
+		return entity.NewCurrentEntity(client, entopts)
 	}
 	core.NewExchangeRateEntityFunc = func(client *core.HubspotSettingsSDK, entopts map[string]any) core.HubspotSettingsEntity {
 		return entity.NewExchangeRateEntity(client, entopts)
@@ -65,20 +74,11 @@ func init() {
 	core.NewMulticurrencyCentralExchangeRatesInformationEntityFunc = func(client *core.HubspotSettingsSDK, entopts map[string]any) core.HubspotSettingsEntity {
 		return entity.NewMulticurrencyCentralExchangeRatesInformationEntity(client, entopts)
 	}
-	core.NewMulticurrencyCollectionResponseCurrencyCodeInfoNoPagingEntityFunc = func(client *core.HubspotSettingsSDK, entopts map[string]any) core.HubspotSettingsEntity {
-		return entity.NewMulticurrencyCollectionResponseCurrencyCodeInfoNoPagingEntity(client, entopts)
-	}
 	core.NewMulticurrencyCollectionResponseExchangeRateForwardPagingEntityFunc = func(client *core.HubspotSettingsSDK, entopts map[string]any) core.HubspotSettingsEntity {
 		return entity.NewMulticurrencyCollectionResponseExchangeRateForwardPagingEntity(client, entopts)
 	}
-	core.NewMulticurrencyCollectionResponseExchangeRateNoPagingEntityFunc = func(client *core.HubspotSettingsSDK, entopts map[string]any) core.HubspotSettingsEntity {
-		return entity.NewMulticurrencyCollectionResponseExchangeRateNoPagingEntity(client, entopts)
-	}
 	core.NewMulticurrencyCompanyCurrencyEntityFunc = func(client *core.HubspotSettingsSDK, entopts map[string]any) core.HubspotSettingsEntity {
 		return entity.NewMulticurrencyCompanyCurrencyEntity(client, entopts)
-	}
-	core.NewMulticurrencyExchangeRateEntityFunc = func(client *core.HubspotSettingsSDK, entopts map[string]any) core.HubspotSettingsEntity {
-		return entity.NewMulticurrencyExchangeRateEntity(client, entopts)
 	}
 	core.NewTaxRateEntityFunc = func(client *core.HubspotSettingsSDK, entopts map[string]any) core.HubspotSettingsEntity {
 		return entity.NewTaxRateEntity(client, entopts)
@@ -98,20 +98,23 @@ func init() {
 	core.NewTeamsTeamMemberEntityFunc = func(client *core.HubspotSettingsSDK, entopts map[string]any) core.HubspotSettingsEntity {
 		return entity.NewTeamsTeamMemberEntity(client, entopts)
 	}
+	core.NewUnsupportedCurrencyEntityFunc = func(client *core.HubspotSettingsSDK, entopts map[string]any) core.HubspotSettingsEntity {
+		return entity.NewUnsupportedCurrencyEntity(client, entopts)
+	}
 	core.NewUserEntityFunc = func(client *core.HubspotSettingsSDK, entopts map[string]any) core.HubspotSettingsEntity {
 		return entity.NewUserEntity(client, entopts)
 	}
-	core.NewUserProvisioningCollectionResponsePublicPermissionSetNoEntityFunc = func(client *core.HubspotSettingsSDK, entopts map[string]any) core.HubspotSettingsEntity {
-		return entity.NewUserProvisioningCollectionResponsePublicPermissionSetNoEntity(client, entopts)
-	}
-	core.NewUserProvisioningCollectionResponsePublicSeatNoPagingEntityFunc = func(client *core.HubspotSettingsSDK, entopts map[string]any) core.HubspotSettingsEntity {
-		return entity.NewUserProvisioningCollectionResponsePublicSeatNoPagingEntity(client, entopts)
-	}
-	core.NewUserProvisioningCollectionResponsePublicTeamNoPagingEntityFunc = func(client *core.HubspotSettingsSDK, entopts map[string]any) core.HubspotSettingsEntity {
-		return entity.NewUserProvisioningCollectionResponsePublicTeamNoPagingEntity(client, entopts)
-	}
 	core.NewUserProvisioningCollectionResponsePublicUserForwardPagingEntityFunc = func(client *core.HubspotSettingsSDK, entopts map[string]any) core.HubspotSettingsEntity {
 		return entity.NewUserProvisioningCollectionResponsePublicUserForwardPagingEntity(client, entopts)
+	}
+	core.NewUserProvisioningPublicPermissionSetEntityFunc = func(client *core.HubspotSettingsSDK, entopts map[string]any) core.HubspotSettingsEntity {
+		return entity.NewUserProvisioningPublicPermissionSetEntity(client, entopts)
+	}
+	core.NewUserProvisioningPublicSeatEntityFunc = func(client *core.HubspotSettingsSDK, entopts map[string]any) core.HubspotSettingsEntity {
+		return entity.NewUserProvisioningPublicSeatEntity(client, entopts)
+	}
+	core.NewUserProvisioningPublicTeamEntityFunc = func(client *core.HubspotSettingsSDK, entopts map[string]any) core.HubspotSettingsEntity {
+		return entity.NewUserProvisioningPublicTeamEntity(client, entopts)
 	}
 	core.NewUserProvisioningPublicUserEntityFunc = func(client *core.HubspotSettingsSDK, entopts map[string]any) core.HubspotSettingsEntity {
 		return entity.NewUserProvisioningPublicUserEntity(client, entopts)

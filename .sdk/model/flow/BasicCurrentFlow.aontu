@@ -1,0 +1,22 @@
+# BasicCurrentFlow
+
+main: kit: flow: BasicCurrentFlow:
+{
+  entity: "current",
+  kind: "basic",
+  name: "BasicCurrentFlow",
+  step: [
+    {
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "current_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicCurrentFlow"
+}

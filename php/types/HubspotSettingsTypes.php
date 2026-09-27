@@ -3,14 +3,42 @@ declare(strict_types=1);
 
 // Typed models for the HubspotSettings SDK.
 //
-// GENERATED from the API model: main.kit.entity.<e>.fields[] and per-op
-// params (op.<name>.points[].args.params[]). Field/param types come from the
+// GENERATED from the API model: main.kit.entity.<e>.fields{} and per-op
+// params (op.<name>.points[].g.params[]). Field/param types come from the
 // canonical type sentinels via @voxgig/sdkgen canonToType (source of truth:
 // @voxgig/apidef VALID_CANON). Do not edit by hand.
 //
 // These are documentation-grade value objects (PHP 8 typed properties),
 // registered on the composer classmap autoload. The SDK boundary exchanges
 // assoc-arrays; these classes name the shapes for tooling and typed callers.
+
+/** AddCurrency entity data model. */
+class AddCurrency
+{
+    public float $conversionRate;
+    public string $createdAt;
+    public string $currencyCode;
+    public string $effectiveAt;
+    public string $fromCurrencyCode;
+    public string $id;
+    public string $toCurrencyCode;
+    public string $updatedAt;
+    public bool $visibleInUI;
+}
+
+/** Request payload for AddCurrency#create. */
+class AddCurrencyCreateData
+{
+    public float $conversionRate;
+    public string $createdAt;
+    public string $currencyCode;
+    public string $effectiveAt;
+    public string $fromCurrencyCode;
+    public string $id;
+    public string $toCurrencyCode;
+    public string $updatedAt;
+    public bool $visibleInUI;
+}
 
 /** Basic entity data model. */
 class Basic
@@ -25,14 +53,89 @@ class BasicRemoveMatch
     public ?string $type = null;
 }
 
+/** Code entity data model. */
+class Code
+{
+    public string $currencyCode;
+    public string $currencyName;
+}
+
+/** Request payload for Code#list. */
+class CodeListMatch
+{
+    public ?string $currencyCode = null;
+    public ?string $currencyName = null;
+}
+
+/** Current entity data model. */
+class Current
+{
+    public float $conversionRate;
+    public string $createdAt;
+    public string $effectiveAt;
+    public string $fromCurrencyCode;
+    public string $id;
+    public string $toCurrencyCode;
+    public string $updatedAt;
+    public bool $visibleInUI;
+}
+
+/** Request payload for Current#list. */
+class CurrentListMatch
+{
+    public ?float $conversionRate = null;
+    public ?string $createdAt = null;
+    public ?string $effectiveAt = null;
+    public ?string $fromCurrencyCode = null;
+    public ?string $id = null;
+    public ?string $toCurrencyCode = null;
+    public ?string $updatedAt = null;
+    public ?bool $visibleInUI = null;
+}
+
 /** ExchangeRate entity data model. */
 class ExchangeRate
 {
+    public float $conversionRate;
+    public string $createdAt;
+    public string $effectiveAt;
+    public string $fromCurrencyCode;
+    public string $id;
+    public string $toCurrencyCode;
+    public string $updatedAt;
+    public bool $visibleInUI;
+}
+
+/** Request payload for ExchangeRate#load. */
+class ExchangeRateLoadMatch
+{
+    public string $id;
 }
 
 /** Request payload for ExchangeRate#create. */
 class ExchangeRateCreateData
 {
+    public float $conversionRate;
+    public string $createdAt;
+    public string $effectiveAt;
+    public string $fromCurrencyCode;
+    public string $id;
+    public string $toCurrencyCode;
+    public string $updatedAt;
+    public bool $visibleInUI;
+}
+
+/** Request payload for ExchangeRate#update. */
+class ExchangeRateUpdateData
+{
+    public string $id;
+    public ?float $conversionRate = null;
+    public ?string $createdAt = null;
+    public ?string $effectiveAt = null;
+    public ?string $fromCurrencyCode = null;
+    public ?string $toCurrencyCode = null;
+    public ?string $updatedAt = null;
+    public ?bool $visibleInUI = null;
 }
 
 /** MulticurrencyBatchResponseExchangeRate entity data model. */
@@ -71,20 +174,6 @@ class MulticurrencyCentralExchangeRatesInformationLoadMatch
     public ?bool $centralExchangeRatesEnabled = null;
 }
 
-/** MulticurrencyCollectionResponseCurrencyCodeInfoNoPaging entity data model. */
-class MulticurrencyCollectionResponseCurrencyCodeInfoNoPaging
-{
-    public string $currencyCode;
-    public string $currencyName;
-}
-
-/** Request payload for MulticurrencyCollectionResponseCurrencyCodeInfoNoPaging#list. */
-class MulticurrencyCollectionResponseCurrencyCodeInfoNoPagingListMatch
-{
-    public ?string $currencyCode = null;
-    public ?string $currencyName = null;
-}
-
 /** MulticurrencyCollectionResponseExchangeRateForwardPaging entity data model. */
 class MulticurrencyCollectionResponseExchangeRateForwardPaging
 {
@@ -105,32 +194,6 @@ class MulticurrencyCollectionResponseExchangeRateForwardPagingListMatch
     public ?string $from_currency_code = null;
     public ?int $limit = null;
     public ?string $to_currency_code = null;
-}
-
-/** MulticurrencyCollectionResponseExchangeRateNoPaging entity data model. */
-class MulticurrencyCollectionResponseExchangeRateNoPaging
-{
-    public float $conversionRate;
-    public string $createdAt;
-    public string $effectiveAt;
-    public string $fromCurrencyCode;
-    public string $id;
-    public string $toCurrencyCode;
-    public string $updatedAt;
-    public bool $visibleInUI;
-}
-
-/** Request payload for MulticurrencyCollectionResponseExchangeRateNoPaging#list. */
-class MulticurrencyCollectionResponseExchangeRateNoPagingListMatch
-{
-    public ?float $conversionRate = null;
-    public ?string $createdAt = null;
-    public ?string $effectiveAt = null;
-    public ?string $fromCurrencyCode = null;
-    public ?string $id = null;
-    public ?string $toCurrencyCode = null;
-    public ?string $updatedAt = null;
-    public ?bool $visibleInUI = null;
 }
 
 /** MulticurrencyCompanyCurrency entity data model. */
@@ -155,54 +218,6 @@ class MulticurrencyCompanyCurrencyUpdateData
     public ?string $createdAt = null;
     public ?string $currencyCode = null;
     public ?string $id = null;
-}
-
-/** MulticurrencyExchangeRate entity data model. */
-class MulticurrencyExchangeRate
-{
-    public float $conversionRate;
-    public string $createdAt;
-    public string $currencyCode;
-    public string $effectiveAt;
-    public string $fromCurrencyCode;
-    public string $id;
-    public string $toCurrencyCode;
-    public string $updatedAt;
-    public bool $visibleInUI;
-}
-
-/** Request payload for MulticurrencyExchangeRate#load. */
-class MulticurrencyExchangeRateLoadMatch
-{
-    public string $id;
-}
-
-/** Request payload for MulticurrencyExchangeRate#create. */
-class MulticurrencyExchangeRateCreateData
-{
-    public float $conversionRate;
-    public string $createdAt;
-    public string $currencyCode;
-    public string $effectiveAt;
-    public string $fromCurrencyCode;
-    public string $id;
-    public string $toCurrencyCode;
-    public string $updatedAt;
-    public bool $visibleInUI;
-}
-
-/** Request payload for MulticurrencyExchangeRate#update. */
-class MulticurrencyExchangeRateUpdateData
-{
-    public string $id;
-    public ?float $conversionRate = null;
-    public ?string $createdAt = null;
-    public ?string $currencyCode = null;
-    public ?string $effectiveAt = null;
-    public ?string $fromCurrencyCode = null;
-    public ?string $toCurrencyCode = null;
-    public ?string $updatedAt = null;
-    public ?bool $visibleInUI = null;
 }
 
 /** TaxRate entity data model. */
@@ -339,6 +354,20 @@ class TeamsTeamMemberCreateData
     public string $userId;
 }
 
+/** UnsupportedCurrency entity data model. */
+class UnsupportedCurrency
+{
+    public string $currencyCode;
+    public string $currencyName;
+}
+
+/** Request payload for UnsupportedCurrency#list. */
+class UnsupportedCurrencyListMatch
+{
+    public ?string $currencyCode = null;
+    public ?string $currencyName = null;
+}
+
 /** User entity data model. */
 class User
 {
@@ -349,56 +378,6 @@ class UserRemoveMatch
 {
     public string $user_id;
     public ?string $id_property = null;
-}
-
-/** UserProvisioningCollectionResponsePublicPermissionSetNo entity data model. */
-class UserProvisioningCollectionResponsePublicPermissionSetNo
-{
-    public string $id;
-    public string $name;
-    public bool $requiresBillingWrite;
-}
-
-/** Request payload for UserProvisioningCollectionResponsePublicPermissionSetNo#list. */
-class UserProvisioningCollectionResponsePublicPermissionSetNoListMatch
-{
-    public ?string $id = null;
-    public ?string $name = null;
-    public ?bool $requiresBillingWrite = null;
-}
-
-/** UserProvisioningCollectionResponsePublicSeatNoPaging entity data model. */
-class UserProvisioningCollectionResponsePublicSeatNoPaging
-{
-    public ?string $description = null;
-    public string $name;
-    public ?int $remainingSeats = null;
-}
-
-/** Request payload for UserProvisioningCollectionResponsePublicSeatNoPaging#list. */
-class UserProvisioningCollectionResponsePublicSeatNoPagingListMatch
-{
-    public ?string $description = null;
-    public ?string $name = null;
-    public ?int $remainingSeats = null;
-}
-
-/** UserProvisioningCollectionResponsePublicTeamNoPaging entity data model. */
-class UserProvisioningCollectionResponsePublicTeamNoPaging
-{
-    public string $id;
-    public string $name;
-    public array $secondaryUserIds;
-    public array $userIds;
-}
-
-/** Request payload for UserProvisioningCollectionResponsePublicTeamNoPaging#list. */
-class UserProvisioningCollectionResponsePublicTeamNoPagingListMatch
-{
-    public ?string $id = null;
-    public ?string $name = null;
-    public ?array $secondaryUserIds = null;
-    public ?array $userIds = null;
 }
 
 /** UserProvisioningCollectionResponsePublicUserForwardPaging entity data model. */
@@ -422,6 +401,56 @@ class UserProvisioningCollectionResponsePublicUserForwardPagingListMatch
 {
     public ?string $after = null;
     public ?int $limit = null;
+}
+
+/** UserProvisioningPublicPermissionSet entity data model. */
+class UserProvisioningPublicPermissionSet
+{
+    public string $id;
+    public string $name;
+    public bool $requiresBillingWrite;
+}
+
+/** Request payload for UserProvisioningPublicPermissionSet#list. */
+class UserProvisioningPublicPermissionSetListMatch
+{
+    public ?string $id = null;
+    public ?string $name = null;
+    public ?bool $requiresBillingWrite = null;
+}
+
+/** UserProvisioningPublicSeat entity data model. */
+class UserProvisioningPublicSeat
+{
+    public ?string $description = null;
+    public string $name;
+    public ?int $remainingSeats = null;
+}
+
+/** Request payload for UserProvisioningPublicSeat#list. */
+class UserProvisioningPublicSeatListMatch
+{
+    public ?string $description = null;
+    public ?string $name = null;
+    public ?int $remainingSeats = null;
+}
+
+/** UserProvisioningPublicTeam entity data model. */
+class UserProvisioningPublicTeam
+{
+    public string $id;
+    public string $name;
+    public array $secondaryUserIds;
+    public array $userIds;
+}
+
+/** Request payload for UserProvisioningPublicTeam#list. */
+class UserProvisioningPublicTeamListMatch
+{
+    public ?string $id = null;
+    public ?string $name = null;
+    public ?array $secondaryUserIds = null;
+    public ?array $userIds = null;
 }
 
 /** UserProvisioningPublicUser entity data model. */

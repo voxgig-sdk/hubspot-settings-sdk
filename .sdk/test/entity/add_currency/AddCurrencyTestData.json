@@ -1,0 +1,60 @@
+{
+  "existing": {
+    "add_currency": {
+      "ADD_CURRENCY00": {
+        "conversionRate": 90,
+        "createdAt": "s5b",
+        "currencyCode": "s5c",
+        "effectiveAt": "s5d",
+        "fromCurrencyCode": "s5e",
+        "id": "ADD_CURRENCY00",
+        "toCurrencyCode": "s60",
+        "updatedAt": "s61",
+        "visibleInUI": true
+      },
+      "ADD_CURRENCY01": {
+        "conversionRate": 180,
+        "createdAt": "sb5",
+        "currencyCode": "sb6",
+        "effectiveAt": "sb7",
+        "fromCurrencyCode": "sb8",
+        "id": "ADD_CURRENCY01",
+        "toCurrencyCode": "sba",
+        "updatedAt": "sbb",
+        "visibleInUI": true
+      },
+      "ADD_CURRENCY02": {
+        "conversionRate": 270,
+        "createdAt": "s10f",
+        "currencyCode": "s110",
+        "effectiveAt": "s111",
+        "fromCurrencyCode": "s112",
+        "id": "ADD_CURRENCY02",
+        "toCurrencyCode": "s114",
+        "updatedAt": "s115",
+        "visibleInUI": true
+      }
+    }
+  },
+  "new": {
+    "add_currency": {
+      "add_currency_ref01": {
+        "conversionRate": 360,
+        "createdAt": "s169",
+        "currencyCode": "s16a",
+        "effectiveAt": "s16b",
+        "fromCurrencyCode": "s16c",
+        "toCurrencyCode": "s16e",
+        "updatedAt": "s16f",
+        "visibleInUI": true
+      }
+    }
+  },
+  "requests": {
+    "POST /settings/currencies/2026-09/central-fx-rates/add-currency": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

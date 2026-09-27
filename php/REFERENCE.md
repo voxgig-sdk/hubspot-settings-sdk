@@ -42,9 +42,21 @@ $client = HubspotSettingsSDK::test();
 
 ### Instance Methods
 
+#### `AddCurrency($data = null)`
+
+Create a new `AddCurrencyEntity` instance. Pass `null` for no initial data.
+
 #### `Basic($data = null)`
 
 Create a new `BasicEntity` instance. Pass `null` for no initial data.
+
+#### `Code($data = null)`
+
+Create a new `CodeEntity` instance. Pass `null` for no initial data.
+
+#### `Current($data = null)`
+
+Create a new `CurrentEntity` instance. Pass `null` for no initial data.
 
 #### `ExchangeRate($data = null)`
 
@@ -58,25 +70,13 @@ Create a new `MulticurrencyBatchResponseExchangeRateEntity` instance. Pass `null
 
 Create a new `MulticurrencyCentralExchangeRatesInformationEntity` instance. Pass `null` for no initial data.
 
-#### `MulticurrencyCollectionResponseCurrencyCodeInfoNoPaging($data = null)`
-
-Create a new `MulticurrencyCollectionResponseCurrencyCodeInfoNoPagingEntity` instance. Pass `null` for no initial data.
-
 #### `MulticurrencyCollectionResponseExchangeRateForwardPaging($data = null)`
 
 Create a new `MulticurrencyCollectionResponseExchangeRateForwardPagingEntity` instance. Pass `null` for no initial data.
 
-#### `MulticurrencyCollectionResponseExchangeRateNoPaging($data = null)`
-
-Create a new `MulticurrencyCollectionResponseExchangeRateNoPagingEntity` instance. Pass `null` for no initial data.
-
 #### `MulticurrencyCompanyCurrency($data = null)`
 
 Create a new `MulticurrencyCompanyCurrencyEntity` instance. Pass `null` for no initial data.
-
-#### `MulticurrencyExchangeRate($data = null)`
-
-Create a new `MulticurrencyExchangeRateEntity` instance. Pass `null` for no initial data.
 
 #### `TaxRate($data = null)`
 
@@ -102,25 +102,29 @@ Create a new `TeamsTeamEntity` instance. Pass `null` for no initial data.
 
 Create a new `TeamsTeamMemberEntity` instance. Pass `null` for no initial data.
 
+#### `UnsupportedCurrency($data = null)`
+
+Create a new `UnsupportedCurrencyEntity` instance. Pass `null` for no initial data.
+
 #### `User($data = null)`
 
 Create a new `UserEntity` instance. Pass `null` for no initial data.
 
-#### `UserProvisioningCollectionResponsePublicPermissionSetNo($data = null)`
-
-Create a new `UserProvisioningCollectionResponsePublicPermissionSetNoEntity` instance. Pass `null` for no initial data.
-
-#### `UserProvisioningCollectionResponsePublicSeatNoPaging($data = null)`
-
-Create a new `UserProvisioningCollectionResponsePublicSeatNoPagingEntity` instance. Pass `null` for no initial data.
-
-#### `UserProvisioningCollectionResponsePublicTeamNoPaging($data = null)`
-
-Create a new `UserProvisioningCollectionResponsePublicTeamNoPagingEntity` instance. Pass `null` for no initial data.
-
 #### `UserProvisioningCollectionResponsePublicUserForwardPaging($data = null)`
 
 Create a new `UserProvisioningCollectionResponsePublicUserForwardPagingEntity` instance. Pass `null` for no initial data.
+
+#### `UserProvisioningPublicPermissionSet($data = null)`
+
+Create a new `UserProvisioningPublicPermissionSetEntity` instance. Pass `null` for no initial data.
+
+#### `UserProvisioningPublicSeat($data = null)`
+
+Create a new `UserProvisioningPublicSeatEntity` instance. Pass `null` for no initial data.
+
+#### `UserProvisioningPublicTeam($data = null)`
+
+Create a new `UserProvisioningPublicTeamEntity` instance. Pass `null` for no initial data.
 
 #### `UserProvisioningPublicUser($data = null)`
 
@@ -159,6 +163,76 @@ hatch: it does **not** throw. It returns a result array
 
 Prepare a fetch definition without sending the request. Returns the
 `$fetchdef` array. Throws on error.
+
+
+---
+
+## AddCurrencyEntity
+
+```php
+$add_currency = $client->AddCurrency();
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `conversionRate` | `float` | Yes | The conversion rate between the to and from currency code of this exchange rate. |
+| `createdAt` | `string` | Yes | The date the exchange rate was created. |
+| `currencyCode` | `string` | Yes | The currency code being added to the HubSpot portal for use with central exchange rates. |
+| `effectiveAt` | `string` | Yes | The date the exchange rate is in effect. |
+| `fromCurrencyCode` | `string` | Yes | This represents the three-letter currency code (such as USD for US Dollar) of the currency you are converting from. |
+| `id` | `string` | Yes | A unique identifier for the exchange rate |
+| `toCurrencyCode` | `string` | Yes | This represents the three-letter currency code (such as USD for US Dollar) of the currency you are converting to. |
+| `updatedAt` | `string` | Yes | The date the exchange rate was last updated. |
+| `visibleInUI` | `bool` | Yes | This indicates if the exchange rate is shown in the MultiCurrency settings page. |
+
+### Operations
+
+#### `create(array $reqdata, ?array $ctrl = null): mixed`
+
+Create a new entity with the given data. Throws on error.
+
+```php
+$result = $client->AddCurrency()->create([
+  "conversionRate" => null, // float
+  "createdAt" => null, // string
+  "currencyCode" => null, // string
+  "effectiveAt" => null, // string
+  "fromCurrencyCode" => null, // string
+  "id" => null, // string
+  "toCurrencyCode" => null, // string
+  "updatedAt" => null, // string
+  "visibleInUI" => null, // bool
+]);
+```
+
+### Common Methods
+
+#### `data_get(): array`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set($data): void`
+
+Set the entity data.
+
+#### `match_get(): array`
+
+Get the entity match criteria.
+
+#### `match_set($match): void`
+
+Set the entity match criteria.
+
+#### `make(): AddCurrencyEntity`
+
+Create a new `AddCurrencyEntity` instance with the same client and
+options.
+
+#### `get_name(): string`
+
+Return the entity name.
 
 
 ---
@@ -209,11 +283,149 @@ Return the entity name.
 
 ---
 
+## CodeEntity
+
+```php
+$code = $client->Code();
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `currencyCode` | `string` | Yes | The three-letter code representing a specific currency (ex. |
+| `currencyName` | `string` | Yes | The full name of the currency (ex. |
+
+### Operations
+
+#### `list(?array $reqmatch = null, ?array $ctrl = null): mixed`
+
+List entities matching the given criteria (call with no argument to list all). Returns an array. Throws on error.
+
+```php
+$results = $client->Code()->list();
+```
+
+### Common Methods
+
+#### `data_get(): array`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set($data): void`
+
+Set the entity data.
+
+#### `match_get(): array`
+
+Get the entity match criteria.
+
+#### `match_set($match): void`
+
+Set the entity match criteria.
+
+#### `make(): CodeEntity`
+
+Create a new `CodeEntity` instance with the same client and
+options.
+
+#### `get_name(): string`
+
+Return the entity name.
+
+
+---
+
+## CurrentEntity
+
+```php
+$current = $client->Current();
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `conversionRate` | `float` | Yes | The conversion rate between the to and from currency code of this exchange rate. |
+| `createdAt` | `string` | Yes | The date the exchange rate was created. |
+| `effectiveAt` | `string` | Yes | The date the exchange rate is in effect. |
+| `fromCurrencyCode` | `string` | Yes | This represents the three-letter currency code (such as USD for US Dollar) of the currency you are converting from. |
+| `id` | `string` | Yes | A unique identifier for the exchange rate |
+| `toCurrencyCode` | `string` | Yes | This represents the three-letter currency code (such as USD for US Dollar) of the currency you are converting to. |
+| `updatedAt` | `string` | Yes | The date the exchange rate was last updated. |
+| `visibleInUI` | `bool` | Yes | This indicates if the exchange rate is shown in the MultiCurrency settings page. |
+
+### Operations
+
+#### `list(?array $reqmatch = null, ?array $ctrl = null): mixed`
+
+List entities matching the given criteria (call with no argument to list all). Returns an array. Throws on error.
+
+```php
+$results = $client->Current()->list();
+```
+
+### Common Methods
+
+#### `data_get(): array`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set($data): void`
+
+Set the entity data.
+
+#### `match_get(): array`
+
+Get the entity match criteria.
+
+#### `match_set($match): void`
+
+Set the entity match criteria.
+
+#### `make(): CurrentEntity`
+
+Create a new `CurrentEntity` instance with the same client and
+options.
+
+#### `get_name(): string`
+
+Return the entity name.
+
+
+---
+
 ## ExchangeRateEntity
 
 ```php
 $exchange_rate = $client->ExchangeRate();
 ```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `conversionRate` | `float` | Yes | The conversion rate between the to and from currency code of this exchange rate. |
+| `createdAt` | `string` | Yes | The date the exchange rate was created. |
+| `effectiveAt` | `string` | Yes | The date the exchange rate is in effect. |
+| `fromCurrencyCode` | `string` | Yes | This represents the three-letter currency code (such as USD for US Dollar) of the currency you are converting from. |
+| `id` | `string` | Yes | A unique identifier for the exchange rate |
+| `toCurrencyCode` | `string` | Yes | This represents the three-letter currency code (such as USD for US Dollar) of the currency you are converting to. |
+| `updatedAt` | `string` | Yes | The date the exchange rate was last updated. |
+| `visibleInUI` | `bool` | Yes | This indicates if the exchange rate is shown in the MultiCurrency settings page. |
+
+### Field Usage by Operation
+
+| Field | load | create | update |
+| --- | --- | --- | --- |
+| `conversionRate` | - | - | - |
+| `createdAt` | - | - | - |
+| `effectiveAt` | - | Yes | Yes |
+| `fromCurrencyCode` | - | - | - |
+| `id` | - | - | - |
+| `toCurrencyCode` | - | - | - |
+| `updatedAt` | - | - | - |
+| `visibleInUI` | - | - | - |
 
 ### Operations
 
@@ -223,6 +435,33 @@ Create a new entity with the given data. Throws on error.
 
 ```php
 $result = $client->ExchangeRate()->create([
+  "conversionRate" => null, // float
+  "createdAt" => null, // string
+  "effectiveAt" => null, // string
+  "fromCurrencyCode" => null, // string
+  "id" => null, // string
+  "toCurrencyCode" => null, // string
+  "updatedAt" => null, // string
+  "visibleInUI" => null, // bool
+]);
+```
+
+#### `load(array $reqmatch, ?array $ctrl = null): mixed`
+
+Load a single entity matching the given criteria. Throws on error.
+
+```php
+$result = $client->ExchangeRate()->load(["id" => "exchange_rate_id"]);
+```
+
+#### `update(array $reqdata, ?array $ctrl = null): mixed`
+
+Update an existing entity. The data must include the entity `id`. Throws on error.
+
+```php
+$result = $client->ExchangeRate()->update([
+  "id" => "exchange_rate_id",
+  // Fields to update
 ]);
 ```
 
@@ -372,59 +611,6 @@ Return the entity name.
 
 ---
 
-## MulticurrencyCollectionResponseCurrencyCodeInfoNoPagingEntity
-
-```php
-$multicurrency_collection_response_currency_code_info_no_paging = $client->MulticurrencyCollectionResponseCurrencyCodeInfoNoPaging();
-```
-
-### Fields
-
-| Field | Type | Required | Description |
-| --- | --- | --- | --- |
-| `currencyCode` | `string` | Yes | The three-letter code representing a specific currency (ex. |
-| `currencyName` | `string` | Yes | The full name of the currency (ex. |
-
-### Operations
-
-#### `list(?array $reqmatch = null, ?array $ctrl = null): mixed`
-
-List entities matching the given criteria (call with no argument to list all). Returns an array. Throws on error.
-
-```php
-$results = $client->MulticurrencyCollectionResponseCurrencyCodeInfoNoPaging()->list();
-```
-
-### Common Methods
-
-#### `data_get(): array`
-
-Get the entity data. Returns a copy of the current data.
-
-#### `data_set($data): void`
-
-Set the entity data.
-
-#### `match_get(): array`
-
-Get the entity match criteria.
-
-#### `match_set($match): void`
-
-Set the entity match criteria.
-
-#### `make(): MulticurrencyCollectionResponseCurrencyCodeInfoNoPagingEntity`
-
-Create a new `MulticurrencyCollectionResponseCurrencyCodeInfoNoPagingEntity` instance with the same client and
-options.
-
-#### `get_name(): string`
-
-Return the entity name.
-
-
----
-
 ## MulticurrencyCollectionResponseExchangeRateForwardPagingEntity
 
 ```php
@@ -475,65 +661,6 @@ Set the entity match criteria.
 #### `make(): MulticurrencyCollectionResponseExchangeRateForwardPagingEntity`
 
 Create a new `MulticurrencyCollectionResponseExchangeRateForwardPagingEntity` instance with the same client and
-options.
-
-#### `get_name(): string`
-
-Return the entity name.
-
-
----
-
-## MulticurrencyCollectionResponseExchangeRateNoPagingEntity
-
-```php
-$multicurrency_collection_response_exchange_rate_no_paging = $client->MulticurrencyCollectionResponseExchangeRateNoPaging();
-```
-
-### Fields
-
-| Field | Type | Required | Description |
-| --- | --- | --- | --- |
-| `conversionRate` | `float` | Yes | The conversion rate between the to and from currency code of this exchange rate. |
-| `createdAt` | `string` | Yes | The date the exchange rate was created. |
-| `effectiveAt` | `string` | Yes | The date the exchange rate is in effect. |
-| `fromCurrencyCode` | `string` | Yes | This represents the three-letter currency code (such as USD for US Dollar) of the currency you are converting from. |
-| `id` | `string` | Yes | A unique identifier for the exchange rate |
-| `toCurrencyCode` | `string` | Yes | This represents the three-letter currency code (such as USD for US Dollar) of the currency you are converting to. |
-| `updatedAt` | `string` | Yes | The date the exchange rate was last updated. |
-| `visibleInUI` | `bool` | Yes | This indicates if the exchange rate is shown in the MultiCurrency settings page. |
-
-### Operations
-
-#### `list(?array $reqmatch = null, ?array $ctrl = null): mixed`
-
-List entities matching the given criteria (call with no argument to list all). Returns an array. Throws on error.
-
-```php
-$results = $client->MulticurrencyCollectionResponseExchangeRateNoPaging()->list();
-```
-
-### Common Methods
-
-#### `data_get(): array`
-
-Get the entity data. Returns a copy of the current data.
-
-#### `data_set($data): void`
-
-Set the entity data.
-
-#### `match_get(): array`
-
-Get the entity match criteria.
-
-#### `match_set($match): void`
-
-Set the entity match criteria.
-
-#### `make(): MulticurrencyCollectionResponseExchangeRateNoPagingEntity`
-
-Create a new `MulticurrencyCollectionResponseExchangeRateNoPagingEntity` instance with the same client and
 options.
 
 #### `get_name(): string`
@@ -599,109 +726,6 @@ Set the entity match criteria.
 #### `make(): MulticurrencyCompanyCurrencyEntity`
 
 Create a new `MulticurrencyCompanyCurrencyEntity` instance with the same client and
-options.
-
-#### `get_name(): string`
-
-Return the entity name.
-
-
----
-
-## MulticurrencyExchangeRateEntity
-
-```php
-$multicurrency_exchange_rate = $client->MulticurrencyExchangeRate();
-```
-
-### Fields
-
-| Field | Type | Required | Description |
-| --- | --- | --- | --- |
-| `conversionRate` | `float` | Yes | The conversion rate between the to and from currency code of this exchange rate. |
-| `createdAt` | `string` | Yes | The date the exchange rate was created. |
-| `currencyCode` | `string` | Yes | The currency code being added to the HubSpot portal for use with central exchange rates. |
-| `effectiveAt` | `string` | Yes | The date the exchange rate is in effect. |
-| `fromCurrencyCode` | `string` | Yes | This represents the three-letter currency code (such as USD for US Dollar) of the currency you are converting from. |
-| `id` | `string` | Yes | A unique identifier for the exchange rate |
-| `toCurrencyCode` | `string` | Yes | This represents the three-letter currency code (such as USD for US Dollar) of the currency you are converting to. |
-| `updatedAt` | `string` | Yes | The date the exchange rate was last updated. |
-| `visibleInUI` | `bool` | Yes | This indicates if the exchange rate is shown in the MultiCurrency settings page. |
-
-### Field Usage by Operation
-
-| Field | load | create | update |
-| --- | --- | --- | --- |
-| `conversionRate` | - | - | - |
-| `createdAt` | - | - | - |
-| `currencyCode` | - | - | - |
-| `effectiveAt` | - | Yes | Yes |
-| `fromCurrencyCode` | - | - | - |
-| `id` | - | - | - |
-| `toCurrencyCode` | - | - | - |
-| `updatedAt` | - | - | - |
-| `visibleInUI` | - | - | - |
-
-### Operations
-
-#### `create(array $reqdata, ?array $ctrl = null): mixed`
-
-Create a new entity with the given data. Throws on error.
-
-```php
-$result = $client->MulticurrencyExchangeRate()->create([
-  "conversionRate" => null, // float
-  "createdAt" => null, // string
-  "currencyCode" => null, // string
-  "effectiveAt" => null, // string
-  "fromCurrencyCode" => null, // string
-  "id" => null, // string
-  "toCurrencyCode" => null, // string
-  "updatedAt" => null, // string
-  "visibleInUI" => null, // bool
-]);
-```
-
-#### `load(array $reqmatch, ?array $ctrl = null): mixed`
-
-Load a single entity matching the given criteria. Throws on error.
-
-```php
-$result = $client->MulticurrencyExchangeRate()->load(["id" => "multicurrency_exchange_rate_id"]);
-```
-
-#### `update(array $reqdata, ?array $ctrl = null): mixed`
-
-Update an existing entity. The data must include the entity `id`. Throws on error.
-
-```php
-$result = $client->MulticurrencyExchangeRate()->update([
-  "id" => "multicurrency_exchange_rate_id",
-  // Fields to update
-]);
-```
-
-### Common Methods
-
-#### `data_get(): array`
-
-Get the entity data. Returns a copy of the current data.
-
-#### `data_set($data): void`
-
-Set the entity data.
-
-#### `match_get(): array`
-
-Get the entity match criteria.
-
-#### `match_set($match): void`
-
-Set the entity match criteria.
-
-#### `make(): MulticurrencyExchangeRateEntity`
-
-Create a new `MulticurrencyExchangeRateEntity` instance with the same client and
 options.
 
 #### `get_name(): string`
@@ -1095,6 +1119,59 @@ Return the entity name.
 
 ---
 
+## UnsupportedCurrencyEntity
+
+```php
+$unsupported_currency = $client->UnsupportedCurrency();
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `currencyCode` | `string` | Yes | The three-letter code representing a specific currency (ex. |
+| `currencyName` | `string` | Yes | The full name of the currency (ex. |
+
+### Operations
+
+#### `list(?array $reqmatch = null, ?array $ctrl = null): mixed`
+
+List entities matching the given criteria (call with no argument to list all). Returns an array. Throws on error.
+
+```php
+$results = $client->UnsupportedCurrency()->list();
+```
+
+### Common Methods
+
+#### `data_get(): array`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set($data): void`
+
+Set the entity data.
+
+#### `match_get(): array`
+
+Get the entity match criteria.
+
+#### `match_set($match): void`
+
+Set the entity match criteria.
+
+#### `make(): UnsupportedCurrencyEntity`
+
+Create a new `UnsupportedCurrencyEntity` instance with the same client and
+options.
+
+#### `get_name(): string`
+
+Return the entity name.
+
+
+---
+
 ## UserEntity
 
 ```php
@@ -1132,169 +1209,6 @@ Set the entity match criteria.
 #### `make(): UserEntity`
 
 Create a new `UserEntity` instance with the same client and
-options.
-
-#### `get_name(): string`
-
-Return the entity name.
-
-
----
-
-## UserProvisioningCollectionResponsePublicPermissionSetNoEntity
-
-```php
-$user_provisioning_collection_response_public_permission_set_no = $client->UserProvisioningCollectionResponsePublicPermissionSetNo();
-```
-
-### Fields
-
-| Field | Type | Required | Description |
-| --- | --- | --- | --- |
-| `id` | `string` | Yes | The unique identifier for the permission set. |
-| `name` | `string` | Yes | The name of the permission set. |
-| `requiresBillingWrite` | `bool` | Yes | A boolean indicating whether the permission set requires billing write access. |
-
-### Operations
-
-#### `list(?array $reqmatch = null, ?array $ctrl = null): mixed`
-
-List entities matching the given criteria (call with no argument to list all). Returns an array. Throws on error.
-
-```php
-$results = $client->UserProvisioningCollectionResponsePublicPermissionSetNo()->list();
-```
-
-### Common Methods
-
-#### `data_get(): array`
-
-Get the entity data. Returns a copy of the current data.
-
-#### `data_set($data): void`
-
-Set the entity data.
-
-#### `match_get(): array`
-
-Get the entity match criteria.
-
-#### `match_set($match): void`
-
-Set the entity match criteria.
-
-#### `make(): UserProvisioningCollectionResponsePublicPermissionSetNoEntity`
-
-Create a new `UserProvisioningCollectionResponsePublicPermissionSetNoEntity` instance with the same client and
-options.
-
-#### `get_name(): string`
-
-Return the entity name.
-
-
----
-
-## UserProvisioningCollectionResponsePublicSeatNoPagingEntity
-
-```php
-$user_provisioning_collection_response_public_seat_no_paging = $client->UserProvisioningCollectionResponsePublicSeatNoPaging();
-```
-
-### Fields
-
-| Field | Type | Required | Description |
-| --- | --- | --- | --- |
-| `description` | `string` | No | A string providing additional details about the seat. |
-| `name` | `string` | Yes | The name of the seat. |
-| `remainingSeats` | `int` | No | An integer indicating the number of seats that are still available. |
-
-### Operations
-
-#### `list(?array $reqmatch = null, ?array $ctrl = null): mixed`
-
-List entities matching the given criteria (call with no argument to list all). Returns an array. Throws on error.
-
-```php
-$results = $client->UserProvisioningCollectionResponsePublicSeatNoPaging()->list();
-```
-
-### Common Methods
-
-#### `data_get(): array`
-
-Get the entity data. Returns a copy of the current data.
-
-#### `data_set($data): void`
-
-Set the entity data.
-
-#### `match_get(): array`
-
-Get the entity match criteria.
-
-#### `match_set($match): void`
-
-Set the entity match criteria.
-
-#### `make(): UserProvisioningCollectionResponsePublicSeatNoPagingEntity`
-
-Create a new `UserProvisioningCollectionResponsePublicSeatNoPagingEntity` instance with the same client and
-options.
-
-#### `get_name(): string`
-
-Return the entity name.
-
-
----
-
-## UserProvisioningCollectionResponsePublicTeamNoPagingEntity
-
-```php
-$user_provisioning_collection_response_public_team_no_paging = $client->UserProvisioningCollectionResponsePublicTeamNoPaging();
-```
-
-### Fields
-
-| Field | Type | Required | Description |
-| --- | --- | --- | --- |
-| `id` | `string` | Yes | The unique identifier for the team, represented as a string. |
-| `name` | `string` | Yes | The name of the team, represented as a string. |
-| `secondaryUserIds` | `array` | Yes | An array of strings representing the IDs of users who are secondary members of the team. |
-| `userIds` | `array` | Yes | An array of strings representing the IDs of users who are primary members of the team. |
-
-### Operations
-
-#### `list(?array $reqmatch = null, ?array $ctrl = null): mixed`
-
-List entities matching the given criteria (call with no argument to list all). Returns an array. Throws on error.
-
-```php
-$results = $client->UserProvisioningCollectionResponsePublicTeamNoPaging()->list();
-```
-
-### Common Methods
-
-#### `data_get(): array`
-
-Get the entity data. Returns a copy of the current data.
-
-#### `data_set($data): void`
-
-Set the entity data.
-
-#### `match_get(): array`
-
-Get the entity match criteria.
-
-#### `match_set($match): void`
-
-Set the entity match criteria.
-
-#### `make(): UserProvisioningCollectionResponsePublicTeamNoPagingEntity`
-
-Create a new `UserProvisioningCollectionResponsePublicTeamNoPagingEntity` instance with the same client and
 options.
 
 #### `get_name(): string`
@@ -1357,6 +1271,169 @@ Set the entity match criteria.
 #### `make(): UserProvisioningCollectionResponsePublicUserForwardPagingEntity`
 
 Create a new `UserProvisioningCollectionResponsePublicUserForwardPagingEntity` instance with the same client and
+options.
+
+#### `get_name(): string`
+
+Return the entity name.
+
+
+---
+
+## UserProvisioningPublicPermissionSetEntity
+
+```php
+$user_provisioning_public_permission_set = $client->UserProvisioningPublicPermissionSet();
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | Yes | The unique identifier for the permission set. |
+| `name` | `string` | Yes | The name of the permission set. |
+| `requiresBillingWrite` | `bool` | Yes | A boolean indicating whether the permission set requires billing write access. |
+
+### Operations
+
+#### `list(?array $reqmatch = null, ?array $ctrl = null): mixed`
+
+List entities matching the given criteria (call with no argument to list all). Returns an array. Throws on error.
+
+```php
+$results = $client->UserProvisioningPublicPermissionSet()->list();
+```
+
+### Common Methods
+
+#### `data_get(): array`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set($data): void`
+
+Set the entity data.
+
+#### `match_get(): array`
+
+Get the entity match criteria.
+
+#### `match_set($match): void`
+
+Set the entity match criteria.
+
+#### `make(): UserProvisioningPublicPermissionSetEntity`
+
+Create a new `UserProvisioningPublicPermissionSetEntity` instance with the same client and
+options.
+
+#### `get_name(): string`
+
+Return the entity name.
+
+
+---
+
+## UserProvisioningPublicSeatEntity
+
+```php
+$user_provisioning_public_seat = $client->UserProvisioningPublicSeat();
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `description` | `string` | No | A string providing additional details about the seat. |
+| `name` | `string` | Yes | The name of the seat. |
+| `remainingSeats` | `int` | No | An integer indicating the number of seats that are still available. |
+
+### Operations
+
+#### `list(?array $reqmatch = null, ?array $ctrl = null): mixed`
+
+List entities matching the given criteria (call with no argument to list all). Returns an array. Throws on error.
+
+```php
+$results = $client->UserProvisioningPublicSeat()->list();
+```
+
+### Common Methods
+
+#### `data_get(): array`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set($data): void`
+
+Set the entity data.
+
+#### `match_get(): array`
+
+Get the entity match criteria.
+
+#### `match_set($match): void`
+
+Set the entity match criteria.
+
+#### `make(): UserProvisioningPublicSeatEntity`
+
+Create a new `UserProvisioningPublicSeatEntity` instance with the same client and
+options.
+
+#### `get_name(): string`
+
+Return the entity name.
+
+
+---
+
+## UserProvisioningPublicTeamEntity
+
+```php
+$user_provisioning_public_team = $client->UserProvisioningPublicTeam();
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | Yes | The unique identifier for the team, represented as a string. |
+| `name` | `string` | Yes | The name of the team, represented as a string. |
+| `secondaryUserIds` | `array` | Yes | An array of strings representing the IDs of users who are secondary members of the team. |
+| `userIds` | `array` | Yes | An array of strings representing the IDs of users who are primary members of the team. |
+
+### Operations
+
+#### `list(?array $reqmatch = null, ?array $ctrl = null): mixed`
+
+List entities matching the given criteria (call with no argument to list all). Returns an array. Throws on error.
+
+```php
+$results = $client->UserProvisioningPublicTeam()->list();
+```
+
+### Common Methods
+
+#### `data_get(): array`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set($data): void`
+
+Set the entity data.
+
+#### `match_get(): array`
+
+Get the entity match criteria.
+
+#### `match_set($match): void`
+
+Set the entity match criteria.
+
+#### `make(): UserProvisioningPublicTeamEntity`
+
+Create a new `UserProvisioningPublicTeamEntity` instance with the same client and
 options.
 
 #### `get_name(): string`
@@ -1472,14 +1549,14 @@ Return the entity name.
 
 | Feature | Version | Description |
 | --- | --- | --- |
-| `debug` | 0.0.1 | Request/response capture ring buffer for debugging |
-| `idempotency` | 0.0.1 | Idempotency keys for safe retries of mutating operations |
-| `metrics` | 0.0.1 | Statistics capture: per-operation counters and latency |
-| `paging` | 0.0.1 | Pagination signals for list operations |
-| `ratelimit` | 0.0.1 | Client-side rate limiting via a token bucket |
-| `retry` | 0.0.1 | Automatic retry of transient failures with exponential backoff |
-| `test` | 0.0.1 | In-memory mock transport for testing without a live server |
-| `timeout` | 0.0.1 | Per-request timeout with transport abort |
+| `debug` | 0.0.1 | Debug capture |
+| `idempotency` | 0.0.1 | Idempotency |
+| `metrics` | 0.0.1 | Metrics |
+| `paging` | 0.0.1 | Paging |
+| `ratelimit` | 0.0.1 | Rate limiting |
+| `retry` | 0.0.1 | Retry |
+| `test` | 0.0.1 | Test transport |
+| `timeout` | 0.0.1 | Timeout |
 
 
 Features are activated via the `feature` option:
@@ -1525,7 +1602,7 @@ rather than the transport, so their order does not affect what they observe.
 
 #### `debug`
 
-Request/response capture ring buffer for debugging.
+Debug capture.
 
 **Configuration**
 
@@ -1556,7 +1633,7 @@ its default unless you name it.
 
 #### `idempotency`
 
-Idempotency keys for safe retries of mutating operations.
+Idempotency.
 
 **Configuration**
 
@@ -1587,7 +1664,7 @@ its default unless you name it.
 
 #### `metrics`
 
-Statistics capture: per-operation counters and latency.
+Metrics.
 
 **Configuration**
 
@@ -1615,7 +1692,7 @@ its default unless you name it.
 
 #### `paging`
 
-Pagination signals for list operations.
+Paging.
 
 **Configuration**
 
@@ -1650,7 +1727,7 @@ its default unless you name it.
 
 #### `ratelimit`
 
-Client-side rate limiting via a token bucket.
+Rate limiting.
 
 **Configuration**
 
@@ -1681,7 +1758,7 @@ its default unless you name it.
 
 #### `retry`
 
-Automatic retry of transient failures with exponential backoff.
+Retry.
 
 **Configuration**
 
@@ -1715,7 +1792,7 @@ its default unless you name it.
 
 #### `test`
 
-In-memory mock transport for testing without a live server.
+Test transport.
 
 **Configuration**
 
@@ -1746,7 +1823,7 @@ its default unless you name it.
 
 #### `timeout`
 
-Per-request timeout with transport abort.
+Timeout.
 
 **Configuration**
 

@@ -1,3 +1,25 @@
+export interface AddCurrency {
+    conversionRate: number;
+    createdAt: string;
+    currencyCode: string;
+    effectiveAt: string;
+    fromCurrencyCode: string;
+    id: string;
+    toCurrencyCode: string;
+    updatedAt: string;
+    visibleInUI: boolean;
+}
+export interface AddCurrencyCreateData {
+    conversionRate: number;
+    createdAt: string;
+    currencyCode: string;
+    effectiveAt: string;
+    fromCurrencyCode: string;
+    id: string;
+    toCurrencyCode: string;
+    updatedAt: string;
+    visibleInUI: boolean;
+}
 export interface Basic {
 }
 export interface BasicRemoveMatch {
@@ -5,11 +27,68 @@ export interface BasicRemoveMatch {
     user_id?: string;
     type?: string;
 }
+export interface Code {
+    currencyCode: string;
+    currencyName: string;
+}
+export interface CodeListMatch {
+    currencyCode?: string;
+    currencyName?: string;
+}
+export interface Current {
+    conversionRate: number;
+    createdAt: string;
+    effectiveAt: string;
+    fromCurrencyCode: string;
+    id: string;
+    toCurrencyCode: string;
+    updatedAt: string;
+    visibleInUI: boolean;
+}
+export interface CurrentListMatch {
+    conversionRate?: number;
+    createdAt?: string;
+    effectiveAt?: string;
+    fromCurrencyCode?: string;
+    id?: string;
+    toCurrencyCode?: string;
+    updatedAt?: string;
+    visibleInUI?: boolean;
+}
 export interface ExchangeRate {
+    conversionRate: number;
+    createdAt: string;
+    effectiveAt: string;
+    fromCurrencyCode: string;
+    id: string;
+    toCurrencyCode: string;
+    updatedAt: string;
+    visibleInUI: boolean;
+}
+export interface ExchangeRateLoadMatch {
+    id: string;
 }
 export interface ExchangeRateCreateData {
+    conversionRate: number;
+    createdAt: string;
+    effectiveAt: string;
+    fromCurrencyCode: string;
+    id: string;
+    toCurrencyCode: string;
+    updatedAt: string;
+    visibleInUI: boolean;
     $action?: string;
     [action: string]: any;
+}
+export interface ExchangeRateUpdateData {
+    id: string;
+    conversionRate?: number;
+    createdAt?: string;
+    effectiveAt?: string;
+    fromCurrencyCode?: string;
+    toCurrencyCode?: string;
+    updatedAt?: string;
+    visibleInUI?: boolean;
 }
 export interface MulticurrencyBatchResponseExchangeRate {
     completedAt: string;
@@ -35,14 +114,6 @@ export interface MulticurrencyCentralExchangeRatesInformation {
 export interface MulticurrencyCentralExchangeRatesInformationLoadMatch {
     centralExchangeRatesEnabled?: boolean;
 }
-export interface MulticurrencyCollectionResponseCurrencyCodeInfoNoPaging {
-    currencyCode: string;
-    currencyName: string;
-}
-export interface MulticurrencyCollectionResponseCurrencyCodeInfoNoPagingListMatch {
-    currencyCode?: string;
-    currencyName?: string;
-}
 export interface MulticurrencyCollectionResponseExchangeRateForwardPaging {
     conversionRate: number;
     createdAt: string;
@@ -59,26 +130,6 @@ export interface MulticurrencyCollectionResponseExchangeRateForwardPagingListMat
     limit?: number;
     to_currency_code?: string;
 }
-export interface MulticurrencyCollectionResponseExchangeRateNoPaging {
-    conversionRate: number;
-    createdAt: string;
-    effectiveAt: string;
-    fromCurrencyCode: string;
-    id: string;
-    toCurrencyCode: string;
-    updatedAt: string;
-    visibleInUI: boolean;
-}
-export interface MulticurrencyCollectionResponseExchangeRateNoPagingListMatch {
-    conversionRate?: number;
-    createdAt?: string;
-    effectiveAt?: string;
-    fromCurrencyCode?: string;
-    id?: string;
-    toCurrencyCode?: string;
-    updatedAt?: string;
-    visibleInUI?: boolean;
-}
 export interface MulticurrencyCompanyCurrency {
     createdAt: string;
     currencyCode: string;
@@ -93,42 +144,6 @@ export interface MulticurrencyCompanyCurrencyUpdateData {
     createdAt?: string;
     currencyCode?: string;
     id?: string;
-}
-export interface MulticurrencyExchangeRate {
-    conversionRate: number;
-    createdAt: string;
-    currencyCode: string;
-    effectiveAt: string;
-    fromCurrencyCode: string;
-    id: string;
-    toCurrencyCode: string;
-    updatedAt: string;
-    visibleInUI: boolean;
-}
-export interface MulticurrencyExchangeRateLoadMatch {
-    id: string;
-}
-export interface MulticurrencyExchangeRateCreateData {
-    conversionRate: number;
-    createdAt: string;
-    currencyCode: string;
-    effectiveAt: string;
-    fromCurrencyCode: string;
-    id: string;
-    toCurrencyCode: string;
-    updatedAt: string;
-    visibleInUI: boolean;
-}
-export interface MulticurrencyExchangeRateUpdateData {
-    id: string;
-    conversionRate?: number;
-    createdAt?: string;
-    currencyCode?: string;
-    effectiveAt?: string;
-    fromCurrencyCode?: string;
-    toCurrencyCode?: string;
-    updatedAt?: string;
-    visibleInUI?: boolean;
 }
 export interface TaxRate {
     active: boolean;
@@ -219,43 +234,19 @@ export interface TeamsTeamMemberCreateData {
     type: string;
     userId: string;
 }
+export interface UnsupportedCurrency {
+    currencyCode: string;
+    currencyName: string;
+}
+export interface UnsupportedCurrencyListMatch {
+    currencyCode?: string;
+    currencyName?: string;
+}
 export interface User {
 }
 export interface UserRemoveMatch {
     user_id: string;
     id_property?: string;
-}
-export interface UserProvisioningCollectionResponsePublicPermissionSetNo {
-    id: string;
-    name: string;
-    requiresBillingWrite: boolean;
-}
-export interface UserProvisioningCollectionResponsePublicPermissionSetNoListMatch {
-    id?: string;
-    name?: string;
-    requiresBillingWrite?: boolean;
-}
-export interface UserProvisioningCollectionResponsePublicSeatNoPaging {
-    description?: string;
-    name: string;
-    remainingSeats?: number;
-}
-export interface UserProvisioningCollectionResponsePublicSeatNoPagingListMatch {
-    description?: string;
-    name?: string;
-    remainingSeats?: number;
-}
-export interface UserProvisioningCollectionResponsePublicTeamNoPaging {
-    id: string;
-    name: string;
-    secondaryUserIds: any[];
-    userIds: any[];
-}
-export interface UserProvisioningCollectionResponsePublicTeamNoPagingListMatch {
-    id?: string;
-    name?: string;
-    secondaryUserIds?: any[];
-    userIds?: any[];
 }
 export interface UserProvisioningCollectionResponsePublicUserForwardPaging {
     email: string;
@@ -273,6 +264,38 @@ export interface UserProvisioningCollectionResponsePublicUserForwardPaging {
 export interface UserProvisioningCollectionResponsePublicUserForwardPagingListMatch {
     after?: string;
     limit?: number;
+}
+export interface UserProvisioningPublicPermissionSet {
+    id: string;
+    name: string;
+    requiresBillingWrite: boolean;
+}
+export interface UserProvisioningPublicPermissionSetListMatch {
+    id?: string;
+    name?: string;
+    requiresBillingWrite?: boolean;
+}
+export interface UserProvisioningPublicSeat {
+    description?: string;
+    name: string;
+    remainingSeats?: number;
+}
+export interface UserProvisioningPublicSeatListMatch {
+    description?: string;
+    name?: string;
+    remainingSeats?: number;
+}
+export interface UserProvisioningPublicTeam {
+    id: string;
+    name: string;
+    secondaryUserIds: any[];
+    userIds: any[];
+}
+export interface UserProvisioningPublicTeamListMatch {
+    id?: string;
+    name?: string;
+    secondaryUserIds?: any[];
+    userIds?: any[];
 }
 export interface UserProvisioningPublicUser {
     email: string;

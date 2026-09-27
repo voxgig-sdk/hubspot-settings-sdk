@@ -4,7 +4,7 @@
 
 The PHP SDK for the HubspotSettings API — an entity-oriented client using PHP conventions.
 
-The SDK exposes the API as capitalised, semantic **Entities** — for example `$client->Basic()` — with named operations (`list`/`load`/`create`/`update`/`remove`) instead of raw URL paths and query strings. Working with resources and verbs keeps call sites self-describing and reduces cognitive load.
+The SDK exposes the API as capitalised, semantic **Entities** — for example `$client->AddCurrency()` — with named operations (`list`/`load`/`create`/`update`/`remove`) instead of raw URL paths and query strings. Working with resources and verbs keeps call sites self-describing and reduces cognitive load.
 
 > Other languages, the CLI, and MCP server live alongside this one — see
 > the [top-level README](../README.md).
@@ -33,25 +33,12 @@ $client = new HubspotSettingsSDK([
 ]);
 ```
 
-### 3. Load a teamsteam
-
-TeamsTeam is nested under team, so provide the `team_id`.
-
-```php
-try {
-    // load() returns the ENTITY — call data_get() for the TeamsTeam record (throws on error).
-    $teamsteam = $client->TeamsTeam()->load(["team_id" => "example_team_id"]);
-    print_r($teamsteam->data_get());
-} catch (\Throwable $err) {
-    echo "Error: " . $err->getMessage();
-}
-```
-
 ### 4. Create, update, and remove
 
 ```php
-// Remove
-$client->Basic()->remove(["team_id" => "example_team_id"]);
+// create() returns the ENTITY — call data_get() for the created AddCurrency record.
+$created = $client->AddCurrency()->create(["conversionRate" => 1, "createdAt" => "example_createdAt", "currencyCode" => "example_currencyCode", "effectiveAt" => "example_effectiveAt", "fromCurrencyCode" => "example_fromCurrencyCode", "id" => "example_id", "toCurrencyCode" => "example_toCurrencyCode", "updatedAt" => "example_updatedAt", "visibleInUI" => true]);
+
 ```
 
 
@@ -62,7 +49,7 @@ Entity operations throw a `\Throwable` on failure, so wrap them in
 
 ```php
 try {
-    $userprovisioningcollectionresponsepublicteamnopagings = $client->UserProvisioningCollectionResponsePublicTeamNoPaging()->list();
+    $userprovisioningpublicseats = $client->UserProvisioningPublicSeat()->list();
 } catch (\Throwable $err) {
     echo "Error: " . $err->getMessage();
 }
@@ -134,13 +121,13 @@ data via the `entity` option so offline calls resolve without a live server:
 
 ```php
 $client = HubspotSettingsSDK::test([
-    "entity" => ["multicurrencyexchangerate" => ["test01" => ["id" => "test01"]]],
+    "entity" => ["exchangerate" => ["test01" => ["id" => "test01"]]],
 ]);
 
 // Entity ops return the ENTITY (throws on error);
 // call data_get() for the mock record.
-$multicurrencyexchangerate = $client->MulticurrencyExchangeRate()->load(["id" => "test01"]);
-print_r($multicurrencyexchangerate->data_get());
+$exchangerate = $client->ExchangeRate()->load(["id" => "test01"]);
+print_r($exchangerate->data_get());
 ```
 
 ### Use a custom fetch function
@@ -221,26 +208,27 @@ Creates a test-mode client with mock transport. Both arguments may be `null`.
 | `get_utility` | `(): Utility` | Copy of the SDK utility object. |
 | `prepare` | `(array $fetchargs): array` | Build an HTTP request definition without sending. |
 | `direct` | `(array $fetchargs): array` | Build and send an HTTP request. |
+| `AddCurrency` | `($data): AddCurrencyEntity` | Create an AddCurrency entity instance. |
 | `Basic` | `($data): BasicEntity` | Create a Basic entity instance. |
+| `Code` | `($data): CodeEntity` | Create a Code entity instance. |
+| `Current` | `($data): CurrentEntity` | Create a Current entity instance. |
 | `ExchangeRate` | `($data): ExchangeRateEntity` | Create an ExchangeRate entity instance. |
 | `MulticurrencyBatchResponseExchangeRate` | `($data): MulticurrencyBatchResponseExchangeRateEntity` | Create a MulticurrencyBatchResponseExchangeRate entity instance. |
 | `MulticurrencyCentralExchangeRatesInformation` | `($data): MulticurrencyCentralExchangeRatesInformationEntity` | Create a MulticurrencyCentralExchangeRatesInformation entity instance. |
-| `MulticurrencyCollectionResponseCurrencyCodeInfoNoPaging` | `($data): MulticurrencyCollectionResponseCurrencyCodeInfoNoPagingEntity` | Create a MulticurrencyCollectionResponseCurrencyCodeInfoNoPaging entity instance. |
 | `MulticurrencyCollectionResponseExchangeRateForwardPaging` | `($data): MulticurrencyCollectionResponseExchangeRateForwardPagingEntity` | Create a MulticurrencyCollectionResponseExchangeRateForwardPaging entity instance. |
-| `MulticurrencyCollectionResponseExchangeRateNoPaging` | `($data): MulticurrencyCollectionResponseExchangeRateNoPagingEntity` | Create a MulticurrencyCollectionResponseExchangeRateNoPaging entity instance. |
 | `MulticurrencyCompanyCurrency` | `($data): MulticurrencyCompanyCurrencyEntity` | Create a MulticurrencyCompanyCurrency entity instance. |
-| `MulticurrencyExchangeRate` | `($data): MulticurrencyExchangeRateEntity` | Create a MulticurrencyExchangeRate entity instance. |
 | `TaxRate` | `($data): TaxRateEntity` | Create a TaxRate entity instance. |
 | `TeamsBatchResponseTeamMember` | `($data): TeamsBatchResponseTeamMemberEntity` | Create a TeamsBatchResponseTeamMember entity instance. |
 | `TeamsCollectionResponseTeamMemberResponseForwardPaging` | `($data): TeamsCollectionResponseTeamMemberResponseForwardPagingEntity` | Create a TeamsCollectionResponseTeamMemberResponseForwardPaging entity instance. |
 | `TeamsCollectionResponseTeamResponseForwardPaging` | `($data): TeamsCollectionResponseTeamResponseForwardPagingEntity` | Create a TeamsCollectionResponseTeamResponseForwardPaging entity instance. |
 | `TeamsTeam` | `($data): TeamsTeamEntity` | Create a TeamsTeam entity instance. |
 | `TeamsTeamMember` | `($data): TeamsTeamMemberEntity` | Create a TeamsTeamMember entity instance. |
+| `UnsupportedCurrency` | `($data): UnsupportedCurrencyEntity` | Create an UnsupportedCurrency entity instance. |
 | `User` | `($data): UserEntity` | Create an User entity instance. |
-| `UserProvisioningCollectionResponsePublicPermissionSetNo` | `($data): UserProvisioningCollectionResponsePublicPermissionSetNoEntity` | Create an UserProvisioningCollectionResponsePublicPermissionSetNo entity instance. |
-| `UserProvisioningCollectionResponsePublicSeatNoPaging` | `($data): UserProvisioningCollectionResponsePublicSeatNoPagingEntity` | Create an UserProvisioningCollectionResponsePublicSeatNoPaging entity instance. |
-| `UserProvisioningCollectionResponsePublicTeamNoPaging` | `($data): UserProvisioningCollectionResponsePublicTeamNoPagingEntity` | Create an UserProvisioningCollectionResponsePublicTeamNoPaging entity instance. |
 | `UserProvisioningCollectionResponsePublicUserForwardPaging` | `($data): UserProvisioningCollectionResponsePublicUserForwardPagingEntity` | Create an UserProvisioningCollectionResponsePublicUserForwardPaging entity instance. |
+| `UserProvisioningPublicPermissionSet` | `($data): UserProvisioningPublicPermissionSetEntity` | Create an UserProvisioningPublicPermissionSet entity instance. |
+| `UserProvisioningPublicSeat` | `($data): UserProvisioningPublicSeatEntity` | Create an UserProvisioningPublicSeat entity instance. |
+| `UserProvisioningPublicTeam` | `($data): UserProvisioningPublicTeamEntity` | Create an UserProvisioningPublicTeam entity instance. |
 | `UserProvisioningPublicUser` | `($data): UserProvisioningPublicUserEntity` | Create an UserProvisioningPublicUser entity instance. |
 
 ### Entity interface
@@ -281,6 +269,24 @@ On error, `ok` is `false` and `$err` contains the error value.
 
 ### Entities
 
+#### AddCurrency
+
+| Field | Description |
+| --- | --- |
+| `conversionRate` | The conversion rate between the to and from currency code of this exchange rate. |
+| `createdAt` | The date the exchange rate was created. |
+| `currencyCode` | The currency code being added to the HubSpot portal for use with central exchange rates. |
+| `effectiveAt` | The date the exchange rate is in effect. |
+| `fromCurrencyCode` | This represents the three-letter currency code (such as USD for US Dollar) of the currency you are converting from. |
+| `id` | A unique identifier for the exchange rate |
+| `toCurrencyCode` | This represents the three-letter currency code (such as USD for US Dollar) of the currency you are converting to. |
+| `updatedAt` | The date the exchange rate was last updated. |
+| `visibleInUI` | This indicates if the exchange rate is shown in the MultiCurrency settings page. |
+
+Operations: Create.
+
+API path: `/settings/currencies/2026-09/central-fx-rates/add-currency`
+
 #### Basic
 
 | Field | Description |
@@ -290,14 +296,50 @@ Operations: Remove.
 
 API path: `/settings/teams/2026-09/{teamId}/members/{userId}`
 
+#### Code
+
+| Field | Description |
+| --- | --- |
+| `currencyCode` | The three-letter code representing a specific currency (ex. |
+| `currencyName` | The full name of the currency (ex. |
+
+Operations: List.
+
+API path: `/settings/currencies/2026-09/codes`
+
+#### Current
+
+| Field | Description |
+| --- | --- |
+| `conversionRate` | The conversion rate between the to and from currency code of this exchange rate. |
+| `createdAt` | The date the exchange rate was created. |
+| `effectiveAt` | The date the exchange rate is in effect. |
+| `fromCurrencyCode` | This represents the three-letter currency code (such as USD for US Dollar) of the currency you are converting from. |
+| `id` | A unique identifier for the exchange rate |
+| `toCurrencyCode` | This represents the three-letter currency code (such as USD for US Dollar) of the currency you are converting to. |
+| `updatedAt` | The date the exchange rate was last updated. |
+| `visibleInUI` | This indicates if the exchange rate is shown in the MultiCurrency settings page. |
+
+Operations: List.
+
+API path: `/settings/currencies/2026-09/exchange-rates/current`
+
 #### ExchangeRate
 
 | Field | Description |
 | --- | --- |
+| `conversionRate` | The conversion rate between the to and from currency code of this exchange rate. |
+| `createdAt` | The date the exchange rate was created. |
+| `effectiveAt` | The date the exchange rate is in effect. |
+| `fromCurrencyCode` | This represents the three-letter currency code (such as USD for US Dollar) of the currency you are converting from. |
+| `id` | A unique identifier for the exchange rate |
+| `toCurrencyCode` | This represents the three-letter currency code (such as USD for US Dollar) of the currency you are converting to. |
+| `updatedAt` | The date the exchange rate was last updated. |
+| `visibleInUI` | This indicates if the exchange rate is shown in the MultiCurrency settings page. |
 
-Operations: Create.
+Operations: Create, Load, Update.
 
-API path: `/settings/currencies/2026-09/exchange-rates/update-visibility`
+API path: `/settings/currencies/2026-09/exchange-rates`
 
 #### MulticurrencyBatchResponseExchangeRate
 
@@ -325,17 +367,6 @@ Operations: Load.
 
 API path: `/settings/currencies/2026-09/central-fx-rates/information`
 
-#### MulticurrencyCollectionResponseCurrencyCodeInfoNoPaging
-
-| Field | Description |
-| --- | --- |
-| `currencyCode` | The three-letter code representing a specific currency (ex. |
-| `currencyName` | The full name of the currency (ex. |
-
-Operations: List.
-
-API path: `/settings/currencies/2026-09/central-fx-rates/unsupported-currencies`
-
 #### MulticurrencyCollectionResponseExchangeRateForwardPaging
 
 | Field | Description |
@@ -353,23 +384,6 @@ Operations: List.
 
 API path: `/settings/currencies/2026-09/exchange-rates`
 
-#### MulticurrencyCollectionResponseExchangeRateNoPaging
-
-| Field | Description |
-| --- | --- |
-| `conversionRate` | The conversion rate between the to and from currency code of this exchange rate. |
-| `createdAt` | The date the exchange rate was created. |
-| `effectiveAt` | The date the exchange rate is in effect. |
-| `fromCurrencyCode` | This represents the three-letter currency code (such as USD for US Dollar) of the currency you are converting from. |
-| `id` | A unique identifier for the exchange rate |
-| `toCurrencyCode` | This represents the three-letter currency code (such as USD for US Dollar) of the currency you are converting to. |
-| `updatedAt` | The date the exchange rate was last updated. |
-| `visibleInUI` | This indicates if the exchange rate is shown in the MultiCurrency settings page. |
-
-Operations: List.
-
-API path: `/settings/currencies/2026-09/exchange-rates/current`
-
 #### MulticurrencyCompanyCurrency
 
 | Field | Description |
@@ -381,24 +395,6 @@ API path: `/settings/currencies/2026-09/exchange-rates/current`
 Operations: Load, Update.
 
 API path: `/settings/currencies/2026-09/company-currency`
-
-#### MulticurrencyExchangeRate
-
-| Field | Description |
-| --- | --- |
-| `conversionRate` | The conversion rate between the to and from currency code of this exchange rate. |
-| `createdAt` | The date the exchange rate was created. |
-| `currencyCode` | The currency code being added to the HubSpot portal for use with central exchange rates. |
-| `effectiveAt` | The date the exchange rate is in effect. |
-| `fromCurrencyCode` | This represents the three-letter currency code (such as USD for US Dollar) of the currency you are converting from. |
-| `id` | A unique identifier for the exchange rate |
-| `toCurrencyCode` | This represents the three-letter currency code (such as USD for US Dollar) of the currency you are converting to. |
-| `updatedAt` | The date the exchange rate was last updated. |
-| `visibleInUI` | This indicates if the exchange rate is shown in the MultiCurrency settings page. |
-
-Operations: Create, Load, Update.
-
-API path: `/settings/currencies/2026-09/central-fx-rates/add-currency`
 
 #### TaxRate
 
@@ -481,6 +477,17 @@ Operations: Create.
 
 API path: `/settings/teams/2026-09/{teamId}/members`
 
+#### UnsupportedCurrency
+
+| Field | Description |
+| --- | --- |
+| `currencyCode` | The three-letter code representing a specific currency (ex. |
+| `currencyName` | The full name of the currency (ex. |
+
+Operations: List.
+
+API path: `/settings/currencies/2026-09/central-fx-rates/unsupported-currencies`
+
 #### User
 
 | Field | Description |
@@ -489,43 +496,6 @@ API path: `/settings/teams/2026-09/{teamId}/members`
 Operations: Remove.
 
 API path: `/settings/users/2026-09/{userId}`
-
-#### UserProvisioningCollectionResponsePublicPermissionSetNo
-
-| Field | Description |
-| --- | --- |
-| `id` | The unique identifier for the permission set. |
-| `name` | The name of the permission set. |
-| `requiresBillingWrite` | A boolean indicating whether the permission set requires billing write access. |
-
-Operations: List.
-
-API path: `/settings/users/2026-09/roles`
-
-#### UserProvisioningCollectionResponsePublicSeatNoPaging
-
-| Field | Description |
-| --- | --- |
-| `description` | A string providing additional details about the seat. |
-| `name` | The name of the seat. |
-| `remainingSeats` | An integer indicating the number of seats that are still available. |
-
-Operations: List.
-
-API path: `/settings/users/2026-09/seats`
-
-#### UserProvisioningCollectionResponsePublicTeamNoPaging
-
-| Field | Description |
-| --- | --- |
-| `id` | The unique identifier for the team, represented as a string. |
-| `name` | The name of the team, represented as a string. |
-| `secondaryUserIds` | An array of strings representing the IDs of users who are secondary members of the team. |
-| `userIds` | An array of strings representing the IDs of users who are primary members of the team. |
-
-Operations: List.
-
-API path: `/settings/users/2026-09/teams`
 
 #### UserProvisioningCollectionResponsePublicUserForwardPaging
 
@@ -546,6 +516,43 @@ API path: `/settings/users/2026-09/teams`
 Operations: List.
 
 API path: `/settings/users/2026-09`
+
+#### UserProvisioningPublicPermissionSet
+
+| Field | Description |
+| --- | --- |
+| `id` | The unique identifier for the permission set. |
+| `name` | The name of the permission set. |
+| `requiresBillingWrite` | A boolean indicating whether the permission set requires billing write access. |
+
+Operations: List.
+
+API path: `/settings/users/2026-09/roles`
+
+#### UserProvisioningPublicSeat
+
+| Field | Description |
+| --- | --- |
+| `description` | A string providing additional details about the seat. |
+| `name` | The name of the seat. |
+| `remainingSeats` | An integer indicating the number of seats that are still available. |
+
+Operations: List.
+
+API path: `/settings/users/2026-09/seats`
+
+#### UserProvisioningPublicTeam
+
+| Field | Description |
+| --- | --- |
+| `id` | The unique identifier for the team, represented as a string. |
+| `name` | The name of the team, represented as a string. |
+| `secondaryUserIds` | An array of strings representing the IDs of users who are secondary members of the team. |
+| `userIds` | An array of strings representing the IDs of users who are primary members of the team. |
+
+Operations: List.
+
+API path: `/settings/users/2026-09/teams`
 
 #### UserProvisioningPublicUser
 
@@ -572,6 +579,47 @@ API path: `/settings/users/2026-09`
 ## Entities
 
 
+### AddCurrency
+
+Create an instance: `$add_currency = $client->AddCurrency();`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `conversionRate` | `float` | The conversion rate between the to and from currency code of this exchange rate. |
+| `createdAt` | `string` | The date the exchange rate was created. |
+| `currencyCode` | `string` | The currency code being added to the HubSpot portal for use with central exchange rates. |
+| `effectiveAt` | `string` | The date the exchange rate is in effect. |
+| `fromCurrencyCode` | `string` | This represents the three-letter currency code (such as USD for US Dollar) of the currency you are converting from. |
+| `id` | `string` | A unique identifier for the exchange rate |
+| `toCurrencyCode` | `string` | This represents the three-letter currency code (such as USD for US Dollar) of the currency you are converting to. |
+| `updatedAt` | `string` | The date the exchange rate was last updated. |
+| `visibleInUI` | `bool` | This indicates if the exchange rate is shown in the MultiCurrency settings page. |
+
+#### Example: Create
+
+```php
+$add_currency = $client->AddCurrency()->create([
+    "conversionRate" => null, // float
+    "createdAt" => null, // string
+    "currencyCode" => null, // string
+    "effectiveAt" => null, // string
+    "fromCurrencyCode" => null, // string
+    "id" => null, // string
+    "toCurrencyCode" => null, // string
+    "updatedAt" => null, // string
+    "visibleInUI" => null, // bool
+]);
+```
+
+
 ### Basic
 
 Create an instance: `$basic = $client->Basic();`
@@ -583,6 +631,62 @@ Create an instance: `$basic = $client->Basic();`
 | `remove(match)` | Remove the matching entity. |
 
 
+### Code
+
+Create an instance: `$code = $client->Code();`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `list(match)` | List entities matching the criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `currencyCode` | `string` | The three-letter code representing a specific currency (ex. |
+| `currencyName` | `string` | The full name of the currency (ex. |
+
+#### Example: List
+
+```php
+// list() returns an array of Code records (throws on error).
+$codes = $client->Code()->list();
+```
+
+
+### Current
+
+Create an instance: `$current = $client->Current();`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `list(match)` | List entities matching the criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `conversionRate` | `float` | The conversion rate between the to and from currency code of this exchange rate. |
+| `createdAt` | `string` | The date the exchange rate was created. |
+| `effectiveAt` | `string` | The date the exchange rate is in effect. |
+| `fromCurrencyCode` | `string` | This represents the three-letter currency code (such as USD for US Dollar) of the currency you are converting from. |
+| `id` | `string` | A unique identifier for the exchange rate |
+| `toCurrencyCode` | `string` | This represents the three-letter currency code (such as USD for US Dollar) of the currency you are converting to. |
+| `updatedAt` | `string` | The date the exchange rate was last updated. |
+| `visibleInUI` | `bool` | This indicates if the exchange rate is shown in the MultiCurrency settings page. |
+
+#### Example: List
+
+```php
+// list() returns an array of Current records (throws on error).
+$currents = $client->Current()->list();
+```
+
+
 ### ExchangeRate
 
 Create an instance: `$exchange_rate = $client->ExchangeRate();`
@@ -592,11 +696,41 @@ Create an instance: `$exchange_rate = $client->ExchangeRate();`
 | Method | Description |
 | --- | --- |
 | `create(data)` | Create a new entity with the given data. |
+| `load(match)` | Load a single entity by match criteria. |
+| `update(data)` | Update an existing entity. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `conversionRate` | `float` | The conversion rate between the to and from currency code of this exchange rate. |
+| `createdAt` | `string` | The date the exchange rate was created. |
+| `effectiveAt` | `string` | The date the exchange rate is in effect. |
+| `fromCurrencyCode` | `string` | This represents the three-letter currency code (such as USD for US Dollar) of the currency you are converting from. |
+| `id` | `string` | A unique identifier for the exchange rate |
+| `toCurrencyCode` | `string` | This represents the three-letter currency code (such as USD for US Dollar) of the currency you are converting to. |
+| `updatedAt` | `string` | The date the exchange rate was last updated. |
+| `visibleInUI` | `bool` | This indicates if the exchange rate is shown in the MultiCurrency settings page. |
+
+#### Example: Load
+
+```php
+// load() returns the ENTITY — call data_get() for the ExchangeRate record (throws on error).
+$exchange_rate = $client->ExchangeRate()->load(["id" => "exchange_rate_id"]);
+```
 
 #### Example: Create
 
 ```php
 $exchange_rate = $client->ExchangeRate()->create([
+    "conversionRate" => null, // float
+    "createdAt" => null, // string
+    "effectiveAt" => null, // string
+    "fromCurrencyCode" => null, // string
+    "id" => null, // string
+    "toCurrencyCode" => null, // string
+    "updatedAt" => null, // string
+    "visibleInUI" => null, // bool
 ]);
 ```
 
@@ -660,31 +794,6 @@ $multicurrency_central_exchange_rates_information = $client->MulticurrencyCentra
 ```
 
 
-### MulticurrencyCollectionResponseCurrencyCodeInfoNoPaging
-
-Create an instance: `$multicurrency_collection_response_currency_code_info_no_paging = $client->MulticurrencyCollectionResponseCurrencyCodeInfoNoPaging();`
-
-#### Operations
-
-| Method | Description |
-| --- | --- |
-| `list(match)` | List entities matching the criteria. |
-
-#### Fields
-
-| Field | Type | Description |
-| --- | --- | --- |
-| `currencyCode` | `string` | The three-letter code representing a specific currency (ex. |
-| `currencyName` | `string` | The full name of the currency (ex. |
-
-#### Example: List
-
-```php
-// list() returns an array of MulticurrencyCollectionResponseCurrencyCodeInfoNoPaging records (throws on error).
-$multicurrency_collection_response_currency_code_info_no_pagings = $client->MulticurrencyCollectionResponseCurrencyCodeInfoNoPaging()->list();
-```
-
-
 ### MulticurrencyCollectionResponseExchangeRateForwardPaging
 
 Create an instance: `$multicurrency_collection_response_exchange_rate_forward_paging = $client->MulticurrencyCollectionResponseExchangeRateForwardPaging();`
@@ -716,37 +825,6 @@ $multicurrency_collection_response_exchange_rate_forward_pagings = $client->Mult
 ```
 
 
-### MulticurrencyCollectionResponseExchangeRateNoPaging
-
-Create an instance: `$multicurrency_collection_response_exchange_rate_no_paging = $client->MulticurrencyCollectionResponseExchangeRateNoPaging();`
-
-#### Operations
-
-| Method | Description |
-| --- | --- |
-| `list(match)` | List entities matching the criteria. |
-
-#### Fields
-
-| Field | Type | Description |
-| --- | --- | --- |
-| `conversionRate` | `float` | The conversion rate between the to and from currency code of this exchange rate. |
-| `createdAt` | `string` | The date the exchange rate was created. |
-| `effectiveAt` | `string` | The date the exchange rate is in effect. |
-| `fromCurrencyCode` | `string` | This represents the three-letter currency code (such as USD for US Dollar) of the currency you are converting from. |
-| `id` | `string` | A unique identifier for the exchange rate |
-| `toCurrencyCode` | `string` | This represents the three-letter currency code (such as USD for US Dollar) of the currency you are converting to. |
-| `updatedAt` | `string` | The date the exchange rate was last updated. |
-| `visibleInUI` | `bool` | This indicates if the exchange rate is shown in the MultiCurrency settings page. |
-
-#### Example: List
-
-```php
-// list() returns an array of MulticurrencyCollectionResponseExchangeRateNoPaging records (throws on error).
-$multicurrency_collection_response_exchange_rate_no_pagings = $client->MulticurrencyCollectionResponseExchangeRateNoPaging()->list();
-```
-
-
 ### MulticurrencyCompanyCurrency
 
 Create an instance: `$multicurrency_company_currency = $client->MulticurrencyCompanyCurrency();`
@@ -771,56 +849,6 @@ Create an instance: `$multicurrency_company_currency = $client->MulticurrencyCom
 ```php
 // load() returns the ENTITY — call data_get() for the MulticurrencyCompanyCurrency record (throws on error).
 $multicurrency_company_currency = $client->MulticurrencyCompanyCurrency()->load(["id" => "multicurrency_company_currency_id"]);
-```
-
-
-### MulticurrencyExchangeRate
-
-Create an instance: `$multicurrency_exchange_rate = $client->MulticurrencyExchangeRate();`
-
-#### Operations
-
-| Method | Description |
-| --- | --- |
-| `create(data)` | Create a new entity with the given data. |
-| `load(match)` | Load a single entity by match criteria. |
-| `update(data)` | Update an existing entity. |
-
-#### Fields
-
-| Field | Type | Description |
-| --- | --- | --- |
-| `conversionRate` | `float` | The conversion rate between the to and from currency code of this exchange rate. |
-| `createdAt` | `string` | The date the exchange rate was created. |
-| `currencyCode` | `string` | The currency code being added to the HubSpot portal for use with central exchange rates. |
-| `effectiveAt` | `string` | The date the exchange rate is in effect. |
-| `fromCurrencyCode` | `string` | This represents the three-letter currency code (such as USD for US Dollar) of the currency you are converting from. |
-| `id` | `string` | A unique identifier for the exchange rate |
-| `toCurrencyCode` | `string` | This represents the three-letter currency code (such as USD for US Dollar) of the currency you are converting to. |
-| `updatedAt` | `string` | The date the exchange rate was last updated. |
-| `visibleInUI` | `bool` | This indicates if the exchange rate is shown in the MultiCurrency settings page. |
-
-#### Example: Load
-
-```php
-// load() returns the ENTITY — call data_get() for the MulticurrencyExchangeRate record (throws on error).
-$multicurrency_exchange_rate = $client->MulticurrencyExchangeRate()->load(["id" => "multicurrency_exchange_rate_id"]);
-```
-
-#### Example: Create
-
-```php
-$multicurrency_exchange_rate = $client->MulticurrencyExchangeRate()->create([
-    "conversionRate" => null, // float
-    "createdAt" => null, // string
-    "currencyCode" => null, // string
-    "effectiveAt" => null, // string
-    "fromCurrencyCode" => null, // string
-    "id" => null, // string
-    "toCurrencyCode" => null, // string
-    "updatedAt" => null, // string
-    "visibleInUI" => null, // bool
-]);
 ```
 
 
@@ -1018,6 +1046,31 @@ $teams_team_member = $client->TeamsTeamMember()->create([
 ```
 
 
+### UnsupportedCurrency
+
+Create an instance: `$unsupported_currency = $client->UnsupportedCurrency();`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `list(match)` | List entities matching the criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `currencyCode` | `string` | The three-letter code representing a specific currency (ex. |
+| `currencyName` | `string` | The full name of the currency (ex. |
+
+#### Example: List
+
+```php
+// list() returns an array of UnsupportedCurrency records (throws on error).
+$unsupported_currencys = $client->UnsupportedCurrency()->list();
+```
+
+
 ### User
 
 Create an instance: `$user = $client->User();`
@@ -1027,85 +1080,6 @@ Create an instance: `$user = $client->User();`
 | Method | Description |
 | --- | --- |
 | `remove(match)` | Remove the matching entity. |
-
-
-### UserProvisioningCollectionResponsePublicPermissionSetNo
-
-Create an instance: `$user_provisioning_collection_response_public_permission_set_no = $client->UserProvisioningCollectionResponsePublicPermissionSetNo();`
-
-#### Operations
-
-| Method | Description |
-| --- | --- |
-| `list(match)` | List entities matching the criteria. |
-
-#### Fields
-
-| Field | Type | Description |
-| --- | --- | --- |
-| `id` | `string` | The unique identifier for the permission set. |
-| `name` | `string` | The name of the permission set. |
-| `requiresBillingWrite` | `bool` | A boolean indicating whether the permission set requires billing write access. |
-
-#### Example: List
-
-```php
-// list() returns an array of UserProvisioningCollectionResponsePublicPermissionSetNo records (throws on error).
-$user_provisioning_collection_response_public_permission_set_nos = $client->UserProvisioningCollectionResponsePublicPermissionSetNo()->list();
-```
-
-
-### UserProvisioningCollectionResponsePublicSeatNoPaging
-
-Create an instance: `$user_provisioning_collection_response_public_seat_no_paging = $client->UserProvisioningCollectionResponsePublicSeatNoPaging();`
-
-#### Operations
-
-| Method | Description |
-| --- | --- |
-| `list(match)` | List entities matching the criteria. |
-
-#### Fields
-
-| Field | Type | Description |
-| --- | --- | --- |
-| `description` | `string` | A string providing additional details about the seat. |
-| `name` | `string` | The name of the seat. |
-| `remainingSeats` | `int` | An integer indicating the number of seats that are still available. |
-
-#### Example: List
-
-```php
-// list() returns an array of UserProvisioningCollectionResponsePublicSeatNoPaging records (throws on error).
-$user_provisioning_collection_response_public_seat_no_pagings = $client->UserProvisioningCollectionResponsePublicSeatNoPaging()->list();
-```
-
-
-### UserProvisioningCollectionResponsePublicTeamNoPaging
-
-Create an instance: `$user_provisioning_collection_response_public_team_no_paging = $client->UserProvisioningCollectionResponsePublicTeamNoPaging();`
-
-#### Operations
-
-| Method | Description |
-| --- | --- |
-| `list(match)` | List entities matching the criteria. |
-
-#### Fields
-
-| Field | Type | Description |
-| --- | --- | --- |
-| `id` | `string` | The unique identifier for the team, represented as a string. |
-| `name` | `string` | The name of the team, represented as a string. |
-| `secondaryUserIds` | `array` | An array of strings representing the IDs of users who are secondary members of the team. |
-| `userIds` | `array` | An array of strings representing the IDs of users who are primary members of the team. |
-
-#### Example: List
-
-```php
-// list() returns an array of UserProvisioningCollectionResponsePublicTeamNoPaging records (throws on error).
-$user_provisioning_collection_response_public_team_no_pagings = $client->UserProvisioningCollectionResponsePublicTeamNoPaging()->list();
-```
 
 
 ### UserProvisioningCollectionResponsePublicUserForwardPaging
@@ -1139,6 +1113,85 @@ Create an instance: `$user_provisioning_collection_response_public_user_forward_
 ```php
 // list() returns an array of UserProvisioningCollectionResponsePublicUserForwardPaging records (throws on error).
 $user_provisioning_collection_response_public_user_forward_pagings = $client->UserProvisioningCollectionResponsePublicUserForwardPaging()->list();
+```
+
+
+### UserProvisioningPublicPermissionSet
+
+Create an instance: `$user_provisioning_public_permission_set = $client->UserProvisioningPublicPermissionSet();`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `list(match)` | List entities matching the criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `string` | The unique identifier for the permission set. |
+| `name` | `string` | The name of the permission set. |
+| `requiresBillingWrite` | `bool` | A boolean indicating whether the permission set requires billing write access. |
+
+#### Example: List
+
+```php
+// list() returns an array of UserProvisioningPublicPermissionSet records (throws on error).
+$user_provisioning_public_permission_sets = $client->UserProvisioningPublicPermissionSet()->list();
+```
+
+
+### UserProvisioningPublicSeat
+
+Create an instance: `$user_provisioning_public_seat = $client->UserProvisioningPublicSeat();`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `list(match)` | List entities matching the criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `description` | `string` | A string providing additional details about the seat. |
+| `name` | `string` | The name of the seat. |
+| `remainingSeats` | `int` | An integer indicating the number of seats that are still available. |
+
+#### Example: List
+
+```php
+// list() returns an array of UserProvisioningPublicSeat records (throws on error).
+$user_provisioning_public_seats = $client->UserProvisioningPublicSeat()->list();
+```
+
+
+### UserProvisioningPublicTeam
+
+Create an instance: `$user_provisioning_public_team = $client->UserProvisioningPublicTeam();`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `list(match)` | List entities matching the criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `string` | The unique identifier for the team, represented as a string. |
+| `name` | `string` | The name of the team, represented as a string. |
+| `secondaryUserIds` | `array` | An array of strings representing the IDs of users who are secondary members of the team. |
+| `userIds` | `array` | An array of strings representing the IDs of users who are primary members of the team. |
+
+#### Example: List
+
+```php
+// list() returns an array of UserProvisioningPublicTeam records (throws on error).
+$user_provisioning_public_teams = $client->UserProvisioningPublicTeam()->list();
 ```
 
 
@@ -1199,14 +1252,14 @@ above:
 
 | Feature | What it does |
 |---|---|
-| [`debug`](#debug) | Request/response capture ring buffer for debugging |
-| [`idempotency`](#idempotency) | Idempotency keys for safe retries of mutating operations |
-| [`metrics`](#metrics) | Statistics capture: per-operation counters and latency |
-| [`paging`](#paging) | Pagination signals for list operations |
-| [`ratelimit`](#ratelimit) | Client-side rate limiting via a token bucket |
-| [`retry`](#retry) | Automatic retry of transient failures with exponential backoff |
-| [`test`](#test) | In-memory mock transport for testing without a live server |
-| [`timeout`](#timeout) | Per-request timeout with transport abort |
+| [`debug`](#debug) | Debug capture |
+| [`idempotency`](#idempotency) | Idempotency |
+| [`metrics`](#metrics) | Metrics |
+| [`paging`](#paging) | Paging |
+| [`ratelimit`](#ratelimit) | Rate limiting |
+| [`retry`](#retry) | Retry |
+| [`test`](#test) | Test transport |
+| [`timeout`](#timeout) | Timeout |
 
 > **Order matters for `ratelimit`, `retry`, `timeout`.** These wrap the
 > transport, so each one wraps whatever is already installed: the order you
@@ -1215,7 +1268,7 @@ above:
 
 ### debug
 
-Request/response capture ring buffer for debugging.
+Debug capture.
 
 | Option | Default |
 |---|---|
@@ -1227,7 +1280,7 @@ Set `feature.debug.active` to enable it, then override any of the options above.
 
 ### idempotency
 
-Idempotency keys for safe retries of mutating operations.
+Idempotency.
 
 | Option | Default |
 |---|---|
@@ -1240,7 +1293,7 @@ Set `feature.idempotency.active` to enable it, then override any of the options 
 
 ### metrics
 
-Statistics capture: per-operation counters and latency.
+Metrics.
 
 | Option | Default |
 |---|---|
@@ -1250,7 +1303,7 @@ Set `feature.metrics.active` to enable it, then override any of the options abov
 
 ### paging
 
-Pagination signals for list operations.
+Paging.
 
 | Option | Default |
 |---|---|
@@ -1266,7 +1319,7 @@ Set `feature.paging.active` to enable it, then override any of the options above
 
 ### ratelimit
 
-Client-side rate limiting via a token bucket.
+Rate limiting.
 
 | Option | Default |
 |---|---|
@@ -1282,7 +1335,7 @@ activated earlier.
 
 ### retry
 
-Automatic retry of transient failures with exponential backoff.
+Retry.
 
 | Option | Default |
 |---|---|
@@ -1301,7 +1354,7 @@ activated earlier.
 
 ### test
 
-In-memory mock transport for testing without a live server.
+Test transport.
 
 | Option | Default |
 |---|---|
@@ -1311,7 +1364,7 @@ Set `feature.test.active` to enable it, then override any of the options above.
 
 ### timeout
 
-Per-request timeout with transport abort.
+Timeout.
 
 | Option | Default |
 |---|---|
@@ -1363,14 +1416,14 @@ with hook methods named after pipeline stages (e.g. `PrePoint`,
 
 The SDK ships with built-in features:
 
-- **DebugFeature**: Request/response capture ring buffer for debugging
-- **IdempotencyFeature**: Idempotency keys for safe retries of mutating operations
-- **MetricsFeature**: Statistics capture: per-operation counters and latency
-- **PagingFeature**: Pagination signals for list operations
-- **RatelimitFeature**: Client-side rate limiting via a token bucket
-- **RetryFeature**: Automatic retry of transient failures with exponential backoff
-- **TestFeature**: In-memory mock transport for testing without a live server
-- **TimeoutFeature**: Per-request timeout with transport abort
+- **DebugFeature**: Debug capture
+- **IdempotencyFeature**: Idempotency
+- **MetricsFeature**: Metrics
+- **PagingFeature**: Paging
+- **RatelimitFeature**: Rate limiting
+- **RetryFeature**: Retry
+- **TestFeature**: Test transport
+- **TimeoutFeature**: Timeout
 
 Features are initialized in order. Hooks fire in the order features
 were added, so later features can override earlier ones.
@@ -1409,11 +1462,11 @@ Entity instances are stateful. After a successful `list`, the entity
 stores the returned data and match criteria internally.
 
 ```php
-$userprovisioningcollectionresponsepublicteamnopaging = $client->UserProvisioningCollectionResponsePublicTeamNoPaging();
-$userprovisioningcollectionresponsepublicteamnopaging->list();
+$userprovisioningpublicseat = $client->UserProvisioningPublicSeat();
+$userprovisioningpublicseat->list();
 
-// $userprovisioningcollectionresponsepublicteamnopaging->data_get() now returns the userprovisioningcollectionresponsepublicteamnopaging data from the last list
-// $userprovisioningcollectionresponsepublicteamnopaging->match_get() returns the last match criteria
+// $userprovisioningpublicseat->data_get() now returns the userprovisioningpublicseat data from the last list
+// $userprovisioningpublicseat->match_get() returns the last match criteria
 ```
 
 Call `make()` to create a fresh instance with the same configuration

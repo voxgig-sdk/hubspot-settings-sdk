@@ -41,9 +41,21 @@ local client = sdk.test()
 
 ### Instance Methods
 
+#### `AddCurrency(data)`
+
+Create a new `AddCurrency` entity instance. Pass `nil` for no initial data.
+
 #### `Basic(data)`
 
 Create a new `Basic` entity instance. Pass `nil` for no initial data.
+
+#### `Code(data)`
+
+Create a new `Code` entity instance. Pass `nil` for no initial data.
+
+#### `Current(data)`
+
+Create a new `Current` entity instance. Pass `nil` for no initial data.
 
 #### `ExchangeRate(data)`
 
@@ -57,25 +69,13 @@ Create a new `MulticurrencyBatchResponseExchangeRate` entity instance. Pass `nil
 
 Create a new `MulticurrencyCentralExchangeRatesInformation` entity instance. Pass `nil` for no initial data.
 
-#### `MulticurrencyCollectionResponseCurrencyCodeInfoNoPaging(data)`
-
-Create a new `MulticurrencyCollectionResponseCurrencyCodeInfoNoPaging` entity instance. Pass `nil` for no initial data.
-
 #### `MulticurrencyCollectionResponseExchangeRateForwardPaging(data)`
 
 Create a new `MulticurrencyCollectionResponseExchangeRateForwardPaging` entity instance. Pass `nil` for no initial data.
 
-#### `MulticurrencyCollectionResponseExchangeRateNoPaging(data)`
-
-Create a new `MulticurrencyCollectionResponseExchangeRateNoPaging` entity instance. Pass `nil` for no initial data.
-
 #### `MulticurrencyCompanyCurrency(data)`
 
 Create a new `MulticurrencyCompanyCurrency` entity instance. Pass `nil` for no initial data.
-
-#### `MulticurrencyExchangeRate(data)`
-
-Create a new `MulticurrencyExchangeRate` entity instance. Pass `nil` for no initial data.
 
 #### `TaxRate(data)`
 
@@ -101,25 +101,29 @@ Create a new `TeamsTeam` entity instance. Pass `nil` for no initial data.
 
 Create a new `TeamsTeamMember` entity instance. Pass `nil` for no initial data.
 
+#### `UnsupportedCurrency(data)`
+
+Create a new `UnsupportedCurrency` entity instance. Pass `nil` for no initial data.
+
 #### `User(data)`
 
 Create a new `User` entity instance. Pass `nil` for no initial data.
 
-#### `UserProvisioningCollectionResponsePublicPermissionSetNo(data)`
-
-Create a new `UserProvisioningCollectionResponsePublicPermissionSetNo` entity instance. Pass `nil` for no initial data.
-
-#### `UserProvisioningCollectionResponsePublicSeatNoPaging(data)`
-
-Create a new `UserProvisioningCollectionResponsePublicSeatNoPaging` entity instance. Pass `nil` for no initial data.
-
-#### `UserProvisioningCollectionResponsePublicTeamNoPaging(data)`
-
-Create a new `UserProvisioningCollectionResponsePublicTeamNoPaging` entity instance. Pass `nil` for no initial data.
-
 #### `UserProvisioningCollectionResponsePublicUserForwardPaging(data)`
 
 Create a new `UserProvisioningCollectionResponsePublicUserForwardPaging` entity instance. Pass `nil` for no initial data.
+
+#### `UserProvisioningPublicPermissionSet(data)`
+
+Create a new `UserProvisioningPublicPermissionSet` entity instance. Pass `nil` for no initial data.
+
+#### `UserProvisioningPublicSeat(data)`
+
+Create a new `UserProvisioningPublicSeat` entity instance. Pass `nil` for no initial data.
+
+#### `UserProvisioningPublicTeam(data)`
+
+Create a new `UserProvisioningPublicTeam` entity instance. Pass `nil` for no initial data.
 
 #### `UserProvisioningPublicUser(data)`
 
@@ -157,6 +161,76 @@ Prepare a fetch definition without sending the request. Accepts the
 same parameters as `direct()`.
 
 **Returns:** `table, err`
+
+
+---
+
+## AddCurrencyEntity
+
+```lua
+local add_currency = client:AddCurrency(nil)
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `conversionRate` | `number` | Yes | The conversion rate between the to and from currency code of this exchange rate. |
+| `createdAt` | `string` | Yes | The date the exchange rate was created. |
+| `currencyCode` | `string` | Yes | The currency code being added to the HubSpot portal for use with central exchange rates. |
+| `effectiveAt` | `string` | Yes | The date the exchange rate is in effect. |
+| `fromCurrencyCode` | `string` | Yes | This represents the three-letter currency code (such as USD for US Dollar) of the currency you are converting from. |
+| `id` | `string` | Yes | A unique identifier for the exchange rate |
+| `toCurrencyCode` | `string` | Yes | This represents the three-letter currency code (such as USD for US Dollar) of the currency you are converting to. |
+| `updatedAt` | `string` | Yes | The date the exchange rate was last updated. |
+| `visibleInUI` | `boolean` | Yes | This indicates if the exchange rate is shown in the MultiCurrency settings page. |
+
+### Operations
+
+#### `create(reqdata, ctrl) -> any, err`
+
+Create a new entity with the given data.
+
+```lua
+local result, err = client:AddCurrency():create({
+  conversionRate = --[[ number ]],
+  createdAt = --[[ string ]],
+  currencyCode = --[[ string ]],
+  effectiveAt = --[[ string ]],
+  fromCurrencyCode = --[[ string ]],
+  id = --[[ string ]],
+  toCurrencyCode = --[[ string ]],
+  updatedAt = --[[ string ]],
+  visibleInUI = --[[ boolean ]],
+})
+```
+
+### Common Methods
+
+#### `data_get() -> table`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> table`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `AddCurrencyEntity` instance with the same client and
+options.
+
+#### `get_name() -> string`
+
+Return the entity name.
 
 
 ---
@@ -207,11 +281,149 @@ Return the entity name.
 
 ---
 
+## CodeEntity
+
+```lua
+local code = client:Code(nil)
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `currencyCode` | `string` | Yes | The three-letter code representing a specific currency (ex. |
+| `currencyName` | `string` | Yes | The full name of the currency (ex. |
+
+### Operations
+
+#### `list(reqmatch, ctrl) -> any, err`
+
+List entities matching the given criteria. Returns an array.
+
+```lua
+local results, err = client:Code():list()
+```
+
+### Common Methods
+
+#### `data_get() -> table`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> table`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `CodeEntity` instance with the same client and
+options.
+
+#### `get_name() -> string`
+
+Return the entity name.
+
+
+---
+
+## CurrentEntity
+
+```lua
+local current = client:Current(nil)
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `conversionRate` | `number` | Yes | The conversion rate between the to and from currency code of this exchange rate. |
+| `createdAt` | `string` | Yes | The date the exchange rate was created. |
+| `effectiveAt` | `string` | Yes | The date the exchange rate is in effect. |
+| `fromCurrencyCode` | `string` | Yes | This represents the three-letter currency code (such as USD for US Dollar) of the currency you are converting from. |
+| `id` | `string` | Yes | A unique identifier for the exchange rate |
+| `toCurrencyCode` | `string` | Yes | This represents the three-letter currency code (such as USD for US Dollar) of the currency you are converting to. |
+| `updatedAt` | `string` | Yes | The date the exchange rate was last updated. |
+| `visibleInUI` | `boolean` | Yes | This indicates if the exchange rate is shown in the MultiCurrency settings page. |
+
+### Operations
+
+#### `list(reqmatch, ctrl) -> any, err`
+
+List entities matching the given criteria. Returns an array.
+
+```lua
+local results, err = client:Current():list()
+```
+
+### Common Methods
+
+#### `data_get() -> table`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> table`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `CurrentEntity` instance with the same client and
+options.
+
+#### `get_name() -> string`
+
+Return the entity name.
+
+
+---
+
 ## ExchangeRateEntity
 
 ```lua
 local exchange_rate = client:ExchangeRate(nil)
 ```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `conversionRate` | `number` | Yes | The conversion rate between the to and from currency code of this exchange rate. |
+| `createdAt` | `string` | Yes | The date the exchange rate was created. |
+| `effectiveAt` | `string` | Yes | The date the exchange rate is in effect. |
+| `fromCurrencyCode` | `string` | Yes | This represents the three-letter currency code (such as USD for US Dollar) of the currency you are converting from. |
+| `id` | `string` | Yes | A unique identifier for the exchange rate |
+| `toCurrencyCode` | `string` | Yes | This represents the three-letter currency code (such as USD for US Dollar) of the currency you are converting to. |
+| `updatedAt` | `string` | Yes | The date the exchange rate was last updated. |
+| `visibleInUI` | `boolean` | Yes | This indicates if the exchange rate is shown in the MultiCurrency settings page. |
+
+### Field Usage by Operation
+
+| Field | load | create | update |
+| --- | --- | --- | --- |
+| `conversionRate` | - | - | - |
+| `createdAt` | - | - | - |
+| `effectiveAt` | - | Yes | Yes |
+| `fromCurrencyCode` | - | - | - |
+| `id` | - | - | - |
+| `toCurrencyCode` | - | - | - |
+| `updatedAt` | - | - | - |
+| `visibleInUI` | - | - | - |
 
 ### Operations
 
@@ -221,6 +433,33 @@ Create a new entity with the given data.
 
 ```lua
 local result, err = client:ExchangeRate():create({
+  conversionRate = --[[ number ]],
+  createdAt = --[[ string ]],
+  effectiveAt = --[[ string ]],
+  fromCurrencyCode = --[[ string ]],
+  id = --[[ string ]],
+  toCurrencyCode = --[[ string ]],
+  updatedAt = --[[ string ]],
+  visibleInUI = --[[ boolean ]],
+})
+```
+
+#### `load(reqmatch, ctrl) -> any, err`
+
+Load a single entity matching the given criteria.
+
+```lua
+local result, err = client:ExchangeRate():load({ id = "exchange_rate_id" })
+```
+
+#### `update(reqdata, ctrl) -> any, err`
+
+Update an existing entity. The data must include the entity `id`.
+
+```lua
+local result, err = client:ExchangeRate():update({
+  id = "exchange_rate_id",
+  -- Fields to update
 })
 ```
 
@@ -370,59 +609,6 @@ Return the entity name.
 
 ---
 
-## MulticurrencyCollectionResponseCurrencyCodeInfoNoPagingEntity
-
-```lua
-local multicurrency_collection_response_currency_code_info_no_paging = client:MulticurrencyCollectionResponseCurrencyCodeInfoNoPaging(nil)
-```
-
-### Fields
-
-| Field | Type | Required | Description |
-| --- | --- | --- | --- |
-| `currencyCode` | `string` | Yes | The three-letter code representing a specific currency (ex. |
-| `currencyName` | `string` | Yes | The full name of the currency (ex. |
-
-### Operations
-
-#### `list(reqmatch, ctrl) -> any, err`
-
-List entities matching the given criteria. Returns an array.
-
-```lua
-local results, err = client:MulticurrencyCollectionResponseCurrencyCodeInfoNoPaging():list()
-```
-
-### Common Methods
-
-#### `data_get() -> table`
-
-Get the entity data. Returns a copy of the current data.
-
-#### `data_set(data)`
-
-Set the entity data.
-
-#### `match_get() -> table`
-
-Get the entity match criteria.
-
-#### `match_set(match)`
-
-Set the entity match criteria.
-
-#### `make() -> Entity`
-
-Create a new `MulticurrencyCollectionResponseCurrencyCodeInfoNoPagingEntity` instance with the same client and
-options.
-
-#### `get_name() -> string`
-
-Return the entity name.
-
-
----
-
 ## MulticurrencyCollectionResponseExchangeRateForwardPagingEntity
 
 ```lua
@@ -473,65 +659,6 @@ Set the entity match criteria.
 #### `make() -> Entity`
 
 Create a new `MulticurrencyCollectionResponseExchangeRateForwardPagingEntity` instance with the same client and
-options.
-
-#### `get_name() -> string`
-
-Return the entity name.
-
-
----
-
-## MulticurrencyCollectionResponseExchangeRateNoPagingEntity
-
-```lua
-local multicurrency_collection_response_exchange_rate_no_paging = client:MulticurrencyCollectionResponseExchangeRateNoPaging(nil)
-```
-
-### Fields
-
-| Field | Type | Required | Description |
-| --- | --- | --- | --- |
-| `conversionRate` | `number` | Yes | The conversion rate between the to and from currency code of this exchange rate. |
-| `createdAt` | `string` | Yes | The date the exchange rate was created. |
-| `effectiveAt` | `string` | Yes | The date the exchange rate is in effect. |
-| `fromCurrencyCode` | `string` | Yes | This represents the three-letter currency code (such as USD for US Dollar) of the currency you are converting from. |
-| `id` | `string` | Yes | A unique identifier for the exchange rate |
-| `toCurrencyCode` | `string` | Yes | This represents the three-letter currency code (such as USD for US Dollar) of the currency you are converting to. |
-| `updatedAt` | `string` | Yes | The date the exchange rate was last updated. |
-| `visibleInUI` | `boolean` | Yes | This indicates if the exchange rate is shown in the MultiCurrency settings page. |
-
-### Operations
-
-#### `list(reqmatch, ctrl) -> any, err`
-
-List entities matching the given criteria. Returns an array.
-
-```lua
-local results, err = client:MulticurrencyCollectionResponseExchangeRateNoPaging():list()
-```
-
-### Common Methods
-
-#### `data_get() -> table`
-
-Get the entity data. Returns a copy of the current data.
-
-#### `data_set(data)`
-
-Set the entity data.
-
-#### `match_get() -> table`
-
-Get the entity match criteria.
-
-#### `match_set(match)`
-
-Set the entity match criteria.
-
-#### `make() -> Entity`
-
-Create a new `MulticurrencyCollectionResponseExchangeRateNoPagingEntity` instance with the same client and
 options.
 
 #### `get_name() -> string`
@@ -597,109 +724,6 @@ Set the entity match criteria.
 #### `make() -> Entity`
 
 Create a new `MulticurrencyCompanyCurrencyEntity` instance with the same client and
-options.
-
-#### `get_name() -> string`
-
-Return the entity name.
-
-
----
-
-## MulticurrencyExchangeRateEntity
-
-```lua
-local multicurrency_exchange_rate = client:MulticurrencyExchangeRate(nil)
-```
-
-### Fields
-
-| Field | Type | Required | Description |
-| --- | --- | --- | --- |
-| `conversionRate` | `number` | Yes | The conversion rate between the to and from currency code of this exchange rate. |
-| `createdAt` | `string` | Yes | The date the exchange rate was created. |
-| `currencyCode` | `string` | Yes | The currency code being added to the HubSpot portal for use with central exchange rates. |
-| `effectiveAt` | `string` | Yes | The date the exchange rate is in effect. |
-| `fromCurrencyCode` | `string` | Yes | This represents the three-letter currency code (such as USD for US Dollar) of the currency you are converting from. |
-| `id` | `string` | Yes | A unique identifier for the exchange rate |
-| `toCurrencyCode` | `string` | Yes | This represents the three-letter currency code (such as USD for US Dollar) of the currency you are converting to. |
-| `updatedAt` | `string` | Yes | The date the exchange rate was last updated. |
-| `visibleInUI` | `boolean` | Yes | This indicates if the exchange rate is shown in the MultiCurrency settings page. |
-
-### Field Usage by Operation
-
-| Field | load | create | update |
-| --- | --- | --- | --- |
-| `conversionRate` | - | - | - |
-| `createdAt` | - | - | - |
-| `currencyCode` | - | - | - |
-| `effectiveAt` | - | Yes | Yes |
-| `fromCurrencyCode` | - | - | - |
-| `id` | - | - | - |
-| `toCurrencyCode` | - | - | - |
-| `updatedAt` | - | - | - |
-| `visibleInUI` | - | - | - |
-
-### Operations
-
-#### `create(reqdata, ctrl) -> any, err`
-
-Create a new entity with the given data.
-
-```lua
-local result, err = client:MulticurrencyExchangeRate():create({
-  conversionRate = --[[ number ]],
-  createdAt = --[[ string ]],
-  currencyCode = --[[ string ]],
-  effectiveAt = --[[ string ]],
-  fromCurrencyCode = --[[ string ]],
-  id = --[[ string ]],
-  toCurrencyCode = --[[ string ]],
-  updatedAt = --[[ string ]],
-  visibleInUI = --[[ boolean ]],
-})
-```
-
-#### `load(reqmatch, ctrl) -> any, err`
-
-Load a single entity matching the given criteria.
-
-```lua
-local result, err = client:MulticurrencyExchangeRate():load({ id = "multicurrency_exchange_rate_id" })
-```
-
-#### `update(reqdata, ctrl) -> any, err`
-
-Update an existing entity. The data must include the entity `id`.
-
-```lua
-local result, err = client:MulticurrencyExchangeRate():update({
-  id = "multicurrency_exchange_rate_id",
-  -- Fields to update
-})
-```
-
-### Common Methods
-
-#### `data_get() -> table`
-
-Get the entity data. Returns a copy of the current data.
-
-#### `data_set(data)`
-
-Set the entity data.
-
-#### `match_get() -> table`
-
-Get the entity match criteria.
-
-#### `match_set(match)`
-
-Set the entity match criteria.
-
-#### `make() -> Entity`
-
-Create a new `MulticurrencyExchangeRateEntity` instance with the same client and
 options.
 
 #### `get_name() -> string`
@@ -1093,6 +1117,59 @@ Return the entity name.
 
 ---
 
+## UnsupportedCurrencyEntity
+
+```lua
+local unsupported_currency = client:UnsupportedCurrency(nil)
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `currencyCode` | `string` | Yes | The three-letter code representing a specific currency (ex. |
+| `currencyName` | `string` | Yes | The full name of the currency (ex. |
+
+### Operations
+
+#### `list(reqmatch, ctrl) -> any, err`
+
+List entities matching the given criteria. Returns an array.
+
+```lua
+local results, err = client:UnsupportedCurrency():list()
+```
+
+### Common Methods
+
+#### `data_get() -> table`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> table`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `UnsupportedCurrencyEntity` instance with the same client and
+options.
+
+#### `get_name() -> string`
+
+Return the entity name.
+
+
+---
+
 ## UserEntity
 
 ```lua
@@ -1130,169 +1207,6 @@ Set the entity match criteria.
 #### `make() -> Entity`
 
 Create a new `UserEntity` instance with the same client and
-options.
-
-#### `get_name() -> string`
-
-Return the entity name.
-
-
----
-
-## UserProvisioningCollectionResponsePublicPermissionSetNoEntity
-
-```lua
-local user_provisioning_collection_response_public_permission_set_no = client:UserProvisioningCollectionResponsePublicPermissionSetNo(nil)
-```
-
-### Fields
-
-| Field | Type | Required | Description |
-| --- | --- | --- | --- |
-| `id` | `string` | Yes | The unique identifier for the permission set. |
-| `name` | `string` | Yes | The name of the permission set. |
-| `requiresBillingWrite` | `boolean` | Yes | A boolean indicating whether the permission set requires billing write access. |
-
-### Operations
-
-#### `list(reqmatch, ctrl) -> any, err`
-
-List entities matching the given criteria. Returns an array.
-
-```lua
-local results, err = client:UserProvisioningCollectionResponsePublicPermissionSetNo():list()
-```
-
-### Common Methods
-
-#### `data_get() -> table`
-
-Get the entity data. Returns a copy of the current data.
-
-#### `data_set(data)`
-
-Set the entity data.
-
-#### `match_get() -> table`
-
-Get the entity match criteria.
-
-#### `match_set(match)`
-
-Set the entity match criteria.
-
-#### `make() -> Entity`
-
-Create a new `UserProvisioningCollectionResponsePublicPermissionSetNoEntity` instance with the same client and
-options.
-
-#### `get_name() -> string`
-
-Return the entity name.
-
-
----
-
-## UserProvisioningCollectionResponsePublicSeatNoPagingEntity
-
-```lua
-local user_provisioning_collection_response_public_seat_no_paging = client:UserProvisioningCollectionResponsePublicSeatNoPaging(nil)
-```
-
-### Fields
-
-| Field | Type | Required | Description |
-| --- | --- | --- | --- |
-| `description` | `string` | No | A string providing additional details about the seat. |
-| `name` | `string` | Yes | The name of the seat. |
-| `remainingSeats` | `number` | No | An integer indicating the number of seats that are still available. |
-
-### Operations
-
-#### `list(reqmatch, ctrl) -> any, err`
-
-List entities matching the given criteria. Returns an array.
-
-```lua
-local results, err = client:UserProvisioningCollectionResponsePublicSeatNoPaging():list()
-```
-
-### Common Methods
-
-#### `data_get() -> table`
-
-Get the entity data. Returns a copy of the current data.
-
-#### `data_set(data)`
-
-Set the entity data.
-
-#### `match_get() -> table`
-
-Get the entity match criteria.
-
-#### `match_set(match)`
-
-Set the entity match criteria.
-
-#### `make() -> Entity`
-
-Create a new `UserProvisioningCollectionResponsePublicSeatNoPagingEntity` instance with the same client and
-options.
-
-#### `get_name() -> string`
-
-Return the entity name.
-
-
----
-
-## UserProvisioningCollectionResponsePublicTeamNoPagingEntity
-
-```lua
-local user_provisioning_collection_response_public_team_no_paging = client:UserProvisioningCollectionResponsePublicTeamNoPaging(nil)
-```
-
-### Fields
-
-| Field | Type | Required | Description |
-| --- | --- | --- | --- |
-| `id` | `string` | Yes | The unique identifier for the team, represented as a string. |
-| `name` | `string` | Yes | The name of the team, represented as a string. |
-| `secondaryUserIds` | `table` | Yes | An array of strings representing the IDs of users who are secondary members of the team. |
-| `userIds` | `table` | Yes | An array of strings representing the IDs of users who are primary members of the team. |
-
-### Operations
-
-#### `list(reqmatch, ctrl) -> any, err`
-
-List entities matching the given criteria. Returns an array.
-
-```lua
-local results, err = client:UserProvisioningCollectionResponsePublicTeamNoPaging():list()
-```
-
-### Common Methods
-
-#### `data_get() -> table`
-
-Get the entity data. Returns a copy of the current data.
-
-#### `data_set(data)`
-
-Set the entity data.
-
-#### `match_get() -> table`
-
-Get the entity match criteria.
-
-#### `match_set(match)`
-
-Set the entity match criteria.
-
-#### `make() -> Entity`
-
-Create a new `UserProvisioningCollectionResponsePublicTeamNoPagingEntity` instance with the same client and
 options.
 
 #### `get_name() -> string`
@@ -1355,6 +1269,169 @@ Set the entity match criteria.
 #### `make() -> Entity`
 
 Create a new `UserProvisioningCollectionResponsePublicUserForwardPagingEntity` instance with the same client and
+options.
+
+#### `get_name() -> string`
+
+Return the entity name.
+
+
+---
+
+## UserProvisioningPublicPermissionSetEntity
+
+```lua
+local user_provisioning_public_permission_set = client:UserProvisioningPublicPermissionSet(nil)
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | Yes | The unique identifier for the permission set. |
+| `name` | `string` | Yes | The name of the permission set. |
+| `requiresBillingWrite` | `boolean` | Yes | A boolean indicating whether the permission set requires billing write access. |
+
+### Operations
+
+#### `list(reqmatch, ctrl) -> any, err`
+
+List entities matching the given criteria. Returns an array.
+
+```lua
+local results, err = client:UserProvisioningPublicPermissionSet():list()
+```
+
+### Common Methods
+
+#### `data_get() -> table`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> table`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `UserProvisioningPublicPermissionSetEntity` instance with the same client and
+options.
+
+#### `get_name() -> string`
+
+Return the entity name.
+
+
+---
+
+## UserProvisioningPublicSeatEntity
+
+```lua
+local user_provisioning_public_seat = client:UserProvisioningPublicSeat(nil)
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `description` | `string` | No | A string providing additional details about the seat. |
+| `name` | `string` | Yes | The name of the seat. |
+| `remainingSeats` | `number` | No | An integer indicating the number of seats that are still available. |
+
+### Operations
+
+#### `list(reqmatch, ctrl) -> any, err`
+
+List entities matching the given criteria. Returns an array.
+
+```lua
+local results, err = client:UserProvisioningPublicSeat():list()
+```
+
+### Common Methods
+
+#### `data_get() -> table`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> table`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `UserProvisioningPublicSeatEntity` instance with the same client and
+options.
+
+#### `get_name() -> string`
+
+Return the entity name.
+
+
+---
+
+## UserProvisioningPublicTeamEntity
+
+```lua
+local user_provisioning_public_team = client:UserProvisioningPublicTeam(nil)
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | Yes | The unique identifier for the team, represented as a string. |
+| `name` | `string` | Yes | The name of the team, represented as a string. |
+| `secondaryUserIds` | `table` | Yes | An array of strings representing the IDs of users who are secondary members of the team. |
+| `userIds` | `table` | Yes | An array of strings representing the IDs of users who are primary members of the team. |
+
+### Operations
+
+#### `list(reqmatch, ctrl) -> any, err`
+
+List entities matching the given criteria. Returns an array.
+
+```lua
+local results, err = client:UserProvisioningPublicTeam():list()
+```
+
+### Common Methods
+
+#### `data_get() -> table`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> table`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `UserProvisioningPublicTeamEntity` instance with the same client and
 options.
 
 #### `get_name() -> string`
@@ -1470,14 +1547,14 @@ Return the entity name.
 
 | Feature | Version | Description |
 | --- | --- | --- |
-| `debug` | 0.0.1 | Request/response capture ring buffer for debugging |
-| `idempotency` | 0.0.1 | Idempotency keys for safe retries of mutating operations |
-| `metrics` | 0.0.1 | Statistics capture: per-operation counters and latency |
-| `paging` | 0.0.1 | Pagination signals for list operations |
-| `ratelimit` | 0.0.1 | Client-side rate limiting via a token bucket |
-| `retry` | 0.0.1 | Automatic retry of transient failures with exponential backoff |
-| `test` | 0.0.1 | In-memory mock transport for testing without a live server |
-| `timeout` | 0.0.1 | Per-request timeout with transport abort |
+| `debug` | 0.0.1 | Debug capture |
+| `idempotency` | 0.0.1 | Idempotency |
+| `metrics` | 0.0.1 | Metrics |
+| `paging` | 0.0.1 | Paging |
+| `ratelimit` | 0.0.1 | Rate limiting |
+| `retry` | 0.0.1 | Retry |
+| `test` | 0.0.1 | Test transport |
+| `timeout` | 0.0.1 | Timeout |
 
 
 Features are activated via the `feature` option:
@@ -1523,7 +1600,7 @@ rather than the transport, so their order does not affect what they observe.
 
 #### `debug`
 
-Request/response capture ring buffer for debugging.
+Debug capture.
 
 **Configuration**
 
@@ -1554,7 +1631,7 @@ its default unless you name it.
 
 #### `idempotency`
 
-Idempotency keys for safe retries of mutating operations.
+Idempotency.
 
 **Configuration**
 
@@ -1585,7 +1662,7 @@ its default unless you name it.
 
 #### `metrics`
 
-Statistics capture: per-operation counters and latency.
+Metrics.
 
 **Configuration**
 
@@ -1613,7 +1690,7 @@ its default unless you name it.
 
 #### `paging`
 
-Pagination signals for list operations.
+Paging.
 
 **Configuration**
 
@@ -1648,7 +1725,7 @@ its default unless you name it.
 
 #### `ratelimit`
 
-Client-side rate limiting via a token bucket.
+Rate limiting.
 
 **Configuration**
 
@@ -1679,7 +1756,7 @@ its default unless you name it.
 
 #### `retry`
 
-Automatic retry of transient failures with exponential backoff.
+Retry.
 
 **Configuration**
 
@@ -1713,7 +1790,7 @@ its default unless you name it.
 
 #### `test`
 
-In-memory mock transport for testing without a live server.
+Test transport.
 
 **Configuration**
 
@@ -1744,7 +1821,7 @@ its default unless you name it.
 
 #### `timeout`
 
-Per-request timeout with transport abort.
+Timeout.
 
 **Configuration**
 

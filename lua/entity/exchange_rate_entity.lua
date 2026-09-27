@@ -230,6 +230,33 @@ end
 
 
 
+---@param reqmatch ExchangeRateLoadMatch
+---@param ctrl? table
+---@return ExchangeRate
+---@return string? err
+function ExchangeRateEntity:load(reqmatch, ctrl)
+  local utility = self._utility
+  local ctx = utility.make_context({
+    opname = "load",
+    ctrl = ctrl,
+    match = self._match,
+    data = self._data,
+    reqmatch = reqmatch,
+  }, self._entctx)
+
+  return self:_run_op(ctx, function()
+    if ctx.result ~= nil then
+      if ctx.result.resmatch ~= nil then
+        self._match = ctx.result.resmatch
+      end
+      if ctx.result.resdata ~= nil then
+        self._data = helpers.to_map(vs.clone(ctx.result.resdata)) or {}
+      end
+    end
+  end)
+end
+
+
 
 
 
@@ -258,6 +285,33 @@ function ExchangeRateEntity:create(reqdata, ctrl)
 end
 
 
+
+
+---@param reqdata ExchangeRateUpdateData
+---@param ctrl? table
+---@return ExchangeRate
+---@return string? err
+function ExchangeRateEntity:update(reqdata, ctrl)
+  local utility = self._utility
+  local ctx = utility.make_context({
+    opname = "update",
+    ctrl = ctrl,
+    match = self._match,
+    data = self._data,
+    reqdata = reqdata,
+  }, self._entctx)
+
+  return self:_run_op(ctx, function()
+    if ctx.result ~= nil then
+      if ctx.result.resmatch ~= nil then
+        self._match = ctx.result.resmatch
+      end
+      if ctx.result.resdata ~= nil then
+        self._data = helpers.to_map(vs.clone(ctx.result.resdata)) or {}
+      end
+    end
+  end)
+end
 
 
 

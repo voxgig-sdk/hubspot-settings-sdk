@@ -6,26 +6,27 @@
 <div class="site-notice" role="note"></div>
 <div class="shell"><nav class="site-nav" aria-label="Documentation"><div class="search"><label for="search">Search documentation</label><input id="search" type="search" data-base="../" placeholder="Find a guide or reference"><div id="results" aria-live="polite"></div></div><details><summary>Overview</summary><a href="../index.html">HubSpot Settings API</a></details>
 <details open><summary>API</summary><a href="../api/index.html">API overview</a>
+<a href="../api/add_currency.html">AddCurrency</a>
 <a href="../api/basic.html">Basic</a>
+<a href="../api/code.html">Code</a>
+<a href="../api/current.html">Current</a>
 <a href="../api/exchange_rate.html">ExchangeRate</a>
 <a href="../api/multicurrency_batch_response_exchange_rate.html">MulticurrencyBatchResponseExchangeRate</a>
 <a href="../api/multicurrency_central_exchange_rates_information.html">MulticurrencyCentralExchangeRatesInformation</a>
-<a href="../api/multicurrency_collection_response_currency_code_info_no_paging.html">MulticurrencyCollectionResponseCurrencyCodeInfoNoPaging</a>
 <a href="../api/multicurrency_collection_response_exchange_rate_forward_paging.html">MulticurrencyCollectionResponseExchangeRateForwardPaging</a>
-<a href="../api/multicurrency_collection_response_exchange_rate_no_paging.html">MulticurrencyCollectionResponseExchangeRateNoPaging</a>
 <a href="../api/multicurrency_company_currency.html">MulticurrencyCompanyCurrency</a>
-<a href="../api/multicurrency_exchange_rate.html">MulticurrencyExchangeRate</a>
 <a href="../api/tax_rate.html">TaxRate</a>
 <a href="../api/teams_batch_response_team_member.html">TeamsBatchResponseTeamMember</a>
 <a href="../api/teams_collection_response_team_member_response_forward_paging.html">TeamsCollectionResponseTeamMemberResponseForwardPaging</a>
 <a href="../api/teams_collection_response_team_response_forward_paging.html">TeamsCollectionResponseTeamResponseForwardPaging</a>
 <a href="../api/teams_team.html">TeamsTeam</a>
 <a href="../api/teams_team_member.html">TeamsTeamMember</a>
+<a href="../api/unsupported_currency.html">UnsupportedCurrency</a>
 <a href="../api/user.html">User</a>
-<a href="../api/user_provisioning_collection_response_public_permission_set_no.html">UserProvisioningCollectionResponsePublicPermissionSetNo</a>
-<a href="../api/user_provisioning_collection_response_public_seat_no_paging.html">UserProvisioningCollectionResponsePublicSeatNoPaging</a>
-<a href="../api/user_provisioning_collection_response_public_team_no_paging.html">UserProvisioningCollectionResponsePublicTeamNoPaging</a>
 <a href="../api/user_provisioning_collection_response_public_user_forward_paging.html">UserProvisioningCollectionResponsePublicUserForwardPaging</a>
+<a href="../api/user_provisioning_public_permission_set.html">UserProvisioningPublicPermissionSet</a>
+<a href="../api/user_provisioning_public_seat.html">UserProvisioningPublicSeat</a>
+<a href="../api/user_provisioning_public_team.html">UserProvisioningPublicTeam</a>
 <a aria-current="page" href="../api/user_provisioning_public_user.html">UserProvisioningPublicUser</a><div class="nav-sections"><a class="nav-section" href="#post-settingsusers2026-09">POST /settings/users/2026-09</a>
 <a class="nav-section" href="#get-settingsusers2026-09userid">GET /settings/users/2026-09/{userId}</a>
 <a class="nav-section" href="#put-settingsusers2026-09userid">PUT /settings/users/2026-09/{userId}</a></div></details>
@@ -41,14 +42,14 @@
 <a href="../sdks/ts.html">TypeScript</a></details>
 <details><summary>Tools</summary><a href="../tools/go-cli.html">Go CLI</a>
 <a href="../tools/go-mcp.html">Go MCP server</a></details>
-<details><summary>Features</summary><a href="../features/debug.html">Request/response capture ring buffer for debugging</a>
-<a href="../features/idempotency.html">Idempotency keys for safe retries of mutating operations</a>
-<a href="../features/metrics.html">Statistics capture: per-operation counters and latency</a>
-<a href="../features/paging.html">Pagination signals for list operations</a>
-<a href="../features/ratelimit.html">Client-side rate limiting via a token bucket</a>
-<a href="../features/retry.html">Automatic retry of transient failures with exponential backoff</a>
-<a href="../features/test.html">In-memory mock transport for testing without a live server</a>
-<a href="../features/timeout.html">Per-request timeout with transport abort</a></details></nav><main id="content"><div class="page-context"><span class="section-dot" aria-hidden="true"></span>API</div><h1 id="userprovisioningpublicuser">UserProvisioningPublicUser</h1>
+<details><summary>Features</summary><a href="../features/debug.html">Debug capture</a>
+<a href="../features/idempotency.html">Idempotency</a>
+<a href="../features/metrics.html">Metrics</a>
+<a href="../features/paging.html">Paging</a>
+<a href="../features/ratelimit.html">Rate limiting</a>
+<a href="../features/retry.html">Retry</a>
+<a href="../features/test.html">Test transport</a>
+<a href="../features/timeout.html">Timeout</a></details></nav><main id="content"><div class="page-context"><span class="section-dot" aria-hidden="true"></span>API</div><h1 id="userprovisioningpublicuser">UserProvisioningPublicUser</h1>
 <h2 id="operations">Operations</h2>
 <p>Every route this entity exposes. Each route links to its own reference on this page.</p>
 <table>
@@ -81,6 +82,56 @@
 </tr>
 </tbody>
 </table>
+<h2 id="examples">Examples</h2>
+<p>One example per SDK, generated from the API model. The argument names are the parameters and fields of this entity, and the values are placeholders. The examples are not compiled or executed.</p>
+<h3 id="golang">Golang</h3>
+<p>Construct <code>client</code> as shown in the <a href="../sdks/go.html#set-up-the-client">Golang setup</a>, then call the operations:</p>
+<pre><code class="language-go">user_provisioning_public_user, err := client.UserProvisioningPublicUser(nil).Load(map[string]any{&quot;user_id&quot;: &quot;example&quot;}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(user_provisioning_public_user)
+created, err := client.UserProvisioningPublicUser(nil).Create(map[string]any{&quot;email&quot;: &quot;example&quot;, &quot;id&quot;: &quot;example&quot;, &quot;roleIds&quot;: []any{}, &quot;superAdmin&quot;: true}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(created)
+updated, err := client.UserProvisioningPublicUser(nil).Update(map[string]any{&quot;user_id&quot;: &quot;example&quot;, &quot;id_property&quot;: &quot;example&quot;}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(updated)
+</code></pre>
+<h3 id="javascript">JavaScript</h3>
+<p>Construct <code>client</code> as shown in the <a href="../sdks/js.html#set-up-the-client">JavaScript setup</a>, then call the operations:</p>
+<pre><code class="language-js">const user_provisioning_public_user = await client.UserProvisioningPublicUser().load({ user_id: &quot;example&quot; })
+const created = await client.UserProvisioningPublicUser().create({ email: &quot;example&quot;, id: &quot;example&quot;, roleIds: [], superAdmin: true })
+const updated = await client.UserProvisioningPublicUser().update({ user_id: &quot;example&quot;, id_property: &quot;example&quot; })
+</code></pre>
+<h3 id="lua">Lua</h3>
+<p>Construct <code>client</code> as shown in the <a href="../sdks/lua.html#set-up-the-client">Lua setup</a>, then call the operations:</p>
+<pre><code class="language-lua">local user_provisioning_public_user, err = client:UserProvisioningPublicUser():load({ user_id = &quot;example&quot; })
+local created, err = client:UserProvisioningPublicUser():create({ email = &quot;example&quot;, id = &quot;example&quot;, roleIds = {}, superAdmin = true })
+local updated, err = client:UserProvisioningPublicUser():update({ user_id = &quot;example&quot;, id_property = &quot;example&quot; })
+</code></pre>
+<h3 id="php">PHP</h3>
+<p>Construct <code>client</code> as shown in the <a href="../sdks/php.html#set-up-the-client">PHP setup</a>, then call the operations:</p>
+<pre><code class="language-php">$user_provisioning_public_user = $client-&gt;UserProvisioningPublicUser()-&gt;load([&quot;user_id&quot; =&gt; &quot;example&quot;]);
+$created = $client-&gt;UserProvisioningPublicUser()-&gt;create([&quot;email&quot; =&gt; &quot;example&quot;, &quot;id&quot; =&gt; &quot;example&quot;, &quot;roleIds&quot; =&gt; [], &quot;superAdmin&quot; =&gt; true]);
+$updated = $client-&gt;UserProvisioningPublicUser()-&gt;update([&quot;user_id&quot; =&gt; &quot;example&quot;, &quot;id_property&quot; =&gt; &quot;example&quot;]);
+</code></pre>
+<h3 id="python">Python</h3>
+<p>Construct <code>client</code> as shown in the <a href="../sdks/py.html#set-up-the-client">Python setup</a>, then call the operations:</p>
+<pre><code class="language-py">user_provisioning_public_user = client.UserProvisioningPublicUser().load({&quot;user_id&quot;: &quot;example&quot;})
+created = client.UserProvisioningPublicUser().create({ &quot;email&quot;: &quot;example&quot;, &quot;id&quot;: &quot;example&quot;, &quot;roleIds&quot;: [], &quot;superAdmin&quot;: True })
+updated = client.UserProvisioningPublicUser().update({&quot;user_id&quot;: &quot;example&quot;, &quot;id_property&quot;: &quot;example&quot;})
+</code></pre>
+<h3 id="typescript">TypeScript</h3>
+<p>Construct <code>client</code> as shown in the <a href="../sdks/ts.html#set-up-the-client">TypeScript setup</a>, then call the operations:</p>
+<pre><code class="language-ts">const user_provisioning_public_user = await client.UserProvisioningPublicUser().load({ user_id: &quot;example&quot; })
+const created = await client.UserProvisioningPublicUser().create({ email: &quot;example&quot;, id: &quot;example&quot;, roleIds: [], superAdmin: true })
+const updated = await client.UserProvisioningPublicUser().update({ user_id: &quot;example&quot;, id_property: &quot;example&quot; })
+</code></pre>
 <h2 id="fields">Fields</h2>
 <table>
 <thead>
@@ -401,7 +452,7 @@
 <p>| Parameter | In | Type | Required | Description |
 | --- | --- | --- | --- |
 | <code>userId</code> | <code>path</code> | <code>string</code> | Yes | The unique identifier of the user to retrieve. |
-| <code>idProperty</code> | <code>query</code> | <code>enum: EMAIL, USER_ID</code> | No | Specifies the property used to identify the user. Valid values are 'USER_ID' and 'EMAIL'. |</p>
+| <code>idProperty</code> | <code>query</code> | <code>enum: EMAIL, USER_ID</code> | No | Specifies the property used to identify the user. Valid values are '<code>USER_ID</code>' and 'EMAIL'. |</p>
 <h4 id="responses-1">Responses</h4>
 <h5 id="200-successful-operation" class="status" data-status="2xx">200: successful operation</h5>
 <p><code>application/json</code></p>
@@ -577,7 +628,7 @@
 <p>| Parameter | In | Type | Required | Description |
 | --- | --- | --- | --- |
 | <code>userId</code> | <code>path</code> | <code>string</code> | Yes | The unique identifier of the user to update. |
-| <code>idProperty</code> | <code>query</code> | <code>enum: EMAIL, USER_ID</code> | No | Specifies the property to use for identifying the user. Valid values are 'USER_ID' or 'EMAIL'. |</p>
+| <code>idProperty</code> | <code>query</code> | <code>enum: EMAIL, USER_ID</code> | No | Specifies the property to use for identifying the user. Valid values are '<code>USER_ID</code>' or 'EMAIL'. |</p>
 <h4 id="request-body-1">Request body</h4>
 <p><code>application/json</code></p>
 <table>

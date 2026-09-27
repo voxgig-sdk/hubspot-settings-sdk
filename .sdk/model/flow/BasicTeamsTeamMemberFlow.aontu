@@ -1,0 +1,22 @@
+# BasicTeamsTeamMemberFlow
+
+main: kit: flow: BasicTeamsTeamMemberFlow:
+{
+  entity: "teams_team_member",
+  kind: "basic",
+  name: "BasicTeamsTeamMemberFlow",
+  step: [
+    {
+      i: {
+        ref: "teams_team_member_ref01"
+      }
+
+      m: {
+        team_id: "team01"
+      }
+
+      o: "create"
+    }
+  ],
+  "key$": "BasicTeamsTeamMemberFlow"
+}

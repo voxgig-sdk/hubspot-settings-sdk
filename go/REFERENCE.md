@@ -48,9 +48,21 @@ client := sdk.TestSDK(testopts, sdkopts)
 
 ### Instance Methods
 
+#### `AddCurrency(data map[string]any) HubspotSettingsEntity`
+
+Create a new `AddCurrency` entity instance. Pass `nil` for no initial data.
+
 #### `Basic(data map[string]any) HubspotSettingsEntity`
 
 Create a new `Basic` entity instance. Pass `nil` for no initial data.
+
+#### `Code(data map[string]any) HubspotSettingsEntity`
+
+Create a new `Code` entity instance. Pass `nil` for no initial data.
+
+#### `Current(data map[string]any) HubspotSettingsEntity`
+
+Create a new `Current` entity instance. Pass `nil` for no initial data.
 
 #### `ExchangeRate(data map[string]any) HubspotSettingsEntity`
 
@@ -64,25 +76,13 @@ Create a new `MulticurrencyBatchResponseExchangeRate` entity instance. Pass `nil
 
 Create a new `MulticurrencyCentralExchangeRatesInformation` entity instance. Pass `nil` for no initial data.
 
-#### `MulticurrencyCollectionResponseCurrencyCodeInfoNoPaging(data map[string]any) HubspotSettingsEntity`
-
-Create a new `MulticurrencyCollectionResponseCurrencyCodeInfoNoPaging` entity instance. Pass `nil` for no initial data.
-
 #### `MulticurrencyCollectionResponseExchangeRateForwardPaging(data map[string]any) HubspotSettingsEntity`
 
 Create a new `MulticurrencyCollectionResponseExchangeRateForwardPaging` entity instance. Pass `nil` for no initial data.
 
-#### `MulticurrencyCollectionResponseExchangeRateNoPaging(data map[string]any) HubspotSettingsEntity`
-
-Create a new `MulticurrencyCollectionResponseExchangeRateNoPaging` entity instance. Pass `nil` for no initial data.
-
 #### `MulticurrencyCompanyCurrency(data map[string]any) HubspotSettingsEntity`
 
 Create a new `MulticurrencyCompanyCurrency` entity instance. Pass `nil` for no initial data.
-
-#### `MulticurrencyExchangeRate(data map[string]any) HubspotSettingsEntity`
-
-Create a new `MulticurrencyExchangeRate` entity instance. Pass `nil` for no initial data.
 
 #### `TaxRate(data map[string]any) HubspotSettingsEntity`
 
@@ -108,25 +108,29 @@ Create a new `TeamsTeam` entity instance. Pass `nil` for no initial data.
 
 Create a new `TeamsTeamMember` entity instance. Pass `nil` for no initial data.
 
+#### `UnsupportedCurrency(data map[string]any) HubspotSettingsEntity`
+
+Create a new `UnsupportedCurrency` entity instance. Pass `nil` for no initial data.
+
 #### `User(data map[string]any) HubspotSettingsEntity`
 
 Create a new `User` entity instance. Pass `nil` for no initial data.
 
-#### `UserProvisioningCollectionResponsePublicPermissionSetNo(data map[string]any) HubspotSettingsEntity`
-
-Create a new `UserProvisioningCollectionResponsePublicPermissionSetNo` entity instance. Pass `nil` for no initial data.
-
-#### `UserProvisioningCollectionResponsePublicSeatNoPaging(data map[string]any) HubspotSettingsEntity`
-
-Create a new `UserProvisioningCollectionResponsePublicSeatNoPaging` entity instance. Pass `nil` for no initial data.
-
-#### `UserProvisioningCollectionResponsePublicTeamNoPaging(data map[string]any) HubspotSettingsEntity`
-
-Create a new `UserProvisioningCollectionResponsePublicTeamNoPaging` entity instance. Pass `nil` for no initial data.
-
 #### `UserProvisioningCollectionResponsePublicUserForwardPaging(data map[string]any) HubspotSettingsEntity`
 
 Create a new `UserProvisioningCollectionResponsePublicUserForwardPaging` entity instance. Pass `nil` for no initial data.
+
+#### `UserProvisioningPublicPermissionSet(data map[string]any) HubspotSettingsEntity`
+
+Create a new `UserProvisioningPublicPermissionSet` entity instance. Pass `nil` for no initial data.
+
+#### `UserProvisioningPublicSeat(data map[string]any) HubspotSettingsEntity`
+
+Create a new `UserProvisioningPublicSeat` entity instance. Pass `nil` for no initial data.
+
+#### `UserProvisioningPublicTeam(data map[string]any) HubspotSettingsEntity`
+
+Create a new `UserProvisioningPublicTeam` entity instance. Pass `nil` for no initial data.
 
 #### `UserProvisioningPublicUser(data map[string]any) HubspotSettingsEntity`
 
@@ -164,6 +168,75 @@ Prepare a fetch definition without sending the request. Accepts the
 same parameters as `Direct()`.
 
 **Returns:** `(map[string]any, error)`
+
+
+---
+
+## AddCurrencyEntity
+
+```go
+addCurrency := client.AddCurrency(nil)
+fmt.Println(addCurrency.GetName()) // "add_currency"
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `conversionRate` | `float64` | Yes | The conversion rate between the to and from currency code of this exchange rate. |
+| `createdAt` | `string` | Yes | The date the exchange rate was created. |
+| `currencyCode` | `string` | Yes | The currency code being added to the HubSpot portal for use with central exchange rates. |
+| `effectiveAt` | `string` | Yes | The date the exchange rate is in effect. |
+| `fromCurrencyCode` | `string` | Yes | This represents the three-letter currency code (such as USD for US Dollar) of the currency you are converting from. |
+| `id` | `string` | Yes | A unique identifier for the exchange rate |
+| `toCurrencyCode` | `string` | Yes | This represents the three-letter currency code (such as USD for US Dollar) of the currency you are converting to. |
+| `updatedAt` | `string` | Yes | The date the exchange rate was last updated. |
+| `visibleInUI` | `bool` | Yes | This indicates if the exchange rate is shown in the MultiCurrency settings page. |
+
+### Operations
+
+#### `Create(reqdata, ctrl map[string]any) (any, error)`
+
+Create a new entity with the given data.
+
+```go
+result, err := client.AddCurrency(nil).Create(map[string]any{
+    "conversionRate": 1,
+    "createdAt": "example_createdAt",
+    "currencyCode": "example_currencyCode",
+    "effectiveAt": "example_effectiveAt",
+    "fromCurrencyCode": "example_fromCurrencyCode",
+    "id": "example_id",
+    "toCurrencyCode": "example_toCurrencyCode",
+    "updatedAt": "example_updatedAt",
+    "visibleInUI": true,
+}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(result)
+```
+
+### Common Methods
+
+#### `Data(args ...any) any`
+
+Get or set the entity data. When called with data, sets the entity's
+internal data and returns the current data. When called without
+arguments, returns a copy of the current data.
+
+#### `Match(args ...any) any`
+
+Get or set the entity match criteria. Works the same as `Data()`.
+
+#### `Make() Entity`
+
+Create a new `AddCurrencyEntity` instance with the same client and
+options.
+
+#### `GetName() string`
+
+Return the entity name.
 
 
 ---
@@ -213,6 +286,116 @@ Return the entity name.
 
 ---
 
+## CodeEntity
+
+```go
+code := client.Code(nil)
+fmt.Println(code.GetName()) // "code"
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `currencyCode` | `string` | Yes | The three-letter code representing a specific currency (ex. |
+| `currencyName` | `string` | Yes | The full name of the currency (ex. |
+
+### Operations
+
+#### `List(reqmatch, ctrl map[string]any) (any, error)`
+
+List entities matching the given criteria. Returns an array.
+
+```go
+results, err := client.Code(nil).List(nil, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(results)
+```
+
+### Common Methods
+
+#### `Data(args ...any) any`
+
+Get or set the entity data. When called with data, sets the entity's
+internal data and returns the current data. When called without
+arguments, returns a copy of the current data.
+
+#### `Match(args ...any) any`
+
+Get or set the entity match criteria. Works the same as `Data()`.
+
+#### `Make() Entity`
+
+Create a new `CodeEntity` instance with the same client and
+options.
+
+#### `GetName() string`
+
+Return the entity name.
+
+
+---
+
+## CurrentEntity
+
+```go
+current := client.Current(nil)
+fmt.Println(current.GetName()) // "current"
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `conversionRate` | `float64` | Yes | The conversion rate between the to and from currency code of this exchange rate. |
+| `createdAt` | `string` | Yes | The date the exchange rate was created. |
+| `effectiveAt` | `string` | Yes | The date the exchange rate is in effect. |
+| `fromCurrencyCode` | `string` | Yes | This represents the three-letter currency code (such as USD for US Dollar) of the currency you are converting from. |
+| `id` | `string` | Yes | A unique identifier for the exchange rate |
+| `toCurrencyCode` | `string` | Yes | This represents the three-letter currency code (such as USD for US Dollar) of the currency you are converting to. |
+| `updatedAt` | `string` | Yes | The date the exchange rate was last updated. |
+| `visibleInUI` | `bool` | Yes | This indicates if the exchange rate is shown in the MultiCurrency settings page. |
+
+### Operations
+
+#### `List(reqmatch, ctrl map[string]any) (any, error)`
+
+List entities matching the given criteria. Returns an array.
+
+```go
+results, err := client.Current(nil).List(nil, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(results)
+```
+
+### Common Methods
+
+#### `Data(args ...any) any`
+
+Get or set the entity data. When called with data, sets the entity's
+internal data and returns the current data. When called without
+arguments, returns a copy of the current data.
+
+#### `Match(args ...any) any`
+
+Get or set the entity match criteria. Works the same as `Data()`.
+
+#### `Make() Entity`
+
+Create a new `CurrentEntity` instance with the same client and
+options.
+
+#### `GetName() string`
+
+Return the entity name.
+
+
+---
+
 ## ExchangeRateEntity
 
 ```go
@@ -220,7 +403,45 @@ exchangeRate := client.ExchangeRate(nil)
 fmt.Println(exchangeRate.GetName()) // "exchange_rate"
 ```
 
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `conversionRate` | `float64` | Yes | The conversion rate between the to and from currency code of this exchange rate. |
+| `createdAt` | `string` | Yes | The date the exchange rate was created. |
+| `effectiveAt` | `string` | Yes | The date the exchange rate is in effect. |
+| `fromCurrencyCode` | `string` | Yes | This represents the three-letter currency code (such as USD for US Dollar) of the currency you are converting from. |
+| `id` | `string` | Yes | A unique identifier for the exchange rate |
+| `toCurrencyCode` | `string` | Yes | This represents the three-letter currency code (such as USD for US Dollar) of the currency you are converting to. |
+| `updatedAt` | `string` | Yes | The date the exchange rate was last updated. |
+| `visibleInUI` | `bool` | Yes | This indicates if the exchange rate is shown in the MultiCurrency settings page. |
+
+### Field Usage by Operation
+
+| Field | load | create | update |
+| --- | --- | --- | --- |
+| `conversionRate` | - | - | - |
+| `createdAt` | - | - | - |
+| `effectiveAt` | - | Yes | Yes |
+| `fromCurrencyCode` | - | - | - |
+| `id` | - | - | - |
+| `toCurrencyCode` | - | - | - |
+| `updatedAt` | - | - | - |
+| `visibleInUI` | - | - | - |
+
 ### Operations
+
+#### `Load(reqmatch, ctrl map[string]any) (any, error)`
+
+Load a single entity matching the given criteria.
+
+```go
+result, err := client.ExchangeRate(nil).Load(map[string]any{"id": "exchange_rate_id"}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(result)
+```
 
 #### `Create(reqdata, ctrl map[string]any) (any, error)`
 
@@ -228,6 +449,29 @@ Create a new entity with the given data.
 
 ```go
 result, err := client.ExchangeRate(nil).Create(map[string]any{
+    "conversionRate": 1,
+    "createdAt": "example_createdAt",
+    "effectiveAt": "example_effectiveAt",
+    "fromCurrencyCode": "example_fromCurrencyCode",
+    "id": "example_id",
+    "toCurrencyCode": "example_toCurrencyCode",
+    "updatedAt": "example_updatedAt",
+    "visibleInUI": true,
+}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(result)
+```
+
+#### `Update(reqdata, ctrl map[string]any) (any, error)`
+
+Update an existing entity. The data must include the entity `id`.
+
+```go
+result, err := client.ExchangeRate(nil).Update(map[string]any{
+    "id": "exchange_rate_id",
+    // Fields to update
 }, nil)
 if err != nil {
     panic(err)
@@ -373,58 +617,6 @@ Return the entity name.
 
 ---
 
-## MulticurrencyCollectionResponseCurrencyCodeInfoNoPagingEntity
-
-```go
-multicurrencyCollectionResponseCurrencyCodeInfoNoPaging := client.MulticurrencyCollectionResponseCurrencyCodeInfoNoPaging(nil)
-fmt.Println(multicurrencyCollectionResponseCurrencyCodeInfoNoPaging.GetName()) // "multicurrency_collection_response_currency_code_info_no_paging"
-```
-
-### Fields
-
-| Field | Type | Required | Description |
-| --- | --- | --- | --- |
-| `currencyCode` | `string` | Yes | The three-letter code representing a specific currency (ex. |
-| `currencyName` | `string` | Yes | The full name of the currency (ex. |
-
-### Operations
-
-#### `List(reqmatch, ctrl map[string]any) (any, error)`
-
-List entities matching the given criteria. Returns an array.
-
-```go
-results, err := client.MulticurrencyCollectionResponseCurrencyCodeInfoNoPaging(nil).List(nil, nil)
-if err != nil {
-    panic(err)
-}
-fmt.Println(results)
-```
-
-### Common Methods
-
-#### `Data(args ...any) any`
-
-Get or set the entity data. When called with data, sets the entity's
-internal data and returns the current data. When called without
-arguments, returns a copy of the current data.
-
-#### `Match(args ...any) any`
-
-Get or set the entity match criteria. Works the same as `Data()`.
-
-#### `Make() Entity`
-
-Create a new `MulticurrencyCollectionResponseCurrencyCodeInfoNoPagingEntity` instance with the same client and
-options.
-
-#### `GetName() string`
-
-Return the entity name.
-
-
----
-
 ## MulticurrencyCollectionResponseExchangeRateForwardPagingEntity
 
 ```go
@@ -474,64 +666,6 @@ Get or set the entity match criteria. Works the same as `Data()`.
 #### `Make() Entity`
 
 Create a new `MulticurrencyCollectionResponseExchangeRateForwardPagingEntity` instance with the same client and
-options.
-
-#### `GetName() string`
-
-Return the entity name.
-
-
----
-
-## MulticurrencyCollectionResponseExchangeRateNoPagingEntity
-
-```go
-multicurrencyCollectionResponseExchangeRateNoPaging := client.MulticurrencyCollectionResponseExchangeRateNoPaging(nil)
-fmt.Println(multicurrencyCollectionResponseExchangeRateNoPaging.GetName()) // "multicurrency_collection_response_exchange_rate_no_paging"
-```
-
-### Fields
-
-| Field | Type | Required | Description |
-| --- | --- | --- | --- |
-| `conversionRate` | `float64` | Yes | The conversion rate between the to and from currency code of this exchange rate. |
-| `createdAt` | `string` | Yes | The date the exchange rate was created. |
-| `effectiveAt` | `string` | Yes | The date the exchange rate is in effect. |
-| `fromCurrencyCode` | `string` | Yes | This represents the three-letter currency code (such as USD for US Dollar) of the currency you are converting from. |
-| `id` | `string` | Yes | A unique identifier for the exchange rate |
-| `toCurrencyCode` | `string` | Yes | This represents the three-letter currency code (such as USD for US Dollar) of the currency you are converting to. |
-| `updatedAt` | `string` | Yes | The date the exchange rate was last updated. |
-| `visibleInUI` | `bool` | Yes | This indicates if the exchange rate is shown in the MultiCurrency settings page. |
-
-### Operations
-
-#### `List(reqmatch, ctrl map[string]any) (any, error)`
-
-List entities matching the given criteria. Returns an array.
-
-```go
-results, err := client.MulticurrencyCollectionResponseExchangeRateNoPaging(nil).List(nil, nil)
-if err != nil {
-    panic(err)
-}
-fmt.Println(results)
-```
-
-### Common Methods
-
-#### `Data(args ...any) any`
-
-Get or set the entity data. When called with data, sets the entity's
-internal data and returns the current data. When called without
-arguments, returns a copy of the current data.
-
-#### `Match(args ...any) any`
-
-Get or set the entity match criteria. Works the same as `Data()`.
-
-#### `Make() Entity`
-
-Create a new `MulticurrencyCollectionResponseExchangeRateNoPagingEntity` instance with the same client and
 options.
 
 #### `GetName() string`
@@ -600,116 +734,6 @@ Get or set the entity match criteria. Works the same as `Data()`.
 #### `Make() Entity`
 
 Create a new `MulticurrencyCompanyCurrencyEntity` instance with the same client and
-options.
-
-#### `GetName() string`
-
-Return the entity name.
-
-
----
-
-## MulticurrencyExchangeRateEntity
-
-```go
-multicurrencyExchangeRate := client.MulticurrencyExchangeRate(nil)
-fmt.Println(multicurrencyExchangeRate.GetName()) // "multicurrency_exchange_rate"
-```
-
-### Fields
-
-| Field | Type | Required | Description |
-| --- | --- | --- | --- |
-| `conversionRate` | `float64` | Yes | The conversion rate between the to and from currency code of this exchange rate. |
-| `createdAt` | `string` | Yes | The date the exchange rate was created. |
-| `currencyCode` | `string` | Yes | The currency code being added to the HubSpot portal for use with central exchange rates. |
-| `effectiveAt` | `string` | Yes | The date the exchange rate is in effect. |
-| `fromCurrencyCode` | `string` | Yes | This represents the three-letter currency code (such as USD for US Dollar) of the currency you are converting from. |
-| `id` | `string` | Yes | A unique identifier for the exchange rate |
-| `toCurrencyCode` | `string` | Yes | This represents the three-letter currency code (such as USD for US Dollar) of the currency you are converting to. |
-| `updatedAt` | `string` | Yes | The date the exchange rate was last updated. |
-| `visibleInUI` | `bool` | Yes | This indicates if the exchange rate is shown in the MultiCurrency settings page. |
-
-### Field Usage by Operation
-
-| Field | load | create | update |
-| --- | --- | --- | --- |
-| `conversionRate` | - | - | - |
-| `createdAt` | - | - | - |
-| `currencyCode` | - | - | - |
-| `effectiveAt` | - | Yes | Yes |
-| `fromCurrencyCode` | - | - | - |
-| `id` | - | - | - |
-| `toCurrencyCode` | - | - | - |
-| `updatedAt` | - | - | - |
-| `visibleInUI` | - | - | - |
-
-### Operations
-
-#### `Load(reqmatch, ctrl map[string]any) (any, error)`
-
-Load a single entity matching the given criteria.
-
-```go
-result, err := client.MulticurrencyExchangeRate(nil).Load(map[string]any{"id": "multicurrency_exchange_rate_id"}, nil)
-if err != nil {
-    panic(err)
-}
-fmt.Println(result)
-```
-
-#### `Create(reqdata, ctrl map[string]any) (any, error)`
-
-Create a new entity with the given data.
-
-```go
-result, err := client.MulticurrencyExchangeRate(nil).Create(map[string]any{
-    "conversionRate": 1,
-    "createdAt": "example_createdAt",
-    "currencyCode": "example_currencyCode",
-    "effectiveAt": "example_effectiveAt",
-    "fromCurrencyCode": "example_fromCurrencyCode",
-    "id": "example_id",
-    "toCurrencyCode": "example_toCurrencyCode",
-    "updatedAt": "example_updatedAt",
-    "visibleInUI": true,
-}, nil)
-if err != nil {
-    panic(err)
-}
-fmt.Println(result)
-```
-
-#### `Update(reqdata, ctrl map[string]any) (any, error)`
-
-Update an existing entity. The data must include the entity `id`.
-
-```go
-result, err := client.MulticurrencyExchangeRate(nil).Update(map[string]any{
-    "id": "multicurrency_exchange_rate_id",
-    // Fields to update
-}, nil)
-if err != nil {
-    panic(err)
-}
-fmt.Println(result)
-```
-
-### Common Methods
-
-#### `Data(args ...any) any`
-
-Get or set the entity data. When called with data, sets the entity's
-internal data and returns the current data. When called without
-arguments, returns a copy of the current data.
-
-#### `Match(args ...any) any`
-
-Get or set the entity match criteria. Works the same as `Data()`.
-
-#### `Make() Entity`
-
-Create a new `MulticurrencyExchangeRateEntity` instance with the same client and
 options.
 
 #### `GetName() string`
@@ -1109,6 +1133,58 @@ Return the entity name.
 
 ---
 
+## UnsupportedCurrencyEntity
+
+```go
+unsupportedCurrency := client.UnsupportedCurrency(nil)
+fmt.Println(unsupportedCurrency.GetName()) // "unsupported_currency"
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `currencyCode` | `string` | Yes | The three-letter code representing a specific currency (ex. |
+| `currencyName` | `string` | Yes | The full name of the currency (ex. |
+
+### Operations
+
+#### `List(reqmatch, ctrl map[string]any) (any, error)`
+
+List entities matching the given criteria. Returns an array.
+
+```go
+results, err := client.UnsupportedCurrency(nil).List(nil, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(results)
+```
+
+### Common Methods
+
+#### `Data(args ...any) any`
+
+Get or set the entity data. When called with data, sets the entity's
+internal data and returns the current data. When called without
+arguments, returns a copy of the current data.
+
+#### `Match(args ...any) any`
+
+Get or set the entity match criteria. Works the same as `Data()`.
+
+#### `Make() Entity`
+
+Create a new `UnsupportedCurrencyEntity` instance with the same client and
+options.
+
+#### `GetName() string`
+
+Return the entity name.
+
+
+---
+
 ## UserEntity
 
 ```go
@@ -1145,166 +1221,6 @@ Get or set the entity match criteria. Works the same as `Data()`.
 #### `Make() Entity`
 
 Create a new `UserEntity` instance with the same client and
-options.
-
-#### `GetName() string`
-
-Return the entity name.
-
-
----
-
-## UserProvisioningCollectionResponsePublicPermissionSetNoEntity
-
-```go
-userProvisioningCollectionResponsePublicPermissionSetNo := client.UserProvisioningCollectionResponsePublicPermissionSetNo(nil)
-fmt.Println(userProvisioningCollectionResponsePublicPermissionSetNo.GetName()) // "user_provisioning_collection_response_public_permission_set_no"
-```
-
-### Fields
-
-| Field | Type | Required | Description |
-| --- | --- | --- | --- |
-| `id` | `string` | Yes | The unique identifier for the permission set. |
-| `name` | `string` | Yes | The name of the permission set. |
-| `requiresBillingWrite` | `bool` | Yes | A boolean indicating whether the permission set requires billing write access. |
-
-### Operations
-
-#### `List(reqmatch, ctrl map[string]any) (any, error)`
-
-List entities matching the given criteria. Returns an array.
-
-```go
-results, err := client.UserProvisioningCollectionResponsePublicPermissionSetNo(nil).List(nil, nil)
-if err != nil {
-    panic(err)
-}
-fmt.Println(results)
-```
-
-### Common Methods
-
-#### `Data(args ...any) any`
-
-Get or set the entity data. When called with data, sets the entity's
-internal data and returns the current data. When called without
-arguments, returns a copy of the current data.
-
-#### `Match(args ...any) any`
-
-Get or set the entity match criteria. Works the same as `Data()`.
-
-#### `Make() Entity`
-
-Create a new `UserProvisioningCollectionResponsePublicPermissionSetNoEntity` instance with the same client and
-options.
-
-#### `GetName() string`
-
-Return the entity name.
-
-
----
-
-## UserProvisioningCollectionResponsePublicSeatNoPagingEntity
-
-```go
-userProvisioningCollectionResponsePublicSeatNoPaging := client.UserProvisioningCollectionResponsePublicSeatNoPaging(nil)
-fmt.Println(userProvisioningCollectionResponsePublicSeatNoPaging.GetName()) // "user_provisioning_collection_response_public_seat_no_paging"
-```
-
-### Fields
-
-| Field | Type | Required | Description |
-| --- | --- | --- | --- |
-| `description` | `string` | No | A string providing additional details about the seat. |
-| `name` | `string` | Yes | The name of the seat. |
-| `remainingSeats` | `int` | No | An integer indicating the number of seats that are still available. |
-
-### Operations
-
-#### `List(reqmatch, ctrl map[string]any) (any, error)`
-
-List entities matching the given criteria. Returns an array.
-
-```go
-results, err := client.UserProvisioningCollectionResponsePublicSeatNoPaging(nil).List(nil, nil)
-if err != nil {
-    panic(err)
-}
-fmt.Println(results)
-```
-
-### Common Methods
-
-#### `Data(args ...any) any`
-
-Get or set the entity data. When called with data, sets the entity's
-internal data and returns the current data. When called without
-arguments, returns a copy of the current data.
-
-#### `Match(args ...any) any`
-
-Get or set the entity match criteria. Works the same as `Data()`.
-
-#### `Make() Entity`
-
-Create a new `UserProvisioningCollectionResponsePublicSeatNoPagingEntity` instance with the same client and
-options.
-
-#### `GetName() string`
-
-Return the entity name.
-
-
----
-
-## UserProvisioningCollectionResponsePublicTeamNoPagingEntity
-
-```go
-userProvisioningCollectionResponsePublicTeamNoPaging := client.UserProvisioningCollectionResponsePublicTeamNoPaging(nil)
-fmt.Println(userProvisioningCollectionResponsePublicTeamNoPaging.GetName()) // "user_provisioning_collection_response_public_team_no_paging"
-```
-
-### Fields
-
-| Field | Type | Required | Description |
-| --- | --- | --- | --- |
-| `id` | `string` | Yes | The unique identifier for the team, represented as a string. |
-| `name` | `string` | Yes | The name of the team, represented as a string. |
-| `secondaryUserIds` | `[]any` | Yes | An array of strings representing the IDs of users who are secondary members of the team. |
-| `userIds` | `[]any` | Yes | An array of strings representing the IDs of users who are primary members of the team. |
-
-### Operations
-
-#### `List(reqmatch, ctrl map[string]any) (any, error)`
-
-List entities matching the given criteria. Returns an array.
-
-```go
-results, err := client.UserProvisioningCollectionResponsePublicTeamNoPaging(nil).List(nil, nil)
-if err != nil {
-    panic(err)
-}
-fmt.Println(results)
-```
-
-### Common Methods
-
-#### `Data(args ...any) any`
-
-Get or set the entity data. When called with data, sets the entity's
-internal data and returns the current data. When called without
-arguments, returns a copy of the current data.
-
-#### `Match(args ...any) any`
-
-Get or set the entity match criteria. Works the same as `Data()`.
-
-#### `Make() Entity`
-
-Create a new `UserProvisioningCollectionResponsePublicTeamNoPagingEntity` instance with the same client and
 options.
 
 #### `GetName() string`
@@ -1366,6 +1282,166 @@ Get or set the entity match criteria. Works the same as `Data()`.
 #### `Make() Entity`
 
 Create a new `UserProvisioningCollectionResponsePublicUserForwardPagingEntity` instance with the same client and
+options.
+
+#### `GetName() string`
+
+Return the entity name.
+
+
+---
+
+## UserProvisioningPublicPermissionSetEntity
+
+```go
+userProvisioningPublicPermissionSet := client.UserProvisioningPublicPermissionSet(nil)
+fmt.Println(userProvisioningPublicPermissionSet.GetName()) // "user_provisioning_public_permission_set"
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | Yes | The unique identifier for the permission set. |
+| `name` | `string` | Yes | The name of the permission set. |
+| `requiresBillingWrite` | `bool` | Yes | A boolean indicating whether the permission set requires billing write access. |
+
+### Operations
+
+#### `List(reqmatch, ctrl map[string]any) (any, error)`
+
+List entities matching the given criteria. Returns an array.
+
+```go
+results, err := client.UserProvisioningPublicPermissionSet(nil).List(nil, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(results)
+```
+
+### Common Methods
+
+#### `Data(args ...any) any`
+
+Get or set the entity data. When called with data, sets the entity's
+internal data and returns the current data. When called without
+arguments, returns a copy of the current data.
+
+#### `Match(args ...any) any`
+
+Get or set the entity match criteria. Works the same as `Data()`.
+
+#### `Make() Entity`
+
+Create a new `UserProvisioningPublicPermissionSetEntity` instance with the same client and
+options.
+
+#### `GetName() string`
+
+Return the entity name.
+
+
+---
+
+## UserProvisioningPublicSeatEntity
+
+```go
+userProvisioningPublicSeat := client.UserProvisioningPublicSeat(nil)
+fmt.Println(userProvisioningPublicSeat.GetName()) // "user_provisioning_public_seat"
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `description` | `string` | No | A string providing additional details about the seat. |
+| `name` | `string` | Yes | The name of the seat. |
+| `remainingSeats` | `int` | No | An integer indicating the number of seats that are still available. |
+
+### Operations
+
+#### `List(reqmatch, ctrl map[string]any) (any, error)`
+
+List entities matching the given criteria. Returns an array.
+
+```go
+results, err := client.UserProvisioningPublicSeat(nil).List(nil, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(results)
+```
+
+### Common Methods
+
+#### `Data(args ...any) any`
+
+Get or set the entity data. When called with data, sets the entity's
+internal data and returns the current data. When called without
+arguments, returns a copy of the current data.
+
+#### `Match(args ...any) any`
+
+Get or set the entity match criteria. Works the same as `Data()`.
+
+#### `Make() Entity`
+
+Create a new `UserProvisioningPublicSeatEntity` instance with the same client and
+options.
+
+#### `GetName() string`
+
+Return the entity name.
+
+
+---
+
+## UserProvisioningPublicTeamEntity
+
+```go
+userProvisioningPublicTeam := client.UserProvisioningPublicTeam(nil)
+fmt.Println(userProvisioningPublicTeam.GetName()) // "user_provisioning_public_team"
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | Yes | The unique identifier for the team, represented as a string. |
+| `name` | `string` | Yes | The name of the team, represented as a string. |
+| `secondaryUserIds` | `[]any` | Yes | An array of strings representing the IDs of users who are secondary members of the team. |
+| `userIds` | `[]any` | Yes | An array of strings representing the IDs of users who are primary members of the team. |
+
+### Operations
+
+#### `List(reqmatch, ctrl map[string]any) (any, error)`
+
+List entities matching the given criteria. Returns an array.
+
+```go
+results, err := client.UserProvisioningPublicTeam(nil).List(nil, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(results)
+```
+
+### Common Methods
+
+#### `Data(args ...any) any`
+
+Get or set the entity data. When called with data, sets the entity's
+internal data and returns the current data. When called without
+arguments, returns a copy of the current data.
+
+#### `Match(args ...any) any`
+
+Get or set the entity match criteria. Works the same as `Data()`.
+
+#### `Make() Entity`
+
+Create a new `UserProvisioningPublicTeamEntity` instance with the same client and
 options.
 
 #### `GetName() string`
@@ -1488,14 +1564,14 @@ Return the entity name.
 
 | Feature | Version | Description |
 | --- | --- | --- |
-| `debug` | 0.0.1 | Request/response capture ring buffer for debugging |
-| `idempotency` | 0.0.1 | Idempotency keys for safe retries of mutating operations |
-| `metrics` | 0.0.1 | Statistics capture: per-operation counters and latency |
-| `paging` | 0.0.1 | Pagination signals for list operations |
-| `ratelimit` | 0.0.1 | Client-side rate limiting via a token bucket |
-| `retry` | 0.0.1 | Automatic retry of transient failures with exponential backoff |
-| `test` | 0.0.1 | In-memory mock transport for testing without a live server |
-| `timeout` | 0.0.1 | Per-request timeout with transport abort |
+| `debug` | 0.0.1 | Debug capture |
+| `idempotency` | 0.0.1 | Idempotency |
+| `metrics` | 0.0.1 | Metrics |
+| `paging` | 0.0.1 | Paging |
+| `ratelimit` | 0.0.1 | Rate limiting |
+| `retry` | 0.0.1 | Retry |
+| `test` | 0.0.1 | Test transport |
+| `timeout` | 0.0.1 | Timeout |
 
 
 Features are activated via the `feature` option:
@@ -1541,7 +1617,7 @@ rather than the transport, so their order does not affect what they observe.
 
 #### `debug`
 
-Request/response capture ring buffer for debugging.
+Debug capture.
 
 **Configuration**
 
@@ -1572,7 +1648,7 @@ its default unless you name it.
 
 #### `idempotency`
 
-Idempotency keys for safe retries of mutating operations.
+Idempotency.
 
 **Configuration**
 
@@ -1603,7 +1679,7 @@ its default unless you name it.
 
 #### `metrics`
 
-Statistics capture: per-operation counters and latency.
+Metrics.
 
 **Configuration**
 
@@ -1631,7 +1707,7 @@ its default unless you name it.
 
 #### `paging`
 
-Pagination signals for list operations.
+Paging.
 
 **Configuration**
 
@@ -1666,7 +1742,7 @@ its default unless you name it.
 
 #### `ratelimit`
 
-Client-side rate limiting via a token bucket.
+Rate limiting.
 
 **Configuration**
 
@@ -1697,7 +1773,7 @@ its default unless you name it.
 
 #### `retry`
 
-Automatic retry of transient failures with exponential backoff.
+Retry.
 
 **Configuration**
 
@@ -1731,7 +1807,7 @@ its default unless you name it.
 
 #### `test`
 
-In-memory mock transport for testing without a live server.
+Test transport.
 
 **Configuration**
 
@@ -1762,7 +1838,7 @@ its default unless you name it.
 
 #### `timeout`
 
-Per-request timeout with transport abort.
+Timeout.
 
 **Configuration**
 

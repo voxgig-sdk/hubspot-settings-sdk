@@ -1,0 +1,58 @@
+# Entity: multicurrency_central_exchange_rates_information
+
+main: kit: entity: multicurrency_central_exchange_rates_information: {
+
+  alias: field: {}
+
+  fields: {
+    centralExchangeRatesEnabled: {
+      h: "Central Exchange Rates Enabled"
+      n: "centralExchangeRatesEnabled"
+      r: true
+      sh: "Indicates if central exchange rates is enabled for the portal or not."
+      t: "`$BOOLEAN`"
+    }
+  }
+
+  name: "multicurrency_central_exchange_rates_information"
+  op: {
+    load: {
+      name: "load"
+      points: [
+        {
+          co: {
+            id: "GET /settings/currencies/2026-09/central-fx-rates/information"
+            source: "openapi3"
+            version: 2
+          }
+          m: "GET"
+          o: "/settings/currencies/2026-09/central-fx-rates/information"
+          s: [
+            {
+              lit: "settings"
+            }
+            {
+              lit: "currencies"
+            }
+            {
+              lit: "2026-09"
+            }
+            {
+              lit: "central-fx-rates"
+            }
+            {
+              lit: "information"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

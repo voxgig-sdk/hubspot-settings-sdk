@@ -116,7 +116,7 @@ function teams_collection_response_team_member_response_forward_paging_basic_set
 
   -- Generate idmap via transform.
   local idmap = vs.transform(
-    { "teams_collection_response_team_member_response_forward_paging01", "teams_collection_response_team_member_response_forward_paging02", "teams_collection_response_team_member_response_forward_paging03", "2026_0901", "2026_0902", "2026_0903", "team01" },
+    { "teams_collection_response_team_member_response_forward_paging01", "teams_collection_response_team_member_response_forward_paging02", "teams_collection_response_team_member_response_forward_paging03", "team01" },
     {
       ["`$PACK`"] = { "", {
         ["`$KEY`"] = "`$COPY`",

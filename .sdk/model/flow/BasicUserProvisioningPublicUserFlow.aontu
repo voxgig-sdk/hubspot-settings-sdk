@@ -1,0 +1,59 @@
+# BasicUserProvisioningPublicUserFlow
+
+main: kit: flow: BasicUserProvisioningPublicUserFlow:
+{
+  entity: "user_provisioning_public_user",
+  kind: "basic",
+  name: "BasicUserProvisioningPublicUserFlow",
+  step: [
+    {
+      i: {
+        ref: "user_provisioning_public_user_ref01"
+      }
+
+      o: "create"
+    }
+
+    {
+      i: {
+        ref: "user_provisioning_public_user_ref01",
+        srcdatavar: "user_provisioning_public_user_ref01_data",
+        suffix: "_up0",
+        textfield: "email"
+      }
+
+      o: "update",
+      s: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-user_provisioning_public_user_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      i: {
+        ref: "user_provisioning_public_user_ref01",
+        srcdatavar: "user_provisioning_public_user_ref01_data",
+        suffix: "_dt0"
+      }
+
+      m: {
+        id: "user_provisioning_public_user01"
+      }
+
+      o: "load",
+      v: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-user_provisioning_public_user_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicUserProvisioningPublicUserFlow"
+}

@@ -66,7 +66,7 @@ function teams_team_member_basic_setup($extra)
 
     // Generate idmap.
     $idmap = [];
-    foreach (["teams_team_member01", "teams_team_member02", "teams_team_member03", "2026_0901", "2026_0902", "2026_0903", "team01"] as $k) {
+    foreach (["teams_team_member01", "teams_team_member02", "teams_team_member03", "team01"] as $k) {
         $idmap[$k] = strtoupper($k);
     }
 

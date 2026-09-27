@@ -50,10 +50,6 @@ func NewExchangeRateEntity(client *core.HubspotSettingsSDK, entopts map[string]a
 
 func (e *ExchangeRateEntity) GetName() string { return e.name }
 
-// Deleted marks this instance as removed. `Remove` resolves to the entity
-// like every other operation, and the instance KEEPS the data it held — a
-// caller can still read what was deleted — but it is no longer a live
-// record. See AGENTS.md "Entity operations return ENTITIES".
 func (e *ExchangeRateEntity) MarkDeleted() {
 	e.deleted = true
 }
@@ -122,15 +118,6 @@ func (e *ExchangeRateEntity) MatchTyped(match ...ExchangeRate) ExchangeRate {
 	return typedFrom[ExchangeRate](e.Match())
 }
 
-// Stream (feature #4). Runs `action` through the full pipeline and returns a
-// channel over result items, so the `streaming` feature's incremental output
-// is reachable from a generated entity (a normal op call materialises the
-// whole result). `callopts` parameterises the call:
-//   - inbound (download): the channel yields items/chunks (from the streaming
-//     feature when active, else the materialised items);
-//   - outbound (upload): a `body` in callopts is attached to the request so the
-//     transport can stream the payload;
-//   - `ctrl` (pipeline control) and `signal` (a done channel) are honoured.
 func (e *ExchangeRateEntity) Stream(action string, args map[string]any, callopts map[string]any) <-chan any {
 	out := make(chan any)
 
@@ -255,9 +242,43 @@ func (e *ExchangeRateEntity) Stream(action string, args map[string]any, callopts
 	return out
 }
 
-func (e *ExchangeRateEntity) Load(_ map[string]any, _ map[string]any) (any, error) {
-	return core.UnsupportedOp("load", e.name)
+
+func (e *ExchangeRateEntity) Load(reqmatch map[string]any, ctrl map[string]any) (any, error) {
+	utility := e.utility
+	ctx := utility.MakeContext(map[string]any{
+		"opname":   "load",
+		"ctrl":     ctrl,
+		"match":    e.match,
+		"data":     e.data,
+		"reqmatch": reqmatch,
+	}, e.entctx)
+
+	return e.runOp(ctx, func() {
+		if ctx.Result != nil {
+			if ctx.Result.Resmatch != nil {
+				e.match = ctx.Result.Resmatch
+			}
+			if ctx.Result.Resdata != nil {
+				e.data = core.ToMapAny(vs.Clone(ctx.Result.Resdata))
+				if e.data == nil {
+					e.data = map[string]any{}
+				}
+			}
+		}
+	})
 }
+
+// LoadTyped is the statically-typed variant of Load: it takes an
+// ExchangeRateLoadMatch and returns an ExchangeRate. It delegates to the untyped
+// Load (identical runtime) and converts at the typed boundary.
+func (e *ExchangeRateEntity) LoadTyped(reqmatch ExchangeRateLoadMatch, ctrl map[string]any) (ExchangeRate, error) {
+	res, err := e.Load(asMap(reqmatch), ctrl)
+	if err != nil {
+		return ExchangeRate{}, err
+	}
+	return typedFrom[ExchangeRate](res), nil
+}
+
 
 
 func (e *ExchangeRateEntity) List(_ map[string]any, _ map[string]any) (any, error) {
@@ -301,9 +322,43 @@ func (e *ExchangeRateEntity) CreateTyped(reqdata ExchangeRateCreateData, ctrl ma
 
 
 
-func (e *ExchangeRateEntity) Update(_ map[string]any, _ map[string]any) (any, error) {
-	return core.UnsupportedOp("update", e.name)
+
+func (e *ExchangeRateEntity) Update(reqdata map[string]any, ctrl map[string]any) (any, error) {
+	utility := e.utility
+	ctx := utility.MakeContext(map[string]any{
+		"opname":  "update",
+		"ctrl":    ctrl,
+		"match":   e.match,
+		"data":    e.data,
+		"reqdata": reqdata,
+	}, e.entctx)
+
+	return e.runOp(ctx, func() {
+		if ctx.Result != nil {
+			if ctx.Result.Resmatch != nil {
+				e.match = ctx.Result.Resmatch
+			}
+			if ctx.Result.Resdata != nil {
+				e.data = core.ToMapAny(vs.Clone(ctx.Result.Resdata))
+				if e.data == nil {
+					e.data = map[string]any{}
+				}
+			}
+		}
+	})
 }
+
+// UpdateTyped is the statically-typed variant of Update: it takes an
+// ExchangeRateUpdateData and returns an ExchangeRate. It delegates to the untyped
+// Update (identical runtime) and converts at the typed boundary.
+func (e *ExchangeRateEntity) UpdateTyped(reqdata ExchangeRateUpdateData, ctrl map[string]any) (ExchangeRate, error) {
+	res, err := e.Update(asMap(reqdata), ctrl)
+	if err != nil {
+		return ExchangeRate{}, err
+	}
+	return typedFrom[ExchangeRate](res), nil
+}
+
 
 
 func (e *ExchangeRateEntity) Remove(_ map[string]any, _ map[string]any) (any, error) {
@@ -357,14 +412,6 @@ func (e *ExchangeRateEntity) runOp(ctx *core.Context, postDone func()) (any, err
 		return out, doneErr
 	}
 
-	// An operation resolves to the ENTITY, not the raw data. Entities are
-	// stateful: post_done has just absorbed resdata/resmatch into this
-	// instance, and the caller reaches the record through data(). Two
-	// structural exceptions: `list` resolves to the ARRAY of entity
-	// instances make_result built, and a failed op with throwing disabled
-	// hands back the error payload unchanged. `remove` additionally marks
-	// the entity deleted; it KEEPS its data, so a caller can still read
-	// what was removed. See AGENTS.md "Entity operations return ENTITIES".
 	opname := ""
 	if ctx.Op != nil {
 		opname = ctx.Op.Name

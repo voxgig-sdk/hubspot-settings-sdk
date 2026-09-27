@@ -1,0 +1,87 @@
+# Entity: teams_team_member
+
+main: kit: entity: teams_team_member: {
+
+  alias: field: {}
+
+  fields: {
+    type: {
+      h: "Type"
+      n: "type"
+      r: true
+      sh: "The type of team member assignment."
+      t: "`$STRING`"
+    }
+    userId: {
+      h: "User Id"
+      n: "userId"
+      r: true
+      sh: "The unique identifier for the user being assigned to the team."
+      t: "`$STRING`"
+    }
+  }
+
+  name: "teams_team_member"
+  op: {
+    create: {
+      name: "create"
+      points: [
+        {
+          co: {
+            id: "POST /settings/teams/2026-09/{teamId}/members"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                ex: null
+                k: "param"
+                n: "team_id"
+                or: "team_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "POST"
+          o: "/settings/teams/2026-09/{teamId}/members"
+          q: {
+            exist: [
+              "team_id"
+            ]
+          }
+          r: {
+            param: {
+              teamId: "team_id"
+            }
+          }
+          s: [
+            {
+              lit: "settings"
+            }
+            {
+              lit: "teams"
+            }
+            {
+              lit: "2026-09"
+            }
+            {
+              var: "team_id"
+            }
+            {
+              lit: "members"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

@@ -68,7 +68,7 @@ function teams_batch_response_team_member_basic_setup(extra)
 
   -- Generate idmap via transform.
   local idmap = vs.transform(
-    { "teams_batch_response_team_member01", "teams_batch_response_team_member02", "teams_batch_response_team_member03", "2026_0901", "2026_0902", "2026_0903", "team01" },
+    { "teams_batch_response_team_member01", "teams_batch_response_team_member02", "teams_batch_response_team_member03", "team01" },
     {
       ["`$PACK`"] = { "", {
         ["`$KEY`"] = "`$COPY`",

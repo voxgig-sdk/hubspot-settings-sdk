@@ -1,25 +1,26 @@
 // HubspotSettings Js SDK
 
+const { AddCurrencyEntity } = require('./entity/AddCurrencyEntity')
 const { BasicEntity } = require('./entity/BasicEntity')
+const { CodeEntity } = require('./entity/CodeEntity')
+const { CurrentEntity } = require('./entity/CurrentEntity')
 const { ExchangeRateEntity } = require('./entity/ExchangeRateEntity')
 const { MulticurrencyBatchResponseExchangeRateEntity } = require('./entity/MulticurrencyBatchResponseExchangeRateEntity')
 const { MulticurrencyCentralExchangeRatesInformationEntity } = require('./entity/MulticurrencyCentralExchangeRatesInformationEntity')
-const { MulticurrencyCollectionResponseCurrencyCodeInfoNoPagingEntity } = require('./entity/MulticurrencyCollectionResponseCurrencyCodeInfoNoPagingEntity')
 const { MulticurrencyCollectionResponseExchangeRateForwardPagingEntity } = require('./entity/MulticurrencyCollectionResponseExchangeRateForwardPagingEntity')
-const { MulticurrencyCollectionResponseExchangeRateNoPagingEntity } = require('./entity/MulticurrencyCollectionResponseExchangeRateNoPagingEntity')
 const { MulticurrencyCompanyCurrencyEntity } = require('./entity/MulticurrencyCompanyCurrencyEntity')
-const { MulticurrencyExchangeRateEntity } = require('./entity/MulticurrencyExchangeRateEntity')
 const { TaxRateEntity } = require('./entity/TaxRateEntity')
 const { TeamsBatchResponseTeamMemberEntity } = require('./entity/TeamsBatchResponseTeamMemberEntity')
 const { TeamsCollectionResponseTeamMemberResponseForwardPagingEntity } = require('./entity/TeamsCollectionResponseTeamMemberResponseForwardPagingEntity')
 const { TeamsCollectionResponseTeamResponseForwardPagingEntity } = require('./entity/TeamsCollectionResponseTeamResponseForwardPagingEntity')
 const { TeamsTeamEntity } = require('./entity/TeamsTeamEntity')
 const { TeamsTeamMemberEntity } = require('./entity/TeamsTeamMemberEntity')
+const { UnsupportedCurrencyEntity } = require('./entity/UnsupportedCurrencyEntity')
 const { UserEntity } = require('./entity/UserEntity')
-const { UserProvisioningCollectionResponsePublicPermissionSetNoEntity } = require('./entity/UserProvisioningCollectionResponsePublicPermissionSetNoEntity')
-const { UserProvisioningCollectionResponsePublicSeatNoPagingEntity } = require('./entity/UserProvisioningCollectionResponsePublicSeatNoPagingEntity')
-const { UserProvisioningCollectionResponsePublicTeamNoPagingEntity } = require('./entity/UserProvisioningCollectionResponsePublicTeamNoPagingEntity')
 const { UserProvisioningCollectionResponsePublicUserForwardPagingEntity } = require('./entity/UserProvisioningCollectionResponsePublicUserForwardPagingEntity')
+const { UserProvisioningPublicPermissionSetEntity } = require('./entity/UserProvisioningPublicPermissionSetEntity')
+const { UserProvisioningPublicSeatEntity } = require('./entity/UserProvisioningPublicSeatEntity')
+const { UserProvisioningPublicTeamEntity } = require('./entity/UserProvisioningPublicTeamEntity')
 const { UserProvisioningPublicUserEntity } = require('./entity/UserProvisioningPublicUserEntity')
 
 
@@ -313,12 +314,39 @@ class HubspotSettingsSDK {
 
 
 
+  // Entity access: `client.AddCurrency().list()` / `client.AddCurrency().load({ id })`.
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  AddCurrency(entopts) {
+    const self = this
+    return new AddCurrencyEntity(self, entopts)
+  }
+
+
   // Entity access: `client.Basic().list()` / `client.Basic().load({ id })`.
   // The argument is the entity OPTIONS object (passed to the entity
   // constructor as entopts), not initial entity data.
   Basic(entopts) {
     const self = this
     return new BasicEntity(self, entopts)
+  }
+
+
+  // Entity access: `client.Code().list()` / `client.Code().load({ id })`.
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  Code(entopts) {
+    const self = this
+    return new CodeEntity(self, entopts)
+  }
+
+
+  // Entity access: `client.Current().list()` / `client.Current().load({ id })`.
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  Current(entopts) {
+    const self = this
+    return new CurrentEntity(self, entopts)
   }
 
 
@@ -349,15 +377,6 @@ class HubspotSettingsSDK {
   }
 
 
-  // Entity access: `client.MulticurrencyCollectionResponseCurrencyCodeInfoNoPaging().list()` / `client.MulticurrencyCollectionResponseCurrencyCodeInfoNoPaging().load({ id })`.
-  // The argument is the entity OPTIONS object (passed to the entity
-  // constructor as entopts), not initial entity data.
-  MulticurrencyCollectionResponseCurrencyCodeInfoNoPaging(entopts) {
-    const self = this
-    return new MulticurrencyCollectionResponseCurrencyCodeInfoNoPagingEntity(self, entopts)
-  }
-
-
   // Entity access: `client.MulticurrencyCollectionResponseExchangeRateForwardPaging().list()` / `client.MulticurrencyCollectionResponseExchangeRateForwardPaging().load({ id })`.
   // The argument is the entity OPTIONS object (passed to the entity
   // constructor as entopts), not initial entity data.
@@ -367,30 +386,12 @@ class HubspotSettingsSDK {
   }
 
 
-  // Entity access: `client.MulticurrencyCollectionResponseExchangeRateNoPaging().list()` / `client.MulticurrencyCollectionResponseExchangeRateNoPaging().load({ id })`.
-  // The argument is the entity OPTIONS object (passed to the entity
-  // constructor as entopts), not initial entity data.
-  MulticurrencyCollectionResponseExchangeRateNoPaging(entopts) {
-    const self = this
-    return new MulticurrencyCollectionResponseExchangeRateNoPagingEntity(self, entopts)
-  }
-
-
   // Entity access: `client.MulticurrencyCompanyCurrency().list()` / `client.MulticurrencyCompanyCurrency().load({ id })`.
   // The argument is the entity OPTIONS object (passed to the entity
   // constructor as entopts), not initial entity data.
   MulticurrencyCompanyCurrency(entopts) {
     const self = this
     return new MulticurrencyCompanyCurrencyEntity(self, entopts)
-  }
-
-
-  // Entity access: `client.MulticurrencyExchangeRate().list()` / `client.MulticurrencyExchangeRate().load({ id })`.
-  // The argument is the entity OPTIONS object (passed to the entity
-  // constructor as entopts), not initial entity data.
-  MulticurrencyExchangeRate(entopts) {
-    const self = this
-    return new MulticurrencyExchangeRateEntity(self, entopts)
   }
 
 
@@ -448,6 +449,15 @@ class HubspotSettingsSDK {
   }
 
 
+  // Entity access: `client.UnsupportedCurrency().list()` / `client.UnsupportedCurrency().load({ id })`.
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  UnsupportedCurrency(entopts) {
+    const self = this
+    return new UnsupportedCurrencyEntity(self, entopts)
+  }
+
+
   // Entity access: `client.User().list()` / `client.User().load({ id })`.
   // The argument is the entity OPTIONS object (passed to the entity
   // constructor as entopts), not initial entity data.
@@ -457,39 +467,39 @@ class HubspotSettingsSDK {
   }
 
 
-  // Entity access: `client.UserProvisioningCollectionResponsePublicPermissionSetNo().list()` / `client.UserProvisioningCollectionResponsePublicPermissionSetNo().load({ id })`.
-  // The argument is the entity OPTIONS object (passed to the entity
-  // constructor as entopts), not initial entity data.
-  UserProvisioningCollectionResponsePublicPermissionSetNo(entopts) {
-    const self = this
-    return new UserProvisioningCollectionResponsePublicPermissionSetNoEntity(self, entopts)
-  }
-
-
-  // Entity access: `client.UserProvisioningCollectionResponsePublicSeatNoPaging().list()` / `client.UserProvisioningCollectionResponsePublicSeatNoPaging().load({ id })`.
-  // The argument is the entity OPTIONS object (passed to the entity
-  // constructor as entopts), not initial entity data.
-  UserProvisioningCollectionResponsePublicSeatNoPaging(entopts) {
-    const self = this
-    return new UserProvisioningCollectionResponsePublicSeatNoPagingEntity(self, entopts)
-  }
-
-
-  // Entity access: `client.UserProvisioningCollectionResponsePublicTeamNoPaging().list()` / `client.UserProvisioningCollectionResponsePublicTeamNoPaging().load({ id })`.
-  // The argument is the entity OPTIONS object (passed to the entity
-  // constructor as entopts), not initial entity data.
-  UserProvisioningCollectionResponsePublicTeamNoPaging(entopts) {
-    const self = this
-    return new UserProvisioningCollectionResponsePublicTeamNoPagingEntity(self, entopts)
-  }
-
-
   // Entity access: `client.UserProvisioningCollectionResponsePublicUserForwardPaging().list()` / `client.UserProvisioningCollectionResponsePublicUserForwardPaging().load({ id })`.
   // The argument is the entity OPTIONS object (passed to the entity
   // constructor as entopts), not initial entity data.
   UserProvisioningCollectionResponsePublicUserForwardPaging(entopts) {
     const self = this
     return new UserProvisioningCollectionResponsePublicUserForwardPagingEntity(self, entopts)
+  }
+
+
+  // Entity access: `client.UserProvisioningPublicPermissionSet().list()` / `client.UserProvisioningPublicPermissionSet().load({ id })`.
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  UserProvisioningPublicPermissionSet(entopts) {
+    const self = this
+    return new UserProvisioningPublicPermissionSetEntity(self, entopts)
+  }
+
+
+  // Entity access: `client.UserProvisioningPublicSeat().list()` / `client.UserProvisioningPublicSeat().load({ id })`.
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  UserProvisioningPublicSeat(entopts) {
+    const self = this
+    return new UserProvisioningPublicSeatEntity(self, entopts)
+  }
+
+
+  // Entity access: `client.UserProvisioningPublicTeam().list()` / `client.UserProvisioningPublicTeam().load({ id })`.
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  UserProvisioningPublicTeam(entopts) {
+    const self = this
+    return new UserProvisioningPublicTeamEntity(self, entopts)
   }
 
 

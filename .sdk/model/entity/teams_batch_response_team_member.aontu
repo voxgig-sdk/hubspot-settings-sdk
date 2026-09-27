@@ -1,0 +1,143 @@
+# Entity: teams_batch_response_team_member
+
+main: kit: entity: teams_batch_response_team_member: {
+
+  alias: field: {}
+
+  fields: {
+    completedAt: {
+      fo: "date-time"
+      h: "Completed At"
+      n: "completedAt"
+      r: true
+      sh: "The date and time when the batch operation was completed, in ISO 8601 format."
+      t: "`$STRING`"
+    }
+    errors: {
+      h: "Errors"
+      n: "errors"
+      r: false
+      sh: "An array of StandardError objects detailing any errors that occurred during the batch operation."
+      t: "`$ARRAY`"
+    }
+    inputs: {
+      h: "Inputs"
+      n: "inputs"
+      r: true
+      sh: "An array of team member assignments, where each item specifies the details of a team member to be assigned."
+      t: "`$ARRAY`"
+    }
+    links: {
+      h: "Links"
+      n: "links"
+      r: false
+      sh: "A map of link names to associated URIs providing additional information about the batch operation."
+      t: "`$OBJECT`"
+    }
+    numErrors: {
+      fo: "int32"
+      h: "Num Errors"
+      n: "numErrors"
+      r: false
+      sh: "The number of errors encountered during the batch operation."
+      t: "`$INTEGER`"
+    }
+    requestedAt: {
+      fo: "date-time"
+      h: "Requested At"
+      n: "requestedAt"
+      r: false
+      sh: "The date and time when the batch operation was requested, in ISO 8601 format."
+      t: "`$STRING`"
+    }
+    results: {
+      h: "Results"
+      n: "results"
+      r: true
+      sh: "An array of TeamMemberResponse objects representing the results of the batch operation."
+      t: "`$ARRAY`"
+    }
+    startedAt: {
+      fo: "date-time"
+      h: "Started At"
+      n: "startedAt"
+      r: true
+      sh: "The date and time when the batch operation started, in ISO 8601 format."
+      t: "`$STRING`"
+    }
+    status: {
+      h: "Status"
+      n: "status"
+      r: true
+      sh: "The current status of the batch operation."
+      t: "`$STRING`"
+    }
+  }
+
+  name: "teams_batch_response_team_member"
+  op: {
+    create: {
+      name: "create"
+      points: [
+        {
+          co: {
+            id: "POST /settings/teams/2026-09/{teamId}/members/batch"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                ex: null
+                k: "param"
+                n: "team_id"
+                or: "team_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "POST"
+          o: "/settings/teams/2026-09/{teamId}/members/batch"
+          q: {
+            exist: [
+              "team_id"
+            ]
+          }
+          r: {
+            param: {
+              teamId: "team_id"
+            }
+          }
+          s: [
+            {
+              lit: "settings"
+            }
+            {
+              lit: "teams"
+            }
+            {
+              lit: "2026-09"
+            }
+            {
+              var: "team_id"
+            }
+            {
+              lit: "members"
+            }
+            {
+              lit: "batch"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

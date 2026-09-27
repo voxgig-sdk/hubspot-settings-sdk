@@ -9,18 +9,6 @@ import (
 	sdk "github.com/voxgig-sdk/hubspot-settings-sdk/go"
 )
 
-// registerSDKWords installs three native boru words bound to the SDK:
-// list / load / update. Each is declared with two overloads matching
-// the signature  [query?:(Node or Scalar) entity:atom]:
-//
-//   [entity:Atom]            — no query (e.g. `list book`)
-//   [query:Any entity:Atom]  — query is any Node or Scalar (e.g.
-//                              `load {id:1} book`, `load 1 book`)
-//
-// The entity slot is /q-quoted so a bareword `book` parses as the
-// Atom "book" rather than dispatching as an undefined word. Both
-// overloads are all-forward (BarrierAllForward), so args are collected
-// from the tokens following the word.
 func registerSDKWords(r *eng.Registry, client *sdk.HubspotSettingsSDK) {
 	for _, op := range []string{"list", "load", "update"} {
 		op := op
@@ -89,24 +77,24 @@ func runOp(client *sdk.HubspotSettingsSDK, op string, query *eng.Value, entityAt
 // emits one `case "<name>":` per entity defined in the SDK model.
 func entityFor(client *sdk.HubspotSettingsSDK, name string) (sdk.HubspotSettingsEntity, error) {
 	switch strings.ToLower(name) {
+	case "add_currency":
+		return client.AddCurrency(nil), nil
 	case "basic":
 		return client.Basic(nil), nil
+	case "code":
+		return client.Code(nil), nil
+	case "current":
+		return client.Current(nil), nil
 	case "exchange_rate":
 		return client.ExchangeRate(nil), nil
 	case "multicurrency_batch_response_exchange_rate":
 		return client.MulticurrencyBatchResponseExchangeRate(nil), nil
 	case "multicurrency_central_exchange_rates_information":
 		return client.MulticurrencyCentralExchangeRatesInformation(nil), nil
-	case "multicurrency_collection_response_currency_code_info_no_paging":
-		return client.MulticurrencyCollectionResponseCurrencyCodeInfoNoPaging(nil), nil
 	case "multicurrency_collection_response_exchange_rate_forward_paging":
 		return client.MulticurrencyCollectionResponseExchangeRateForwardPaging(nil), nil
-	case "multicurrency_collection_response_exchange_rate_no_paging":
-		return client.MulticurrencyCollectionResponseExchangeRateNoPaging(nil), nil
 	case "multicurrency_company_currency":
 		return client.MulticurrencyCompanyCurrency(nil), nil
-	case "multicurrency_exchange_rate":
-		return client.MulticurrencyExchangeRate(nil), nil
 	case "tax_rate":
 		return client.TaxRate(nil), nil
 	case "teams_batch_response_team_member":
@@ -119,16 +107,18 @@ func entityFor(client *sdk.HubspotSettingsSDK, name string) (sdk.HubspotSettings
 		return client.TeamsTeam(nil), nil
 	case "teams_team_member":
 		return client.TeamsTeamMember(nil), nil
+	case "unsupported_currency":
+		return client.UnsupportedCurrency(nil), nil
 	case "user":
 		return client.User(nil), nil
-	case "user_provisioning_collection_response_public_permission_set_no":
-		return client.UserProvisioningCollectionResponsePublicPermissionSetNo(nil), nil
-	case "user_provisioning_collection_response_public_seat_no_paging":
-		return client.UserProvisioningCollectionResponsePublicSeatNoPaging(nil), nil
-	case "user_provisioning_collection_response_public_team_no_paging":
-		return client.UserProvisioningCollectionResponsePublicTeamNoPaging(nil), nil
 	case "user_provisioning_collection_response_public_user_forward_paging":
 		return client.UserProvisioningCollectionResponsePublicUserForwardPaging(nil), nil
+	case "user_provisioning_public_permission_set":
+		return client.UserProvisioningPublicPermissionSet(nil), nil
+	case "user_provisioning_public_seat":
+		return client.UserProvisioningPublicSeat(nil), nil
+	case "user_provisioning_public_team":
+		return client.UserProvisioningPublicTeam(nil), nil
 	case "user_provisioning_public_user":
 		return client.UserProvisioningPublicUser(nil), nil
 

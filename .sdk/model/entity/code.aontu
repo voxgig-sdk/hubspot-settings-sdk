@@ -1,0 +1,62 @@
+# Entity: code
+
+main: kit: entity: code: {
+
+  alias: field: {}
+
+  fields: {
+    currencyCode: {
+      h: "Currency Code"
+      n: "currencyCode"
+      r: true
+      sh: "The three-letter code representing a specific currency (ex."
+      t: "`$STRING`"
+    }
+    currencyName: {
+      h: "Currency Name"
+      n: "currencyName"
+      r: true
+      sh: "The full name of the currency (ex."
+      t: "`$STRING`"
+    }
+  }
+
+  name: "code"
+  op: {
+    list: {
+      name: "list"
+      points: [
+        {
+          co: {
+            id: "GET /settings/currencies/2026-09/codes"
+            source: "openapi3"
+            version: 2
+          }
+          m: "GET"
+          o: "/settings/currencies/2026-09/codes"
+          s: [
+            {
+              lit: "settings"
+            }
+            {
+              lit: "currencies"
+            }
+            {
+              lit: "2026-09"
+            }
+            {
+              lit: "codes"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.results`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

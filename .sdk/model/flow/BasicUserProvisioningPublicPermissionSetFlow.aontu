@@ -1,0 +1,22 @@
+# BasicUserProvisioningPublicPermissionSetFlow
+
+main: kit: flow: BasicUserProvisioningPublicPermissionSetFlow:
+{
+  entity: "user_provisioning_public_permission_set",
+  kind: "basic",
+  name: "BasicUserProvisioningPublicPermissionSetFlow",
+  step: [
+    {
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "user_provisioning_public_permission_set_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicUserProvisioningPublicPermissionSetFlow"
+}

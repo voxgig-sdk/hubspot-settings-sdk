@@ -1,0 +1,172 @@
+# Entity: multicurrency_batch_response_exchange_rate
+
+main: kit: entity: multicurrency_batch_response_exchange_rate: {
+
+  alias: field: {}
+
+  fields: {
+    completedAt: {
+      fo: "date-time"
+      h: "Completed At"
+      n: "completedAt"
+      r: true
+      sh: "The datetime the response was completed"
+      t: "`$STRING`"
+    }
+    inputs: {
+      h: "Inputs"
+      n: "inputs"
+      r: true
+      sh: "An array of ExchangeRateCreateRequest objects, each representing the details required to create a single exchange rate."
+      t: "`$ARRAY`"
+    }
+    links: {
+      h: "Links"
+      n: "links"
+      r: false
+      sh: "The link to the next page with exchange rates."
+      t: "`$OBJECT`"
+    }
+    requestedAt: {
+      fo: "date-time"
+      h: "Requested At"
+      n: "requestedAt"
+      r: false
+      sh: "The datetime the of the request."
+      t: "`$STRING`"
+    }
+    results: {
+      h: "Results"
+      n: "results"
+      r: true
+      sh: "An array of exchange rate objects that represent the results of the batch operation."
+      t: "`$ARRAY`"
+    }
+    startedAt: {
+      fo: "date-time"
+      h: "Started At"
+      n: "startedAt"
+      r: true
+      sh: "The datetime the of the request."
+      t: "`$STRING`"
+    }
+    status: {
+      h: "Status"
+      n: "status"
+      r: true
+      sh: "The current status of the response (e.g."
+      t: "`$STRING`"
+    }
+  }
+
+  name: "multicurrency_batch_response_exchange_rate"
+  op: {
+    create: {
+      name: "create"
+      points: [
+        {
+          co: {
+            id: "POST /settings/currencies/2026-09/exchange-rates/batch/create"
+            source: "openapi3"
+            version: 2
+          }
+          m: "POST"
+          o: "/settings/currencies/2026-09/exchange-rates/batch/create"
+          s: [
+            {
+              lit: "settings"
+            }
+            {
+              lit: "currencies"
+            }
+            {
+              lit: "2026-09"
+            }
+            {
+              lit: "exchange-rates"
+            }
+            {
+              lit: "batch"
+            }
+            {
+              lit: "create"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          co: {
+            id: "POST /settings/currencies/2026-09/exchange-rates/batch/read"
+            source: "openapi3"
+            version: 2
+          }
+          m: "POST"
+          o: "/settings/currencies/2026-09/exchange-rates/batch/read"
+          s: [
+            {
+              lit: "settings"
+            }
+            {
+              lit: "currencies"
+            }
+            {
+              lit: "2026-09"
+            }
+            {
+              lit: "exchange-rates"
+            }
+            {
+              lit: "batch"
+            }
+            {
+              lit: "read"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          co: {
+            id: "POST /settings/currencies/2026-09/exchange-rates/batch/update"
+            source: "openapi3"
+            version: 2
+          }
+          m: "POST"
+          o: "/settings/currencies/2026-09/exchange-rates/batch/update"
+          s: [
+            {
+              lit: "settings"
+            }
+            {
+              lit: "currencies"
+            }
+            {
+              lit: "2026-09"
+            }
+            {
+              lit: "exchange-rates"
+            }
+            {
+              lit: "batch"
+            }
+            {
+              lit: "update"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

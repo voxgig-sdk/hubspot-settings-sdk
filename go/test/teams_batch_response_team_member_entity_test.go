@@ -92,7 +92,7 @@ func teams_batch_response_team_memberBasicSetup(extra map[string]any) *entityTes
 
 	// Generate idmap via transform, matching TS pattern.
 	idmap, _ := vs.Transform(
-		[]any{"teams_batch_response_team_member01", "teams_batch_response_team_member02", "teams_batch_response_team_member03", "2026_0901", "2026_0902", "2026_0903", "team01"},
+		[]any{"teams_batch_response_team_member01", "teams_batch_response_team_member02", "teams_batch_response_team_member03", "team01"},
 		map[string]any{
 			"`$PACK`": []any{"", map[string]any{
 				"`$KEY`": "`$COPY`",

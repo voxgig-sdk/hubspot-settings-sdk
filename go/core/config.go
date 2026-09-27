@@ -158,30 +158,153 @@ func MakeConfig() map[string]any {
 				"content-type": "application/json",
 			},
 			"entity": map[string]any{
+				"add_currency": map[string]any{},
 				"basic": map[string]any{},
+				"code": map[string]any{},
+				"current": map[string]any{},
 				"exchange_rate": map[string]any{},
 				"multicurrency_batch_response_exchange_rate": map[string]any{},
 				"multicurrency_central_exchange_rates_information": map[string]any{},
-				"multicurrency_collection_response_currency_code_info_no_paging": map[string]any{},
 				"multicurrency_collection_response_exchange_rate_forward_paging": map[string]any{},
-				"multicurrency_collection_response_exchange_rate_no_paging": map[string]any{},
 				"multicurrency_company_currency": map[string]any{},
-				"multicurrency_exchange_rate": map[string]any{},
 				"tax_rate": map[string]any{},
 				"teams_batch_response_team_member": map[string]any{},
 				"teams_collection_response_team_member_response_forward_paging": map[string]any{},
 				"teams_collection_response_team_response_forward_paging": map[string]any{},
 				"teams_team": map[string]any{},
 				"teams_team_member": map[string]any{},
+				"unsupported_currency": map[string]any{},
 				"user": map[string]any{},
-				"user_provisioning_collection_response_public_permission_set_no": map[string]any{},
-				"user_provisioning_collection_response_public_seat_no_paging": map[string]any{},
-				"user_provisioning_collection_response_public_team_no_paging": map[string]any{},
 				"user_provisioning_collection_response_public_user_forward_paging": map[string]any{},
+				"user_provisioning_public_permission_set": map[string]any{},
+				"user_provisioning_public_seat": map[string]any{},
+				"user_provisioning_public_team": map[string]any{},
 				"user_provisioning_public_user": map[string]any{},
 			},
 		},
 		"entity": map[string]any{
+			"add_currency": map[string]any{
+				"fields": []any{
+					map[string]any{
+						"name": "conversionRate",
+						"title": "Conversion Rate",
+						"type": "`$NUMBER`",
+						"req": true,
+						"short": "The conversion rate between the to and from currency code of this exchange rate.",
+					},
+					map[string]any{
+						"name": "createdAt",
+						"title": "Created At",
+						"type": "`$STRING`",
+						"req": true,
+						"short": "The date the exchange rate was created.",
+						"format": "date-time",
+					},
+					map[string]any{
+						"name": "currencyCode",
+						"title": "Currency Code",
+						"type": "`$STRING`",
+						"req": true,
+						"short": "The currency code being added to the HubSpot portal for use with central exchange rates.",
+					},
+					map[string]any{
+						"name": "effectiveAt",
+						"title": "Effective At",
+						"type": "`$STRING`",
+						"req": true,
+						"short": "The date the exchange rate is in effect.",
+						"format": "date-time",
+					},
+					map[string]any{
+						"name": "fromCurrencyCode",
+						"title": "From Currency Code",
+						"type": "`$STRING`",
+						"req": true,
+						"short": "This represents the three-letter currency code (such as USD for US Dollar) of the currency you are converting from.",
+					},
+					map[string]any{
+						"name": "id",
+						"title": "Id",
+						"type": "`$STRING`",
+						"req": true,
+						"short": "A unique identifier for the exchange rate",
+					},
+					map[string]any{
+						"name": "toCurrencyCode",
+						"title": "To Currency Code",
+						"type": "`$STRING`",
+						"req": true,
+						"short": "This represents the three-letter currency code (such as USD for US Dollar) of the currency you are converting to.",
+					},
+					map[string]any{
+						"name": "updatedAt",
+						"title": "Updated At",
+						"type": "`$STRING`",
+						"req": true,
+						"short": "The date the exchange rate was last updated.",
+						"format": "date-time",
+					},
+					map[string]any{
+						"name": "visibleInUI",
+						"title": "Visible In Ui",
+						"type": "`$BOOLEAN`",
+						"req": true,
+						"short": "This indicates if the exchange rate is shown in the MultiCurrency settings page.",
+					},
+				},
+				"id": map[string]any{
+					"field": "id",
+					"name": "id",
+				},
+				"name": "add_currency",
+				"op": map[string]any{
+					"create": map[string]any{
+						"input": "data",
+						"name": "create",
+						"points": []any{
+							map[string]any{
+								"kind": "http",
+								"method": "POST",
+								"orig": "/settings/currencies/2026-09/central-fx-rates/add-currency",
+								"segments": []any{
+									map[string]any{
+										"lit": "settings",
+									},
+									map[string]any{
+										"lit": "currencies",
+									},
+									map[string]any{
+										"lit": "2026-09",
+									},
+									map[string]any{
+										"lit": "central-fx-rates",
+									},
+									map[string]any{
+										"lit": "add-currency",
+									},
+								},
+								"parts": []any{
+									"settings",
+									"currencies",
+									"2026-09",
+									"central-fx-rates",
+									"add-currency",
+								},
+								"rename": map[string]any{},
+								"transform": map[string]any{
+									"req": "`reqdata`",
+									"res": "`body`",
+								},
+								"args": map[string]any{},
+								"select": map[string]any{},
+							},
+						},
+					},
+				},
+				"relations": map[string]any{
+					"ancestors": []any{},
+				},
+			},
 			"basic": map[string]any{
 				"fields": []any{},
 				"name": "basic",
@@ -191,44 +314,9 @@ func MakeConfig() map[string]any {
 						"name": "remove",
 						"points": []any{
 							map[string]any{
-								"args": map[string]any{
-									"params": []any{
-										map[string]any{
-											"example": nil,
-											"kind": "param",
-											"name": "team_id",
-											"orig": "team_id",
-											"reqd": true,
-											"type": "`$STRING`",
-										},
-										map[string]any{
-											"example": nil,
-											"kind": "param",
-											"name": "user_id",
-											"orig": "user_id",
-											"reqd": true,
-											"type": "`$STRING`",
-										},
-									},
-									"query": []any{
-										map[string]any{
-											"example": nil,
-											"kind": "query",
-											"name": "type",
-											"orig": "type",
-											"type": "`$STRING`",
-										},
-									},
-								},
 								"kind": "http",
 								"method": "DELETE",
 								"orig": "/settings/teams/2026-09/{teamId}/members/{userId}",
-								"rename": map[string]any{
-									"param": map[string]any{
-										"teamId": "team_id",
-										"userId": "user_id",
-									},
-								},
 								"segments": []any{
 									map[string]any{
 										"lit": "settings",
@@ -249,17 +337,6 @@ func MakeConfig() map[string]any {
 										"var": "user_id",
 									},
 								},
-								"select": map[string]any{
-									"exist": []any{
-										"team_id",
-										"type",
-										"user_id",
-									},
-								},
-								"transform": map[string]any{
-									"req": "`reqdata`",
-									"res": "`body`",
-								},
 								"parts": []any{
 									"settings",
 									"teams",
@@ -268,28 +345,57 @@ func MakeConfig() map[string]any {
 									"members",
 									"{user_id}",
 								},
-							},
-							map[string]any{
-								"args": map[string]any{
-									"params": []any{
-										map[string]any{
-											"example": nil,
-											"kind": "param",
-											"name": "team_id",
-											"orig": "team_id",
-											"reqd": true,
-											"type": "`$STRING`",
-										},
-									},
-								},
-								"kind": "http",
-								"method": "DELETE",
-								"orig": "/settings/teams/2026-09/{teamId}",
 								"rename": map[string]any{
 									"param": map[string]any{
 										"teamId": "team_id",
+										"userId": "user_id",
 									},
 								},
+								"transform": map[string]any{
+									"req": "`reqdata`",
+									"res": "`body`",
+								},
+								"args": map[string]any{
+									"params": []any{
+										map[string]any{
+											"name": "team_id",
+											"orig": "team_id",
+											"type": "`$STRING`",
+											"kind": "param",
+											"reqd": true,
+											"example": nil,
+										},
+										map[string]any{
+											"name": "user_id",
+											"orig": "user_id",
+											"type": "`$STRING`",
+											"kind": "param",
+											"reqd": true,
+											"example": nil,
+										},
+									},
+									"query": []any{
+										map[string]any{
+											"name": "type",
+											"orig": "type",
+											"type": "`$STRING`",
+											"kind": "query",
+											"example": nil,
+										},
+									},
+								},
+								"select": map[string]any{
+									"exist": []any{
+										"team_id",
+										"type",
+										"user_id",
+									},
+								},
+							},
+							map[string]any{
+								"kind": "http",
+								"method": "DELETE",
+								"orig": "/settings/teams/2026-09/{teamId}",
 								"segments": []any{
 									map[string]any{
 										"lit": "settings",
@@ -304,39 +410,297 @@ func MakeConfig() map[string]any {
 										"var": "team_id",
 									},
 								},
-								"select": map[string]any{
-									"exist": []any{
-										"team_id",
-									},
-								},
-								"transform": map[string]any{
-									"req": "`reqdata`",
-									"res": "`body`",
-								},
 								"parts": []any{
 									"settings",
 									"teams",
 									"2026-09",
 									"{team_id}",
 								},
+								"rename": map[string]any{
+									"param": map[string]any{
+										"teamId": "team_id",
+									},
+								},
+								"transform": map[string]any{
+									"req": "`reqdata`",
+									"res": "`body`",
+								},
+								"args": map[string]any{
+									"params": []any{
+										map[string]any{
+											"name": "team_id",
+											"orig": "team_id",
+											"type": "`$STRING`",
+											"kind": "param",
+											"reqd": true,
+											"example": nil,
+										},
+									},
+								},
+								"select": map[string]any{
+									"exist": []any{
+										"team_id",
+									},
+								},
 							},
 						},
 					},
 				},
 				"relations": map[string]any{
-					"ancestors": []any{
-						[]any{
-							"2026_09",
-						},
-						[]any{
-							"2026_09",
-							"member",
+					"ancestors": []any{},
+				},
+			},
+			"code": map[string]any{
+				"fields": []any{
+					map[string]any{
+						"name": "currencyCode",
+						"title": "Currency Code",
+						"type": "`$STRING`",
+						"req": true,
+						"short": "The three-letter code representing a specific currency (ex.",
+					},
+					map[string]any{
+						"name": "currencyName",
+						"title": "Currency Name",
+						"type": "`$STRING`",
+						"req": true,
+						"short": "The full name of the currency (ex.",
+					},
+				},
+				"name": "code",
+				"op": map[string]any{
+					"list": map[string]any{
+						"input": "data",
+						"name": "list",
+						"points": []any{
+							map[string]any{
+								"kind": "http",
+								"method": "GET",
+								"orig": "/settings/currencies/2026-09/codes",
+								"segments": []any{
+									map[string]any{
+										"lit": "settings",
+									},
+									map[string]any{
+										"lit": "currencies",
+									},
+									map[string]any{
+										"lit": "2026-09",
+									},
+									map[string]any{
+										"lit": "codes",
+									},
+								},
+								"parts": []any{
+									"settings",
+									"currencies",
+									"2026-09",
+									"codes",
+								},
+								"rename": map[string]any{},
+								"transform": map[string]any{
+									"req": "`reqdata`",
+									"res": "`body.results`",
+								},
+								"args": map[string]any{},
+								"select": map[string]any{},
+							},
 						},
 					},
 				},
+				"relations": map[string]any{
+					"ancestors": []any{},
+				},
+			},
+			"current": map[string]any{
+				"fields": []any{
+					map[string]any{
+						"name": "conversionRate",
+						"title": "Conversion Rate",
+						"type": "`$NUMBER`",
+						"req": true,
+						"short": "The conversion rate between the to and from currency code of this exchange rate.",
+					},
+					map[string]any{
+						"name": "createdAt",
+						"title": "Created At",
+						"type": "`$STRING`",
+						"req": true,
+						"short": "The date the exchange rate was created.",
+						"format": "date-time",
+					},
+					map[string]any{
+						"name": "effectiveAt",
+						"title": "Effective At",
+						"type": "`$STRING`",
+						"req": true,
+						"short": "The date the exchange rate is in effect.",
+						"format": "date-time",
+					},
+					map[string]any{
+						"name": "fromCurrencyCode",
+						"title": "From Currency Code",
+						"type": "`$STRING`",
+						"req": true,
+						"short": "This represents the three-letter currency code (such as USD for US Dollar) of the currency you are converting from.",
+					},
+					map[string]any{
+						"name": "id",
+						"title": "Id",
+						"type": "`$STRING`",
+						"req": true,
+						"short": "A unique identifier for the exchange rate",
+					},
+					map[string]any{
+						"name": "toCurrencyCode",
+						"title": "To Currency Code",
+						"type": "`$STRING`",
+						"req": true,
+						"short": "This represents the three-letter currency code (such as USD for US Dollar) of the currency you are converting to.",
+					},
+					map[string]any{
+						"name": "updatedAt",
+						"title": "Updated At",
+						"type": "`$STRING`",
+						"req": true,
+						"short": "The date the exchange rate was last updated.",
+						"format": "date-time",
+					},
+					map[string]any{
+						"name": "visibleInUI",
+						"title": "Visible In Ui",
+						"type": "`$BOOLEAN`",
+						"req": true,
+						"short": "This indicates if the exchange rate is shown in the MultiCurrency settings page.",
+					},
+				},
+				"id": map[string]any{
+					"field": "id",
+					"name": "id",
+				},
+				"name": "current",
+				"op": map[string]any{
+					"list": map[string]any{
+						"input": "data",
+						"name": "list",
+						"points": []any{
+							map[string]any{
+								"kind": "http",
+								"method": "GET",
+								"orig": "/settings/currencies/2026-09/exchange-rates/current",
+								"segments": []any{
+									map[string]any{
+										"lit": "settings",
+									},
+									map[string]any{
+										"lit": "currencies",
+									},
+									map[string]any{
+										"lit": "2026-09",
+									},
+									map[string]any{
+										"lit": "exchange-rates",
+									},
+									map[string]any{
+										"lit": "current",
+									},
+								},
+								"parts": []any{
+									"settings",
+									"currencies",
+									"2026-09",
+									"exchange-rates",
+									"current",
+								},
+								"rename": map[string]any{},
+								"transform": map[string]any{
+									"req": "`reqdata`",
+									"res": "`body.results`",
+								},
+								"args": map[string]any{},
+								"select": map[string]any{},
+							},
+						},
+					},
+				},
+				"relations": map[string]any{
+					"ancestors": []any{},
+				},
 			},
 			"exchange_rate": map[string]any{
-				"fields": []any{},
+				"fields": []any{
+					map[string]any{
+						"name": "conversionRate",
+						"title": "Conversion Rate",
+						"type": "`$NUMBER`",
+						"req": true,
+						"short": "The conversion rate between the to and from currency code of this exchange rate.",
+					},
+					map[string]any{
+						"name": "createdAt",
+						"title": "Created At",
+						"type": "`$STRING`",
+						"req": true,
+						"short": "The date the exchange rate was created.",
+						"format": "date-time",
+					},
+					map[string]any{
+						"name": "effectiveAt",
+						"title": "Effective At",
+						"type": "`$STRING`",
+						"req": true,
+						"op": map[string]any{
+							"create": map[string]any{
+								"type": "`$STRING`",
+							},
+							"update": map[string]any{
+								"type": "`$STRING`",
+							},
+						},
+						"short": "The date the exchange rate is in effect.",
+						"format": "date-time",
+					},
+					map[string]any{
+						"name": "fromCurrencyCode",
+						"title": "From Currency Code",
+						"type": "`$STRING`",
+						"req": true,
+						"short": "This represents the three-letter currency code (such as USD for US Dollar) of the currency you are converting from.",
+					},
+					map[string]any{
+						"name": "id",
+						"title": "Id",
+						"type": "`$STRING`",
+						"req": true,
+						"short": "A unique identifier for the exchange rate",
+					},
+					map[string]any{
+						"name": "toCurrencyCode",
+						"title": "To Currency Code",
+						"type": "`$STRING`",
+						"req": true,
+						"short": "This represents the three-letter currency code (such as USD for US Dollar) of the currency you are converting to.",
+					},
+					map[string]any{
+						"name": "updatedAt",
+						"title": "Updated At",
+						"type": "`$STRING`",
+						"req": true,
+						"short": "The date the exchange rate was last updated.",
+						"format": "date-time",
+					},
+					map[string]any{
+						"name": "visibleInUI",
+						"title": "Visible In Ui",
+						"type": "`$BOOLEAN`",
+						"req": true,
+						"short": "This indicates if the exchange rate is shown in the MultiCurrency settings page.",
+					},
+				},
+				"id": map[string]any{
+					"field": "id",
+					"name": "id",
+				},
 				"name": "exchange_rate",
 				"op": map[string]any{
 					"create": map[string]any{
@@ -344,7 +708,38 @@ func MakeConfig() map[string]any {
 						"name": "create",
 						"points": []any{
 							map[string]any{
+								"kind": "http",
+								"method": "POST",
+								"orig": "/settings/currencies/2026-09/exchange-rates",
+								"segments": []any{
+									map[string]any{
+										"lit": "settings",
+									},
+									map[string]any{
+										"lit": "currencies",
+									},
+									map[string]any{
+										"lit": "2026-09",
+									},
+									map[string]any{
+										"lit": "exchange-rates",
+									},
+								},
+								"parts": []any{
+									"settings",
+									"currencies",
+									"2026-09",
+									"exchange-rates",
+								},
+								"rename": map[string]any{},
+								"transform": map[string]any{
+									"req": "`reqdata`",
+									"res": "`body`",
+								},
 								"args": map[string]any{},
+								"select": map[string]any{},
+							},
+							map[string]any{
 								"kind": "http",
 								"method": "POST",
 								"orig": "/settings/currencies/2026-09/exchange-rates/update-visibility",
@@ -365,19 +760,143 @@ func MakeConfig() map[string]any {
 										"lit": "update-visibility",
 									},
 								},
-								"select": map[string]any{
-									"$action": "update_visibility",
-								},
-								"transform": map[string]any{
-									"req": "`reqdata`",
-									"res": "`body`",
-								},
 								"parts": []any{
 									"settings",
 									"currencies",
 									"2026-09",
 									"exchange-rates",
 									"update-visibility",
+								},
+								"rename": map[string]any{},
+								"transform": map[string]any{
+									"req": "`reqdata`",
+									"res": "`body`",
+								},
+								"args": map[string]any{},
+								"select": map[string]any{
+									"$action": "update_visibility",
+								},
+							},
+						},
+					},
+					"load": map[string]any{
+						"input": "data",
+						"name": "load",
+						"points": []any{
+							map[string]any{
+								"kind": "http",
+								"method": "GET",
+								"orig": "/settings/currencies/2026-09/exchange-rates/{exchangeRateId}",
+								"segments": []any{
+									map[string]any{
+										"lit": "settings",
+									},
+									map[string]any{
+										"lit": "currencies",
+									},
+									map[string]any{
+										"lit": "2026-09",
+									},
+									map[string]any{
+										"lit": "exchange-rates",
+									},
+									map[string]any{
+										"var": "id",
+									},
+								},
+								"parts": []any{
+									"settings",
+									"currencies",
+									"2026-09",
+									"exchange-rates",
+									"{id}",
+								},
+								"rename": map[string]any{
+									"param": map[string]any{
+										"exchangeRateId": "id",
+									},
+								},
+								"transform": map[string]any{
+									"req": "`reqdata`",
+									"res": "`body`",
+								},
+								"args": map[string]any{
+									"params": []any{
+										map[string]any{
+											"name": "id",
+											"orig": "exchange_rate_id",
+											"type": "`$STRING`",
+											"kind": "param",
+											"reqd": true,
+											"example": nil,
+										},
+									},
+								},
+								"select": map[string]any{
+									"exist": []any{
+										"id",
+									},
+								},
+							},
+						},
+					},
+					"update": map[string]any{
+						"input": "data",
+						"name": "update",
+						"points": []any{
+							map[string]any{
+								"kind": "http",
+								"method": "PATCH",
+								"orig": "/settings/currencies/2026-09/exchange-rates/{exchangeRateId}",
+								"segments": []any{
+									map[string]any{
+										"lit": "settings",
+									},
+									map[string]any{
+										"lit": "currencies",
+									},
+									map[string]any{
+										"lit": "2026-09",
+									},
+									map[string]any{
+										"lit": "exchange-rates",
+									},
+									map[string]any{
+										"var": "id",
+									},
+								},
+								"parts": []any{
+									"settings",
+									"currencies",
+									"2026-09",
+									"exchange-rates",
+									"{id}",
+								},
+								"rename": map[string]any{
+									"param": map[string]any{
+										"exchangeRateId": "id",
+									},
+								},
+								"transform": map[string]any{
+									"req": "`reqdata`",
+									"res": "`body`",
+								},
+								"args": map[string]any{
+									"params": []any{
+										map[string]any{
+											"name": "id",
+											"orig": "exchange_rate_id",
+											"type": "`$STRING`",
+											"kind": "param",
+											"reqd": true,
+											"example": nil,
+										},
+									},
+								},
+								"select": map[string]any{
+									"exist": []any{
+										"id",
+									},
 								},
 							},
 						},
@@ -390,47 +909,54 @@ func MakeConfig() map[string]any {
 			"multicurrency_batch_response_exchange_rate": map[string]any{
 				"fields": []any{
 					map[string]any{
-						"format": "date-time",
 						"name": "completedAt",
+						"title": "Completed At",
+						"type": "`$STRING`",
 						"req": true,
 						"short": "The datetime the response was completed",
-						"type": "`$STRING`",
+						"format": "date-time",
 					},
 					map[string]any{
 						"name": "inputs",
+						"title": "Inputs",
+						"type": "`$ARRAY`",
 						"req": true,
 						"short": "An array of ExchangeRateCreateRequest objects, each representing the details required to create a single exchange rate.",
-						"type": "`$ARRAY`",
 					},
 					map[string]any{
 						"name": "links",
-						"short": "The link to the next page with exchange rates.",
+						"title": "Links",
 						"type": "`$OBJECT`",
+						"short": "The link to the next page with exchange rates.",
 					},
 					map[string]any{
-						"format": "date-time",
 						"name": "requestedAt",
-						"short": "The datetime the of the request.",
+						"title": "Requested At",
 						"type": "`$STRING`",
+						"short": "The datetime the of the request.",
+						"format": "date-time",
 					},
 					map[string]any{
 						"name": "results",
+						"title": "Results",
+						"type": "`$ARRAY`",
 						"req": true,
 						"short": "An array of exchange rate objects that represent the results of the batch operation.",
-						"type": "`$ARRAY`",
 					},
 					map[string]any{
-						"format": "date-time",
 						"name": "startedAt",
+						"title": "Started At",
+						"type": "`$STRING`",
 						"req": true,
 						"short": "The datetime the of the request.",
-						"type": "`$STRING`",
+						"format": "date-time",
 					},
 					map[string]any{
 						"name": "status",
+						"title": "Status",
+						"type": "`$STRING`",
 						"req": true,
 						"short": "The current status of the response (e.g.",
-						"type": "`$STRING`",
 					},
 				},
 				"name": "multicurrency_batch_response_exchange_rate",
@@ -440,7 +966,6 @@ func MakeConfig() map[string]any {
 						"name": "create",
 						"points": []any{
 							map[string]any{
-								"args": map[string]any{},
 								"kind": "http",
 								"method": "POST",
 								"orig": "/settings/currencies/2026-09/exchange-rates/batch/create",
@@ -464,11 +989,6 @@ func MakeConfig() map[string]any {
 										"lit": "create",
 									},
 								},
-								"select": map[string]any{},
-								"transform": map[string]any{
-									"req": "`reqdata`",
-									"res": "`body`",
-								},
 								"parts": []any{
 									"settings",
 									"currencies",
@@ -477,9 +997,15 @@ func MakeConfig() map[string]any {
 									"batch",
 									"create",
 								},
+								"rename": map[string]any{},
+								"transform": map[string]any{
+									"req": "`reqdata`",
+									"res": "`body`",
+								},
+								"args": map[string]any{},
+								"select": map[string]any{},
 							},
 							map[string]any{
-								"args": map[string]any{},
 								"kind": "http",
 								"method": "POST",
 								"orig": "/settings/currencies/2026-09/exchange-rates/batch/read",
@@ -503,11 +1029,6 @@ func MakeConfig() map[string]any {
 										"lit": "read",
 									},
 								},
-								"select": map[string]any{},
-								"transform": map[string]any{
-									"req": "`reqdata`",
-									"res": "`body`",
-								},
 								"parts": []any{
 									"settings",
 									"currencies",
@@ -516,9 +1037,15 @@ func MakeConfig() map[string]any {
 									"batch",
 									"read",
 								},
+								"rename": map[string]any{},
+								"transform": map[string]any{
+									"req": "`reqdata`",
+									"res": "`body`",
+								},
+								"args": map[string]any{},
+								"select": map[string]any{},
 							},
 							map[string]any{
-								"args": map[string]any{},
 								"kind": "http",
 								"method": "POST",
 								"orig": "/settings/currencies/2026-09/exchange-rates/batch/update",
@@ -542,11 +1069,6 @@ func MakeConfig() map[string]any {
 										"lit": "update",
 									},
 								},
-								"select": map[string]any{},
-								"transform": map[string]any{
-									"req": "`reqdata`",
-									"res": "`body`",
-								},
 								"parts": []any{
 									"settings",
 									"currencies",
@@ -555,6 +1077,13 @@ func MakeConfig() map[string]any {
 									"batch",
 									"update",
 								},
+								"rename": map[string]any{},
+								"transform": map[string]any{
+									"req": "`reqdata`",
+									"res": "`body`",
+								},
+								"args": map[string]any{},
+								"select": map[string]any{},
 							},
 						},
 					},
@@ -567,9 +1096,10 @@ func MakeConfig() map[string]any {
 				"fields": []any{
 					map[string]any{
 						"name": "centralExchangeRatesEnabled",
+						"title": "Central Exchange Rates Enabled",
+						"type": "`$BOOLEAN`",
 						"req": true,
 						"short": "Indicates if central exchange rates is enabled for the portal or not.",
-						"type": "`$BOOLEAN`",
 					},
 				},
 				"name": "multicurrency_central_exchange_rates_information",
@@ -579,7 +1109,6 @@ func MakeConfig() map[string]any {
 						"name": "load",
 						"points": []any{
 							map[string]any{
-								"args": map[string]any{},
 								"kind": "http",
 								"method": "GET",
 								"orig": "/settings/currencies/2026-09/central-fx-rates/information",
@@ -600,11 +1129,6 @@ func MakeConfig() map[string]any {
 										"lit": "information",
 									},
 								},
-								"select": map[string]any{},
-								"transform": map[string]any{
-									"req": "`reqdata`",
-									"res": "`body`",
-								},
 								"parts": []any{
 									"settings",
 									"currencies",
@@ -612,100 +1136,13 @@ func MakeConfig() map[string]any {
 									"central-fx-rates",
 									"information",
 								},
-							},
-						},
-					},
-				},
-				"relations": map[string]any{
-					"ancestors": []any{},
-				},
-			},
-			"multicurrency_collection_response_currency_code_info_no_paging": map[string]any{
-				"fields": []any{
-					map[string]any{
-						"name": "currencyCode",
-						"req": true,
-						"short": "The three-letter code representing a specific currency (ex.",
-						"type": "`$STRING`",
-					},
-					map[string]any{
-						"name": "currencyName",
-						"req": true,
-						"short": "The full name of the currency (ex.",
-						"type": "`$STRING`",
-					},
-				},
-				"name": "multicurrency_collection_response_currency_code_info_no_paging",
-				"op": map[string]any{
-					"list": map[string]any{
-						"input": "data",
-						"name": "list",
-						"points": []any{
-							map[string]any{
-								"args": map[string]any{},
-								"kind": "http",
-								"method": "GET",
-								"orig": "/settings/currencies/2026-09/central-fx-rates/unsupported-currencies",
-								"segments": []any{
-									map[string]any{
-										"lit": "settings",
-									},
-									map[string]any{
-										"lit": "currencies",
-									},
-									map[string]any{
-										"lit": "2026-09",
-									},
-									map[string]any{
-										"lit": "central-fx-rates",
-									},
-									map[string]any{
-										"lit": "unsupported-currencies",
-									},
-								},
-								"select": map[string]any{},
+								"rename": map[string]any{},
 								"transform": map[string]any{
 									"req": "`reqdata`",
-									"res": "`body.results`",
+									"res": "`body`",
 								},
-								"parts": []any{
-									"settings",
-									"currencies",
-									"2026-09",
-									"central-fx-rates",
-									"unsupported-currencies",
-								},
-							},
-							map[string]any{
 								"args": map[string]any{},
-								"kind": "http",
-								"method": "GET",
-								"orig": "/settings/currencies/2026-09/codes",
-								"segments": []any{
-									map[string]any{
-										"lit": "settings",
-									},
-									map[string]any{
-										"lit": "currencies",
-									},
-									map[string]any{
-										"lit": "2026-09",
-									},
-									map[string]any{
-										"lit": "codes",
-									},
-								},
 								"select": map[string]any{},
-								"transform": map[string]any{
-									"req": "`reqdata`",
-									"res": "`body.results`",
-								},
-								"parts": []any{
-									"settings",
-									"currencies",
-									"2026-09",
-									"codes",
-								},
 							},
 						},
 					},
@@ -718,54 +1155,62 @@ func MakeConfig() map[string]any {
 				"fields": []any{
 					map[string]any{
 						"name": "conversionRate",
+						"title": "Conversion Rate",
+						"type": "`$NUMBER`",
 						"req": true,
 						"short": "The conversion rate between the to and from currency code of this exchange rate.",
-						"type": "`$NUMBER`",
 					},
 					map[string]any{
-						"format": "date-time",
 						"name": "createdAt",
+						"title": "Created At",
+						"type": "`$STRING`",
 						"req": true,
 						"short": "The date the exchange rate was created.",
-						"type": "`$STRING`",
+						"format": "date-time",
 					},
 					map[string]any{
-						"format": "date-time",
 						"name": "effectiveAt",
+						"title": "Effective At",
+						"type": "`$STRING`",
 						"req": true,
 						"short": "The date the exchange rate is in effect.",
-						"type": "`$STRING`",
+						"format": "date-time",
 					},
 					map[string]any{
 						"name": "fromCurrencyCode",
+						"title": "From Currency Code",
+						"type": "`$STRING`",
 						"req": true,
 						"short": "This represents the three-letter currency code (such as USD for US Dollar) of the currency you are converting from.",
-						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "id",
+						"title": "Id",
+						"type": "`$STRING`",
 						"req": true,
 						"short": "A unique identifier for the exchange rate",
-						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "toCurrencyCode",
+						"title": "To Currency Code",
+						"type": "`$STRING`",
 						"req": true,
 						"short": "This represents the three-letter currency code (such as USD for US Dollar) of the currency you are converting to.",
-						"type": "`$STRING`",
 					},
 					map[string]any{
-						"format": "date-time",
 						"name": "updatedAt",
+						"title": "Updated At",
+						"type": "`$STRING`",
 						"req": true,
 						"short": "The date the exchange rate was last updated.",
-						"type": "`$STRING`",
+						"format": "date-time",
 					},
 					map[string]any{
 						"name": "visibleInUI",
+						"title": "Visible In Ui",
+						"type": "`$BOOLEAN`",
 						"req": true,
 						"short": "This indicates if the exchange rate is shown in the MultiCurrency settings page.",
-						"type": "`$BOOLEAN`",
 					},
 				},
 				"id": map[string]any{
@@ -779,38 +1224,6 @@ func MakeConfig() map[string]any {
 						"name": "list",
 						"points": []any{
 							map[string]any{
-								"args": map[string]any{
-									"query": []any{
-										map[string]any{
-											"example": nil,
-											"kind": "query",
-											"name": "after",
-											"orig": "after",
-											"type": "`$STRING`",
-										},
-										map[string]any{
-											"example": nil,
-											"kind": "query",
-											"name": "from_currency_code",
-											"orig": "from_currency_code",
-											"type": "`$STRING`",
-										},
-										map[string]any{
-											"example": nil,
-											"kind": "query",
-											"name": "limit",
-											"orig": "limit",
-											"type": "`$INTEGER`",
-										},
-										map[string]any{
-											"example": nil,
-											"kind": "query",
-											"name": "to_currency_code",
-											"orig": "to_currency_code",
-											"type": "`$STRING`",
-										},
-									},
-								},
 								"kind": "http",
 								"method": "GET",
 								"orig": "/settings/currencies/2026-09/exchange-rates",
@@ -828,6 +1241,49 @@ func MakeConfig() map[string]any {
 										"lit": "exchange-rates",
 									},
 								},
+								"parts": []any{
+									"settings",
+									"currencies",
+									"2026-09",
+									"exchange-rates",
+								},
+								"rename": map[string]any{},
+								"transform": map[string]any{
+									"req": "`reqdata`",
+									"res": "`body`",
+								},
+								"args": map[string]any{
+									"query": []any{
+										map[string]any{
+											"name": "after",
+											"orig": "after",
+											"type": "`$STRING`",
+											"kind": "query",
+											"example": nil,
+										},
+										map[string]any{
+											"name": "from_currency_code",
+											"orig": "from_currency_code",
+											"type": "`$STRING`",
+											"kind": "query",
+											"example": nil,
+										},
+										map[string]any{
+											"name": "limit",
+											"orig": "limit",
+											"type": "`$INTEGER`",
+											"kind": "query",
+											"example": nil,
+										},
+										map[string]any{
+											"name": "to_currency_code",
+											"orig": "to_currency_code",
+											"type": "`$STRING`",
+											"kind": "query",
+											"example": nil,
+										},
+									},
+								},
 								"select": map[string]any{
 									"exist": []any{
 										"after",
@@ -835,122 +1291,6 @@ func MakeConfig() map[string]any {
 										"limit",
 										"to_currency_code",
 									},
-								},
-								"transform": map[string]any{
-									"req": "`reqdata`",
-									"res": "`body`",
-								},
-								"parts": []any{
-									"settings",
-									"currencies",
-									"2026-09",
-									"exchange-rates",
-								},
-							},
-						},
-					},
-				},
-				"relations": map[string]any{
-					"ancestors": []any{},
-				},
-			},
-			"multicurrency_collection_response_exchange_rate_no_paging": map[string]any{
-				"fields": []any{
-					map[string]any{
-						"name": "conversionRate",
-						"req": true,
-						"short": "The conversion rate between the to and from currency code of this exchange rate.",
-						"type": "`$NUMBER`",
-					},
-					map[string]any{
-						"format": "date-time",
-						"name": "createdAt",
-						"req": true,
-						"short": "The date the exchange rate was created.",
-						"type": "`$STRING`",
-					},
-					map[string]any{
-						"format": "date-time",
-						"name": "effectiveAt",
-						"req": true,
-						"short": "The date the exchange rate is in effect.",
-						"type": "`$STRING`",
-					},
-					map[string]any{
-						"name": "fromCurrencyCode",
-						"req": true,
-						"short": "This represents the three-letter currency code (such as USD for US Dollar) of the currency you are converting from.",
-						"type": "`$STRING`",
-					},
-					map[string]any{
-						"name": "id",
-						"req": true,
-						"short": "A unique identifier for the exchange rate",
-						"type": "`$STRING`",
-					},
-					map[string]any{
-						"name": "toCurrencyCode",
-						"req": true,
-						"short": "This represents the three-letter currency code (such as USD for US Dollar) of the currency you are converting to.",
-						"type": "`$STRING`",
-					},
-					map[string]any{
-						"format": "date-time",
-						"name": "updatedAt",
-						"req": true,
-						"short": "The date the exchange rate was last updated.",
-						"type": "`$STRING`",
-					},
-					map[string]any{
-						"name": "visibleInUI",
-						"req": true,
-						"short": "This indicates if the exchange rate is shown in the MultiCurrency settings page.",
-						"type": "`$BOOLEAN`",
-					},
-				},
-				"id": map[string]any{
-					"field": "id",
-					"name": "id",
-				},
-				"name": "multicurrency_collection_response_exchange_rate_no_paging",
-				"op": map[string]any{
-					"list": map[string]any{
-						"input": "data",
-						"name": "list",
-						"points": []any{
-							map[string]any{
-								"args": map[string]any{},
-								"kind": "http",
-								"method": "GET",
-								"orig": "/settings/currencies/2026-09/exchange-rates/current",
-								"segments": []any{
-									map[string]any{
-										"lit": "settings",
-									},
-									map[string]any{
-										"lit": "currencies",
-									},
-									map[string]any{
-										"lit": "2026-09",
-									},
-									map[string]any{
-										"lit": "exchange-rates",
-									},
-									map[string]any{
-										"lit": "current",
-									},
-								},
-								"select": map[string]any{},
-								"transform": map[string]any{
-									"req": "`reqdata`",
-									"res": "`body.results`",
-								},
-								"parts": []any{
-									"settings",
-									"currencies",
-									"2026-09",
-									"exchange-rates",
-									"current",
 								},
 							},
 						},
@@ -963,23 +1303,26 @@ func MakeConfig() map[string]any {
 			"multicurrency_company_currency": map[string]any{
 				"fields": []any{
 					map[string]any{
-						"format": "date-time",
 						"name": "createdAt",
+						"title": "Created At",
+						"type": "`$STRING`",
 						"req": true,
 						"short": "The date the company currency was created.",
-						"type": "`$STRING`",
+						"format": "date-time",
 					},
 					map[string]any{
 						"name": "currencyCode",
+						"title": "Currency Code",
+						"type": "`$STRING`",
 						"req": true,
 						"short": "The three-letter code representing a specific currency (ex.",
-						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "id",
+						"title": "Id",
+						"type": "`$STRING`",
 						"req": true,
 						"short": "The currency code for the company currency",
-						"type": "`$STRING`",
 					},
 				},
 				"id": map[string]any{
@@ -993,7 +1336,6 @@ func MakeConfig() map[string]any {
 						"name": "load",
 						"points": []any{
 							map[string]any{
-								"args": map[string]any{},
 								"kind": "http",
 								"method": "GET",
 								"orig": "/settings/currencies/2026-09/company-currency",
@@ -1011,17 +1353,19 @@ func MakeConfig() map[string]any {
 										"lit": "company-currency",
 									},
 								},
-								"select": map[string]any{},
-								"transform": map[string]any{
-									"req": "`reqdata`",
-									"res": "`body`",
-								},
 								"parts": []any{
 									"settings",
 									"currencies",
 									"2026-09",
 									"company-currency",
 								},
+								"rename": map[string]any{},
+								"transform": map[string]any{
+									"req": "`reqdata`",
+									"res": "`body`",
+								},
+								"args": map[string]any{},
+								"select": map[string]any{},
 							},
 						},
 					},
@@ -1030,7 +1374,6 @@ func MakeConfig() map[string]any {
 						"name": "update",
 						"points": []any{
 							map[string]any{
-								"args": map[string]any{},
 								"kind": "http",
 								"method": "PUT",
 								"orig": "/settings/currencies/2026-09/company-currency",
@@ -1048,290 +1391,19 @@ func MakeConfig() map[string]any {
 										"lit": "company-currency",
 									},
 								},
-								"select": map[string]any{},
-								"transform": map[string]any{
-									"req": "`reqdata`",
-									"res": "`body`",
-								},
 								"parts": []any{
 									"settings",
 									"currencies",
 									"2026-09",
 									"company-currency",
 								},
-							},
-						},
-					},
-				},
-				"relations": map[string]any{
-					"ancestors": []any{},
-				},
-			},
-			"multicurrency_exchange_rate": map[string]any{
-				"fields": []any{
-					map[string]any{
-						"name": "conversionRate",
-						"req": true,
-						"short": "The conversion rate between the to and from currency code of this exchange rate.",
-						"type": "`$NUMBER`",
-					},
-					map[string]any{
-						"format": "date-time",
-						"name": "createdAt",
-						"req": true,
-						"short": "The date the exchange rate was created.",
-						"type": "`$STRING`",
-					},
-					map[string]any{
-						"name": "currencyCode",
-						"req": true,
-						"short": "The currency code being added to the HubSpot portal for use with central exchange rates.",
-						"type": "`$STRING`",
-					},
-					map[string]any{
-						"format": "date-time",
-						"name": "effectiveAt",
-						"op": map[string]any{
-							"create": map[string]any{
-								"type": "`$STRING`",
-							},
-							"update": map[string]any{
-								"type": "`$STRING`",
-							},
-						},
-						"req": true,
-						"short": "The date the exchange rate is in effect.",
-						"type": "`$STRING`",
-					},
-					map[string]any{
-						"name": "fromCurrencyCode",
-						"req": true,
-						"short": "This represents the three-letter currency code (such as USD for US Dollar) of the currency you are converting from.",
-						"type": "`$STRING`",
-					},
-					map[string]any{
-						"name": "id",
-						"req": true,
-						"short": "A unique identifier for the exchange rate",
-						"type": "`$STRING`",
-					},
-					map[string]any{
-						"name": "toCurrencyCode",
-						"req": true,
-						"short": "This represents the three-letter currency code (such as USD for US Dollar) of the currency you are converting to.",
-						"type": "`$STRING`",
-					},
-					map[string]any{
-						"format": "date-time",
-						"name": "updatedAt",
-						"req": true,
-						"short": "The date the exchange rate was last updated.",
-						"type": "`$STRING`",
-					},
-					map[string]any{
-						"name": "visibleInUI",
-						"req": true,
-						"short": "This indicates if the exchange rate is shown in the MultiCurrency settings page.",
-						"type": "`$BOOLEAN`",
-					},
-				},
-				"id": map[string]any{
-					"field": "id",
-					"name": "id",
-				},
-				"name": "multicurrency_exchange_rate",
-				"op": map[string]any{
-					"create": map[string]any{
-						"input": "data",
-						"name": "create",
-						"points": []any{
-							map[string]any{
+								"rename": map[string]any{},
+								"transform": map[string]any{
+									"req": "`reqdata`",
+									"res": "`body`",
+								},
 								"args": map[string]any{},
-								"kind": "http",
-								"method": "POST",
-								"orig": "/settings/currencies/2026-09/central-fx-rates/add-currency",
-								"segments": []any{
-									map[string]any{
-										"lit": "settings",
-									},
-									map[string]any{
-										"lit": "currencies",
-									},
-									map[string]any{
-										"lit": "2026-09",
-									},
-									map[string]any{
-										"lit": "central-fx-rates",
-									},
-									map[string]any{
-										"lit": "add-currency",
-									},
-								},
 								"select": map[string]any{},
-								"transform": map[string]any{
-									"req": "`reqdata`",
-									"res": "`body`",
-								},
-								"parts": []any{
-									"settings",
-									"currencies",
-									"2026-09",
-									"central-fx-rates",
-									"add-currency",
-								},
-							},
-							map[string]any{
-								"args": map[string]any{},
-								"kind": "http",
-								"method": "POST",
-								"orig": "/settings/currencies/2026-09/exchange-rates",
-								"segments": []any{
-									map[string]any{
-										"lit": "settings",
-									},
-									map[string]any{
-										"lit": "currencies",
-									},
-									map[string]any{
-										"lit": "2026-09",
-									},
-									map[string]any{
-										"lit": "exchange-rates",
-									},
-								},
-								"select": map[string]any{},
-								"transform": map[string]any{
-									"req": "`reqdata`",
-									"res": "`body`",
-								},
-								"parts": []any{
-									"settings",
-									"currencies",
-									"2026-09",
-									"exchange-rates",
-								},
-							},
-						},
-					},
-					"load": map[string]any{
-						"input": "data",
-						"name": "load",
-						"points": []any{
-							map[string]any{
-								"args": map[string]any{
-									"params": []any{
-										map[string]any{
-											"example": nil,
-											"kind": "param",
-											"name": "id",
-											"orig": "exchange_rate_id",
-											"reqd": true,
-											"type": "`$STRING`",
-										},
-									},
-								},
-								"kind": "http",
-								"method": "GET",
-								"orig": "/settings/currencies/2026-09/exchange-rates/{exchangeRateId}",
-								"rename": map[string]any{
-									"param": map[string]any{
-										"exchangeRateId": "id",
-									},
-								},
-								"segments": []any{
-									map[string]any{
-										"lit": "settings",
-									},
-									map[string]any{
-										"lit": "currencies",
-									},
-									map[string]any{
-										"lit": "2026-09",
-									},
-									map[string]any{
-										"lit": "exchange-rates",
-									},
-									map[string]any{
-										"var": "id",
-									},
-								},
-								"select": map[string]any{
-									"exist": []any{
-										"id",
-									},
-								},
-								"transform": map[string]any{
-									"req": "`reqdata`",
-									"res": "`body`",
-								},
-								"parts": []any{
-									"settings",
-									"currencies",
-									"2026-09",
-									"exchange-rates",
-									"{id}",
-								},
-							},
-						},
-					},
-					"update": map[string]any{
-						"input": "data",
-						"name": "update",
-						"points": []any{
-							map[string]any{
-								"args": map[string]any{
-									"params": []any{
-										map[string]any{
-											"example": nil,
-											"kind": "param",
-											"name": "id",
-											"orig": "exchange_rate_id",
-											"reqd": true,
-											"type": "`$STRING`",
-										},
-									},
-								},
-								"kind": "http",
-								"method": "PATCH",
-								"orig": "/settings/currencies/2026-09/exchange-rates/{exchangeRateId}",
-								"rename": map[string]any{
-									"param": map[string]any{
-										"exchangeRateId": "id",
-									},
-								},
-								"segments": []any{
-									map[string]any{
-										"lit": "settings",
-									},
-									map[string]any{
-										"lit": "currencies",
-									},
-									map[string]any{
-										"lit": "2026-09",
-									},
-									map[string]any{
-										"lit": "exchange-rates",
-									},
-									map[string]any{
-										"var": "id",
-									},
-								},
-								"select": map[string]any{
-									"exist": []any{
-										"id",
-									},
-								},
-								"transform": map[string]any{
-									"req": "`reqdata`",
-									"res": "`body`",
-								},
-								"parts": []any{
-									"settings",
-									"currencies",
-									"2026-09",
-									"exchange-rates",
-									"{id}",
-								},
 							},
 						},
 					},
@@ -1344,47 +1416,54 @@ func MakeConfig() map[string]any {
 				"fields": []any{
 					map[string]any{
 						"name": "active",
+						"title": "Active",
+						"type": "`$BOOLEAN`",
 						"req": true,
 						"short": "Indicates whether the tax rate group is currently active.",
-						"type": "`$BOOLEAN`",
 					},
 					map[string]any{
-						"format": "date-time",
 						"name": "createdAt",
+						"title": "Created At",
+						"type": "`$STRING`",
 						"req": true,
 						"short": "The date and time when the tax rate was created.",
-						"type": "`$STRING`",
+						"format": "date-time",
 					},
 					map[string]any{
 						"name": "id",
+						"title": "Id",
+						"type": "`$STRING`",
 						"req": true,
 						"short": "The unique identifier for the tax rate.",
-						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "label",
+						"title": "Label",
+						"type": "`$STRING`",
 						"req": true,
 						"short": "The display label for the tax rate.",
-						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "name",
+						"title": "Name",
+						"type": "`$STRING`",
 						"req": true,
 						"short": "The name of the tax rate.",
-						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "percentageRate",
+						"title": "Percentage Rate",
+						"type": "`$NUMBER`",
 						"req": true,
 						"short": "The percentage rate applied.",
-						"type": "`$NUMBER`",
 					},
 					map[string]any{
-						"format": "date-time",
 						"name": "updatedAt",
+						"title": "Updated At",
+						"type": "`$STRING`",
 						"req": true,
 						"short": "The date and time when the tax rate was last updated.",
-						"type": "`$STRING`",
+						"format": "date-time",
 					},
 				},
 				"id": map[string]any{
@@ -1398,31 +1477,6 @@ func MakeConfig() map[string]any {
 						"name": "list",
 						"points": []any{
 							map[string]any{
-								"args": map[string]any{
-									"query": []any{
-										map[string]any{
-											"example": nil,
-											"kind": "query",
-											"name": "active",
-											"orig": "active",
-											"type": "`$BOOLEAN`",
-										},
-										map[string]any{
-											"example": nil,
-											"kind": "query",
-											"name": "after",
-											"orig": "after",
-											"type": "`$STRING`",
-										},
-										map[string]any{
-											"example": nil,
-											"kind": "query",
-											"name": "limit",
-											"orig": "limit",
-											"type": "`$INTEGER`",
-										},
-									},
-								},
 								"kind": "http",
 								"method": "GET",
 								"orig": "/tax-rates/2026-09/tax-rates",
@@ -1437,21 +1491,47 @@ func MakeConfig() map[string]any {
 										"lit": "tax-rates",
 									},
 								},
+								"parts": []any{
+									"tax-rates",
+									"2026-09",
+									"tax-rates",
+								},
+								"rename": map[string]any{},
+								"transform": map[string]any{
+									"req": "`reqdata`",
+									"res": "`body`",
+								},
+								"args": map[string]any{
+									"query": []any{
+										map[string]any{
+											"name": "active",
+											"orig": "active",
+											"type": "`$BOOLEAN`",
+											"kind": "query",
+											"example": nil,
+										},
+										map[string]any{
+											"name": "after",
+											"orig": "after",
+											"type": "`$STRING`",
+											"kind": "query",
+											"example": nil,
+										},
+										map[string]any{
+											"name": "limit",
+											"orig": "limit",
+											"type": "`$INTEGER`",
+											"kind": "query",
+											"example": nil,
+										},
+									},
+								},
 								"select": map[string]any{
 									"exist": []any{
 										"active",
 										"after",
 										"limit",
 									},
-								},
-								"transform": map[string]any{
-									"req": "`reqdata`",
-									"res": "`body`",
-								},
-								"parts": []any{
-									"tax-rates",
-									"2026-09",
-									"tax-rates",
 								},
 							},
 						},
@@ -1461,26 +1541,9 @@ func MakeConfig() map[string]any {
 						"name": "load",
 						"points": []any{
 							map[string]any{
-								"args": map[string]any{
-									"params": []any{
-										map[string]any{
-											"example": nil,
-											"kind": "param",
-											"name": "id",
-											"orig": "tax_rate_group_id",
-											"reqd": true,
-											"type": "`$STRING`",
-										},
-									},
-								},
 								"kind": "http",
 								"method": "GET",
 								"orig": "/tax-rates/2026-09/tax-rates/{taxRateGroupId}",
-								"rename": map[string]any{
-									"param": map[string]any{
-										"taxRateGroupId": "id",
-									},
-								},
 								"segments": []any{
 									map[string]any{
 										"lit": "tax-rates",
@@ -1495,20 +1558,37 @@ func MakeConfig() map[string]any {
 										"var": "id",
 									},
 								},
-								"select": map[string]any{
-									"exist": []any{
-										"id",
+								"parts": []any{
+									"tax-rates",
+									"2026-09",
+									"tax-rates",
+									"{id}",
+								},
+								"rename": map[string]any{
+									"param": map[string]any{
+										"taxRateGroupId": "id",
 									},
 								},
 								"transform": map[string]any{
 									"req": "`reqdata`",
 									"res": "`body`",
 								},
-								"parts": []any{
-									"tax-rates",
-									"2026-09",
-									"tax-rates",
-									"{id}",
+								"args": map[string]any{
+									"params": []any{
+										map[string]any{
+											"name": "id",
+											"orig": "tax_rate_group_id",
+											"type": "`$STRING`",
+											"kind": "param",
+											"reqd": true,
+											"example": nil,
+										},
+									},
+								},
+								"select": map[string]any{
+									"exist": []any{
+										"id",
+									},
 								},
 							},
 						},
@@ -1521,58 +1601,67 @@ func MakeConfig() map[string]any {
 			"teams_batch_response_team_member": map[string]any{
 				"fields": []any{
 					map[string]any{
-						"format": "date-time",
 						"name": "completedAt",
+						"title": "Completed At",
+						"type": "`$STRING`",
 						"req": true,
 						"short": "The date and time when the batch operation was completed, in ISO 8601 format.",
-						"type": "`$STRING`",
+						"format": "date-time",
 					},
 					map[string]any{
 						"name": "errors",
-						"short": "An array of StandardError objects detailing any errors that occurred during the batch operation.",
+						"title": "Errors",
 						"type": "`$ARRAY`",
+						"short": "An array of StandardError objects detailing any errors that occurred during the batch operation.",
 					},
 					map[string]any{
 						"name": "inputs",
+						"title": "Inputs",
+						"type": "`$ARRAY`",
 						"req": true,
 						"short": "An array of team member assignments, where each item specifies the details of a team member to be assigned.",
-						"type": "`$ARRAY`",
 					},
 					map[string]any{
 						"name": "links",
-						"short": "A map of link names to associated URIs providing additional information about the batch operation.",
+						"title": "Links",
 						"type": "`$OBJECT`",
+						"short": "A map of link names to associated URIs providing additional information about the batch operation.",
 					},
 					map[string]any{
-						"format": "int32",
 						"name": "numErrors",
-						"short": "The number of errors encountered during the batch operation.",
+						"title": "Num Errors",
 						"type": "`$INTEGER`",
+						"short": "The number of errors encountered during the batch operation.",
+						"format": "int32",
 					},
 					map[string]any{
-						"format": "date-time",
 						"name": "requestedAt",
-						"short": "The date and time when the batch operation was requested, in ISO 8601 format.",
+						"title": "Requested At",
 						"type": "`$STRING`",
+						"short": "The date and time when the batch operation was requested, in ISO 8601 format.",
+						"format": "date-time",
 					},
 					map[string]any{
 						"name": "results",
+						"title": "Results",
+						"type": "`$ARRAY`",
 						"req": true,
 						"short": "An array of TeamMemberResponse objects representing the results of the batch operation.",
-						"type": "`$ARRAY`",
 					},
 					map[string]any{
-						"format": "date-time",
 						"name": "startedAt",
+						"title": "Started At",
+						"type": "`$STRING`",
 						"req": true,
 						"short": "The date and time when the batch operation started, in ISO 8601 format.",
-						"type": "`$STRING`",
+						"format": "date-time",
 					},
 					map[string]any{
 						"name": "status",
+						"title": "Status",
+						"type": "`$STRING`",
 						"req": true,
 						"short": "The current status of the batch operation.",
-						"type": "`$STRING`",
 					},
 				},
 				"name": "teams_batch_response_team_member",
@@ -1582,26 +1671,9 @@ func MakeConfig() map[string]any {
 						"name": "create",
 						"points": []any{
 							map[string]any{
-								"args": map[string]any{
-									"params": []any{
-										map[string]any{
-											"example": nil,
-											"kind": "param",
-											"name": "team_id",
-											"orig": "team_id",
-											"reqd": true,
-											"type": "`$STRING`",
-										},
-									},
-								},
 								"kind": "http",
 								"method": "POST",
 								"orig": "/settings/teams/2026-09/{teamId}/members/batch",
-								"rename": map[string]any{
-									"param": map[string]any{
-										"teamId": "team_id",
-									},
-								},
 								"segments": []any{
 									map[string]any{
 										"lit": "settings",
@@ -1622,15 +1694,6 @@ func MakeConfig() map[string]any {
 										"lit": "batch",
 									},
 								},
-								"select": map[string]any{
-									"exist": []any{
-										"team_id",
-									},
-								},
-								"transform": map[string]any{
-									"req": "`reqdata`",
-									"res": "`body`",
-								},
 								"parts": []any{
 									"settings",
 									"teams",
@@ -1639,31 +1702,55 @@ func MakeConfig() map[string]any {
 									"members",
 									"batch",
 								},
+								"rename": map[string]any{
+									"param": map[string]any{
+										"teamId": "team_id",
+									},
+								},
+								"transform": map[string]any{
+									"req": "`reqdata`",
+									"res": "`body`",
+								},
+								"args": map[string]any{
+									"params": []any{
+										map[string]any{
+											"name": "team_id",
+											"orig": "team_id",
+											"type": "`$STRING`",
+											"kind": "param",
+											"reqd": true,
+											"example": nil,
+										},
+									},
+								},
+								"select": map[string]any{
+									"exist": []any{
+										"team_id",
+									},
+								},
 							},
 						},
 					},
 				},
 				"relations": map[string]any{
-					"ancestors": []any{
-						[]any{
-							"2026_09",
-						},
-					},
+					"ancestors": []any{},
 				},
 			},
 			"teams_collection_response_team_member_response_forward_paging": map[string]any{
 				"fields": []any{
 					map[string]any{
 						"name": "type",
+						"title": "Type",
+						"type": "`$STRING`",
 						"req": true,
 						"short": "The type of membership the user has in the team.",
-						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "userId",
+						"title": "User Id",
+						"type": "`$STRING`",
 						"req": true,
 						"short": "The unique identifier for the user, represented as a string.",
-						"type": "`$STRING`",
 					},
 				},
 				"name": "teams_collection_response_team_member_response_forward_paging",
@@ -1673,42 +1760,9 @@ func MakeConfig() map[string]any {
 						"name": "list",
 						"points": []any{
 							map[string]any{
-								"args": map[string]any{
-									"params": []any{
-										map[string]any{
-											"example": nil,
-											"kind": "param",
-											"name": "team_id",
-											"orig": "team_id",
-											"reqd": true,
-											"type": "`$STRING`",
-										},
-									},
-									"query": []any{
-										map[string]any{
-											"example": nil,
-											"kind": "query",
-											"name": "after",
-											"orig": "after",
-											"type": "`$STRING`",
-										},
-										map[string]any{
-											"example": nil,
-											"kind": "query",
-											"name": "limit",
-											"orig": "limit",
-											"type": "`$INTEGER`",
-										},
-									},
-								},
 								"kind": "http",
 								"method": "GET",
 								"orig": "/settings/teams/2026-09/{teamId}/members",
-								"rename": map[string]any{
-									"param": map[string]any{
-										"teamId": "team_id",
-									},
-								},
 								"segments": []any{
 									map[string]any{
 										"lit": "settings",
@@ -1726,17 +1780,6 @@ func MakeConfig() map[string]any {
 										"lit": "members",
 									},
 								},
-								"select": map[string]any{
-									"exist": []any{
-										"after",
-										"limit",
-										"team_id",
-									},
-								},
-								"transform": map[string]any{
-									"req": "`reqdata`",
-									"res": "`body`",
-								},
 								"parts": []any{
 									"settings",
 									"teams",
@@ -1744,36 +1787,79 @@ func MakeConfig() map[string]any {
 									"{team_id}",
 									"members",
 								},
+								"rename": map[string]any{
+									"param": map[string]any{
+										"teamId": "team_id",
+									},
+								},
+								"transform": map[string]any{
+									"req": "`reqdata`",
+									"res": "`body`",
+								},
+								"args": map[string]any{
+									"params": []any{
+										map[string]any{
+											"name": "team_id",
+											"orig": "team_id",
+											"type": "`$STRING`",
+											"kind": "param",
+											"reqd": true,
+											"example": nil,
+										},
+									},
+									"query": []any{
+										map[string]any{
+											"name": "after",
+											"orig": "after",
+											"type": "`$STRING`",
+											"kind": "query",
+											"example": nil,
+										},
+										map[string]any{
+											"name": "limit",
+											"orig": "limit",
+											"type": "`$INTEGER`",
+											"kind": "query",
+											"example": nil,
+										},
+									},
+								},
+								"select": map[string]any{
+									"exist": []any{
+										"after",
+										"limit",
+										"team_id",
+									},
+								},
 							},
 						},
 					},
 				},
 				"relations": map[string]any{
-					"ancestors": []any{
-						[]any{
-							"2026_09",
-						},
-					},
+					"ancestors": []any{},
 				},
 			},
 			"teams_collection_response_team_response_forward_paging": map[string]any{
 				"fields": []any{
 					map[string]any{
 						"name": "id",
+						"title": "Id",
+						"type": "`$STRING`",
 						"req": true,
 						"short": "The unique identifier for the team, represented as a string.",
-						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "name",
+						"title": "Name",
+						"type": "`$STRING`",
 						"req": true,
 						"short": "The name of the team, represented as a string.",
-						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "parentTeamId",
-						"short": "The unique identifier of the parent team, if applicable, represented as a string.",
+						"title": "Parent Team Id",
 						"type": "`$STRING`",
+						"short": "The unique identifier of the parent team, if applicable, represented as a string.",
 					},
 				},
 				"id": map[string]any{
@@ -1787,24 +1873,6 @@ func MakeConfig() map[string]any {
 						"name": "list",
 						"points": []any{
 							map[string]any{
-								"args": map[string]any{
-									"query": []any{
-										map[string]any{
-											"example": nil,
-											"kind": "query",
-											"name": "after",
-											"orig": "after",
-											"type": "`$STRING`",
-										},
-										map[string]any{
-											"example": nil,
-											"kind": "query",
-											"name": "limit",
-											"orig": "limit",
-											"type": "`$INTEGER`",
-										},
-									},
-								},
 								"kind": "http",
 								"method": "GET",
 								"orig": "/settings/teams/2026-09",
@@ -1819,20 +1887,39 @@ func MakeConfig() map[string]any {
 										"lit": "2026-09",
 									},
 								},
+								"parts": []any{
+									"settings",
+									"teams",
+									"2026-09",
+								},
+								"rename": map[string]any{},
+								"transform": map[string]any{
+									"req": "`reqdata`",
+									"res": "`body`",
+								},
+								"args": map[string]any{
+									"query": []any{
+										map[string]any{
+											"name": "after",
+											"orig": "after",
+											"type": "`$STRING`",
+											"kind": "query",
+											"example": nil,
+										},
+										map[string]any{
+											"name": "limit",
+											"orig": "limit",
+											"type": "`$INTEGER`",
+											"kind": "query",
+											"example": nil,
+										},
+									},
+								},
 								"select": map[string]any{
 									"exist": []any{
 										"after",
 										"limit",
 									},
-								},
-								"transform": map[string]any{
-									"req": "`reqdata`",
-									"res": "`body`",
-								},
-								"parts": []any{
-									"settings",
-									"teams",
-									"2026-09",
 								},
 							},
 						},
@@ -1846,24 +1933,29 @@ func MakeConfig() map[string]any {
 				"fields": []any{
 					map[string]any{
 						"name": "id",
+						"title": "Id",
+						"type": "`$STRING`",
 						"req": true,
 						"short": "The unique identifier for the team, represented as a string.",
-						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "members",
+						"title": "Members",
+						"type": "`$ARRAY`",
 						"req": true,
 						"short": "An array of team members to be assigned to the new team.",
-						"type": "`$ARRAY`",
 					},
 					map[string]any{
 						"name": "name",
+						"title": "Name",
+						"type": "`$STRING`",
 						"req": true,
 						"short": "The name of the team, represented as a string.",
-						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "parentTeamId",
+						"title": "Parent Team Id",
+						"type": "`$STRING`",
 						"op": map[string]any{
 							"update": map[string]any{
 								"req": true,
@@ -1871,7 +1963,6 @@ func MakeConfig() map[string]any {
 							},
 						},
 						"short": "The unique identifier of the parent team, if applicable, represented as a string.",
-						"type": "`$STRING`",
 					},
 				},
 				"id": map[string]any{
@@ -1885,7 +1976,6 @@ func MakeConfig() map[string]any {
 						"name": "create",
 						"points": []any{
 							map[string]any{
-								"args": map[string]any{},
 								"kind": "http",
 								"method": "POST",
 								"orig": "/settings/teams/2026-09",
@@ -1900,16 +1990,18 @@ func MakeConfig() map[string]any {
 										"lit": "2026-09",
 									},
 								},
-								"select": map[string]any{},
-								"transform": map[string]any{
-									"req": "`reqdata`",
-									"res": "`body`",
-								},
 								"parts": []any{
 									"settings",
 									"teams",
 									"2026-09",
 								},
+								"rename": map[string]any{},
+								"transform": map[string]any{
+									"req": "`reqdata`",
+									"res": "`body`",
+								},
+								"args": map[string]any{},
+								"select": map[string]any{},
 							},
 						},
 					},
@@ -1918,26 +2010,9 @@ func MakeConfig() map[string]any {
 						"name": "load",
 						"points": []any{
 							map[string]any{
-								"args": map[string]any{
-									"params": []any{
-										map[string]any{
-											"example": nil,
-											"kind": "param",
-											"name": "team_id",
-											"orig": "team_id",
-											"reqd": true,
-											"type": "`$STRING`",
-										},
-									},
-								},
 								"kind": "http",
 								"method": "GET",
 								"orig": "/settings/teams/2026-09/{teamId}",
-								"rename": map[string]any{
-									"param": map[string]any{
-										"teamId": "team_id",
-									},
-								},
 								"segments": []any{
 									map[string]any{
 										"lit": "settings",
@@ -1952,20 +2027,37 @@ func MakeConfig() map[string]any {
 										"var": "team_id",
 									},
 								},
-								"select": map[string]any{
-									"exist": []any{
-										"team_id",
+								"parts": []any{
+									"settings",
+									"teams",
+									"2026-09",
+									"{team_id}",
+								},
+								"rename": map[string]any{
+									"param": map[string]any{
+										"teamId": "team_id",
 									},
 								},
 								"transform": map[string]any{
 									"req": "`reqdata`",
 									"res": "`body`",
 								},
-								"parts": []any{
-									"settings",
-									"teams",
-									"2026-09",
-									"{team_id}",
+								"args": map[string]any{
+									"params": []any{
+										map[string]any{
+											"name": "team_id",
+											"orig": "team_id",
+											"type": "`$STRING`",
+											"kind": "param",
+											"reqd": true,
+											"example": nil,
+										},
+									},
+								},
+								"select": map[string]any{
+									"exist": []any{
+										"team_id",
+									},
 								},
 							},
 						},
@@ -1975,26 +2067,9 @@ func MakeConfig() map[string]any {
 						"name": "update",
 						"points": []any{
 							map[string]any{
-								"args": map[string]any{
-									"params": []any{
-										map[string]any{
-											"example": nil,
-											"kind": "param",
-											"name": "team_id",
-											"orig": "team_id",
-											"reqd": true,
-											"type": "`$STRING`",
-										},
-									},
-								},
 								"kind": "http",
 								"method": "PATCH",
 								"orig": "/settings/teams/2026-09/{teamId}",
-								"rename": map[string]any{
-									"param": map[string]any{
-										"teamId": "team_id",
-									},
-								},
 								"segments": []any{
 									map[string]any{
 										"lit": "settings",
@@ -2009,46 +2084,61 @@ func MakeConfig() map[string]any {
 										"var": "team_id",
 									},
 								},
-								"select": map[string]any{
-									"exist": []any{
-										"team_id",
-									},
-								},
-								"transform": map[string]any{
-									"req": "`reqdata`",
-									"res": "`body`",
-								},
 								"parts": []any{
 									"settings",
 									"teams",
 									"2026-09",
 									"{team_id}",
 								},
+								"rename": map[string]any{
+									"param": map[string]any{
+										"teamId": "team_id",
+									},
+								},
+								"transform": map[string]any{
+									"req": "`reqdata`",
+									"res": "`body`",
+								},
+								"args": map[string]any{
+									"params": []any{
+										map[string]any{
+											"name": "team_id",
+											"orig": "team_id",
+											"type": "`$STRING`",
+											"kind": "param",
+											"reqd": true,
+											"example": nil,
+										},
+									},
+								},
+								"select": map[string]any{
+									"exist": []any{
+										"team_id",
+									},
+								},
 							},
 						},
 					},
 				},
 				"relations": map[string]any{
-					"ancestors": []any{
-						[]any{
-							"2026_09",
-						},
-					},
+					"ancestors": []any{},
 				},
 			},
 			"teams_team_member": map[string]any{
 				"fields": []any{
 					map[string]any{
 						"name": "type",
+						"title": "Type",
+						"type": "`$STRING`",
 						"req": true,
 						"short": "The type of team member assignment.",
-						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "userId",
+						"title": "User Id",
+						"type": "`$STRING`",
 						"req": true,
 						"short": "The unique identifier for the user being assigned to the team.",
-						"type": "`$STRING`",
 					},
 				},
 				"name": "teams_team_member",
@@ -2058,26 +2148,9 @@ func MakeConfig() map[string]any {
 						"name": "create",
 						"points": []any{
 							map[string]any{
-								"args": map[string]any{
-									"params": []any{
-										map[string]any{
-											"example": nil,
-											"kind": "param",
-											"name": "team_id",
-											"orig": "team_id",
-											"reqd": true,
-											"type": "`$STRING`",
-										},
-									},
-								},
 								"kind": "http",
 								"method": "POST",
 								"orig": "/settings/teams/2026-09/{teamId}/members",
-								"rename": map[string]any{
-									"param": map[string]any{
-										"teamId": "team_id",
-									},
-								},
 								"segments": []any{
 									map[string]any{
 										"lit": "settings",
@@ -2095,15 +2168,6 @@ func MakeConfig() map[string]any {
 										"lit": "members",
 									},
 								},
-								"select": map[string]any{
-									"exist": []any{
-										"team_id",
-									},
-								},
-								"transform": map[string]any{
-									"req": "`reqdata`",
-									"res": "`body`",
-								},
 								"parts": []any{
 									"settings",
 									"teams",
@@ -2111,16 +2175,104 @@ func MakeConfig() map[string]any {
 									"{team_id}",
 									"members",
 								},
+								"rename": map[string]any{
+									"param": map[string]any{
+										"teamId": "team_id",
+									},
+								},
+								"transform": map[string]any{
+									"req": "`reqdata`",
+									"res": "`body`",
+								},
+								"args": map[string]any{
+									"params": []any{
+										map[string]any{
+											"name": "team_id",
+											"orig": "team_id",
+											"type": "`$STRING`",
+											"kind": "param",
+											"reqd": true,
+											"example": nil,
+										},
+									},
+								},
+								"select": map[string]any{
+									"exist": []any{
+										"team_id",
+									},
+								},
 							},
 						},
 					},
 				},
 				"relations": map[string]any{
-					"ancestors": []any{
-						[]any{
-							"2026_09",
+					"ancestors": []any{},
+				},
+			},
+			"unsupported_currency": map[string]any{
+				"fields": []any{
+					map[string]any{
+						"name": "currencyCode",
+						"title": "Currency Code",
+						"type": "`$STRING`",
+						"req": true,
+						"short": "The three-letter code representing a specific currency (ex.",
+					},
+					map[string]any{
+						"name": "currencyName",
+						"title": "Currency Name",
+						"type": "`$STRING`",
+						"req": true,
+						"short": "The full name of the currency (ex.",
+					},
+				},
+				"name": "unsupported_currency",
+				"op": map[string]any{
+					"list": map[string]any{
+						"input": "data",
+						"name": "list",
+						"points": []any{
+							map[string]any{
+								"kind": "http",
+								"method": "GET",
+								"orig": "/settings/currencies/2026-09/central-fx-rates/unsupported-currencies",
+								"segments": []any{
+									map[string]any{
+										"lit": "settings",
+									},
+									map[string]any{
+										"lit": "currencies",
+									},
+									map[string]any{
+										"lit": "2026-09",
+									},
+									map[string]any{
+										"lit": "central-fx-rates",
+									},
+									map[string]any{
+										"lit": "unsupported-currencies",
+									},
+								},
+								"parts": []any{
+									"settings",
+									"currencies",
+									"2026-09",
+									"central-fx-rates",
+									"unsupported-currencies",
+								},
+								"rename": map[string]any{},
+								"transform": map[string]any{
+									"req": "`reqdata`",
+									"res": "`body.results`",
+								},
+								"args": map[string]any{},
+								"select": map[string]any{},
+							},
 						},
 					},
+				},
+				"relations": map[string]any{
+					"ancestors": []any{},
 				},
 			},
 			"user": map[string]any{
@@ -2132,35 +2284,9 @@ func MakeConfig() map[string]any {
 						"name": "remove",
 						"points": []any{
 							map[string]any{
-								"args": map[string]any{
-									"params": []any{
-										map[string]any{
-											"example": nil,
-											"kind": "param",
-											"name": "user_id",
-											"orig": "user_id",
-											"reqd": true,
-											"type": "`$STRING`",
-										},
-									},
-									"query": []any{
-										map[string]any{
-											"example": nil,
-											"kind": "query",
-											"name": "id_property",
-											"orig": "id_property",
-											"type": "`$STRING`",
-										},
-									},
-								},
 								"kind": "http",
 								"method": "DELETE",
 								"orig": "/settings/users/2026-09/{userId}",
-								"rename": map[string]any{
-									"param": map[string]any{
-										"userId": "user_id",
-									},
-								},
 								"segments": []any{
 									map[string]any{
 										"lit": "settings",
@@ -2175,67 +2301,231 @@ func MakeConfig() map[string]any {
 										"var": "user_id",
 									},
 								},
-								"select": map[string]any{
-									"exist": []any{
-										"id_property",
-										"user_id",
-									},
-								},
-								"transform": map[string]any{
-									"req": "`reqdata`",
-									"res": "`body`",
-								},
 								"parts": []any{
 									"settings",
 									"users",
 									"2026-09",
 									"{user_id}",
 								},
+								"rename": map[string]any{
+									"param": map[string]any{
+										"userId": "user_id",
+									},
+								},
+								"transform": map[string]any{
+									"req": "`reqdata`",
+									"res": "`body`",
+								},
+								"args": map[string]any{
+									"params": []any{
+										map[string]any{
+											"name": "user_id",
+											"orig": "user_id",
+											"type": "`$STRING`",
+											"kind": "param",
+											"reqd": true,
+											"example": nil,
+										},
+									},
+									"query": []any{
+										map[string]any{
+											"name": "id_property",
+											"orig": "id_property",
+											"type": "`$STRING`",
+											"kind": "query",
+											"example": nil,
+										},
+									},
+								},
+								"select": map[string]any{
+									"exist": []any{
+										"id_property",
+										"user_id",
+									},
+								},
 							},
 						},
 					},
 				},
 				"relations": map[string]any{
-					"ancestors": []any{
-						[]any{
-							"2026_09",
-						},
-					},
+					"ancestors": []any{},
 				},
 			},
-			"user_provisioning_collection_response_public_permission_set_no": map[string]any{
+			"user_provisioning_collection_response_public_user_forward_paging": map[string]any{
 				"fields": []any{
 					map[string]any{
+						"name": "email",
+						"title": "Email",
+						"type": "`$STRING`",
+						"req": true,
+						"short": "The email address of the user.",
+					},
+					map[string]any{
+						"name": "firstName",
+						"title": "First Name",
+						"type": "`$STRING`",
+						"short": "The first name of the user, represented as a string.",
+					},
+					map[string]any{
 						"name": "id",
-						"req": true,
-						"short": "The unique identifier for the permission set.",
+						"title": "Id",
 						"type": "`$STRING`",
+						"req": true,
+						"short": "The unique identifier for the user, represented as a string.",
 					},
 					map[string]any{
-						"name": "name",
-						"req": true,
-						"short": "The name of the permission set.",
+						"name": "lastName",
+						"title": "Last Name",
 						"type": "`$STRING`",
+						"short": "The last name of the user, represented as a string.",
 					},
 					map[string]any{
-						"name": "requiresBillingWrite",
+						"name": "primaryTeamId",
+						"title": "Primary Team Id",
+						"type": "`$STRING`",
+						"short": "The ID of the primary team to which the user belongs, represented as a string.",
+					},
+					map[string]any{
+						"name": "roleId",
+						"title": "Role Id",
+						"type": "`$STRING`",
+						"short": "A string representing a single role ID assigned to the user.",
+					},
+					map[string]any{
+						"name": "roleIds",
+						"title": "Role Ids",
+						"type": "`$ARRAY`",
 						"req": true,
-						"short": "A boolean indicating whether the permission set requires billing write access.",
+						"short": "An array of strings representing the IDs of the roles assigned to the user.",
+					},
+					map[string]any{
+						"name": "seatNames",
+						"title": "Seat Names",
+						"type": "`$ARRAY`",
+						"short": "An array of strings representing the names of seats assigned to the user.",
+					},
+					map[string]any{
+						"name": "secondaryTeamIds",
+						"title": "Secondary Team Ids",
+						"type": "`$ARRAY`",
+						"short": "An array of strings representing the IDs of secondary teams to which the user is associated.",
+					},
+					map[string]any{
+						"name": "sendWelcomeEmail",
+						"title": "Send Welcome Email",
 						"type": "`$BOOLEAN`",
+						"short": "A boolean indicating whether a welcome email should be sent to the user.",
+					},
+					map[string]any{
+						"name": "superAdmin",
+						"title": "Super Admin",
+						"type": "`$BOOLEAN`",
+						"req": true,
+						"short": "A boolean indicating whether the user has super admin privileges.",
 					},
 				},
 				"id": map[string]any{
 					"field": "id",
 					"name": "id",
 				},
-				"name": "user_provisioning_collection_response_public_permission_set_no",
+				"name": "user_provisioning_collection_response_public_user_forward_paging",
 				"op": map[string]any{
 					"list": map[string]any{
 						"input": "data",
 						"name": "list",
 						"points": []any{
 							map[string]any{
-								"args": map[string]any{},
+								"kind": "http",
+								"method": "GET",
+								"orig": "/settings/users/2026-09",
+								"segments": []any{
+									map[string]any{
+										"lit": "settings",
+									},
+									map[string]any{
+										"lit": "users",
+									},
+									map[string]any{
+										"lit": "2026-09",
+									},
+								},
+								"parts": []any{
+									"settings",
+									"users",
+									"2026-09",
+								},
+								"rename": map[string]any{},
+								"transform": map[string]any{
+									"req": "`reqdata`",
+									"res": "`body`",
+								},
+								"args": map[string]any{
+									"query": []any{
+										map[string]any{
+											"name": "after",
+											"orig": "after",
+											"type": "`$STRING`",
+											"kind": "query",
+											"example": nil,
+										},
+										map[string]any{
+											"name": "limit",
+											"orig": "limit",
+											"type": "`$INTEGER`",
+											"kind": "query",
+											"example": nil,
+										},
+									},
+								},
+								"select": map[string]any{
+									"exist": []any{
+										"after",
+										"limit",
+									},
+								},
+							},
+						},
+					},
+				},
+				"relations": map[string]any{
+					"ancestors": []any{},
+				},
+			},
+			"user_provisioning_public_permission_set": map[string]any{
+				"fields": []any{
+					map[string]any{
+						"name": "id",
+						"title": "Id",
+						"type": "`$STRING`",
+						"req": true,
+						"short": "The unique identifier for the permission set.",
+					},
+					map[string]any{
+						"name": "name",
+						"title": "Name",
+						"type": "`$STRING`",
+						"req": true,
+						"short": "The name of the permission set.",
+					},
+					map[string]any{
+						"name": "requiresBillingWrite",
+						"title": "Requires Billing Write",
+						"type": "`$BOOLEAN`",
+						"req": true,
+						"short": "A boolean indicating whether the permission set requires billing write access.",
+					},
+				},
+				"id": map[string]any{
+					"field": "id",
+					"name": "id",
+				},
+				"name": "user_provisioning_public_permission_set",
+				"op": map[string]any{
+					"list": map[string]any{
+						"input": "data",
+						"name": "list",
+						"points": []any{
+							map[string]any{
 								"kind": "http",
 								"method": "GET",
 								"orig": "/settings/users/2026-09/roles",
@@ -2253,17 +2543,19 @@ func MakeConfig() map[string]any {
 										"lit": "roles",
 									},
 								},
-								"select": map[string]any{},
-								"transform": map[string]any{
-									"req": "`reqdata`",
-									"res": "`body.results`",
-								},
 								"parts": []any{
 									"settings",
 									"users",
 									"2026-09",
 									"roles",
 								},
+								"rename": map[string]any{},
+								"transform": map[string]any{
+									"req": "`reqdata`",
+									"res": "`body.results`",
+								},
+								"args": map[string]any{},
+								"select": map[string]any{},
 							},
 						},
 					},
@@ -2272,34 +2564,36 @@ func MakeConfig() map[string]any {
 					"ancestors": []any{},
 				},
 			},
-			"user_provisioning_collection_response_public_seat_no_paging": map[string]any{
+			"user_provisioning_public_seat": map[string]any{
 				"fields": []any{
 					map[string]any{
 						"name": "description",
-						"short": "A string providing additional details about the seat.",
+						"title": "Description",
 						"type": "`$STRING`",
+						"short": "A string providing additional details about the seat.",
 					},
 					map[string]any{
 						"name": "name",
+						"title": "Name",
+						"type": "`$STRING`",
 						"req": true,
 						"short": "The name of the seat.",
-						"type": "`$STRING`",
 					},
 					map[string]any{
-						"format": "int32",
 						"name": "remainingSeats",
-						"short": "An integer indicating the number of seats that are still available.",
+						"title": "Remaining Seats",
 						"type": "`$INTEGER`",
+						"short": "An integer indicating the number of seats that are still available.",
+						"format": "int32",
 					},
 				},
-				"name": "user_provisioning_collection_response_public_seat_no_paging",
+				"name": "user_provisioning_public_seat",
 				"op": map[string]any{
 					"list": map[string]any{
 						"input": "data",
 						"name": "list",
 						"points": []any{
 							map[string]any{
-								"args": map[string]any{},
 								"kind": "http",
 								"method": "GET",
 								"orig": "/settings/users/2026-09/seats",
@@ -2317,17 +2611,19 @@ func MakeConfig() map[string]any {
 										"lit": "seats",
 									},
 								},
-								"select": map[string]any{},
-								"transform": map[string]any{
-									"req": "`reqdata`",
-									"res": "`body.results`",
-								},
 								"parts": []any{
 									"settings",
 									"users",
 									"2026-09",
 									"seats",
 								},
+								"rename": map[string]any{},
+								"transform": map[string]any{
+									"req": "`reqdata`",
+									"res": "`body.results`",
+								},
+								"args": map[string]any{},
+								"select": map[string]any{},
 							},
 						},
 					},
@@ -2336,45 +2632,48 @@ func MakeConfig() map[string]any {
 					"ancestors": []any{},
 				},
 			},
-			"user_provisioning_collection_response_public_team_no_paging": map[string]any{
+			"user_provisioning_public_team": map[string]any{
 				"fields": []any{
 					map[string]any{
 						"name": "id",
+						"title": "Id",
+						"type": "`$STRING`",
 						"req": true,
 						"short": "The unique identifier for the team, represented as a string.",
-						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "name",
+						"title": "Name",
+						"type": "`$STRING`",
 						"req": true,
 						"short": "The name of the team, represented as a string.",
-						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "secondaryUserIds",
+						"title": "Secondary User Ids",
+						"type": "`$ARRAY`",
 						"req": true,
 						"short": "An array of strings representing the IDs of users who are secondary members of the team.",
-						"type": "`$ARRAY`",
 					},
 					map[string]any{
 						"name": "userIds",
+						"title": "User Ids",
+						"type": "`$ARRAY`",
 						"req": true,
 						"short": "An array of strings representing the IDs of users who are primary members of the team.",
-						"type": "`$ARRAY`",
 					},
 				},
 				"id": map[string]any{
 					"field": "id",
 					"name": "id",
 				},
-				"name": "user_provisioning_collection_response_public_team_no_paging",
+				"name": "user_provisioning_public_team",
 				"op": map[string]any{
 					"list": map[string]any{
 						"input": "data",
 						"name": "list",
 						"points": []any{
 							map[string]any{
-								"args": map[string]any{},
 								"kind": "http",
 								"method": "GET",
 								"orig": "/settings/users/2026-09/teams",
@@ -2392,145 +2691,19 @@ func MakeConfig() map[string]any {
 										"lit": "teams",
 									},
 								},
-								"select": map[string]any{},
-								"transform": map[string]any{
-									"req": "`reqdata`",
-									"res": "`body.results`",
-								},
 								"parts": []any{
 									"settings",
 									"users",
 									"2026-09",
 									"teams",
 								},
-							},
-						},
-					},
-				},
-				"relations": map[string]any{
-					"ancestors": []any{},
-				},
-			},
-			"user_provisioning_collection_response_public_user_forward_paging": map[string]any{
-				"fields": []any{
-					map[string]any{
-						"name": "email",
-						"req": true,
-						"short": "The email address of the user.",
-						"type": "`$STRING`",
-					},
-					map[string]any{
-						"name": "firstName",
-						"short": "The first name of the user, represented as a string.",
-						"type": "`$STRING`",
-					},
-					map[string]any{
-						"name": "id",
-						"req": true,
-						"short": "The unique identifier for the user, represented as a string.",
-						"type": "`$STRING`",
-					},
-					map[string]any{
-						"name": "lastName",
-						"short": "The last name of the user, represented as a string.",
-						"type": "`$STRING`",
-					},
-					map[string]any{
-						"name": "primaryTeamId",
-						"short": "The ID of the primary team to which the user belongs, represented as a string.",
-						"type": "`$STRING`",
-					},
-					map[string]any{
-						"name": "roleId",
-						"short": "A string representing a single role ID assigned to the user.",
-						"type": "`$STRING`",
-					},
-					map[string]any{
-						"name": "roleIds",
-						"req": true,
-						"short": "An array of strings representing the IDs of the roles assigned to the user.",
-						"type": "`$ARRAY`",
-					},
-					map[string]any{
-						"name": "seatNames",
-						"short": "An array of strings representing the names of seats assigned to the user.",
-						"type": "`$ARRAY`",
-					},
-					map[string]any{
-						"name": "secondaryTeamIds",
-						"short": "An array of strings representing the IDs of secondary teams to which the user is associated.",
-						"type": "`$ARRAY`",
-					},
-					map[string]any{
-						"name": "sendWelcomeEmail",
-						"short": "A boolean indicating whether a welcome email should be sent to the user.",
-						"type": "`$BOOLEAN`",
-					},
-					map[string]any{
-						"name": "superAdmin",
-						"req": true,
-						"short": "A boolean indicating whether the user has super admin privileges.",
-						"type": "`$BOOLEAN`",
-					},
-				},
-				"id": map[string]any{
-					"field": "id",
-					"name": "id",
-				},
-				"name": "user_provisioning_collection_response_public_user_forward_paging",
-				"op": map[string]any{
-					"list": map[string]any{
-						"input": "data",
-						"name": "list",
-						"points": []any{
-							map[string]any{
-								"args": map[string]any{
-									"query": []any{
-										map[string]any{
-											"example": nil,
-											"kind": "query",
-											"name": "after",
-											"orig": "after",
-											"type": "`$STRING`",
-										},
-										map[string]any{
-											"example": nil,
-											"kind": "query",
-											"name": "limit",
-											"orig": "limit",
-											"type": "`$INTEGER`",
-										},
-									},
-								},
-								"kind": "http",
-								"method": "GET",
-								"orig": "/settings/users/2026-09",
-								"segments": []any{
-									map[string]any{
-										"lit": "settings",
-									},
-									map[string]any{
-										"lit": "users",
-									},
-									map[string]any{
-										"lit": "2026-09",
-									},
-								},
-								"select": map[string]any{
-									"exist": []any{
-										"after",
-										"limit",
-									},
-								},
+								"rename": map[string]any{},
 								"transform": map[string]any{
 									"req": "`reqdata`",
-									"res": "`body`",
+									"res": "`body.results`",
 								},
-								"parts": []any{
-									"settings",
-									"users",
-									"2026-09",
-								},
+								"args": map[string]any{},
+								"select": map[string]any{},
 							},
 						},
 					},
@@ -2543,54 +2716,65 @@ func MakeConfig() map[string]any {
 				"fields": []any{
 					map[string]any{
 						"name": "email",
+						"title": "Email",
+						"type": "`$STRING`",
 						"req": true,
 						"short": "The email address of the user.",
-						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "firstName",
-						"short": "The first name of the user, represented as a string.",
+						"title": "First Name",
 						"type": "`$STRING`",
+						"short": "The first name of the user, represented as a string.",
 					},
 					map[string]any{
 						"name": "id",
+						"title": "Id",
+						"type": "`$STRING`",
 						"req": true,
 						"short": "The unique identifier for the user, represented as a string.",
-						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "lastName",
-						"short": "The last name of the user, represented as a string.",
+						"title": "Last Name",
 						"type": "`$STRING`",
+						"short": "The last name of the user, represented as a string.",
 					},
 					map[string]any{
 						"name": "primaryTeamId",
-						"short": "The ID of the primary team to which the user belongs, represented as a string.",
+						"title": "Primary Team Id",
 						"type": "`$STRING`",
+						"short": "The ID of the primary team to which the user belongs, represented as a string.",
 					},
 					map[string]any{
 						"name": "roleId",
-						"short": "A string representing a single role ID assigned to the user.",
+						"title": "Role Id",
 						"type": "`$STRING`",
+						"short": "A string representing a single role ID assigned to the user.",
 					},
 					map[string]any{
 						"name": "roleIds",
+						"title": "Role Ids",
+						"type": "`$ARRAY`",
 						"req": true,
 						"short": "An array of strings representing the IDs of the roles assigned to the user.",
-						"type": "`$ARRAY`",
 					},
 					map[string]any{
 						"name": "seatNames",
-						"short": "An array of strings representing the names of seats assigned to the user.",
+						"title": "Seat Names",
 						"type": "`$ARRAY`",
+						"short": "An array of strings representing the names of seats assigned to the user.",
 					},
 					map[string]any{
 						"name": "secondaryTeamIds",
-						"short": "An array of strings representing the IDs of secondary teams to which the user is associated.",
+						"title": "Secondary Team Ids",
 						"type": "`$ARRAY`",
+						"short": "An array of strings representing the IDs of secondary teams to which the user is associated.",
 					},
 					map[string]any{
 						"name": "sendWelcomeEmail",
+						"title": "Send Welcome Email",
+						"type": "`$BOOLEAN`",
 						"op": map[string]any{
 							"create": map[string]any{
 								"req": true,
@@ -2598,13 +2782,13 @@ func MakeConfig() map[string]any {
 							},
 						},
 						"short": "A boolean indicating whether a welcome email should be sent to the user.",
-						"type": "`$BOOLEAN`",
 					},
 					map[string]any{
 						"name": "superAdmin",
+						"title": "Super Admin",
+						"type": "`$BOOLEAN`",
 						"req": true,
 						"short": "A boolean indicating whether the user has super admin privileges.",
-						"type": "`$BOOLEAN`",
 					},
 				},
 				"id": map[string]any{
@@ -2618,7 +2802,6 @@ func MakeConfig() map[string]any {
 						"name": "create",
 						"points": []any{
 							map[string]any{
-								"args": map[string]any{},
 								"kind": "http",
 								"method": "POST",
 								"orig": "/settings/users/2026-09",
@@ -2633,16 +2816,18 @@ func MakeConfig() map[string]any {
 										"lit": "2026-09",
 									},
 								},
-								"select": map[string]any{},
-								"transform": map[string]any{
-									"req": "`reqdata`",
-									"res": "`body`",
-								},
 								"parts": []any{
 									"settings",
 									"users",
 									"2026-09",
 								},
+								"rename": map[string]any{},
+								"transform": map[string]any{
+									"req": "`reqdata`",
+									"res": "`body`",
+								},
+								"args": map[string]any{},
+								"select": map[string]any{},
 							},
 						},
 					},
@@ -2651,35 +2836,9 @@ func MakeConfig() map[string]any {
 						"name": "load",
 						"points": []any{
 							map[string]any{
-								"args": map[string]any{
-									"params": []any{
-										map[string]any{
-											"example": nil,
-											"kind": "param",
-											"name": "user_id",
-											"orig": "user_id",
-											"reqd": true,
-											"type": "`$STRING`",
-										},
-									},
-									"query": []any{
-										map[string]any{
-											"example": nil,
-											"kind": "query",
-											"name": "id_property",
-											"orig": "id_property",
-											"type": "`$STRING`",
-										},
-									},
-								},
 								"kind": "http",
 								"method": "GET",
 								"orig": "/settings/users/2026-09/{userId}",
-								"rename": map[string]any{
-									"param": map[string]any{
-										"userId": "user_id",
-									},
-								},
 								"segments": []any{
 									map[string]any{
 										"lit": "settings",
@@ -2694,21 +2853,47 @@ func MakeConfig() map[string]any {
 										"var": "user_id",
 									},
 								},
-								"select": map[string]any{
-									"exist": []any{
-										"id_property",
-										"user_id",
+								"parts": []any{
+									"settings",
+									"users",
+									"2026-09",
+									"{user_id}",
+								},
+								"rename": map[string]any{
+									"param": map[string]any{
+										"userId": "user_id",
 									},
 								},
 								"transform": map[string]any{
 									"req": "`reqdata`",
 									"res": "`body`",
 								},
-								"parts": []any{
-									"settings",
-									"users",
-									"2026-09",
-									"{user_id}",
+								"args": map[string]any{
+									"params": []any{
+										map[string]any{
+											"name": "user_id",
+											"orig": "user_id",
+											"type": "`$STRING`",
+											"kind": "param",
+											"reqd": true,
+											"example": nil,
+										},
+									},
+									"query": []any{
+										map[string]any{
+											"name": "id_property",
+											"orig": "id_property",
+											"type": "`$STRING`",
+											"kind": "query",
+											"example": nil,
+										},
+									},
+								},
+								"select": map[string]any{
+									"exist": []any{
+										"id_property",
+										"user_id",
+									},
 								},
 							},
 						},
@@ -2718,35 +2903,9 @@ func MakeConfig() map[string]any {
 						"name": "update",
 						"points": []any{
 							map[string]any{
-								"args": map[string]any{
-									"params": []any{
-										map[string]any{
-											"example": nil,
-											"kind": "param",
-											"name": "user_id",
-											"orig": "user_id",
-											"reqd": true,
-											"type": "`$STRING`",
-										},
-									},
-									"query": []any{
-										map[string]any{
-											"example": nil,
-											"kind": "query",
-											"name": "id_property",
-											"orig": "id_property",
-											"type": "`$STRING`",
-										},
-									},
-								},
 								"kind": "http",
 								"method": "PUT",
 								"orig": "/settings/users/2026-09/{userId}",
-								"rename": map[string]any{
-									"param": map[string]any{
-										"userId": "user_id",
-									},
-								},
 								"segments": []any{
 									map[string]any{
 										"lit": "settings",
@@ -2761,32 +2920,54 @@ func MakeConfig() map[string]any {
 										"var": "user_id",
 									},
 								},
-								"select": map[string]any{
-									"exist": []any{
-										"id_property",
-										"user_id",
-									},
-								},
-								"transform": map[string]any{
-									"req": "`reqdata`",
-									"res": "`body`",
-								},
 								"parts": []any{
 									"settings",
 									"users",
 									"2026-09",
 									"{user_id}",
 								},
+								"rename": map[string]any{
+									"param": map[string]any{
+										"userId": "user_id",
+									},
+								},
+								"transform": map[string]any{
+									"req": "`reqdata`",
+									"res": "`body`",
+								},
+								"args": map[string]any{
+									"params": []any{
+										map[string]any{
+											"name": "user_id",
+											"orig": "user_id",
+											"type": "`$STRING`",
+											"kind": "param",
+											"reqd": true,
+											"example": nil,
+										},
+									},
+									"query": []any{
+										map[string]any{
+											"name": "id_property",
+											"orig": "id_property",
+											"type": "`$STRING`",
+											"kind": "query",
+											"example": nil,
+										},
+									},
+								},
+								"select": map[string]any{
+									"exist": []any{
+										"id_property",
+										"user_id",
+									},
+								},
 							},
 						},
 					},
 				},
 				"relations": map[string]any{
-					"ancestors": []any{
-						[]any{
-							"2026_09",
-						},
-					},
+					"ancestors": []any{},
 				},
 			},
 		},

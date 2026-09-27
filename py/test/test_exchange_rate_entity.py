@@ -27,7 +27,7 @@ class TestExchangeRateEntity:
         # multiple ops; skipping any one skips the whole flow (steps depend
         # on each other).
         _live = setup.get("live", False)
-        for _op in ["create"]:
+        for _op in ["create", "update", "load"]:
             _skip, _reason = runner.is_control_skipped("entityOp", "exchange_rate." + _op, "live" if _live else "unit")
             if _skip:
                 pytest.skip(_reason or "skipped via sdk-test-control.json")
@@ -46,6 +46,30 @@ class TestExchangeRateEntity:
 
         exchange_rate_ref01_data = helpers.to_map(runner.entity_data(exchange_rate_ref01_ent.create(exchange_rate_ref01_data, None)))
         assert exchange_rate_ref01_data is not None
+        assert exchange_rate_ref01_data["id"] is not None
+
+        # UPDATE
+        exchange_rate_ref01_data_up0_up = {
+            "id": exchange_rate_ref01_data["id"],
+        }
+
+        exchange_rate_ref01_markdef_up0_name = "createdAt"
+        exchange_rate_ref01_markdef_up0_value = "Mark01-exchange_rate_ref01_" + str(setup["now"])
+        exchange_rate_ref01_data_up0_up[exchange_rate_ref01_markdef_up0_name] = exchange_rate_ref01_markdef_up0_value
+
+        exchange_rate_ref01_resdata_up0 = helpers.to_map(runner.entity_data(exchange_rate_ref01_ent.update(exchange_rate_ref01_data_up0_up, None)))
+        assert exchange_rate_ref01_resdata_up0 is not None
+        assert exchange_rate_ref01_resdata_up0["id"] == exchange_rate_ref01_data_up0_up["id"]
+        assert exchange_rate_ref01_resdata_up0[exchange_rate_ref01_markdef_up0_name] == exchange_rate_ref01_markdef_up0_value
+
+        # LOAD
+        exchange_rate_ref01_match_dt0 = {
+            "id": exchange_rate_ref01_data["id"],
+        }
+        exchange_rate_ref01_data_dt0_loaded = exchange_rate_ref01_ent.load(exchange_rate_ref01_match_dt0, None)
+        exchange_rate_ref01_data_dt0_load_result = helpers.to_map(runner.entity_data(exchange_rate_ref01_data_dt0_loaded))
+        assert exchange_rate_ref01_data_dt0_load_result is not None
+        assert exchange_rate_ref01_data_dt0_load_result["id"] == exchange_rate_ref01_data["id"]
 
 
 

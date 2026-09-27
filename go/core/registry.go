@@ -20,7 +20,13 @@ var NewTestFeatureFunc func() Feature
 
 var NewTimeoutFeatureFunc func() Feature
 
+var NewAddCurrencyEntityFunc func(client *HubspotSettingsSDK, entopts map[string]any) HubspotSettingsEntity
+
 var NewBasicEntityFunc func(client *HubspotSettingsSDK, entopts map[string]any) HubspotSettingsEntity
+
+var NewCodeEntityFunc func(client *HubspotSettingsSDK, entopts map[string]any) HubspotSettingsEntity
+
+var NewCurrentEntityFunc func(client *HubspotSettingsSDK, entopts map[string]any) HubspotSettingsEntity
 
 var NewExchangeRateEntityFunc func(client *HubspotSettingsSDK, entopts map[string]any) HubspotSettingsEntity
 
@@ -28,15 +34,9 @@ var NewMulticurrencyBatchResponseExchangeRateEntityFunc func(client *HubspotSett
 
 var NewMulticurrencyCentralExchangeRatesInformationEntityFunc func(client *HubspotSettingsSDK, entopts map[string]any) HubspotSettingsEntity
 
-var NewMulticurrencyCollectionResponseCurrencyCodeInfoNoPagingEntityFunc func(client *HubspotSettingsSDK, entopts map[string]any) HubspotSettingsEntity
-
 var NewMulticurrencyCollectionResponseExchangeRateForwardPagingEntityFunc func(client *HubspotSettingsSDK, entopts map[string]any) HubspotSettingsEntity
 
-var NewMulticurrencyCollectionResponseExchangeRateNoPagingEntityFunc func(client *HubspotSettingsSDK, entopts map[string]any) HubspotSettingsEntity
-
 var NewMulticurrencyCompanyCurrencyEntityFunc func(client *HubspotSettingsSDK, entopts map[string]any) HubspotSettingsEntity
-
-var NewMulticurrencyExchangeRateEntityFunc func(client *HubspotSettingsSDK, entopts map[string]any) HubspotSettingsEntity
 
 var NewTaxRateEntityFunc func(client *HubspotSettingsSDK, entopts map[string]any) HubspotSettingsEntity
 
@@ -50,15 +50,17 @@ var NewTeamsTeamEntityFunc func(client *HubspotSettingsSDK, entopts map[string]a
 
 var NewTeamsTeamMemberEntityFunc func(client *HubspotSettingsSDK, entopts map[string]any) HubspotSettingsEntity
 
+var NewUnsupportedCurrencyEntityFunc func(client *HubspotSettingsSDK, entopts map[string]any) HubspotSettingsEntity
+
 var NewUserEntityFunc func(client *HubspotSettingsSDK, entopts map[string]any) HubspotSettingsEntity
 
-var NewUserProvisioningCollectionResponsePublicPermissionSetNoEntityFunc func(client *HubspotSettingsSDK, entopts map[string]any) HubspotSettingsEntity
-
-var NewUserProvisioningCollectionResponsePublicSeatNoPagingEntityFunc func(client *HubspotSettingsSDK, entopts map[string]any) HubspotSettingsEntity
-
-var NewUserProvisioningCollectionResponsePublicTeamNoPagingEntityFunc func(client *HubspotSettingsSDK, entopts map[string]any) HubspotSettingsEntity
-
 var NewUserProvisioningCollectionResponsePublicUserForwardPagingEntityFunc func(client *HubspotSettingsSDK, entopts map[string]any) HubspotSettingsEntity
+
+var NewUserProvisioningPublicPermissionSetEntityFunc func(client *HubspotSettingsSDK, entopts map[string]any) HubspotSettingsEntity
+
+var NewUserProvisioningPublicSeatEntityFunc func(client *HubspotSettingsSDK, entopts map[string]any) HubspotSettingsEntity
+
+var NewUserProvisioningPublicTeamEntityFunc func(client *HubspotSettingsSDK, entopts map[string]any) HubspotSettingsEntity
 
 var NewUserProvisioningPublicUserEntityFunc func(client *HubspotSettingsSDK, entopts map[string]any) HubspotSettingsEntity
 

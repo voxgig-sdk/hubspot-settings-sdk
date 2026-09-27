@@ -1,10 +1,32 @@
 -- Typed models for the HubspotSettings SDK (LuaLS annotations).
 --
--- GENERATED from the API model: main.kit.entity.<e>.fields[] and per-op
--- params (op.<name>.points[].args.params[]). Field/param types come from the
+-- GENERATED from the API model: main.kit.entity.<e>.fields{} and per-op
+-- params (op.<name>.points[].g.params[]). Field/param types come from the
 -- canonical type sentinels via @voxgig/sdkgen canonToType (source of truth:
 -- @voxgig/apidef VALID_CANON). Annotations only — no runtime effect. Do not
 -- edit by hand.
+
+---@class AddCurrency
+---@field conversionRate number
+---@field createdAt string
+---@field currencyCode string
+---@field effectiveAt string
+---@field fromCurrencyCode string
+---@field id string
+---@field toCurrencyCode string
+---@field updatedAt string
+---@field visibleInUI boolean
+
+---@class AddCurrencyCreateData
+---@field conversionRate number
+---@field createdAt string
+---@field currencyCode string
+---@field effectiveAt string
+---@field fromCurrencyCode string
+---@field id string
+---@field toCurrencyCode string
+---@field updatedAt string
+---@field visibleInUI boolean
 
 ---@class Basic
 
@@ -13,9 +35,66 @@
 ---@field user_id? string
 ---@field type? string
 
+---@class Code
+---@field currencyCode string
+---@field currencyName string
+
+---@class CodeListMatch
+---@field currencyCode? string
+---@field currencyName? string
+
+---@class Current
+---@field conversionRate number
+---@field createdAt string
+---@field effectiveAt string
+---@field fromCurrencyCode string
+---@field id string
+---@field toCurrencyCode string
+---@field updatedAt string
+---@field visibleInUI boolean
+
+---@class CurrentListMatch
+---@field conversionRate? number
+---@field createdAt? string
+---@field effectiveAt? string
+---@field fromCurrencyCode? string
+---@field id? string
+---@field toCurrencyCode? string
+---@field updatedAt? string
+---@field visibleInUI? boolean
+
 ---@class ExchangeRate
+---@field conversionRate number
+---@field createdAt string
+---@field effectiveAt string
+---@field fromCurrencyCode string
+---@field id string
+---@field toCurrencyCode string
+---@field updatedAt string
+---@field visibleInUI boolean
+
+---@class ExchangeRateLoadMatch
+---@field id string
 
 ---@class ExchangeRateCreateData
+---@field conversionRate number
+---@field createdAt string
+---@field effectiveAt string
+---@field fromCurrencyCode string
+---@field id string
+---@field toCurrencyCode string
+---@field updatedAt string
+---@field visibleInUI boolean
+
+---@class ExchangeRateUpdateData
+---@field id string
+---@field conversionRate? number
+---@field createdAt? string
+---@field effectiveAt? string
+---@field fromCurrencyCode? string
+---@field toCurrencyCode? string
+---@field updatedAt? string
+---@field visibleInUI? boolean
 
 ---@class MulticurrencyBatchResponseExchangeRate
 ---@field completedAt string
@@ -41,14 +120,6 @@
 ---@class MulticurrencyCentralExchangeRatesInformationLoadMatch
 ---@field centralExchangeRatesEnabled? boolean
 
----@class MulticurrencyCollectionResponseCurrencyCodeInfoNoPaging
----@field currencyCode string
----@field currencyName string
-
----@class MulticurrencyCollectionResponseCurrencyCodeInfoNoPagingListMatch
----@field currencyCode? string
----@field currencyName? string
-
 ---@class MulticurrencyCollectionResponseExchangeRateForwardPaging
 ---@field conversionRate number
 ---@field createdAt string
@@ -65,26 +136,6 @@
 ---@field limit? number
 ---@field to_currency_code? string
 
----@class MulticurrencyCollectionResponseExchangeRateNoPaging
----@field conversionRate number
----@field createdAt string
----@field effectiveAt string
----@field fromCurrencyCode string
----@field id string
----@field toCurrencyCode string
----@field updatedAt string
----@field visibleInUI boolean
-
----@class MulticurrencyCollectionResponseExchangeRateNoPagingListMatch
----@field conversionRate? number
----@field createdAt? string
----@field effectiveAt? string
----@field fromCurrencyCode? string
----@field id? string
----@field toCurrencyCode? string
----@field updatedAt? string
----@field visibleInUI? boolean
-
 ---@class MulticurrencyCompanyCurrency
 ---@field createdAt string
 ---@field currencyCode string
@@ -99,42 +150,6 @@
 ---@field createdAt? string
 ---@field currencyCode? string
 ---@field id? string
-
----@class MulticurrencyExchangeRate
----@field conversionRate number
----@field createdAt string
----@field currencyCode string
----@field effectiveAt string
----@field fromCurrencyCode string
----@field id string
----@field toCurrencyCode string
----@field updatedAt string
----@field visibleInUI boolean
-
----@class MulticurrencyExchangeRateLoadMatch
----@field id string
-
----@class MulticurrencyExchangeRateCreateData
----@field conversionRate number
----@field createdAt string
----@field currencyCode string
----@field effectiveAt string
----@field fromCurrencyCode string
----@field id string
----@field toCurrencyCode string
----@field updatedAt string
----@field visibleInUI boolean
-
----@class MulticurrencyExchangeRateUpdateData
----@field id string
----@field conversionRate? number
----@field createdAt? string
----@field currencyCode? string
----@field effectiveAt? string
----@field fromCurrencyCode? string
----@field toCurrencyCode? string
----@field updatedAt? string
----@field visibleInUI? boolean
 
 ---@class TaxRate
 ---@field active boolean
@@ -225,43 +240,19 @@
 ---@field type string
 ---@field userId string
 
+---@class UnsupportedCurrency
+---@field currencyCode string
+---@field currencyName string
+
+---@class UnsupportedCurrencyListMatch
+---@field currencyCode? string
+---@field currencyName? string
+
 ---@class User
 
 ---@class UserRemoveMatch
 ---@field user_id string
 ---@field id_property? string
-
----@class UserProvisioningCollectionResponsePublicPermissionSetNo
----@field id string
----@field name string
----@field requiresBillingWrite boolean
-
----@class UserProvisioningCollectionResponsePublicPermissionSetNoListMatch
----@field id? string
----@field name? string
----@field requiresBillingWrite? boolean
-
----@class UserProvisioningCollectionResponsePublicSeatNoPaging
----@field description? string
----@field name string
----@field remainingSeats? number
-
----@class UserProvisioningCollectionResponsePublicSeatNoPagingListMatch
----@field description? string
----@field name? string
----@field remainingSeats? number
-
----@class UserProvisioningCollectionResponsePublicTeamNoPaging
----@field id string
----@field name string
----@field secondaryUserIds table
----@field userIds table
-
----@class UserProvisioningCollectionResponsePublicTeamNoPagingListMatch
----@field id? string
----@field name? string
----@field secondaryUserIds? table
----@field userIds? table
 
 ---@class UserProvisioningCollectionResponsePublicUserForwardPaging
 ---@field email string
@@ -279,6 +270,38 @@
 ---@class UserProvisioningCollectionResponsePublicUserForwardPagingListMatch
 ---@field after? string
 ---@field limit? number
+
+---@class UserProvisioningPublicPermissionSet
+---@field id string
+---@field name string
+---@field requiresBillingWrite boolean
+
+---@class UserProvisioningPublicPermissionSetListMatch
+---@field id? string
+---@field name? string
+---@field requiresBillingWrite? boolean
+
+---@class UserProvisioningPublicSeat
+---@field description? string
+---@field name string
+---@field remainingSeats? number
+
+---@class UserProvisioningPublicSeatListMatch
+---@field description? string
+---@field name? string
+---@field remainingSeats? number
+
+---@class UserProvisioningPublicTeam
+---@field id string
+---@field name string
+---@field secondaryUserIds table
+---@field userIds table
+
+---@class UserProvisioningPublicTeamListMatch
+---@field id? string
+---@field name? string
+---@field secondaryUserIds? table
+---@field userIds? table
 
 ---@class UserProvisioningPublicUser
 ---@field email string

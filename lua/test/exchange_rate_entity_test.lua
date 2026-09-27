@@ -19,7 +19,7 @@ describe("ExchangeRateEntity", function()
     local setup = exchange_rate_basic_setup(nil)
     -- Per-op sdk-test-control.json skip.
     local _live = setup.live or false
-    for _, _op in ipairs({"create"}) do
+    for _, _op in ipairs({"create", "update", "load"}) do
       local _should_skip, _reason = runner.is_control_skipped("entityOp", "exchange_rate." .. _op, _live and "live" or "unit")
       if _should_skip then
         pending(_reason or "skipped via sdk-test-control.json")
@@ -43,6 +43,33 @@ describe("ExchangeRateEntity", function()
     assert.is_nil(err)
     exchange_rate_ref01_data = helpers.to_map(type(exchange_rate_ref01_data_result) == 'table' and exchange_rate_ref01_data_result.data_get and exchange_rate_ref01_data_result:data_get() or exchange_rate_ref01_data_result)
     assert.is_not_nil(exchange_rate_ref01_data)
+    assert.is_not_nil(exchange_rate_ref01_data["id"])
+
+    -- UPDATE
+    local exchange_rate_ref01_data_up0_up = {
+      id = exchange_rate_ref01_data["id"],
+    }
+
+    local exchange_rate_ref01_markdef_up0_name = "createdAt"
+    local exchange_rate_ref01_markdef_up0_value = "Mark01-exchange_rate_ref01_" .. tostring(setup.now)
+    exchange_rate_ref01_data_up0_up[exchange_rate_ref01_markdef_up0_name] = exchange_rate_ref01_markdef_up0_value
+
+    local exchange_rate_ref01_resdata_up0_result, err = exchange_rate_ref01_ent:update(exchange_rate_ref01_data_up0_up, nil)
+    assert.is_nil(err)
+    local exchange_rate_ref01_resdata_up0 = helpers.to_map(type(exchange_rate_ref01_resdata_up0_result) == 'table' and exchange_rate_ref01_resdata_up0_result.data_get and exchange_rate_ref01_resdata_up0_result:data_get() or exchange_rate_ref01_resdata_up0_result)
+    assert.is_not_nil(exchange_rate_ref01_resdata_up0)
+    assert.are.equal(exchange_rate_ref01_resdata_up0["id"], exchange_rate_ref01_data_up0_up["id"])
+    assert.are.equal(exchange_rate_ref01_resdata_up0[exchange_rate_ref01_markdef_up0_name], exchange_rate_ref01_markdef_up0_value)
+
+    -- LOAD
+    local exchange_rate_ref01_match_dt0 = {
+      id = exchange_rate_ref01_data["id"],
+    }
+    local exchange_rate_ref01_data_dt0_loaded, err = exchange_rate_ref01_ent:load(exchange_rate_ref01_match_dt0, nil)
+    assert.is_nil(err)
+    local exchange_rate_ref01_data_dt0_load_result = helpers.to_map(type(exchange_rate_ref01_data_dt0_loaded) == 'table' and exchange_rate_ref01_data_dt0_loaded.data_get and exchange_rate_ref01_data_dt0_loaded:data_get() or exchange_rate_ref01_data_dt0_loaded)
+    assert.is_not_nil(exchange_rate_ref01_data_dt0_load_result)
+    assert.are.equal(exchange_rate_ref01_data_dt0_load_result["id"], exchange_rate_ref01_data["id"])
 
   end)
 end)

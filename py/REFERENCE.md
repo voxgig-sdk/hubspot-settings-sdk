@@ -42,9 +42,21 @@ client = HubspotSettingsSDK.test()
 
 ### Instance Methods
 
+#### `AddCurrency(data=None)`
+
+Create a new `AddCurrencyEntity` instance. Pass `None` for no initial data.
+
 #### `Basic(data=None)`
 
 Create a new `BasicEntity` instance. Pass `None` for no initial data.
+
+#### `Code(data=None)`
+
+Create a new `CodeEntity` instance. Pass `None` for no initial data.
+
+#### `Current(data=None)`
+
+Create a new `CurrentEntity` instance. Pass `None` for no initial data.
 
 #### `ExchangeRate(data=None)`
 
@@ -58,25 +70,13 @@ Create a new `MulticurrencyBatchResponseExchangeRateEntity` instance. Pass `None
 
 Create a new `MulticurrencyCentralExchangeRatesInformationEntity` instance. Pass `None` for no initial data.
 
-#### `MulticurrencyCollectionResponseCurrencyCodeInfoNoPaging(data=None)`
-
-Create a new `MulticurrencyCollectionResponseCurrencyCodeInfoNoPagingEntity` instance. Pass `None` for no initial data.
-
 #### `MulticurrencyCollectionResponseExchangeRateForwardPaging(data=None)`
 
 Create a new `MulticurrencyCollectionResponseExchangeRateForwardPagingEntity` instance. Pass `None` for no initial data.
 
-#### `MulticurrencyCollectionResponseExchangeRateNoPaging(data=None)`
-
-Create a new `MulticurrencyCollectionResponseExchangeRateNoPagingEntity` instance. Pass `None` for no initial data.
-
 #### `MulticurrencyCompanyCurrency(data=None)`
 
 Create a new `MulticurrencyCompanyCurrencyEntity` instance. Pass `None` for no initial data.
-
-#### `MulticurrencyExchangeRate(data=None)`
-
-Create a new `MulticurrencyExchangeRateEntity` instance. Pass `None` for no initial data.
 
 #### `TaxRate(data=None)`
 
@@ -102,25 +102,29 @@ Create a new `TeamsTeamEntity` instance. Pass `None` for no initial data.
 
 Create a new `TeamsTeamMemberEntity` instance. Pass `None` for no initial data.
 
+#### `UnsupportedCurrency(data=None)`
+
+Create a new `UnsupportedCurrencyEntity` instance. Pass `None` for no initial data.
+
 #### `User(data=None)`
 
 Create a new `UserEntity` instance. Pass `None` for no initial data.
 
-#### `UserProvisioningCollectionResponsePublicPermissionSetNo(data=None)`
-
-Create a new `UserProvisioningCollectionResponsePublicPermissionSetNoEntity` instance. Pass `None` for no initial data.
-
-#### `UserProvisioningCollectionResponsePublicSeatNoPaging(data=None)`
-
-Create a new `UserProvisioningCollectionResponsePublicSeatNoPagingEntity` instance. Pass `None` for no initial data.
-
-#### `UserProvisioningCollectionResponsePublicTeamNoPaging(data=None)`
-
-Create a new `UserProvisioningCollectionResponsePublicTeamNoPagingEntity` instance. Pass `None` for no initial data.
-
 #### `UserProvisioningCollectionResponsePublicUserForwardPaging(data=None)`
 
 Create a new `UserProvisioningCollectionResponsePublicUserForwardPagingEntity` instance. Pass `None` for no initial data.
+
+#### `UserProvisioningPublicPermissionSet(data=None)`
+
+Create a new `UserProvisioningPublicPermissionSetEntity` instance. Pass `None` for no initial data.
+
+#### `UserProvisioningPublicSeat(data=None)`
+
+Create a new `UserProvisioningPublicSeatEntity` instance. Pass `None` for no initial data.
+
+#### `UserProvisioningPublicTeam(data=None)`
+
+Create a new `UserProvisioningPublicTeamEntity` instance. Pass `None` for no initial data.
 
 #### `UserProvisioningPublicUser(data=None)`
 
@@ -154,6 +158,75 @@ Make a direct HTTP request to any API endpoint. Returns a result `dict` with `ok
 #### `prepare(fetchargs=None) -> dict`
 
 Prepare a fetch definition without sending. Returns the `fetchdef` and raises on error.
+
+
+---
+
+## AddCurrencyEntity
+
+```python
+add_currency = client.AddCurrency()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `conversionRate` | `float` | Yes | The conversion rate between the to and from currency code of this exchange rate. |
+| `createdAt` | `str` | Yes | The date the exchange rate was created. |
+| `currencyCode` | `str` | Yes | The currency code being added to the HubSpot portal for use with central exchange rates. |
+| `effectiveAt` | `str` | Yes | The date the exchange rate is in effect. |
+| `fromCurrencyCode` | `str` | Yes | This represents the three-letter currency code (such as USD for US Dollar) of the currency you are converting from. |
+| `id` | `str` | Yes | A unique identifier for the exchange rate |
+| `toCurrencyCode` | `str` | Yes | This represents the three-letter currency code (such as USD for US Dollar) of the currency you are converting to. |
+| `updatedAt` | `str` | Yes | The date the exchange rate was last updated. |
+| `visibleInUI` | `bool` | Yes | This indicates if the exchange rate is shown in the MultiCurrency settings page. |
+
+### Operations
+
+#### `create(reqdata, ctrl=None) -> dict`
+
+Create a new entity with the given data. Returns the created entity data and raises on error.
+
+```python
+result = client.AddCurrency().create({
+    "conversionRate": 1,  # float
+    "createdAt": "example_createdAt",  # str
+    "currencyCode": "example_currencyCode",  # str
+    "effectiveAt": "example_effectiveAt",  # str
+    "fromCurrencyCode": "example_fromCurrencyCode",  # str
+    "id": "example_id",  # str
+    "toCurrencyCode": "example_toCurrencyCode",  # str
+    "updatedAt": "example_updatedAt",  # str
+    "visibleInUI": True,  # bool
+})
+```
+
+### Common Methods
+
+#### `data_get() -> dict`
+
+Get the entity data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> dict`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `AddCurrencyEntity` instance with the same options.
+
+#### `get_name() -> str`
+
+Return the entity name.
 
 
 ---
@@ -203,11 +276,151 @@ Return the entity name.
 
 ---
 
+## CodeEntity
+
+```python
+code = client.Code()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `currencyCode` | `str` | Yes | The three-letter code representing a specific currency (ex. |
+| `currencyName` | `str` | Yes | The full name of the currency (ex. |
+
+### Operations
+
+#### `list(reqmatch=None, ctrl=None) -> list`
+
+List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list and raises on error.
+
+```python
+results = client.Code().list()
+for code in results:
+    print(code)
+```
+
+### Common Methods
+
+#### `data_get() -> dict`
+
+Get the entity data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> dict`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `CodeEntity` instance with the same options.
+
+#### `get_name() -> str`
+
+Return the entity name.
+
+
+---
+
+## CurrentEntity
+
+```python
+current = client.Current()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `conversionRate` | `float` | Yes | The conversion rate between the to and from currency code of this exchange rate. |
+| `createdAt` | `str` | Yes | The date the exchange rate was created. |
+| `effectiveAt` | `str` | Yes | The date the exchange rate is in effect. |
+| `fromCurrencyCode` | `str` | Yes | This represents the three-letter currency code (such as USD for US Dollar) of the currency you are converting from. |
+| `id` | `str` | Yes | A unique identifier for the exchange rate |
+| `toCurrencyCode` | `str` | Yes | This represents the three-letter currency code (such as USD for US Dollar) of the currency you are converting to. |
+| `updatedAt` | `str` | Yes | The date the exchange rate was last updated. |
+| `visibleInUI` | `bool` | Yes | This indicates if the exchange rate is shown in the MultiCurrency settings page. |
+
+### Operations
+
+#### `list(reqmatch=None, ctrl=None) -> list`
+
+List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list and raises on error.
+
+```python
+results = client.Current().list()
+for current in results:
+    print(current)
+```
+
+### Common Methods
+
+#### `data_get() -> dict`
+
+Get the entity data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> dict`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `CurrentEntity` instance with the same options.
+
+#### `get_name() -> str`
+
+Return the entity name.
+
+
+---
+
 ## ExchangeRateEntity
 
 ```python
 exchange_rate = client.ExchangeRate()
 ```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `conversionRate` | `float` | Yes | The conversion rate between the to and from currency code of this exchange rate. |
+| `createdAt` | `str` | Yes | The date the exchange rate was created. |
+| `effectiveAt` | `str` | Yes | The date the exchange rate is in effect. |
+| `fromCurrencyCode` | `str` | Yes | This represents the three-letter currency code (such as USD for US Dollar) of the currency you are converting from. |
+| `id` | `str` | Yes | A unique identifier for the exchange rate |
+| `toCurrencyCode` | `str` | Yes | This represents the three-letter currency code (such as USD for US Dollar) of the currency you are converting to. |
+| `updatedAt` | `str` | Yes | The date the exchange rate was last updated. |
+| `visibleInUI` | `bool` | Yes | This indicates if the exchange rate is shown in the MultiCurrency settings page. |
+
+### Field Usage by Operation
+
+| Field | load | create | update |
+| --- | --- | --- | --- |
+| `conversionRate` | - | - | - |
+| `createdAt` | - | - | - |
+| `effectiveAt` | - | Yes | Yes |
+| `fromCurrencyCode` | - | - | - |
+| `id` | - | - | - |
+| `toCurrencyCode` | - | - | - |
+| `updatedAt` | - | - | - |
+| `visibleInUI` | - | - | - |
 
 ### Operations
 
@@ -217,6 +430,33 @@ Create a new entity with the given data. Returns the created entity data and rai
 
 ```python
 result = client.ExchangeRate().create({
+    "conversionRate": 1,  # float
+    "createdAt": "example_createdAt",  # str
+    "effectiveAt": "example_effectiveAt",  # str
+    "fromCurrencyCode": "example_fromCurrencyCode",  # str
+    "id": "example_id",  # str
+    "toCurrencyCode": "example_toCurrencyCode",  # str
+    "updatedAt": "example_updatedAt",  # str
+    "visibleInUI": True,  # bool
+})
+```
+
+#### `load(reqmatch, ctrl=None) -> dict`
+
+Load a single entity matching the given criteria. Returns the entity data and raises on error.
+
+```python
+result = client.ExchangeRate().load({"id": "exchange_rate_id"})
+```
+
+#### `update(reqdata, ctrl=None) -> dict`
+
+Update an existing entity. The data must include the entity `id`. Returns the updated entity data and raises on error.
+
+```python
+result = client.ExchangeRate().update({
+    "id": "exchange_rate_id",
+    # Fields to update
 })
 ```
 
@@ -363,60 +603,6 @@ Return the entity name.
 
 ---
 
-## MulticurrencyCollectionResponseCurrencyCodeInfoNoPagingEntity
-
-```python
-multicurrency_collection_response_currency_code_info_no_paging = client.MulticurrencyCollectionResponseCurrencyCodeInfoNoPaging()
-```
-
-### Fields
-
-| Field | Type | Required | Description |
-| --- | --- | --- | --- |
-| `currencyCode` | `str` | Yes | The three-letter code representing a specific currency (ex. |
-| `currencyName` | `str` | Yes | The full name of the currency (ex. |
-
-### Operations
-
-#### `list(reqmatch=None, ctrl=None) -> list`
-
-List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list and raises on error.
-
-```python
-results = client.MulticurrencyCollectionResponseCurrencyCodeInfoNoPaging().list()
-for multicurrency_collection_response_currency_code_info_no_paging in results:
-    print(multicurrency_collection_response_currency_code_info_no_paging)
-```
-
-### Common Methods
-
-#### `data_get() -> dict`
-
-Get the entity data.
-
-#### `data_set(data)`
-
-Set the entity data.
-
-#### `match_get() -> dict`
-
-Get the entity match criteria.
-
-#### `match_set(match)`
-
-Set the entity match criteria.
-
-#### `make() -> Entity`
-
-Create a new `MulticurrencyCollectionResponseCurrencyCodeInfoNoPagingEntity` instance with the same options.
-
-#### `get_name() -> str`
-
-Return the entity name.
-
-
----
-
 ## MulticurrencyCollectionResponseExchangeRateForwardPagingEntity
 
 ```python
@@ -469,66 +655,6 @@ Set the entity match criteria.
 #### `make() -> Entity`
 
 Create a new `MulticurrencyCollectionResponseExchangeRateForwardPagingEntity` instance with the same options.
-
-#### `get_name() -> str`
-
-Return the entity name.
-
-
----
-
-## MulticurrencyCollectionResponseExchangeRateNoPagingEntity
-
-```python
-multicurrency_collection_response_exchange_rate_no_paging = client.MulticurrencyCollectionResponseExchangeRateNoPaging()
-```
-
-### Fields
-
-| Field | Type | Required | Description |
-| --- | --- | --- | --- |
-| `conversionRate` | `float` | Yes | The conversion rate between the to and from currency code of this exchange rate. |
-| `createdAt` | `str` | Yes | The date the exchange rate was created. |
-| `effectiveAt` | `str` | Yes | The date the exchange rate is in effect. |
-| `fromCurrencyCode` | `str` | Yes | This represents the three-letter currency code (such as USD for US Dollar) of the currency you are converting from. |
-| `id` | `str` | Yes | A unique identifier for the exchange rate |
-| `toCurrencyCode` | `str` | Yes | This represents the three-letter currency code (such as USD for US Dollar) of the currency you are converting to. |
-| `updatedAt` | `str` | Yes | The date the exchange rate was last updated. |
-| `visibleInUI` | `bool` | Yes | This indicates if the exchange rate is shown in the MultiCurrency settings page. |
-
-### Operations
-
-#### `list(reqmatch=None, ctrl=None) -> list`
-
-List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list and raises on error.
-
-```python
-results = client.MulticurrencyCollectionResponseExchangeRateNoPaging().list()
-for multicurrency_collection_response_exchange_rate_no_paging in results:
-    print(multicurrency_collection_response_exchange_rate_no_paging)
-```
-
-### Common Methods
-
-#### `data_get() -> dict`
-
-Get the entity data.
-
-#### `data_set(data)`
-
-Set the entity data.
-
-#### `match_get() -> dict`
-
-Get the entity match criteria.
-
-#### `match_set(match)`
-
-Set the entity match criteria.
-
-#### `make() -> Entity`
-
-Create a new `MulticurrencyCollectionResponseExchangeRateNoPagingEntity` instance with the same options.
 
 #### `get_name() -> str`
 
@@ -593,108 +719,6 @@ Set the entity match criteria.
 #### `make() -> Entity`
 
 Create a new `MulticurrencyCompanyCurrencyEntity` instance with the same options.
-
-#### `get_name() -> str`
-
-Return the entity name.
-
-
----
-
-## MulticurrencyExchangeRateEntity
-
-```python
-multicurrency_exchange_rate = client.MulticurrencyExchangeRate()
-```
-
-### Fields
-
-| Field | Type | Required | Description |
-| --- | --- | --- | --- |
-| `conversionRate` | `float` | Yes | The conversion rate between the to and from currency code of this exchange rate. |
-| `createdAt` | `str` | Yes | The date the exchange rate was created. |
-| `currencyCode` | `str` | Yes | The currency code being added to the HubSpot portal for use with central exchange rates. |
-| `effectiveAt` | `str` | Yes | The date the exchange rate is in effect. |
-| `fromCurrencyCode` | `str` | Yes | This represents the three-letter currency code (such as USD for US Dollar) of the currency you are converting from. |
-| `id` | `str` | Yes | A unique identifier for the exchange rate |
-| `toCurrencyCode` | `str` | Yes | This represents the three-letter currency code (such as USD for US Dollar) of the currency you are converting to. |
-| `updatedAt` | `str` | Yes | The date the exchange rate was last updated. |
-| `visibleInUI` | `bool` | Yes | This indicates if the exchange rate is shown in the MultiCurrency settings page. |
-
-### Field Usage by Operation
-
-| Field | load | create | update |
-| --- | --- | --- | --- |
-| `conversionRate` | - | - | - |
-| `createdAt` | - | - | - |
-| `currencyCode` | - | - | - |
-| `effectiveAt` | - | Yes | Yes |
-| `fromCurrencyCode` | - | - | - |
-| `id` | - | - | - |
-| `toCurrencyCode` | - | - | - |
-| `updatedAt` | - | - | - |
-| `visibleInUI` | - | - | - |
-
-### Operations
-
-#### `create(reqdata, ctrl=None) -> dict`
-
-Create a new entity with the given data. Returns the created entity data and raises on error.
-
-```python
-result = client.MulticurrencyExchangeRate().create({
-    "conversionRate": 1,  # float
-    "createdAt": "example_createdAt",  # str
-    "currencyCode": "example_currencyCode",  # str
-    "effectiveAt": "example_effectiveAt",  # str
-    "fromCurrencyCode": "example_fromCurrencyCode",  # str
-    "id": "example_id",  # str
-    "toCurrencyCode": "example_toCurrencyCode",  # str
-    "updatedAt": "example_updatedAt",  # str
-    "visibleInUI": True,  # bool
-})
-```
-
-#### `load(reqmatch, ctrl=None) -> dict`
-
-Load a single entity matching the given criteria. Returns the entity data and raises on error.
-
-```python
-result = client.MulticurrencyExchangeRate().load({"id": "multicurrency_exchange_rate_id"})
-```
-
-#### `update(reqdata, ctrl=None) -> dict`
-
-Update an existing entity. The data must include the entity `id`. Returns the updated entity data and raises on error.
-
-```python
-result = client.MulticurrencyExchangeRate().update({
-    "id": "multicurrency_exchange_rate_id",
-    # Fields to update
-})
-```
-
-### Common Methods
-
-#### `data_get() -> dict`
-
-Get the entity data.
-
-#### `data_set(data)`
-
-Set the entity data.
-
-#### `match_get() -> dict`
-
-Get the entity match criteria.
-
-#### `match_set(match)`
-
-Set the entity match criteria.
-
-#### `make() -> Entity`
-
-Create a new `MulticurrencyExchangeRateEntity` instance with the same options.
 
 #### `get_name() -> str`
 
@@ -1087,6 +1111,60 @@ Return the entity name.
 
 ---
 
+## UnsupportedCurrencyEntity
+
+```python
+unsupported_currency = client.UnsupportedCurrency()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `currencyCode` | `str` | Yes | The three-letter code representing a specific currency (ex. |
+| `currencyName` | `str` | Yes | The full name of the currency (ex. |
+
+### Operations
+
+#### `list(reqmatch=None, ctrl=None) -> list`
+
+List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list and raises on error.
+
+```python
+results = client.UnsupportedCurrency().list()
+for unsupported_currency in results:
+    print(unsupported_currency)
+```
+
+### Common Methods
+
+#### `data_get() -> dict`
+
+Get the entity data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> dict`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `UnsupportedCurrencyEntity` instance with the same options.
+
+#### `get_name() -> str`
+
+Return the entity name.
+
+
+---
+
 ## UserEntity
 
 ```python
@@ -1124,172 +1202,6 @@ Set the entity match criteria.
 #### `make() -> Entity`
 
 Create a new `UserEntity` instance with the same options.
-
-#### `get_name() -> str`
-
-Return the entity name.
-
-
----
-
-## UserProvisioningCollectionResponsePublicPermissionSetNoEntity
-
-```python
-user_provisioning_collection_response_public_permission_set_no = client.UserProvisioningCollectionResponsePublicPermissionSetNo()
-```
-
-### Fields
-
-| Field | Type | Required | Description |
-| --- | --- | --- | --- |
-| `id` | `str` | Yes | The unique identifier for the permission set. |
-| `name` | `str` | Yes | The name of the permission set. |
-| `requiresBillingWrite` | `bool` | Yes | A boolean indicating whether the permission set requires billing write access. |
-
-### Operations
-
-#### `list(reqmatch=None, ctrl=None) -> list`
-
-List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list and raises on error.
-
-```python
-results = client.UserProvisioningCollectionResponsePublicPermissionSetNo().list()
-for user_provisioning_collection_response_public_permission_set_no in results:
-    print(user_provisioning_collection_response_public_permission_set_no)
-```
-
-### Common Methods
-
-#### `data_get() -> dict`
-
-Get the entity data.
-
-#### `data_set(data)`
-
-Set the entity data.
-
-#### `match_get() -> dict`
-
-Get the entity match criteria.
-
-#### `match_set(match)`
-
-Set the entity match criteria.
-
-#### `make() -> Entity`
-
-Create a new `UserProvisioningCollectionResponsePublicPermissionSetNoEntity` instance with the same options.
-
-#### `get_name() -> str`
-
-Return the entity name.
-
-
----
-
-## UserProvisioningCollectionResponsePublicSeatNoPagingEntity
-
-```python
-user_provisioning_collection_response_public_seat_no_paging = client.UserProvisioningCollectionResponsePublicSeatNoPaging()
-```
-
-### Fields
-
-| Field | Type | Required | Description |
-| --- | --- | --- | --- |
-| `description` | `str` | No | A string providing additional details about the seat. |
-| `name` | `str` | Yes | The name of the seat. |
-| `remainingSeats` | `int` | No | An integer indicating the number of seats that are still available. |
-
-### Operations
-
-#### `list(reqmatch=None, ctrl=None) -> list`
-
-List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list and raises on error.
-
-```python
-results = client.UserProvisioningCollectionResponsePublicSeatNoPaging().list()
-for user_provisioning_collection_response_public_seat_no_paging in results:
-    print(user_provisioning_collection_response_public_seat_no_paging)
-```
-
-### Common Methods
-
-#### `data_get() -> dict`
-
-Get the entity data.
-
-#### `data_set(data)`
-
-Set the entity data.
-
-#### `match_get() -> dict`
-
-Get the entity match criteria.
-
-#### `match_set(match)`
-
-Set the entity match criteria.
-
-#### `make() -> Entity`
-
-Create a new `UserProvisioningCollectionResponsePublicSeatNoPagingEntity` instance with the same options.
-
-#### `get_name() -> str`
-
-Return the entity name.
-
-
----
-
-## UserProvisioningCollectionResponsePublicTeamNoPagingEntity
-
-```python
-user_provisioning_collection_response_public_team_no_paging = client.UserProvisioningCollectionResponsePublicTeamNoPaging()
-```
-
-### Fields
-
-| Field | Type | Required | Description |
-| --- | --- | --- | --- |
-| `id` | `str` | Yes | The unique identifier for the team, represented as a string. |
-| `name` | `str` | Yes | The name of the team, represented as a string. |
-| `secondaryUserIds` | `list` | Yes | An array of strings representing the IDs of users who are secondary members of the team. |
-| `userIds` | `list` | Yes | An array of strings representing the IDs of users who are primary members of the team. |
-
-### Operations
-
-#### `list(reqmatch=None, ctrl=None) -> list`
-
-List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list and raises on error.
-
-```python
-results = client.UserProvisioningCollectionResponsePublicTeamNoPaging().list()
-for user_provisioning_collection_response_public_team_no_paging in results:
-    print(user_provisioning_collection_response_public_team_no_paging)
-```
-
-### Common Methods
-
-#### `data_get() -> dict`
-
-Get the entity data.
-
-#### `data_set(data)`
-
-Set the entity data.
-
-#### `match_get() -> dict`
-
-Get the entity match criteria.
-
-#### `match_set(match)`
-
-Set the entity match criteria.
-
-#### `make() -> Entity`
-
-Create a new `UserProvisioningCollectionResponsePublicTeamNoPagingEntity` instance with the same options.
 
 #### `get_name() -> str`
 
@@ -1353,6 +1265,172 @@ Set the entity match criteria.
 #### `make() -> Entity`
 
 Create a new `UserProvisioningCollectionResponsePublicUserForwardPagingEntity` instance with the same options.
+
+#### `get_name() -> str`
+
+Return the entity name.
+
+
+---
+
+## UserProvisioningPublicPermissionSetEntity
+
+```python
+user_provisioning_public_permission_set = client.UserProvisioningPublicPermissionSet()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `str` | Yes | The unique identifier for the permission set. |
+| `name` | `str` | Yes | The name of the permission set. |
+| `requiresBillingWrite` | `bool` | Yes | A boolean indicating whether the permission set requires billing write access. |
+
+### Operations
+
+#### `list(reqmatch=None, ctrl=None) -> list`
+
+List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list and raises on error.
+
+```python
+results = client.UserProvisioningPublicPermissionSet().list()
+for user_provisioning_public_permission_set in results:
+    print(user_provisioning_public_permission_set)
+```
+
+### Common Methods
+
+#### `data_get() -> dict`
+
+Get the entity data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> dict`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `UserProvisioningPublicPermissionSetEntity` instance with the same options.
+
+#### `get_name() -> str`
+
+Return the entity name.
+
+
+---
+
+## UserProvisioningPublicSeatEntity
+
+```python
+user_provisioning_public_seat = client.UserProvisioningPublicSeat()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `description` | `str` | No | A string providing additional details about the seat. |
+| `name` | `str` | Yes | The name of the seat. |
+| `remainingSeats` | `int` | No | An integer indicating the number of seats that are still available. |
+
+### Operations
+
+#### `list(reqmatch=None, ctrl=None) -> list`
+
+List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list and raises on error.
+
+```python
+results = client.UserProvisioningPublicSeat().list()
+for user_provisioning_public_seat in results:
+    print(user_provisioning_public_seat)
+```
+
+### Common Methods
+
+#### `data_get() -> dict`
+
+Get the entity data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> dict`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `UserProvisioningPublicSeatEntity` instance with the same options.
+
+#### `get_name() -> str`
+
+Return the entity name.
+
+
+---
+
+## UserProvisioningPublicTeamEntity
+
+```python
+user_provisioning_public_team = client.UserProvisioningPublicTeam()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `str` | Yes | The unique identifier for the team, represented as a string. |
+| `name` | `str` | Yes | The name of the team, represented as a string. |
+| `secondaryUserIds` | `list` | Yes | An array of strings representing the IDs of users who are secondary members of the team. |
+| `userIds` | `list` | Yes | An array of strings representing the IDs of users who are primary members of the team. |
+
+### Operations
+
+#### `list(reqmatch=None, ctrl=None) -> list`
+
+List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list and raises on error.
+
+```python
+results = client.UserProvisioningPublicTeam().list()
+for user_provisioning_public_team in results:
+    print(user_provisioning_public_team)
+```
+
+### Common Methods
+
+#### `data_get() -> dict`
+
+Get the entity data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> dict`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `UserProvisioningPublicTeamEntity` instance with the same options.
 
 #### `get_name() -> str`
 
@@ -1466,14 +1544,14 @@ Return the entity name.
 
 | Feature | Version | Description |
 | --- | --- | --- |
-| `debug` | 0.0.1 | Request/response capture ring buffer for debugging |
-| `idempotency` | 0.0.1 | Idempotency keys for safe retries of mutating operations |
-| `metrics` | 0.0.1 | Statistics capture: per-operation counters and latency |
-| `paging` | 0.0.1 | Pagination signals for list operations |
-| `ratelimit` | 0.0.1 | Client-side rate limiting via a token bucket |
-| `retry` | 0.0.1 | Automatic retry of transient failures with exponential backoff |
-| `test` | 0.0.1 | In-memory mock transport for testing without a live server |
-| `timeout` | 0.0.1 | Per-request timeout with transport abort |
+| `debug` | 0.0.1 | Debug capture |
+| `idempotency` | 0.0.1 | Idempotency |
+| `metrics` | 0.0.1 | Metrics |
+| `paging` | 0.0.1 | Paging |
+| `ratelimit` | 0.0.1 | Rate limiting |
+| `retry` | 0.0.1 | Retry |
+| `test` | 0.0.1 | Test transport |
+| `timeout` | 0.0.1 | Timeout |
 
 
 Features are activated via the `feature` option:
@@ -1519,7 +1597,7 @@ rather than the transport, so their order does not affect what they observe.
 
 #### `debug`
 
-Request/response capture ring buffer for debugging.
+Debug capture.
 
 **Configuration**
 
@@ -1550,7 +1628,7 @@ its default unless you name it.
 
 #### `idempotency`
 
-Idempotency keys for safe retries of mutating operations.
+Idempotency.
 
 **Configuration**
 
@@ -1581,7 +1659,7 @@ its default unless you name it.
 
 #### `metrics`
 
-Statistics capture: per-operation counters and latency.
+Metrics.
 
 **Configuration**
 
@@ -1609,7 +1687,7 @@ its default unless you name it.
 
 #### `paging`
 
-Pagination signals for list operations.
+Paging.
 
 **Configuration**
 
@@ -1644,7 +1722,7 @@ its default unless you name it.
 
 #### `ratelimit`
 
-Client-side rate limiting via a token bucket.
+Rate limiting.
 
 **Configuration**
 
@@ -1675,7 +1753,7 @@ its default unless you name it.
 
 #### `retry`
 
-Automatic retry of transient failures with exponential backoff.
+Retry.
 
 **Configuration**
 
@@ -1709,7 +1787,7 @@ its default unless you name it.
 
 #### `test`
 
-In-memory mock transport for testing without a live server.
+Test transport.
 
 **Configuration**
 
@@ -1740,7 +1818,7 @@ its default unless you name it.
 
 #### `timeout`
 
-Per-request timeout with transport abort.
+Timeout.
 
 **Configuration**
 

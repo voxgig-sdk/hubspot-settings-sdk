@@ -1,0 +1,22 @@
+# BasicUserProvisioningPublicSeatFlow
+
+main: kit: flow: BasicUserProvisioningPublicSeatFlow:
+{
+  entity: "user_provisioning_public_seat",
+  kind: "basic",
+  name: "BasicUserProvisioningPublicSeatFlow",
+  step: [
+    {
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "user_provisioning_public_seat_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicUserProvisioningPublicSeatFlow"
+}

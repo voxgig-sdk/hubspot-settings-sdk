@@ -94,7 +94,7 @@ make build-all   # linux/darwin/windows x amd64/arm64, under dist/<os>-<arch>/
 ### Discover the available entities
 
 `/help` in the REPL prints the full entity list, or see [Entities](#entities)
-below — this SDK exposes 21 entities.
+below — this SDK exposes 22 entities.
 
 ## Reference
 
@@ -108,7 +108,7 @@ The CLI registers these boru words, each bound to the SDK:
 | `load`   | `load <entity>` · `load <query> <entity>`     | A single record                |
 | `update` | `update <query> <entity>`                     | Update a record, return it     |
 
-- `<entity>` is a bareword, auto-quoted as an boru atom (e.g. `basic`).
+- `<entity>` is a bareword, auto-quoted as an boru atom (e.g. `add_currency`).
 - `<query>` is either a **Map** (`{id:1}`) or a **Scalar** (`1`, treated as
   `{id:1}`). A scalar is always wrapped as `{id:<value>}`.
 
@@ -149,9 +149,9 @@ Meta-commands use the `/` prefix (everything else on a line is evaluated as boru
 
 ### Entities
 
-The 21 entities this SDK exposes (any is valid as `<entity>`):
+The 22 entities this SDK exposes (any is valid as `<entity>`):
 
-basic exchange_rate multicurrency_batch_response_exchange_rate multicurrency_central_exchange_rates_information multicurrency_collection_response_currency_code_info_no_paging multicurrency_collection_response_exchange_rate_forward_paging multicurrency_collection_response_exchange_rate_no_paging multicurrency_company_currency multicurrency_exchange_rate tax_rate teams_batch_response_team_member teams_collection_response_team_member_response_forward_paging teams_collection_response_team_response_forward_paging teams_team teams_team_member user user_provisioning_collection_response_public_permission_set_no user_provisioning_collection_response_public_seat_no_paging user_provisioning_collection_response_public_team_no_paging user_provisioning_collection_response_public_user_forward_paging user_provisioning_public_user
+add_currency basic code current exchange_rate multicurrency_batch_response_exchange_rate multicurrency_central_exchange_rates_information multicurrency_collection_response_exchange_rate_forward_paging multicurrency_company_currency tax_rate teams_batch_response_team_member teams_collection_response_team_member_response_forward_paging teams_collection_response_team_response_forward_paging teams_team teams_team_member unsupported_currency user user_provisioning_collection_response_public_user_forward_paging user_provisioning_public_permission_set user_provisioning_public_seat user_provisioning_public_team user_provisioning_public_user
 
 ## Explanation
 

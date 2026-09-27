@@ -1,0 +1,81 @@
+# Entity: user_provisioning_public_team
+
+main: kit: entity: user_provisioning_public_team: {
+
+  alias: field: {}
+
+  fields: {
+    id: {
+      h: "Id"
+      n: "id"
+      r: true
+      sh: "The unique identifier for the team, represented as a string."
+      t: "`$STRING`"
+    }
+    name: {
+      h: "Name"
+      n: "name"
+      r: true
+      sh: "The name of the team, represented as a string."
+      t: "`$STRING`"
+    }
+    secondaryUserIds: {
+      h: "Secondary User Ids"
+      n: "secondaryUserIds"
+      r: true
+      sh: "An array of strings representing the IDs of users who are secondary members of the team."
+      t: "`$ARRAY`"
+    }
+    userIds: {
+      h: "User Ids"
+      n: "userIds"
+      r: true
+      sh: "An array of strings representing the IDs of users who are primary members of the team."
+      t: "`$ARRAY`"
+    }
+  }
+
+  id: {
+    field: "id"
+    name: "id"
+  }
+
+  name: "user_provisioning_public_team"
+  op: {
+    list: {
+      name: "list"
+      points: [
+        {
+          co: {
+            id: "GET /settings/users/2026-09/teams"
+            source: "openapi3"
+            version: 2
+          }
+          m: "GET"
+          o: "/settings/users/2026-09/teams"
+          s: [
+            {
+              lit: "settings"
+            }
+            {
+              lit: "users"
+            }
+            {
+              lit: "2026-09"
+            }
+            {
+              lit: "teams"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.results`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

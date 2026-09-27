@@ -1,0 +1,33 @@
+{
+  "existing": {
+    "unsupported_currency": {
+      "UNSUPPORTED_CURRENCY00": {
+        "currencyCode": "s14",
+        "currencyName": "s15"
+      },
+      "UNSUPPORTED_CURRENCY01": {
+        "currencyCode": "s28",
+        "currencyName": "s29"
+      },
+      "UNSUPPORTED_CURRENCY02": {
+        "currencyCode": "s3c",
+        "currencyName": "s3d"
+      }
+    }
+  },
+  "new": {
+    "unsupported_currency": {
+      "unsupported_currency_ref01": {
+        "currencyCode": "s50",
+        "currencyName": "s51"
+      }
+    }
+  },
+  "requests": {
+    "GET /settings/currencies/2026-09/central-fx-rates/unsupported-currencies": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

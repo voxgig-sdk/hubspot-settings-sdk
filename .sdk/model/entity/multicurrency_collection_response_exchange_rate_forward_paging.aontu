@@ -1,0 +1,156 @@
+# Entity: multicurrency_collection_response_exchange_rate_forward_paging
+
+main: kit: entity: multicurrency_collection_response_exchange_rate_forward_paging: {
+
+  alias: field: {}
+
+  fields: {
+    conversionRate: {
+      h: "Conversion Rate"
+      n: "conversionRate"
+      r: true
+      sh: "The conversion rate between the to and from currency code of this exchange rate."
+      t: "`$NUMBER`"
+    }
+    createdAt: {
+      fo: "date-time"
+      h: "Created At"
+      n: "createdAt"
+      r: true
+      sh: "The date the exchange rate was created."
+      t: "`$STRING`"
+    }
+    effectiveAt: {
+      fo: "date-time"
+      h: "Effective At"
+      n: "effectiveAt"
+      r: true
+      sh: "The date the exchange rate is in effect."
+      t: "`$STRING`"
+    }
+    fromCurrencyCode: {
+      h: "From Currency Code"
+      n: "fromCurrencyCode"
+      r: true
+      sh: "This represents the three-letter currency code (such as USD for US Dollar) of the currency you are converting from."
+      t: "`$STRING`"
+    }
+    id: {
+      h: "Id"
+      n: "id"
+      r: true
+      sh: "A unique identifier for the exchange rate"
+      t: "`$STRING`"
+    }
+    toCurrencyCode: {
+      h: "To Currency Code"
+      n: "toCurrencyCode"
+      r: true
+      sh: "This represents the three-letter currency code (such as USD for US Dollar) of the currency you are converting to."
+      t: "`$STRING`"
+    }
+    updatedAt: {
+      fo: "date-time"
+      h: "Updated At"
+      n: "updatedAt"
+      r: true
+      sh: "The date the exchange rate was last updated."
+      t: "`$STRING`"
+    }
+    visibleInUI: {
+      h: "Visible In Ui"
+      n: "visibleInUI"
+      r: true
+      sh: "This indicates if the exchange rate is shown in the MultiCurrency settings page."
+      t: "`$BOOLEAN`"
+    }
+  }
+
+  id: {
+    field: "id"
+    name: "id"
+  }
+
+  name: "multicurrency_collection_response_exchange_rate_forward_paging"
+  op: {
+    list: {
+      name: "list"
+      points: [
+        {
+          co: {
+            id: "GET /settings/currencies/2026-09/exchange-rates"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            query: [
+              {
+                ex: null
+                k: "query"
+                n: "after"
+                or: "after"
+                r: false
+                t: "`$STRING`"
+              }
+              {
+                ex: null
+                k: "query"
+                n: "from_currency_code"
+                or: "from_currency_code"
+                r: false
+                t: "`$STRING`"
+              }
+              {
+                ex: null
+                k: "query"
+                n: "limit"
+                or: "limit"
+                r: false
+                t: "`$INTEGER`"
+              }
+              {
+                ex: null
+                k: "query"
+                n: "to_currency_code"
+                or: "to_currency_code"
+                r: false
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/settings/currencies/2026-09/exchange-rates"
+          q: {
+            exist: [
+              "after"
+              "from_currency_code"
+              "limit"
+              "to_currency_code"
+            ]
+          }
+          s: [
+            {
+              lit: "settings"
+            }
+            {
+              lit: "currencies"
+            }
+            {
+              lit: "2026-09"
+            }
+            {
+              lit: "exchange-rates"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

@@ -19,7 +19,6 @@ import type {
   TeamsCollectionResponseTeamResponseForwardPagingListMatch,
 } from '../HubspotSettingsTypes'
 
-// TODO: needs Entity superclass
 class TeamsCollectionResponseTeamResponseForwardPagingEntity extends HubspotSettingsEntityBase<TeamsCollectionResponseTeamResponseForwardPaging> {
 
   constructor(client: HubspotSettingsSDK, entopts: any) {

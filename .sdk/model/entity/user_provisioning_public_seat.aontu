@@ -1,0 +1,70 @@
+# Entity: user_provisioning_public_seat
+
+main: kit: entity: user_provisioning_public_seat: {
+
+  alias: field: {}
+
+  fields: {
+    description: {
+      h: "Description"
+      n: "description"
+      r: false
+      sh: "A string providing additional details about the seat."
+      t: "`$STRING`"
+    }
+    name: {
+      h: "Name"
+      n: "name"
+      r: true
+      sh: "The name of the seat."
+      t: "`$STRING`"
+    }
+    remainingSeats: {
+      fo: "int32"
+      h: "Remaining Seats"
+      n: "remainingSeats"
+      r: false
+      sh: "An integer indicating the number of seats that are still available."
+      t: "`$INTEGER`"
+    }
+  }
+
+  name: "user_provisioning_public_seat"
+  op: {
+    list: {
+      name: "list"
+      points: [
+        {
+          co: {
+            id: "GET /settings/users/2026-09/seats"
+            source: "openapi3"
+            version: 2
+          }
+          m: "GET"
+          o: "/settings/users/2026-09/seats"
+          s: [
+            {
+              lit: "settings"
+            }
+            {
+              lit: "users"
+            }
+            {
+              lit: "2026-09"
+            }
+            {
+              lit: "seats"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.results`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

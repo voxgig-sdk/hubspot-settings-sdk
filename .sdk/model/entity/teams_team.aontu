@@ -1,0 +1,192 @@
+# Entity: teams_team
+
+main: kit: entity: teams_team: {
+
+  alias: field: {}
+
+  fields: {
+    id: {
+      h: "Id"
+      n: "id"
+      r: true
+      sh: "The unique identifier for the team, represented as a string."
+      t: "`$STRING`"
+    }
+    members: {
+      h: "Members"
+      n: "members"
+      r: true
+      sh: "An array of team members to be assigned to the new team."
+      t: "`$ARRAY`"
+    }
+    name: {
+      h: "Name"
+      n: "name"
+      r: true
+      sh: "The name of the team, represented as a string."
+      t: "`$STRING`"
+    }
+    parentTeamId: {
+      h: "Parent Team Id"
+      n: "parentTeamId"
+      op: {
+        update: {
+          req: true
+          type: "`$OBJECT`"
+        }
+      }
+      r: false
+      sh: "The unique identifier of the parent team, if applicable, represented as a string."
+      t: "`$STRING`"
+    }
+  }
+
+  id: {
+    field: "id"
+    name: "id"
+  }
+
+  name: "teams_team"
+  op: {
+    create: {
+      name: "create"
+      points: [
+        {
+          co: {
+            id: "POST /settings/teams/2026-09"
+            source: "openapi3"
+            version: 2
+          }
+          m: "POST"
+          o: "/settings/teams/2026-09"
+          s: [
+            {
+              lit: "settings"
+            }
+            {
+              lit: "teams"
+            }
+            {
+              lit: "2026-09"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+    load: {
+      name: "load"
+      points: [
+        {
+          co: {
+            id: "GET /settings/teams/2026-09/{teamId}"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                ex: null
+                k: "param"
+                n: "team_id"
+                or: "team_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/settings/teams/2026-09/{teamId}"
+          q: {
+            exist: [
+              "team_id"
+            ]
+          }
+          r: {
+            param: {
+              teamId: "team_id"
+            }
+          }
+          s: [
+            {
+              lit: "settings"
+            }
+            {
+              lit: "teams"
+            }
+            {
+              lit: "2026-09"
+            }
+            {
+              var: "team_id"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+    update: {
+      name: "update"
+      points: [
+        {
+          co: {
+            id: "PATCH /settings/teams/2026-09/{teamId}"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                ex: null
+                k: "param"
+                n: "team_id"
+                or: "team_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "PATCH"
+          o: "/settings/teams/2026-09/{teamId}"
+          q: {
+            exist: [
+              "team_id"
+            ]
+          }
+          r: {
+            param: {
+              teamId: "team_id"
+            }
+          }
+          s: [
+            {
+              lit: "settings"
+            }
+            {
+              lit: "teams"
+            }
+            {
+              lit: "2026-09"
+            }
+            {
+              var: "team_id"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

@@ -1,0 +1,36 @@
+{
+  "existing": {
+    "user_provisioning_public_permission_set": {
+      "USER_PROVISIONING_PUBLIC_PERMISSION_SET00": {
+        "id": "USER_PROVISIONING_PUBLIC_PERMISSION_SET00",
+        "name": "s1f",
+        "requiresBillingWrite": true
+      },
+      "USER_PROVISIONING_PUBLIC_PERMISSION_SET01": {
+        "id": "USER_PROVISIONING_PUBLIC_PERMISSION_SET01",
+        "name": "s3d",
+        "requiresBillingWrite": true
+      },
+      "USER_PROVISIONING_PUBLIC_PERMISSION_SET02": {
+        "id": "USER_PROVISIONING_PUBLIC_PERMISSION_SET02",
+        "name": "s5b",
+        "requiresBillingWrite": true
+      }
+    }
+  },
+  "new": {
+    "user_provisioning_public_permission_set": {
+      "user_provisioning_public_permission_set_ref01": {
+        "name": "s79",
+        "requiresBillingWrite": true
+      }
+    }
+  },
+  "requests": {
+    "GET /settings/users/2026-09/roles": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

@@ -19,7 +19,6 @@ import type {
   UserProvisioningCollectionResponsePublicUserForwardPagingListMatch,
 } from '../HubspotSettingsTypes'
 
-// TODO: needs Entity superclass
 class UserProvisioningCollectionResponsePublicUserForwardPagingEntity extends HubspotSettingsEntityBase<UserProvisioningCollectionResponsePublicUserForwardPaging> {
 
   constructor(client: HubspotSettingsSDK, entopts: any) {

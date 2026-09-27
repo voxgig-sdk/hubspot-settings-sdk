@@ -1,0 +1,37 @@
+{
+  "existing": {
+    "user_provisioning_public_seat": {
+      "USER_PROVISIONING_PUBLIC_SEAT00": {
+        "description": "s1e",
+        "name": "s1f",
+        "remainingSeats": 32
+      },
+      "USER_PROVISIONING_PUBLIC_SEAT01": {
+        "description": "s3c",
+        "name": "s3d",
+        "remainingSeats": 62
+      },
+      "USER_PROVISIONING_PUBLIC_SEAT02": {
+        "description": "s5a",
+        "name": "s5b",
+        "remainingSeats": 92
+      }
+    }
+  },
+  "new": {
+    "user_provisioning_public_seat": {
+      "user_provisioning_public_seat_ref01": {
+        "description": "s78",
+        "name": "s79",
+        "remainingSeats": 122
+      }
+    }
+  },
+  "requests": {
+    "GET /settings/users/2026-09/seats": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

@@ -1,0 +1,107 @@
+# Entity: multicurrency_company_currency
+
+main: kit: entity: multicurrency_company_currency: {
+
+  alias: field: {}
+
+  fields: {
+    createdAt: {
+      fo: "date-time"
+      h: "Created At"
+      n: "createdAt"
+      r: true
+      sh: "The date the company currency was created."
+      t: "`$STRING`"
+    }
+    currencyCode: {
+      h: "Currency Code"
+      n: "currencyCode"
+      r: true
+      sh: "The three-letter code representing a specific currency (ex."
+      t: "`$STRING`"
+    }
+    id: {
+      h: "Id"
+      n: "id"
+      r: true
+      sh: "The currency code for the company currency"
+      t: "`$STRING`"
+    }
+  }
+
+  id: {
+    field: "id"
+    name: "id"
+  }
+
+  name: "multicurrency_company_currency"
+  op: {
+    load: {
+      name: "load"
+      points: [
+        {
+          co: {
+            id: "GET /settings/currencies/2026-09/company-currency"
+            source: "openapi3"
+            version: 2
+          }
+          m: "GET"
+          o: "/settings/currencies/2026-09/company-currency"
+          s: [
+            {
+              lit: "settings"
+            }
+            {
+              lit: "currencies"
+            }
+            {
+              lit: "2026-09"
+            }
+            {
+              lit: "company-currency"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+    update: {
+      name: "update"
+      points: [
+        {
+          co: {
+            id: "PUT /settings/currencies/2026-09/company-currency"
+            source: "openapi3"
+            version: 2
+          }
+          m: "PUT"
+          o: "/settings/currencies/2026-09/company-currency"
+          s: [
+            {
+              lit: "settings"
+            }
+            {
+              lit: "currencies"
+            }
+            {
+              lit: "2026-09"
+            }
+            {
+              lit: "company-currency"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

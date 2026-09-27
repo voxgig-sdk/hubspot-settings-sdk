@@ -2,6 +2,7 @@ package sdktest
 
 import (
 	"encoding/json"
+	"fmt"
 	"os"
 	"path/filepath"
 	"runtime"
@@ -32,7 +33,7 @@ func TestExchangeRateEntity(t *testing.T) {
 		if setup.live {
 			_mode = "live"
 		}
-		for _, _op := range []string{"create"} {
+		for _, _op := range []string{"create", "update", "load"} {
 			if _shouldSkip, _reason := isControlSkipped("entityOp", "exchange_rate." + _op, _mode); _shouldSkip {
 				if _reason == "" {
 					_reason = "skipped via sdk-test-control.json"
@@ -61,6 +62,49 @@ func TestExchangeRateEntity(t *testing.T) {
 		exchangeRateRef01Data = core.ToMapAny(entityData(exchangeRateRef01DataResult))
 		if exchangeRateRef01Data == nil {
 			t.Fatal("expected create result to be a map")
+		}
+		if exchangeRateRef01Data["id"] == nil {
+			t.Fatal("expected created entity to have an id")
+		}
+
+		// UPDATE
+		exchangeRateRef01DataUp0Up := map[string]any{
+			"id": exchangeRateRef01Data["id"],
+		}
+
+		exchangeRateRef01MarkdefUp0Name := "createdAt"
+		exchangeRateRef01MarkdefUp0Value := fmt.Sprintf("Mark01-exchange_rate_ref01_%d", setup.now)
+		exchangeRateRef01DataUp0Up[exchangeRateRef01MarkdefUp0Name] = exchangeRateRef01MarkdefUp0Value
+
+		exchangeRateRef01ResdataUp0Result, err := exchangeRateRef01Ent.Update(exchangeRateRef01DataUp0Up, nil)
+		if err != nil {
+			t.Fatalf("update failed: %v", err)
+		}
+		exchangeRateRef01ResdataUp0 := core.ToMapAny(entityData(exchangeRateRef01ResdataUp0Result))
+		if exchangeRateRef01ResdataUp0 == nil {
+			t.Fatal("expected update result to be a map")
+		}
+		if exchangeRateRef01ResdataUp0["id"] != exchangeRateRef01DataUp0Up["id"] {
+			t.Fatal("expected update result id to match")
+		}
+		if exchangeRateRef01ResdataUp0[exchangeRateRef01MarkdefUp0Name] != exchangeRateRef01MarkdefUp0Value {
+			t.Fatalf("expected %s to be updated, got %v", exchangeRateRef01MarkdefUp0Name, exchangeRateRef01ResdataUp0[exchangeRateRef01MarkdefUp0Name])
+		}
+
+		// LOAD
+		exchangeRateRef01MatchDt0 := map[string]any{
+			"id": exchangeRateRef01Data["id"],
+		}
+		exchangeRateRef01DataDt0Loaded, err := exchangeRateRef01Ent.Load(exchangeRateRef01MatchDt0, nil)
+		if err != nil {
+			t.Fatalf("load failed: %v", err)
+		}
+		exchangeRateRef01DataDt0LoadResult := core.ToMapAny(entityData(exchangeRateRef01DataDt0Loaded))
+		if exchangeRateRef01DataDt0LoadResult == nil {
+			t.Fatal("expected load result to be a map")
+		}
+		if exchangeRateRef01DataDt0LoadResult["id"] != exchangeRateRef01Data["id"] {
+			t.Fatal("expected load result id to match")
 		}
 
 	})

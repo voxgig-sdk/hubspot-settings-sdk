@@ -307,10 +307,28 @@ class HubspotSettingsSDK:
         return res
 
 
+    def AddCurrency(self, data=None) -> "AddCurrencyEntity":
+        """Entity factory: client.AddCurrency().list() / client.AddCurrency().load({"id": ...})."""
+        from hubspotsettings_sdk.entity.add_currency_entity import AddCurrencyEntity
+        return AddCurrencyEntity(self, data)
+
+
     def Basic(self, data=None) -> "BasicEntity":
         """Entity factory: client.Basic().list() / client.Basic().load({"id": ...})."""
         from hubspotsettings_sdk.entity.basic_entity import BasicEntity
         return BasicEntity(self, data)
+
+
+    def Code(self, data=None) -> "CodeEntity":
+        """Entity factory: client.Code().list() / client.Code().load({"id": ...})."""
+        from hubspotsettings_sdk.entity.code_entity import CodeEntity
+        return CodeEntity(self, data)
+
+
+    def Current(self, data=None) -> "CurrentEntity":
+        """Entity factory: client.Current().list() / client.Current().load({"id": ...})."""
+        from hubspotsettings_sdk.entity.current_entity import CurrentEntity
+        return CurrentEntity(self, data)
 
 
     def ExchangeRate(self, data=None) -> "ExchangeRateEntity":
@@ -331,34 +349,16 @@ class HubspotSettingsSDK:
         return MulticurrencyCentralExchangeRatesInformationEntity(self, data)
 
 
-    def MulticurrencyCollectionResponseCurrencyCodeInfoNoPaging(self, data=None) -> "MulticurrencyCollectionResponseCurrencyCodeInfoNoPagingEntity":
-        """Entity factory: client.MulticurrencyCollectionResponseCurrencyCodeInfoNoPaging().list() / client.MulticurrencyCollectionResponseCurrencyCodeInfoNoPaging().load({"id": ...})."""
-        from hubspotsettings_sdk.entity.multicurrency_collection_response_currency_code_info_no_paging_entity import MulticurrencyCollectionResponseCurrencyCodeInfoNoPagingEntity
-        return MulticurrencyCollectionResponseCurrencyCodeInfoNoPagingEntity(self, data)
-
-
     def MulticurrencyCollectionResponseExchangeRateForwardPaging(self, data=None) -> "MulticurrencyCollectionResponseExchangeRateForwardPagingEntity":
         """Entity factory: client.MulticurrencyCollectionResponseExchangeRateForwardPaging().list() / client.MulticurrencyCollectionResponseExchangeRateForwardPaging().load({"id": ...})."""
         from hubspotsettings_sdk.entity.multicurrency_collection_response_exchange_rate_forward_paging_entity import MulticurrencyCollectionResponseExchangeRateForwardPagingEntity
         return MulticurrencyCollectionResponseExchangeRateForwardPagingEntity(self, data)
 
 
-    def MulticurrencyCollectionResponseExchangeRateNoPaging(self, data=None) -> "MulticurrencyCollectionResponseExchangeRateNoPagingEntity":
-        """Entity factory: client.MulticurrencyCollectionResponseExchangeRateNoPaging().list() / client.MulticurrencyCollectionResponseExchangeRateNoPaging().load({"id": ...})."""
-        from hubspotsettings_sdk.entity.multicurrency_collection_response_exchange_rate_no_paging_entity import MulticurrencyCollectionResponseExchangeRateNoPagingEntity
-        return MulticurrencyCollectionResponseExchangeRateNoPagingEntity(self, data)
-
-
     def MulticurrencyCompanyCurrency(self, data=None) -> "MulticurrencyCompanyCurrencyEntity":
         """Entity factory: client.MulticurrencyCompanyCurrency().list() / client.MulticurrencyCompanyCurrency().load({"id": ...})."""
         from hubspotsettings_sdk.entity.multicurrency_company_currency_entity import MulticurrencyCompanyCurrencyEntity
         return MulticurrencyCompanyCurrencyEntity(self, data)
-
-
-    def MulticurrencyExchangeRate(self, data=None) -> "MulticurrencyExchangeRateEntity":
-        """Entity factory: client.MulticurrencyExchangeRate().list() / client.MulticurrencyExchangeRate().load({"id": ...})."""
-        from hubspotsettings_sdk.entity.multicurrency_exchange_rate_entity import MulticurrencyExchangeRateEntity
-        return MulticurrencyExchangeRateEntity(self, data)
 
 
     def TaxRate(self, data=None) -> "TaxRateEntity":
@@ -397,34 +397,40 @@ class HubspotSettingsSDK:
         return TeamsTeamMemberEntity(self, data)
 
 
+    def UnsupportedCurrency(self, data=None) -> "UnsupportedCurrencyEntity":
+        """Entity factory: client.UnsupportedCurrency().list() / client.UnsupportedCurrency().load({"id": ...})."""
+        from hubspotsettings_sdk.entity.unsupported_currency_entity import UnsupportedCurrencyEntity
+        return UnsupportedCurrencyEntity(self, data)
+
+
     def User(self, data=None) -> "UserEntity":
         """Entity factory: client.User().list() / client.User().load({"id": ...})."""
         from hubspotsettings_sdk.entity.user_entity import UserEntity
         return UserEntity(self, data)
 
 
-    def UserProvisioningCollectionResponsePublicPermissionSetNo(self, data=None) -> "UserProvisioningCollectionResponsePublicPermissionSetNoEntity":
-        """Entity factory: client.UserProvisioningCollectionResponsePublicPermissionSetNo().list() / client.UserProvisioningCollectionResponsePublicPermissionSetNo().load({"id": ...})."""
-        from hubspotsettings_sdk.entity.user_provisioning_collection_response_public_permission_set_no_entity import UserProvisioningCollectionResponsePublicPermissionSetNoEntity
-        return UserProvisioningCollectionResponsePublicPermissionSetNoEntity(self, data)
-
-
-    def UserProvisioningCollectionResponsePublicSeatNoPaging(self, data=None) -> "UserProvisioningCollectionResponsePublicSeatNoPagingEntity":
-        """Entity factory: client.UserProvisioningCollectionResponsePublicSeatNoPaging().list() / client.UserProvisioningCollectionResponsePublicSeatNoPaging().load({"id": ...})."""
-        from hubspotsettings_sdk.entity.user_provisioning_collection_response_public_seat_no_paging_entity import UserProvisioningCollectionResponsePublicSeatNoPagingEntity
-        return UserProvisioningCollectionResponsePublicSeatNoPagingEntity(self, data)
-
-
-    def UserProvisioningCollectionResponsePublicTeamNoPaging(self, data=None) -> "UserProvisioningCollectionResponsePublicTeamNoPagingEntity":
-        """Entity factory: client.UserProvisioningCollectionResponsePublicTeamNoPaging().list() / client.UserProvisioningCollectionResponsePublicTeamNoPaging().load({"id": ...})."""
-        from hubspotsettings_sdk.entity.user_provisioning_collection_response_public_team_no_paging_entity import UserProvisioningCollectionResponsePublicTeamNoPagingEntity
-        return UserProvisioningCollectionResponsePublicTeamNoPagingEntity(self, data)
-
-
     def UserProvisioningCollectionResponsePublicUserForwardPaging(self, data=None) -> "UserProvisioningCollectionResponsePublicUserForwardPagingEntity":
         """Entity factory: client.UserProvisioningCollectionResponsePublicUserForwardPaging().list() / client.UserProvisioningCollectionResponsePublicUserForwardPaging().load({"id": ...})."""
         from hubspotsettings_sdk.entity.user_provisioning_collection_response_public_user_forward_paging_entity import UserProvisioningCollectionResponsePublicUserForwardPagingEntity
         return UserProvisioningCollectionResponsePublicUserForwardPagingEntity(self, data)
+
+
+    def UserProvisioningPublicPermissionSet(self, data=None) -> "UserProvisioningPublicPermissionSetEntity":
+        """Entity factory: client.UserProvisioningPublicPermissionSet().list() / client.UserProvisioningPublicPermissionSet().load({"id": ...})."""
+        from hubspotsettings_sdk.entity.user_provisioning_public_permission_set_entity import UserProvisioningPublicPermissionSetEntity
+        return UserProvisioningPublicPermissionSetEntity(self, data)
+
+
+    def UserProvisioningPublicSeat(self, data=None) -> "UserProvisioningPublicSeatEntity":
+        """Entity factory: client.UserProvisioningPublicSeat().list() / client.UserProvisioningPublicSeat().load({"id": ...})."""
+        from hubspotsettings_sdk.entity.user_provisioning_public_seat_entity import UserProvisioningPublicSeatEntity
+        return UserProvisioningPublicSeatEntity(self, data)
+
+
+    def UserProvisioningPublicTeam(self, data=None) -> "UserProvisioningPublicTeamEntity":
+        """Entity factory: client.UserProvisioningPublicTeam().list() / client.UserProvisioningPublicTeam().load({"id": ...})."""
+        from hubspotsettings_sdk.entity.user_provisioning_public_team_entity import UserProvisioningPublicTeamEntity
+        return UserProvisioningPublicTeamEntity(self, data)
 
 
     def UserProvisioningPublicUser(self, data=None) -> "UserProvisioningPublicUserEntity":
@@ -460,24 +466,25 @@ class HubspotSettingsSDK:
 from typing import TYPE_CHECKING
 
 if TYPE_CHECKING:
+    from hubspotsettings_sdk.entity.add_currency_entity import AddCurrencyEntity
     from hubspotsettings_sdk.entity.basic_entity import BasicEntity
+    from hubspotsettings_sdk.entity.code_entity import CodeEntity
+    from hubspotsettings_sdk.entity.current_entity import CurrentEntity
     from hubspotsettings_sdk.entity.exchange_rate_entity import ExchangeRateEntity
     from hubspotsettings_sdk.entity.multicurrency_batch_response_exchange_rate_entity import MulticurrencyBatchResponseExchangeRateEntity
     from hubspotsettings_sdk.entity.multicurrency_central_exchange_rates_information_entity import MulticurrencyCentralExchangeRatesInformationEntity
-    from hubspotsettings_sdk.entity.multicurrency_collection_response_currency_code_info_no_paging_entity import MulticurrencyCollectionResponseCurrencyCodeInfoNoPagingEntity
     from hubspotsettings_sdk.entity.multicurrency_collection_response_exchange_rate_forward_paging_entity import MulticurrencyCollectionResponseExchangeRateForwardPagingEntity
-    from hubspotsettings_sdk.entity.multicurrency_collection_response_exchange_rate_no_paging_entity import MulticurrencyCollectionResponseExchangeRateNoPagingEntity
     from hubspotsettings_sdk.entity.multicurrency_company_currency_entity import MulticurrencyCompanyCurrencyEntity
-    from hubspotsettings_sdk.entity.multicurrency_exchange_rate_entity import MulticurrencyExchangeRateEntity
     from hubspotsettings_sdk.entity.tax_rate_entity import TaxRateEntity
     from hubspotsettings_sdk.entity.teams_batch_response_team_member_entity import TeamsBatchResponseTeamMemberEntity
     from hubspotsettings_sdk.entity.teams_collection_response_team_member_response_forward_paging_entity import TeamsCollectionResponseTeamMemberResponseForwardPagingEntity
     from hubspotsettings_sdk.entity.teams_collection_response_team_response_forward_paging_entity import TeamsCollectionResponseTeamResponseForwardPagingEntity
     from hubspotsettings_sdk.entity.teams_team_entity import TeamsTeamEntity
     from hubspotsettings_sdk.entity.teams_team_member_entity import TeamsTeamMemberEntity
+    from hubspotsettings_sdk.entity.unsupported_currency_entity import UnsupportedCurrencyEntity
     from hubspotsettings_sdk.entity.user_entity import UserEntity
-    from hubspotsettings_sdk.entity.user_provisioning_collection_response_public_permission_set_no_entity import UserProvisioningCollectionResponsePublicPermissionSetNoEntity
-    from hubspotsettings_sdk.entity.user_provisioning_collection_response_public_seat_no_paging_entity import UserProvisioningCollectionResponsePublicSeatNoPagingEntity
-    from hubspotsettings_sdk.entity.user_provisioning_collection_response_public_team_no_paging_entity import UserProvisioningCollectionResponsePublicTeamNoPagingEntity
     from hubspotsettings_sdk.entity.user_provisioning_collection_response_public_user_forward_paging_entity import UserProvisioningCollectionResponsePublicUserForwardPagingEntity
+    from hubspotsettings_sdk.entity.user_provisioning_public_permission_set_entity import UserProvisioningPublicPermissionSetEntity
+    from hubspotsettings_sdk.entity.user_provisioning_public_seat_entity import UserProvisioningPublicSeatEntity
+    from hubspotsettings_sdk.entity.user_provisioning_public_team_entity import UserProvisioningPublicTeamEntity
     from hubspotsettings_sdk.entity.user_provisioning_public_user_entity import UserProvisioningPublicUserEntity

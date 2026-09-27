@@ -23,7 +23,7 @@ class ExchangeRateEntityTest extends TestCase
         $setup = exchange_rate_basic_setup(null);
         // Per-op sdk-test-control.json skip.
         $_live = !empty($setup["live"]);
-        foreach (["create"] as $_op) {
+        foreach (["create", "update", "load"] as $_op) {
             [$_shouldSkip, $_reason] = Runner::is_control_skipped("entityOp", "exchange_rate." . $_op, $_live ? "live" : "unit");
             if ($_shouldSkip) {
                 $this->markTestSkipped($_reason ?? "skipped via sdk-test-control.json");
@@ -46,6 +46,31 @@ class ExchangeRateEntityTest extends TestCase
         $exchange_rate_ref01_data_result = $exchange_rate_ref01_ent->create($exchange_rate_ref01_data, null);
         $exchange_rate_ref01_data = Helpers::to_map(is_object($exchange_rate_ref01_data_result) && method_exists($exchange_rate_ref01_data_result, 'data_get') ? $exchange_rate_ref01_data_result->data_get() : $exchange_rate_ref01_data_result);
         $this->assertNotNull($exchange_rate_ref01_data);
+        $this->assertNotNull($exchange_rate_ref01_data["id"]);
+
+        // UPDATE
+        $exchange_rate_ref01_data_up0_up = [
+            "id" => $exchange_rate_ref01_data["id"],
+        ];
+
+        $exchange_rate_ref01_markdef_up0_name = "createdAt";
+        $exchange_rate_ref01_markdef_up0_value = "Mark01-exchange_rate_ref01_" . $setup["now"];
+        $exchange_rate_ref01_data_up0_up[$exchange_rate_ref01_markdef_up0_name] = $exchange_rate_ref01_markdef_up0_value;
+
+        $exchange_rate_ref01_resdata_up0_result = $exchange_rate_ref01_ent->update($exchange_rate_ref01_data_up0_up, null);
+        $exchange_rate_ref01_resdata_up0 = Helpers::to_map(is_object($exchange_rate_ref01_resdata_up0_result) && method_exists($exchange_rate_ref01_resdata_up0_result, 'data_get') ? $exchange_rate_ref01_resdata_up0_result->data_get() : $exchange_rate_ref01_resdata_up0_result);
+        $this->assertNotNull($exchange_rate_ref01_resdata_up0);
+        $this->assertEquals($exchange_rate_ref01_resdata_up0["id"], $exchange_rate_ref01_data_up0_up["id"]);
+        $this->assertEquals($exchange_rate_ref01_resdata_up0[$exchange_rate_ref01_markdef_up0_name], $exchange_rate_ref01_markdef_up0_value);
+
+        // LOAD
+        $exchange_rate_ref01_match_dt0 = [
+            "id" => $exchange_rate_ref01_data["id"],
+        ];
+        $exchange_rate_ref01_data_dt0_loaded = $exchange_rate_ref01_ent->load($exchange_rate_ref01_match_dt0, null);
+        $exchange_rate_ref01_data_dt0_load_result = Helpers::to_map(is_object($exchange_rate_ref01_data_dt0_loaded) && method_exists($exchange_rate_ref01_data_dt0_loaded, 'data_get') ? $exchange_rate_ref01_data_dt0_loaded->data_get() : $exchange_rate_ref01_data_dt0_loaded);
+        $this->assertNotNull($exchange_rate_ref01_data_dt0_load_result);
+        $this->assertEquals($exchange_rate_ref01_data_dt0_load_result["id"], $exchange_rate_ref01_data["id"]);
 
     }
 }

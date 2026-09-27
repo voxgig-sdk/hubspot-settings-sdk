@@ -1,0 +1,190 @@
+# Entity: tax_rate
+
+main: kit: entity: tax_rate: {
+
+  alias: field: {}
+
+  fields: {
+    active: {
+      h: "Active"
+      n: "active"
+      r: true
+      sh: "Indicates whether the tax rate group is currently active."
+      t: "`$BOOLEAN`"
+    }
+    createdAt: {
+      fo: "date-time"
+      h: "Created At"
+      n: "createdAt"
+      r: true
+      sh: "The date and time when the tax rate was created."
+      t: "`$STRING`"
+    }
+    id: {
+      h: "Id"
+      n: "id"
+      r: true
+      sh: "The unique identifier for the tax rate."
+      t: "`$STRING`"
+    }
+    label: {
+      h: "Label"
+      n: "label"
+      r: true
+      sh: "The display label for the tax rate."
+      t: "`$STRING`"
+    }
+    name: {
+      h: "Name"
+      n: "name"
+      r: true
+      sh: "The name of the tax rate."
+      t: "`$STRING`"
+    }
+    percentageRate: {
+      h: "Percentage Rate"
+      n: "percentageRate"
+      r: true
+      sh: "The percentage rate applied."
+      t: "`$NUMBER`"
+    }
+    updatedAt: {
+      fo: "date-time"
+      h: "Updated At"
+      n: "updatedAt"
+      r: true
+      sh: "The date and time when the tax rate was last updated."
+      t: "`$STRING`"
+    }
+  }
+
+  id: {
+    field: "id"
+    name: "id"
+  }
+
+  name: "tax_rate"
+  op: {
+    list: {
+      name: "list"
+      points: [
+        {
+          co: {
+            id: "GET /tax-rates/2026-09/tax-rates"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            query: [
+              {
+                ex: null
+                k: "query"
+                n: "active"
+                or: "active"
+                r: false
+                t: "`$BOOLEAN`"
+              }
+              {
+                ex: null
+                k: "query"
+                n: "after"
+                or: "after"
+                r: false
+                t: "`$STRING`"
+              }
+              {
+                ex: null
+                k: "query"
+                n: "limit"
+                or: "limit"
+                r: false
+                t: "`$INTEGER`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/tax-rates/2026-09/tax-rates"
+          q: {
+            exist: [
+              "active"
+              "after"
+              "limit"
+            ]
+          }
+          s: [
+            {
+              lit: "tax-rates"
+            }
+            {
+              lit: "2026-09"
+            }
+            {
+              lit: "tax-rates"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+    load: {
+      name: "load"
+      points: [
+        {
+          co: {
+            id: "GET /tax-rates/2026-09/tax-rates/{taxRateGroupId}"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                ex: null
+                k: "param"
+                n: "id"
+                or: "tax_rate_group_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/tax-rates/2026-09/tax-rates/{taxRateGroupId}"
+          q: {
+            exist: [
+              "id"
+            ]
+          }
+          r: {
+            param: {
+              taxRateGroupId: "id"
+            }
+          }
+          s: [
+            {
+              lit: "tax-rates"
+            }
+            {
+              lit: "2026-09"
+            }
+            {
+              lit: "tax-rates"
+            }
+            {
+              var: "id"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

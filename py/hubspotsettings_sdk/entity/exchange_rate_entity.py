@@ -6,7 +6,9 @@ from hubspotsettings_sdk.utility.voxgig_struct import voxgig_struct as vs
 from hubspotsettings_sdk.core import helpers
 from hubspotsettings_sdk.hubspotsettings_types import (
     ExchangeRate,
+    ExchangeRateLoadMatch,
     ExchangeRateCreateData,
+    ExchangeRateUpdateData,
 )
 
 
@@ -176,6 +178,31 @@ class ExchangeRateEntity:
                 yield item
 
     
+    def load(self, reqmatch=None, ctrl=None) -> ExchangeRate:
+        utility = self._utility
+        # reqmatch is optional: an entity with no id-like key loads with no
+        # match. Treat None as an empty match so client.ExchangeRate().load()
+        # works with no args.
+        if reqmatch is None:
+            reqmatch = {}
+        ctx = utility.make_context({
+            "opname": "load",
+            "ctrl": ctrl,
+            "match": self._match,
+            "data": self._data,
+            "reqmatch": reqmatch,
+        }, self._entctx)
+
+        def post_done():
+            if ctx.result is not None:
+                if ctx.result.resmatch is not None:
+                    self._match = ctx.result.resmatch
+                if ctx.result.resdata is not None:
+                    self._data = helpers.to_map(vs.clone(ctx.result.resdata)) or {}
+
+        return self._run_op(ctx, post_done)
+
+
 
     
 
@@ -200,6 +227,26 @@ class ExchangeRateEntity:
 
 
     
+    def update(self, reqdata: ExchangeRateUpdateData, ctrl=None) -> ExchangeRate:
+        utility = self._utility
+        ctx = utility.make_context({
+            "opname": "update",
+            "ctrl": ctrl,
+            "match": self._match,
+            "data": self._data,
+            "reqdata": reqdata,
+        }, self._entctx)
+
+        def post_done():
+            if ctx.result is not None:
+                if ctx.result.resmatch is not None:
+                    self._match = ctx.result.resmatch
+                if ctx.result.resdata is not None:
+                    self._data = helpers.to_map(vs.clone(ctx.result.resdata)) or {}
+
+        return self._run_op(ctx, post_done)
+
+
 
     
 

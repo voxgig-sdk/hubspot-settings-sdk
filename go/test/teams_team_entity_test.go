@@ -135,7 +135,7 @@ func teams_teamBasicSetup(extra map[string]any) *entityTestSetup {
 
 	// Generate idmap via transform, matching TS pattern.
 	idmap, _ := vs.Transform(
-		[]any{"teams_team01", "teams_team02", "teams_team03", "2026_0901", "2026_0902", "2026_0903"},
+		[]any{"teams_team01", "teams_team02", "teams_team03"},
 		map[string]any{
 			"`$PACK`": []any{"", map[string]any{
 				"`$KEY`": "`$COPY`",

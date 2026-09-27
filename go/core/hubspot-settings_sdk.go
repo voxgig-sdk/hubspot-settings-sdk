@@ -264,7 +264,6 @@ func (sdk *HubspotSettingsSDK) rawRequest(fetchargs map[string]any) (map[string]
 		if !noBody {
 			if jf := vs.GetProp(fm, "json"); jf != nil {
 				if f, ok := jf.(func() any); ok {
-					// f() returns nil on parse error in our fetcher.
 					jsonData = f()
 				}
 			}
@@ -281,17 +280,6 @@ func (sdk *HubspotSettingsSDK) rawRequest(fetchargs map[string]any) (map[string]
 	return map[string]any{"ok": false, "err": ctx.MakeError("direct_invalid", "invalid response type")}, nil
 }
 
-// Raw GraphQL access: the pressure valve that makes the generated surface's
-// deliberate omissions (per-call selection sets, typed filter builders,
-// batching, subscriptions) livable — the whole schema stays reachable.
-//
-// Thin wrapper over the same prepare/fetch path Direct uses, with the one
-// thing raw Direct cannot do for GraphQL: a GraphQL failure rides HTTP 200
-// as a top-level `errors` array, so status alone would report a failed query
-// as ok.
-//
-// NOTE: like Direct, this bypasses the feature pipeline — no retry,
-// ratelimit or paging features apply.
 func (sdk *HubspotSettingsSDK) Graphql(
 	query string, variables map[string]any, ctrl map[string]any,
 ) (map[string]any, error) {
@@ -338,11 +326,35 @@ func (sdk *HubspotSettingsSDK) Graphql(
 }
 
 
+// AddCurrency returns a AddCurrency entity bound to this client.
+// Idiomatic usage: client.AddCurrency(nil).List(nil, nil) or
+// client.AddCurrency(nil).Load(map[string]any{"id": ...}, nil).
+func (sdk *HubspotSettingsSDK) AddCurrency(data map[string]any) HubspotSettingsEntity {
+	return NewAddCurrencyEntityFunc(sdk, data)
+}
+
+
 // Basic returns a Basic entity bound to this client.
 // Idiomatic usage: client.Basic(nil).List(nil, nil) or
 // client.Basic(nil).Load(map[string]any{"id": ...}, nil).
 func (sdk *HubspotSettingsSDK) Basic(data map[string]any) HubspotSettingsEntity {
 	return NewBasicEntityFunc(sdk, data)
+}
+
+
+// Code returns a Code entity bound to this client.
+// Idiomatic usage: client.Code(nil).List(nil, nil) or
+// client.Code(nil).Load(map[string]any{"id": ...}, nil).
+func (sdk *HubspotSettingsSDK) Code(data map[string]any) HubspotSettingsEntity {
+	return NewCodeEntityFunc(sdk, data)
+}
+
+
+// Current returns a Current entity bound to this client.
+// Idiomatic usage: client.Current(nil).List(nil, nil) or
+// client.Current(nil).Load(map[string]any{"id": ...}, nil).
+func (sdk *HubspotSettingsSDK) Current(data map[string]any) HubspotSettingsEntity {
+	return NewCurrentEntityFunc(sdk, data)
 }
 
 
@@ -370,14 +382,6 @@ func (sdk *HubspotSettingsSDK) MulticurrencyCentralExchangeRatesInformation(data
 }
 
 
-// MulticurrencyCollectionResponseCurrencyCodeInfoNoPaging returns a MulticurrencyCollectionResponseCurrencyCodeInfoNoPaging entity bound to this client.
-// Idiomatic usage: client.MulticurrencyCollectionResponseCurrencyCodeInfoNoPaging(nil).List(nil, nil) or
-// client.MulticurrencyCollectionResponseCurrencyCodeInfoNoPaging(nil).Load(map[string]any{"id": ...}, nil).
-func (sdk *HubspotSettingsSDK) MulticurrencyCollectionResponseCurrencyCodeInfoNoPaging(data map[string]any) HubspotSettingsEntity {
-	return NewMulticurrencyCollectionResponseCurrencyCodeInfoNoPagingEntityFunc(sdk, data)
-}
-
-
 // MulticurrencyCollectionResponseExchangeRateForwardPaging returns a MulticurrencyCollectionResponseExchangeRateForwardPaging entity bound to this client.
 // Idiomatic usage: client.MulticurrencyCollectionResponseExchangeRateForwardPaging(nil).List(nil, nil) or
 // client.MulticurrencyCollectionResponseExchangeRateForwardPaging(nil).Load(map[string]any{"id": ...}, nil).
@@ -386,27 +390,11 @@ func (sdk *HubspotSettingsSDK) MulticurrencyCollectionResponseExchangeRateForwar
 }
 
 
-// MulticurrencyCollectionResponseExchangeRateNoPaging returns a MulticurrencyCollectionResponseExchangeRateNoPaging entity bound to this client.
-// Idiomatic usage: client.MulticurrencyCollectionResponseExchangeRateNoPaging(nil).List(nil, nil) or
-// client.MulticurrencyCollectionResponseExchangeRateNoPaging(nil).Load(map[string]any{"id": ...}, nil).
-func (sdk *HubspotSettingsSDK) MulticurrencyCollectionResponseExchangeRateNoPaging(data map[string]any) HubspotSettingsEntity {
-	return NewMulticurrencyCollectionResponseExchangeRateNoPagingEntityFunc(sdk, data)
-}
-
-
 // MulticurrencyCompanyCurrency returns a MulticurrencyCompanyCurrency entity bound to this client.
 // Idiomatic usage: client.MulticurrencyCompanyCurrency(nil).List(nil, nil) or
 // client.MulticurrencyCompanyCurrency(nil).Load(map[string]any{"id": ...}, nil).
 func (sdk *HubspotSettingsSDK) MulticurrencyCompanyCurrency(data map[string]any) HubspotSettingsEntity {
 	return NewMulticurrencyCompanyCurrencyEntityFunc(sdk, data)
-}
-
-
-// MulticurrencyExchangeRate returns a MulticurrencyExchangeRate entity bound to this client.
-// Idiomatic usage: client.MulticurrencyExchangeRate(nil).List(nil, nil) or
-// client.MulticurrencyExchangeRate(nil).Load(map[string]any{"id": ...}, nil).
-func (sdk *HubspotSettingsSDK) MulticurrencyExchangeRate(data map[string]any) HubspotSettingsEntity {
-	return NewMulticurrencyExchangeRateEntityFunc(sdk, data)
 }
 
 
@@ -458,6 +446,14 @@ func (sdk *HubspotSettingsSDK) TeamsTeamMember(data map[string]any) HubspotSetti
 }
 
 
+// UnsupportedCurrency returns a UnsupportedCurrency entity bound to this client.
+// Idiomatic usage: client.UnsupportedCurrency(nil).List(nil, nil) or
+// client.UnsupportedCurrency(nil).Load(map[string]any{"id": ...}, nil).
+func (sdk *HubspotSettingsSDK) UnsupportedCurrency(data map[string]any) HubspotSettingsEntity {
+	return NewUnsupportedCurrencyEntityFunc(sdk, data)
+}
+
+
 // User returns a User entity bound to this client.
 // Idiomatic usage: client.User(nil).List(nil, nil) or
 // client.User(nil).Load(map[string]any{"id": ...}, nil).
@@ -466,35 +462,35 @@ func (sdk *HubspotSettingsSDK) User(data map[string]any) HubspotSettingsEntity {
 }
 
 
-// UserProvisioningCollectionResponsePublicPermissionSetNo returns a UserProvisioningCollectionResponsePublicPermissionSetNo entity bound to this client.
-// Idiomatic usage: client.UserProvisioningCollectionResponsePublicPermissionSetNo(nil).List(nil, nil) or
-// client.UserProvisioningCollectionResponsePublicPermissionSetNo(nil).Load(map[string]any{"id": ...}, nil).
-func (sdk *HubspotSettingsSDK) UserProvisioningCollectionResponsePublicPermissionSetNo(data map[string]any) HubspotSettingsEntity {
-	return NewUserProvisioningCollectionResponsePublicPermissionSetNoEntityFunc(sdk, data)
-}
-
-
-// UserProvisioningCollectionResponsePublicSeatNoPaging returns a UserProvisioningCollectionResponsePublicSeatNoPaging entity bound to this client.
-// Idiomatic usage: client.UserProvisioningCollectionResponsePublicSeatNoPaging(nil).List(nil, nil) or
-// client.UserProvisioningCollectionResponsePublicSeatNoPaging(nil).Load(map[string]any{"id": ...}, nil).
-func (sdk *HubspotSettingsSDK) UserProvisioningCollectionResponsePublicSeatNoPaging(data map[string]any) HubspotSettingsEntity {
-	return NewUserProvisioningCollectionResponsePublicSeatNoPagingEntityFunc(sdk, data)
-}
-
-
-// UserProvisioningCollectionResponsePublicTeamNoPaging returns a UserProvisioningCollectionResponsePublicTeamNoPaging entity bound to this client.
-// Idiomatic usage: client.UserProvisioningCollectionResponsePublicTeamNoPaging(nil).List(nil, nil) or
-// client.UserProvisioningCollectionResponsePublicTeamNoPaging(nil).Load(map[string]any{"id": ...}, nil).
-func (sdk *HubspotSettingsSDK) UserProvisioningCollectionResponsePublicTeamNoPaging(data map[string]any) HubspotSettingsEntity {
-	return NewUserProvisioningCollectionResponsePublicTeamNoPagingEntityFunc(sdk, data)
-}
-
-
 // UserProvisioningCollectionResponsePublicUserForwardPaging returns a UserProvisioningCollectionResponsePublicUserForwardPaging entity bound to this client.
 // Idiomatic usage: client.UserProvisioningCollectionResponsePublicUserForwardPaging(nil).List(nil, nil) or
 // client.UserProvisioningCollectionResponsePublicUserForwardPaging(nil).Load(map[string]any{"id": ...}, nil).
 func (sdk *HubspotSettingsSDK) UserProvisioningCollectionResponsePublicUserForwardPaging(data map[string]any) HubspotSettingsEntity {
 	return NewUserProvisioningCollectionResponsePublicUserForwardPagingEntityFunc(sdk, data)
+}
+
+
+// UserProvisioningPublicPermissionSet returns a UserProvisioningPublicPermissionSet entity bound to this client.
+// Idiomatic usage: client.UserProvisioningPublicPermissionSet(nil).List(nil, nil) or
+// client.UserProvisioningPublicPermissionSet(nil).Load(map[string]any{"id": ...}, nil).
+func (sdk *HubspotSettingsSDK) UserProvisioningPublicPermissionSet(data map[string]any) HubspotSettingsEntity {
+	return NewUserProvisioningPublicPermissionSetEntityFunc(sdk, data)
+}
+
+
+// UserProvisioningPublicSeat returns a UserProvisioningPublicSeat entity bound to this client.
+// Idiomatic usage: client.UserProvisioningPublicSeat(nil).List(nil, nil) or
+// client.UserProvisioningPublicSeat(nil).Load(map[string]any{"id": ...}, nil).
+func (sdk *HubspotSettingsSDK) UserProvisioningPublicSeat(data map[string]any) HubspotSettingsEntity {
+	return NewUserProvisioningPublicSeatEntityFunc(sdk, data)
+}
+
+
+// UserProvisioningPublicTeam returns a UserProvisioningPublicTeam entity bound to this client.
+// Idiomatic usage: client.UserProvisioningPublicTeam(nil).List(nil, nil) or
+// client.UserProvisioningPublicTeam(nil).Load(map[string]any{"id": ...}, nil).
+func (sdk *HubspotSettingsSDK) UserProvisioningPublicTeam(data map[string]any) HubspotSettingsEntity {
+	return NewUserProvisioningPublicTeamEntityFunc(sdk, data)
 }
 
 

@@ -1,0 +1,56 @@
+{
+  "existing": {
+    "current": {
+      "CURRENT00": {
+        "conversionRate": 80,
+        "createdAt": "s51",
+        "effectiveAt": "s52",
+        "fromCurrencyCode": "s53",
+        "id": "CURRENT00",
+        "toCurrencyCode": "s55",
+        "updatedAt": "s56",
+        "visibleInUI": false
+      },
+      "CURRENT01": {
+        "conversionRate": 160,
+        "createdAt": "sa1",
+        "effectiveAt": "sa2",
+        "fromCurrencyCode": "sa3",
+        "id": "CURRENT01",
+        "toCurrencyCode": "sa5",
+        "updatedAt": "sa6",
+        "visibleInUI": false
+      },
+      "CURRENT02": {
+        "conversionRate": 240,
+        "createdAt": "sf1",
+        "effectiveAt": "sf2",
+        "fromCurrencyCode": "sf3",
+        "id": "CURRENT02",
+        "toCurrencyCode": "sf5",
+        "updatedAt": "sf6",
+        "visibleInUI": false
+      }
+    }
+  },
+  "new": {
+    "current": {
+      "current_ref01": {
+        "conversionRate": 320,
+        "createdAt": "s141",
+        "effectiveAt": "s142",
+        "fromCurrencyCode": "s143",
+        "toCurrencyCode": "s145",
+        "updatedAt": "s146",
+        "visibleInUI": false
+      }
+    }
+  },
+  "requests": {
+    "GET /settings/currencies/2026-09/exchange-rates/current": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

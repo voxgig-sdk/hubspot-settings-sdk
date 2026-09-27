@@ -89,7 +89,7 @@ def _user_provisioning_public_user_basic_setup(extra):
 
     # Generate idmap via transform.
     idmap = vs.transform(
-        ["user_provisioning_public_user01", "user_provisioning_public_user02", "user_provisioning_public_user03", "2026_0901", "2026_0902", "2026_0903"],
+        ["user_provisioning_public_user01", "user_provisioning_public_user02", "user_provisioning_public_user03"],
         {
             "`$PACK`": ["", {
                 "`$KEY`": "`$COPY`",

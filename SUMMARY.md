@@ -6,11 +6,25 @@ HubSpot Settings API, merged from the vendor&#39;s per-API OpenAPI documents.
 
 This guide introduces the API, the client libraries, and the companion tools in this repository. Start with the API capabilities, choose a client for your application, and use the linked reference when you need exact request and response details.
 
-The selected API surface contains 21 entities and 34 HTTP routes. There are 6 SDK targets and 2 companion tools.
+The selected API surface contains 22 entities and 34 HTTP routes. There are 6 SDK targets and 2 companion tools.
 
 An entity groups related API operations. An operation can have several routes with different inputs or authentication requirements. The SDK exposes the entity and its operations using the conventions of the selected language.
 
 ## What the API provides
+
+### [AddCurrency](docs/api/add_currency.html)
+
+Results: successful operation.
+
+SDK operations: `create`.
+
+Key fields to recognise:
+
+- `conversionRate`: The conversion rate between the to and from currency code of this exchange rate.
+- `createdAt`: The date the exchange rate was created.
+- `currencyCode`: The currency code being added to the HubSpot portal for use with central exchange rates.
+- `effectiveAt`: The date the exchange rate is in effect.
+- `fromCurrencyCode`: This represents the three-letter currency code (such as USD for US Dollar) of the currency you are converting from.
 
 ### [Basic](docs/api/basic.html)
 
@@ -18,11 +32,44 @@ Results: No content.
 
 SDK operations: `remove`.
 
+### [Code](docs/api/code.html)
+
+Results: successful operation.
+
+SDK operations: `list`.
+
+Key fields to recognise:
+
+- `currencyCode`: The three-letter code representing a specific currency (ex. USD).
+- `currencyName`: The full name of the currency (ex. US Dollar).
+
+### [Current](docs/api/current.html)
+
+Results: successful operation.
+
+SDK operations: `list`.
+
+Key fields to recognise:
+
+- `conversionRate`: The conversion rate between the to and from currency code of this exchange rate.
+- `createdAt`: The date the exchange rate was created.
+- `effectiveAt`: The date the exchange rate is in effect.
+- `fromCurrencyCode`: This represents the three-letter currency code (such as USD for US Dollar) of the currency you are converting from.
+- `id`: A unique identifier for the exchange rate
+
 ### [ExchangeRate](docs/api/exchange_rate.html)
 
-Results: No content.
+Results: successful operation; No content.
 
-SDK operations: `create`.
+SDK operations: `create`, `load`, `update`.
+
+Key fields to recognise:
+
+- `conversionRate`: The conversion rate between the to and from currency code of this exchange rate.
+- `createdAt`: The date the exchange rate was created.
+- `effectiveAt`: The date the exchange rate is in effect.
+- `fromCurrencyCode`: This represents the three-letter currency code (such as USD for US Dollar) of the currency you are converting from.
+- `id`: A unique identifier for the exchange rate
 
 ### [MulticurrencyBatchResponseExchangeRate](docs/api/multicurrency_batch_response_exchange_rate.html)
 
@@ -48,32 +95,7 @@ Key fields to recognise:
 
 - `centralExchangeRatesEnabled`: Indicates if central exchange rates is enabled for the portal or not.
 
-### [MulticurrencyCollectionResponseCurrencyCodeInfoNoPaging](docs/api/multicurrency_collection_response_currency_code_info_no_paging.html)
-
-Results: successful operation.
-
-SDK operations: `list`.
-
-Key fields to recognise:
-
-- `currencyCode`: The three-letter code representing a specific currency (ex. USD).
-- `currencyName`: The full name of the currency (ex. US Dollar).
-
 ### [MulticurrencyCollectionResponseExchangeRateForwardPaging](docs/api/multicurrency_collection_response_exchange_rate_forward_paging.html)
-
-Results: successful operation.
-
-SDK operations: `list`.
-
-Key fields to recognise:
-
-- `conversionRate`: The conversion rate between the to and from currency code of this exchange rate.
-- `createdAt`: The date the exchange rate was created.
-- `effectiveAt`: The date the exchange rate is in effect.
-- `fromCurrencyCode`: This represents the three-letter currency code (such as USD for US Dollar) of the currency you are converting from.
-- `id`: A unique identifier for the exchange rate
-
-### [MulticurrencyCollectionResponseExchangeRateNoPaging](docs/api/multicurrency_collection_response_exchange_rate_no_paging.html)
 
 Results: successful operation.
 
@@ -98,20 +120,6 @@ Key fields to recognise:
 - `createdAt`: The date the company currency was created.
 - `currencyCode`: The three-letter code representing a specific currency (ex.
 - `id`: The currency code for the company currency
-
-### [MulticurrencyExchangeRate](docs/api/multicurrency_exchange_rate.html)
-
-Results: successful operation.
-
-SDK operations: `create`, `load`, `update`.
-
-Key fields to recognise:
-
-- `conversionRate`: The conversion rate between the to and from currency code of this exchange rate.
-- `createdAt`: The date the exchange rate was created.
-- `currencyCode`: The currency code being added to the HubSpot portal for use with central exchange rates.
-- `effectiveAt`: The date the exchange rate is in effect.
-- `fromCurrencyCode`: This represents the three-letter currency code (such as USD for US Dollar) of the currency you are converting from.
 
 ### [TaxRate](docs/api/tax_rate.html)
 
@@ -188,48 +196,22 @@ Key fields to recognise:
 - `type`: The type of membership the user has in the team. Valid values are &#39;DEFAULT&#39; and &#39;EXTRA&#39;.
 - `userId`: The unique identifier for the user, represented as a string.
 
+### [UnsupportedCurrency](docs/api/unsupported_currency.html)
+
+Results: successful operation.
+
+SDK operations: `list`.
+
+Key fields to recognise:
+
+- `currencyCode`: The three-letter code representing a specific currency (ex. USD).
+- `currencyName`: The full name of the currency (ex. US Dollar).
+
 ### [User](docs/api/user.html)
 
 Results: No content.
 
 SDK operations: `remove`.
-
-### [UserProvisioningCollectionResponsePublicPermissionSetNo](docs/api/user_provisioning_collection_response_public_permission_set_no.html)
-
-Results: successful operation.
-
-SDK operations: `list`.
-
-Key fields to recognise:
-
-- `id`: The unique identifier for the permission set. It is a string.
-- `name`: The name of the permission set. It is a string.
-- `requiresBillingWrite`: A boolean indicating whether the permission set requires billing write access.
-
-### [UserProvisioningCollectionResponsePublicSeatNoPaging](docs/api/user_provisioning_collection_response_public_seat_no_paging.html)
-
-Results: successful operation.
-
-SDK operations: `list`.
-
-Key fields to recognise:
-
-- `description`: A string providing additional details about the seat.
-- `name`: The name of the seat. This is a required string property.
-- `remainingSeats`: An integer indicating the number of seats that are still available.
-
-### [UserProvisioningCollectionResponsePublicTeamNoPaging](docs/api/user_provisioning_collection_response_public_team_no_paging.html)
-
-Results: successful operation.
-
-SDK operations: `list`.
-
-Key fields to recognise:
-
-- `id`: The unique identifier for the team, represented as a string.
-- `name`: The name of the team, represented as a string.
-- `secondaryUserIds`: An array of strings representing the IDs of users who are secondary members of the team.
-- `userIds`: An array of strings representing the IDs of users who are primary members of the team.
 
 ### [UserProvisioningCollectionResponsePublicUserForwardPaging](docs/api/user_provisioning_collection_response_public_user_forward_paging.html)
 
@@ -244,6 +226,43 @@ Key fields to recognise:
 - `id`: The unique identifier for the user, represented as a string.
 - `lastName`: The last name of the user, represented as a string.
 - `primaryTeamId`: The ID of the primary team to which the user belongs, represented as a string.
+
+### [UserProvisioningPublicPermissionSet](docs/api/user_provisioning_public_permission_set.html)
+
+Results: successful operation.
+
+SDK operations: `list`.
+
+Key fields to recognise:
+
+- `id`: The unique identifier for the permission set. It is a string.
+- `name`: The name of the permission set. It is a string.
+- `requiresBillingWrite`: A boolean indicating whether the permission set requires billing write access.
+
+### [UserProvisioningPublicSeat](docs/api/user_provisioning_public_seat.html)
+
+Results: successful operation.
+
+SDK operations: `list`.
+
+Key fields to recognise:
+
+- `description`: A string providing additional details about the seat.
+- `name`: The name of the seat. This is a required string property.
+- `remainingSeats`: An integer indicating the number of seats that are still available.
+
+### [UserProvisioningPublicTeam](docs/api/user_provisioning_public_team.html)
+
+Results: successful operation.
+
+SDK operations: `list`.
+
+Key fields to recognise:
+
+- `id`: The unique identifier for the team, represented as a string.
+- `name`: The name of the team, represented as a string.
+- `secondaryUserIds`: An array of strings representing the IDs of users who are secondary members of the team.
+- `userIds`: An array of strings representing the IDs of users who are primary members of the team.
 
 ### [UserProvisioningPublicUser](docs/api/user_provisioning_public_user.html)
 
@@ -265,23 +284,22 @@ Use this map to locate a capability. Consult the entity reference before supplyi
 
 | Entity | SDK operation | HTTP route | Authentication |
 | --- | --- | --- | --- |
+| [AddCurrency](docs/api/add_currency.html) | `create` | `POST /settings/currencies/2026-09/central-fx-rates/add-currency` | Required |
 | [Basic](docs/api/basic.html) | `remove` | `DELETE /settings/teams/2026-09/{teamId}/members/{userId}` | Required |
 | [Basic](docs/api/basic.html) | `remove` | `DELETE /settings/teams/2026-09/{teamId}` | Required |
+| [Code](docs/api/code.html) | `list` | `GET /settings/currencies/2026-09/codes` | Required |
+| [Current](docs/api/current.html) | `list` | `GET /settings/currencies/2026-09/exchange-rates/current` | Required |
+| [ExchangeRate](docs/api/exchange_rate.html) | `create` | `POST /settings/currencies/2026-09/exchange-rates` | Required |
 | [ExchangeRate](docs/api/exchange_rate.html) | `create` | `POST /settings/currencies/2026-09/exchange-rates/update-visibility` | Required |
+| [ExchangeRate](docs/api/exchange_rate.html) | `load` | `GET /settings/currencies/2026-09/exchange-rates/{exchangeRateId}` | Required |
+| [ExchangeRate](docs/api/exchange_rate.html) | `update` | `PATCH /settings/currencies/2026-09/exchange-rates/{exchangeRateId}` | Required |
 | [MulticurrencyBatchResponseExchangeRate](docs/api/multicurrency_batch_response_exchange_rate.html) | `create` | `POST /settings/currencies/2026-09/exchange-rates/batch/create` | Required |
 | [MulticurrencyBatchResponseExchangeRate](docs/api/multicurrency_batch_response_exchange_rate.html) | `create` | `POST /settings/currencies/2026-09/exchange-rates/batch/read` | Required |
 | [MulticurrencyBatchResponseExchangeRate](docs/api/multicurrency_batch_response_exchange_rate.html) | `create` | `POST /settings/currencies/2026-09/exchange-rates/batch/update` | Required |
 | [MulticurrencyCentralExchangeRatesInformation](docs/api/multicurrency_central_exchange_rates_information.html) | `load` | `GET /settings/currencies/2026-09/central-fx-rates/information` | Required |
-| [MulticurrencyCollectionResponseCurrencyCodeInfoNoPaging](docs/api/multicurrency_collection_response_currency_code_info_no_paging.html) | `list` | `GET /settings/currencies/2026-09/central-fx-rates/unsupported-currencies` | Required |
-| [MulticurrencyCollectionResponseCurrencyCodeInfoNoPaging](docs/api/multicurrency_collection_response_currency_code_info_no_paging.html) | `list` | `GET /settings/currencies/2026-09/codes` | Required |
 | [MulticurrencyCollectionResponseExchangeRateForwardPaging](docs/api/multicurrency_collection_response_exchange_rate_forward_paging.html) | `list` | `GET /settings/currencies/2026-09/exchange-rates` | Required |
-| [MulticurrencyCollectionResponseExchangeRateNoPaging](docs/api/multicurrency_collection_response_exchange_rate_no_paging.html) | `list` | `GET /settings/currencies/2026-09/exchange-rates/current` | Required |
 | [MulticurrencyCompanyCurrency](docs/api/multicurrency_company_currency.html) | `load` | `GET /settings/currencies/2026-09/company-currency` | Required |
 | [MulticurrencyCompanyCurrency](docs/api/multicurrency_company_currency.html) | `update` | `PUT /settings/currencies/2026-09/company-currency` | Required |
-| [MulticurrencyExchangeRate](docs/api/multicurrency_exchange_rate.html) | `create` | `POST /settings/currencies/2026-09/central-fx-rates/add-currency` | Required |
-| [MulticurrencyExchangeRate](docs/api/multicurrency_exchange_rate.html) | `create` | `POST /settings/currencies/2026-09/exchange-rates` | Required |
-| [MulticurrencyExchangeRate](docs/api/multicurrency_exchange_rate.html) | `load` | `GET /settings/currencies/2026-09/exchange-rates/{exchangeRateId}` | Required |
-| [MulticurrencyExchangeRate](docs/api/multicurrency_exchange_rate.html) | `update` | `PATCH /settings/currencies/2026-09/exchange-rates/{exchangeRateId}` | Required |
 | [TaxRate](docs/api/tax_rate.html) | `list` | `GET /tax-rates/2026-09/tax-rates` | Required |
 | [TaxRate](docs/api/tax_rate.html) | `load` | `GET /tax-rates/2026-09/tax-rates/{taxRateGroupId}` | Required |
 | [TeamsBatchResponseTeamMember](docs/api/teams_batch_response_team_member.html) | `create` | `POST /settings/teams/2026-09/{teamId}/members/batch` | Required |
@@ -291,11 +309,12 @@ Use this map to locate a capability. Consult the entity reference before supplyi
 | [TeamsTeam](docs/api/teams_team.html) | `load` | `GET /settings/teams/2026-09/{teamId}` | Required |
 | [TeamsTeam](docs/api/teams_team.html) | `update` | `PATCH /settings/teams/2026-09/{teamId}` | Required |
 | [TeamsTeamMember](docs/api/teams_team_member.html) | `create` | `POST /settings/teams/2026-09/{teamId}/members` | Required |
+| [UnsupportedCurrency](docs/api/unsupported_currency.html) | `list` | `GET /settings/currencies/2026-09/central-fx-rates/unsupported-currencies` | Required |
 | [User](docs/api/user.html) | `remove` | `DELETE /settings/users/2026-09/{userId}` | Required |
-| [UserProvisioningCollectionResponsePublicPermissionSetNo](docs/api/user_provisioning_collection_response_public_permission_set_no.html) | `list` | `GET /settings/users/2026-09/roles` | Required |
-| [UserProvisioningCollectionResponsePublicSeatNoPaging](docs/api/user_provisioning_collection_response_public_seat_no_paging.html) | `list` | `GET /settings/users/2026-09/seats` | Required |
-| [UserProvisioningCollectionResponsePublicTeamNoPaging](docs/api/user_provisioning_collection_response_public_team_no_paging.html) | `list` | `GET /settings/users/2026-09/teams` | Required |
 | [UserProvisioningCollectionResponsePublicUserForwardPaging](docs/api/user_provisioning_collection_response_public_user_forward_paging.html) | `list` | `GET /settings/users/2026-09` | Required |
+| [UserProvisioningPublicPermissionSet](docs/api/user_provisioning_public_permission_set.html) | `list` | `GET /settings/users/2026-09/roles` | Required |
+| [UserProvisioningPublicSeat](docs/api/user_provisioning_public_seat.html) | `list` | `GET /settings/users/2026-09/seats` | Required |
+| [UserProvisioningPublicTeam](docs/api/user_provisioning_public_team.html) | `list` | `GET /settings/users/2026-09/teams` | Required |
 | [UserProvisioningPublicUser](docs/api/user_provisioning_public_user.html) | `create` | `POST /settings/users/2026-09` | Required |
 | [UserProvisioningPublicUser](docs/api/user_provisioning_public_user.html) | `load` | `GET /settings/users/2026-09/{userId}` | Required |
 | [UserProvisioningPublicUser](docs/api/user_provisioning_public_user.html) | `update` | `PUT /settings/users/2026-09/{userId}` | Required |
@@ -348,8 +367,8 @@ Use the MCP server to expose supported API operations to an MCP client.
 
 Repository directory: `go-mcp/`. Not published. Build from the go-mcp directory.
 
-- `hubspot-settings_list`: List records for an entity. Supported entities: `multicurrency_collection_response_currency_code_info_no_paging`, `multicurrency_collection_response_exchange_rate_forward_paging`, `multicurrency_collection_response_exchange_rate_no_paging`, `tax_rate`, `teams_collection_response_team_member_response_forward_paging`, `teams_collection_response_team_response_forward_paging`, `user_provisioning_collection_response_public_permission_set_no`, `user_provisioning_collection_response_public_seat_no_paging`, `user_provisioning_collection_response_public_team_no_paging`, `user_provisioning_collection_response_public_user_forward_paging`.
-- `hubspot-settings_load`: Load one record for an entity. Supported entities: `multicurrency_central_exchange_rates_information`, `multicurrency_company_currency`, `multicurrency_exchange_rate`, `tax_rate`, `teams_team`, `user_provisioning_public_user`.
+- `hubspot-settings_list`: List records for an entity. Supported entities: `code`, `current`, `multicurrency_collection_response_exchange_rate_forward_paging`, `tax_rate`, `teams_collection_response_team_member_response_forward_paging`, `teams_collection_response_team_response_forward_paging`, `unsupported_currency`, `user_provisioning_collection_response_public_user_forward_paging`, `user_provisioning_public_permission_set`, `user_provisioning_public_seat`, `user_provisioning_public_team`.
+- `hubspot-settings_load`: Load one record for an entity. Supported entities: `exchange_rate`, `multicurrency_central_exchange_rates_information`, `multicurrency_company_currency`, `tax_rate`, `teams_team`, `user_provisioning_public_user`.
 
 ## Operational features
 

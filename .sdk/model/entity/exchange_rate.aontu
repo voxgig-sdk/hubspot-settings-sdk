@@ -1,0 +1,269 @@
+# Entity: exchange_rate
+
+main: kit: entity: exchange_rate: {
+
+  alias: field: {}
+
+  fields: {
+    conversionRate: {
+      h: "Conversion Rate"
+      n: "conversionRate"
+      r: true
+      sh: "The conversion rate between the to and from currency code of this exchange rate."
+      t: "`$NUMBER`"
+    }
+    createdAt: {
+      fo: "date-time"
+      h: "Created At"
+      n: "createdAt"
+      r: true
+      sh: "The date the exchange rate was created."
+      t: "`$STRING`"
+    }
+    effectiveAt: {
+      fo: "date-time"
+      h: "Effective At"
+      n: "effectiveAt"
+      op: {
+        create: {
+          req: false
+          type: "`$STRING`"
+        }
+        update: {
+          req: false
+          type: "`$STRING`"
+        }
+      }
+      r: true
+      sh: "The date the exchange rate is in effect."
+      t: "`$STRING`"
+    }
+    fromCurrencyCode: {
+      h: "From Currency Code"
+      n: "fromCurrencyCode"
+      r: true
+      sh: "This represents the three-letter currency code (such as USD for US Dollar) of the currency you are converting from."
+      t: "`$STRING`"
+    }
+    id: {
+      h: "Id"
+      n: "id"
+      r: true
+      sh: "A unique identifier for the exchange rate"
+      t: "`$STRING`"
+    }
+    toCurrencyCode: {
+      h: "To Currency Code"
+      n: "toCurrencyCode"
+      r: true
+      sh: "This represents the three-letter currency code (such as USD for US Dollar) of the currency you are converting to."
+      t: "`$STRING`"
+    }
+    updatedAt: {
+      fo: "date-time"
+      h: "Updated At"
+      n: "updatedAt"
+      r: true
+      sh: "The date the exchange rate was last updated."
+      t: "`$STRING`"
+    }
+    visibleInUI: {
+      h: "Visible In Ui"
+      n: "visibleInUI"
+      r: true
+      sh: "This indicates if the exchange rate is shown in the MultiCurrency settings page."
+      t: "`$BOOLEAN`"
+    }
+  }
+
+  id: {
+    field: "id"
+    name: "id"
+  }
+
+  name: "exchange_rate"
+  op: {
+    create: {
+      name: "create"
+      points: [
+        {
+          co: {
+            id: "POST /settings/currencies/2026-09/exchange-rates"
+            source: "openapi3"
+            version: 2
+          }
+          m: "POST"
+          o: "/settings/currencies/2026-09/exchange-rates"
+          s: [
+            {
+              lit: "settings"
+            }
+            {
+              lit: "currencies"
+            }
+            {
+              lit: "2026-09"
+            }
+            {
+              lit: "exchange-rates"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          co: {
+            id: "POST /settings/currencies/2026-09/exchange-rates/update-visibility"
+            source: "openapi3"
+            version: 2
+          }
+          m: "POST"
+          o: "/settings/currencies/2026-09/exchange-rates/update-visibility"
+          q: {
+            "$action": "update_visibility"
+          }
+          s: [
+            {
+              lit: "settings"
+            }
+            {
+              lit: "currencies"
+            }
+            {
+              lit: "2026-09"
+            }
+            {
+              lit: "exchange-rates"
+            }
+            {
+              lit: "update-visibility"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+    load: {
+      name: "load"
+      points: [
+        {
+          co: {
+            id: "GET /settings/currencies/2026-09/exchange-rates/{exchangeRateId}"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                ex: null
+                k: "param"
+                n: "id"
+                or: "exchange_rate_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/settings/currencies/2026-09/exchange-rates/{exchangeRateId}"
+          q: {
+            exist: [
+              "id"
+            ]
+          }
+          r: {
+            param: {
+              exchangeRateId: "id"
+            }
+          }
+          s: [
+            {
+              lit: "settings"
+            }
+            {
+              lit: "currencies"
+            }
+            {
+              lit: "2026-09"
+            }
+            {
+              lit: "exchange-rates"
+            }
+            {
+              var: "id"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+    update: {
+      name: "update"
+      points: [
+        {
+          co: {
+            id: "PATCH /settings/currencies/2026-09/exchange-rates/{exchangeRateId}"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                ex: null
+                k: "param"
+                n: "id"
+                or: "exchange_rate_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "PATCH"
+          o: "/settings/currencies/2026-09/exchange-rates/{exchangeRateId}"
+          q: {
+            exist: [
+              "id"
+            ]
+          }
+          r: {
+            param: {
+              exchangeRateId: "id"
+            }
+          }
+          s: [
+            {
+              lit: "settings"
+            }
+            {
+              lit: "currencies"
+            }
+            {
+              lit: "2026-09"
+            }
+            {
+              lit: "exchange-rates"
+            }
+            {
+              var: "id"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

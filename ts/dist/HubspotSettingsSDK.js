@@ -2,26 +2,27 @@
 // HubspotSettings Ts SDK
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.SDK = exports.HubspotSettingsSDK = exports.HubspotSettingsEntityBase = exports.BaseFeature = exports.config = exports.stdutil = void 0;
+const AddCurrencyEntity_1 = require("./entity/AddCurrencyEntity");
 const BasicEntity_1 = require("./entity/BasicEntity");
+const CodeEntity_1 = require("./entity/CodeEntity");
+const CurrentEntity_1 = require("./entity/CurrentEntity");
 const ExchangeRateEntity_1 = require("./entity/ExchangeRateEntity");
 const MulticurrencyBatchResponseExchangeRateEntity_1 = require("./entity/MulticurrencyBatchResponseExchangeRateEntity");
 const MulticurrencyCentralExchangeRatesInformationEntity_1 = require("./entity/MulticurrencyCentralExchangeRatesInformationEntity");
-const MulticurrencyCollectionResponseCurrencyCodeInfoNoPagingEntity_1 = require("./entity/MulticurrencyCollectionResponseCurrencyCodeInfoNoPagingEntity");
 const MulticurrencyCollectionResponseExchangeRateForwardPagingEntity_1 = require("./entity/MulticurrencyCollectionResponseExchangeRateForwardPagingEntity");
-const MulticurrencyCollectionResponseExchangeRateNoPagingEntity_1 = require("./entity/MulticurrencyCollectionResponseExchangeRateNoPagingEntity");
 const MulticurrencyCompanyCurrencyEntity_1 = require("./entity/MulticurrencyCompanyCurrencyEntity");
-const MulticurrencyExchangeRateEntity_1 = require("./entity/MulticurrencyExchangeRateEntity");
 const TaxRateEntity_1 = require("./entity/TaxRateEntity");
 const TeamsBatchResponseTeamMemberEntity_1 = require("./entity/TeamsBatchResponseTeamMemberEntity");
 const TeamsCollectionResponseTeamMemberResponseForwardPagingEntity_1 = require("./entity/TeamsCollectionResponseTeamMemberResponseForwardPagingEntity");
 const TeamsCollectionResponseTeamResponseForwardPagingEntity_1 = require("./entity/TeamsCollectionResponseTeamResponseForwardPagingEntity");
 const TeamsTeamEntity_1 = require("./entity/TeamsTeamEntity");
 const TeamsTeamMemberEntity_1 = require("./entity/TeamsTeamMemberEntity");
+const UnsupportedCurrencyEntity_1 = require("./entity/UnsupportedCurrencyEntity");
 const UserEntity_1 = require("./entity/UserEntity");
-const UserProvisioningCollectionResponsePublicPermissionSetNoEntity_1 = require("./entity/UserProvisioningCollectionResponsePublicPermissionSetNoEntity");
-const UserProvisioningCollectionResponsePublicSeatNoPagingEntity_1 = require("./entity/UserProvisioningCollectionResponsePublicSeatNoPagingEntity");
-const UserProvisioningCollectionResponsePublicTeamNoPagingEntity_1 = require("./entity/UserProvisioningCollectionResponsePublicTeamNoPagingEntity");
 const UserProvisioningCollectionResponsePublicUserForwardPagingEntity_1 = require("./entity/UserProvisioningCollectionResponsePublicUserForwardPagingEntity");
+const UserProvisioningPublicPermissionSetEntity_1 = require("./entity/UserProvisioningPublicPermissionSetEntity");
+const UserProvisioningPublicSeatEntity_1 = require("./entity/UserProvisioningPublicSeatEntity");
+const UserProvisioningPublicTeamEntity_1 = require("./entity/UserProvisioningPublicTeamEntity");
 const UserProvisioningPublicUserEntity_1 = require("./entity/UserProvisioningPublicUserEntity");
 const node_util_1 = require("node:util");
 const Config_1 = require("./Config");
@@ -104,7 +105,6 @@ class HubspotSettingsSDK {
             ctrl: fetchargs.ctrl || {},
         }, this._rootctx);
         const options = this._options;
-        // Build spec directly from SDK options + user-provided fetch args.
         const spec = {
             base: options.base,
             prefix: options.prefix,
@@ -118,14 +118,12 @@ class HubspotSettingsSDK {
             step: 'start',
         };
         ctx.spec = spec;
-        // Merge user-provided headers over SDK defaults.
         if (fetchargs.headers) {
             const uheaders = fetchargs.headers;
             for (let key in uheaders) {
                 spec.headers[key] = uheaders[key];
             }
         }
-        // Apply SDK auth (apikey, auth prefix, etc.)
         const authResult = prepareAuth(ctx);
         if (authResult instanceof Error) {
             return authResult;
@@ -200,18 +198,6 @@ class HubspotSettingsSDK {
             return { ok: false, err };
         }
     }
-    // Raw GraphQL access: the pressure valve that makes the generated
-    // surface's deliberate omissions (per-call selection sets, typed filter
-    // builders, batching, subscriptions) livable — the whole schema stays
-    // reachable.
-    //
-    // Thin wrapper over the same prepare/fetch path `direct` uses, with the
-    // one thing raw `direct` cannot do for GraphQL: a GraphQL failure rides
-    // HTTP 200 as a top-level `errors` array, so status alone would report a
-    // failed query as ok.
-    //
-    // NOTE: like `direct`, this bypasses the feature pipeline — no retry,
-    // ratelimit or paging features apply.
     async graphql(query, variables, ctrl) {
         const options = this._options;
         if (!options.allow.op.includes('graphql')) {
@@ -245,12 +231,33 @@ class HubspotSettingsSDK {
         }
         return res;
     }
+    // Entity access: `client.AddCurrency().list()` / `client.AddCurrency().load({ id })`.
+    // The argument is the entity OPTIONS object (passed to the entity
+    // constructor as entopts), not initial entity data.
+    AddCurrency(entopts) {
+        const self = this;
+        return new AddCurrencyEntity_1.AddCurrencyEntity(self, entopts);
+    }
     // Entity access: `client.Basic().list()` / `client.Basic().load({ id })`.
     // The argument is the entity OPTIONS object (passed to the entity
     // constructor as entopts), not initial entity data.
     Basic(entopts) {
         const self = this;
         return new BasicEntity_1.BasicEntity(self, entopts);
+    }
+    // Entity access: `client.Code().list()` / `client.Code().load({ id })`.
+    // The argument is the entity OPTIONS object (passed to the entity
+    // constructor as entopts), not initial entity data.
+    Code(entopts) {
+        const self = this;
+        return new CodeEntity_1.CodeEntity(self, entopts);
+    }
+    // Entity access: `client.Current().list()` / `client.Current().load({ id })`.
+    // The argument is the entity OPTIONS object (passed to the entity
+    // constructor as entopts), not initial entity data.
+    Current(entopts) {
+        const self = this;
+        return new CurrentEntity_1.CurrentEntity(self, entopts);
     }
     // Entity access: `client.ExchangeRate().list()` / `client.ExchangeRate().load({ id })`.
     // The argument is the entity OPTIONS object (passed to the entity
@@ -273,13 +280,6 @@ class HubspotSettingsSDK {
         const self = this;
         return new MulticurrencyCentralExchangeRatesInformationEntity_1.MulticurrencyCentralExchangeRatesInformationEntity(self, entopts);
     }
-    // Entity access: `client.MulticurrencyCollectionResponseCurrencyCodeInfoNoPaging().list()` / `client.MulticurrencyCollectionResponseCurrencyCodeInfoNoPaging().load({ id })`.
-    // The argument is the entity OPTIONS object (passed to the entity
-    // constructor as entopts), not initial entity data.
-    MulticurrencyCollectionResponseCurrencyCodeInfoNoPaging(entopts) {
-        const self = this;
-        return new MulticurrencyCollectionResponseCurrencyCodeInfoNoPagingEntity_1.MulticurrencyCollectionResponseCurrencyCodeInfoNoPagingEntity(self, entopts);
-    }
     // Entity access: `client.MulticurrencyCollectionResponseExchangeRateForwardPaging().list()` / `client.MulticurrencyCollectionResponseExchangeRateForwardPaging().load({ id })`.
     // The argument is the entity OPTIONS object (passed to the entity
     // constructor as entopts), not initial entity data.
@@ -287,26 +287,12 @@ class HubspotSettingsSDK {
         const self = this;
         return new MulticurrencyCollectionResponseExchangeRateForwardPagingEntity_1.MulticurrencyCollectionResponseExchangeRateForwardPagingEntity(self, entopts);
     }
-    // Entity access: `client.MulticurrencyCollectionResponseExchangeRateNoPaging().list()` / `client.MulticurrencyCollectionResponseExchangeRateNoPaging().load({ id })`.
-    // The argument is the entity OPTIONS object (passed to the entity
-    // constructor as entopts), not initial entity data.
-    MulticurrencyCollectionResponseExchangeRateNoPaging(entopts) {
-        const self = this;
-        return new MulticurrencyCollectionResponseExchangeRateNoPagingEntity_1.MulticurrencyCollectionResponseExchangeRateNoPagingEntity(self, entopts);
-    }
     // Entity access: `client.MulticurrencyCompanyCurrency().list()` / `client.MulticurrencyCompanyCurrency().load({ id })`.
     // The argument is the entity OPTIONS object (passed to the entity
     // constructor as entopts), not initial entity data.
     MulticurrencyCompanyCurrency(entopts) {
         const self = this;
         return new MulticurrencyCompanyCurrencyEntity_1.MulticurrencyCompanyCurrencyEntity(self, entopts);
-    }
-    // Entity access: `client.MulticurrencyExchangeRate().list()` / `client.MulticurrencyExchangeRate().load({ id })`.
-    // The argument is the entity OPTIONS object (passed to the entity
-    // constructor as entopts), not initial entity data.
-    MulticurrencyExchangeRate(entopts) {
-        const self = this;
-        return new MulticurrencyExchangeRateEntity_1.MulticurrencyExchangeRateEntity(self, entopts);
     }
     // Entity access: `client.TaxRate().list()` / `client.TaxRate().load({ id })`.
     // The argument is the entity OPTIONS object (passed to the entity
@@ -350,6 +336,13 @@ class HubspotSettingsSDK {
         const self = this;
         return new TeamsTeamMemberEntity_1.TeamsTeamMemberEntity(self, entopts);
     }
+    // Entity access: `client.UnsupportedCurrency().list()` / `client.UnsupportedCurrency().load({ id })`.
+    // The argument is the entity OPTIONS object (passed to the entity
+    // constructor as entopts), not initial entity data.
+    UnsupportedCurrency(entopts) {
+        const self = this;
+        return new UnsupportedCurrencyEntity_1.UnsupportedCurrencyEntity(self, entopts);
+    }
     // Entity access: `client.User().list()` / `client.User().load({ id })`.
     // The argument is the entity OPTIONS object (passed to the entity
     // constructor as entopts), not initial entity data.
@@ -357,33 +350,33 @@ class HubspotSettingsSDK {
         const self = this;
         return new UserEntity_1.UserEntity(self, entopts);
     }
-    // Entity access: `client.UserProvisioningCollectionResponsePublicPermissionSetNo().list()` / `client.UserProvisioningCollectionResponsePublicPermissionSetNo().load({ id })`.
-    // The argument is the entity OPTIONS object (passed to the entity
-    // constructor as entopts), not initial entity data.
-    UserProvisioningCollectionResponsePublicPermissionSetNo(entopts) {
-        const self = this;
-        return new UserProvisioningCollectionResponsePublicPermissionSetNoEntity_1.UserProvisioningCollectionResponsePublicPermissionSetNoEntity(self, entopts);
-    }
-    // Entity access: `client.UserProvisioningCollectionResponsePublicSeatNoPaging().list()` / `client.UserProvisioningCollectionResponsePublicSeatNoPaging().load({ id })`.
-    // The argument is the entity OPTIONS object (passed to the entity
-    // constructor as entopts), not initial entity data.
-    UserProvisioningCollectionResponsePublicSeatNoPaging(entopts) {
-        const self = this;
-        return new UserProvisioningCollectionResponsePublicSeatNoPagingEntity_1.UserProvisioningCollectionResponsePublicSeatNoPagingEntity(self, entopts);
-    }
-    // Entity access: `client.UserProvisioningCollectionResponsePublicTeamNoPaging().list()` / `client.UserProvisioningCollectionResponsePublicTeamNoPaging().load({ id })`.
-    // The argument is the entity OPTIONS object (passed to the entity
-    // constructor as entopts), not initial entity data.
-    UserProvisioningCollectionResponsePublicTeamNoPaging(entopts) {
-        const self = this;
-        return new UserProvisioningCollectionResponsePublicTeamNoPagingEntity_1.UserProvisioningCollectionResponsePublicTeamNoPagingEntity(self, entopts);
-    }
     // Entity access: `client.UserProvisioningCollectionResponsePublicUserForwardPaging().list()` / `client.UserProvisioningCollectionResponsePublicUserForwardPaging().load({ id })`.
     // The argument is the entity OPTIONS object (passed to the entity
     // constructor as entopts), not initial entity data.
     UserProvisioningCollectionResponsePublicUserForwardPaging(entopts) {
         const self = this;
         return new UserProvisioningCollectionResponsePublicUserForwardPagingEntity_1.UserProvisioningCollectionResponsePublicUserForwardPagingEntity(self, entopts);
+    }
+    // Entity access: `client.UserProvisioningPublicPermissionSet().list()` / `client.UserProvisioningPublicPermissionSet().load({ id })`.
+    // The argument is the entity OPTIONS object (passed to the entity
+    // constructor as entopts), not initial entity data.
+    UserProvisioningPublicPermissionSet(entopts) {
+        const self = this;
+        return new UserProvisioningPublicPermissionSetEntity_1.UserProvisioningPublicPermissionSetEntity(self, entopts);
+    }
+    // Entity access: `client.UserProvisioningPublicSeat().list()` / `client.UserProvisioningPublicSeat().load({ id })`.
+    // The argument is the entity OPTIONS object (passed to the entity
+    // constructor as entopts), not initial entity data.
+    UserProvisioningPublicSeat(entopts) {
+        const self = this;
+        return new UserProvisioningPublicSeatEntity_1.UserProvisioningPublicSeatEntity(self, entopts);
+    }
+    // Entity access: `client.UserProvisioningPublicTeam().list()` / `client.UserProvisioningPublicTeam().load({ id })`.
+    // The argument is the entity OPTIONS object (passed to the entity
+    // constructor as entopts), not initial entity data.
+    UserProvisioningPublicTeam(entopts) {
+        const self = this;
+        return new UserProvisioningPublicTeamEntity_1.UserProvisioningPublicTeamEntity(self, entopts);
     }
     // Entity access: `client.UserProvisioningPublicUser().list()` / `client.UserProvisioningPublicUser().load({ id })`.
     // The argument is the entity OPTIONS object (passed to the entity

@@ -2,7 +2,6 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.TeamsCollectionResponseTeamMemberResponseForwardPagingEntity = void 0;
 const HubspotSettingsEntityBase_1 = require("../HubspotSettingsEntityBase");
-// TODO: needs Entity superclass
 class TeamsCollectionResponseTeamMemberResponseForwardPagingEntity extends HubspotSettingsEntityBase_1.HubspotSettingsEntityBase {
     constructor(client, entopts) {
         super(client, entopts);

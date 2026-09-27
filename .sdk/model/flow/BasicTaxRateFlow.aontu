@@ -1,0 +1,44 @@
+# BasicTaxRateFlow
+
+main: kit: flow: BasicTaxRateFlow:
+{
+  entity: "tax_rate",
+  kind: "basic",
+  name: "BasicTaxRateFlow",
+  step: [
+    {
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "tax_rate_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      i: {
+        ref: "tax_rate_ref01",
+        srcdatavar: "tax_rate_ref01_data",
+        suffix: "_dt0"
+      }
+
+      m: {
+        id: "tax_rate01"
+      }
+
+      o: "load",
+      v: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-tax_rate_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicTaxRateFlow"
+}

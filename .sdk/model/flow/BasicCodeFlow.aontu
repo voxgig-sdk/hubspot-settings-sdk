@@ -1,0 +1,22 @@
+# BasicCodeFlow
+
+main: kit: flow: BasicCodeFlow:
+{
+  entity: "code",
+  kind: "basic",
+  name: "BasicCodeFlow",
+  step: [
+    {
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "code_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicCodeFlow"
+}

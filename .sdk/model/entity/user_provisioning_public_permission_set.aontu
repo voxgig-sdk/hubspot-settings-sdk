@@ -1,0 +1,74 @@
+# Entity: user_provisioning_public_permission_set
+
+main: kit: entity: user_provisioning_public_permission_set: {
+
+  alias: field: {}
+
+  fields: {
+    id: {
+      h: "Id"
+      n: "id"
+      r: true
+      sh: "The unique identifier for the permission set."
+      t: "`$STRING`"
+    }
+    name: {
+      h: "Name"
+      n: "name"
+      r: true
+      sh: "The name of the permission set."
+      t: "`$STRING`"
+    }
+    requiresBillingWrite: {
+      h: "Requires Billing Write"
+      n: "requiresBillingWrite"
+      r: true
+      sh: "A boolean indicating whether the permission set requires billing write access."
+      t: "`$BOOLEAN`"
+    }
+  }
+
+  id: {
+    field: "id"
+    name: "id"
+  }
+
+  name: "user_provisioning_public_permission_set"
+  op: {
+    list: {
+      name: "list"
+      points: [
+        {
+          co: {
+            id: "GET /settings/users/2026-09/roles"
+            source: "openapi3"
+            version: 2
+          }
+          m: "GET"
+          o: "/settings/users/2026-09/roles"
+          s: [
+            {
+              lit: "settings"
+            }
+            {
+              lit: "users"
+            }
+            {
+              lit: "2026-09"
+            }
+            {
+              lit: "roles"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.results`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

@@ -49,6 +49,18 @@ const client = HubspotSettingsSDK.test()
 
 ### Instance Methods
 
+#### `AddCurrency(data?: object)`
+
+Create a new `AddCurrency` entity instance.
+
+**Parameters:**
+
+| Name | Type | Description |
+| --- | --- | --- |
+| `data` | `object` | Initial entity data. |
+
+**Returns:** `AddCurrencyEntity` instance.
+
 #### `Basic(data?: object)`
 
 Create a new `Basic` entity instance.
@@ -60,6 +72,30 @@ Create a new `Basic` entity instance.
 | `data` | `object` | Initial entity data. |
 
 **Returns:** `BasicEntity` instance.
+
+#### `Code(data?: object)`
+
+Create a new `Code` entity instance.
+
+**Parameters:**
+
+| Name | Type | Description |
+| --- | --- | --- |
+| `data` | `object` | Initial entity data. |
+
+**Returns:** `CodeEntity` instance.
+
+#### `Current(data?: object)`
+
+Create a new `Current` entity instance.
+
+**Parameters:**
+
+| Name | Type | Description |
+| --- | --- | --- |
+| `data` | `object` | Initial entity data. |
+
+**Returns:** `CurrentEntity` instance.
 
 #### `ExchangeRate(data?: object)`
 
@@ -97,18 +133,6 @@ Create a new `MulticurrencyCentralExchangeRatesInformation` entity instance.
 
 **Returns:** `MulticurrencyCentralExchangeRatesInformationEntity` instance.
 
-#### `MulticurrencyCollectionResponseCurrencyCodeInfoNoPaging(data?: object)`
-
-Create a new `MulticurrencyCollectionResponseCurrencyCodeInfoNoPaging` entity instance.
-
-**Parameters:**
-
-| Name | Type | Description |
-| --- | --- | --- |
-| `data` | `object` | Initial entity data. |
-
-**Returns:** `MulticurrencyCollectionResponseCurrencyCodeInfoNoPagingEntity` instance.
-
 #### `MulticurrencyCollectionResponseExchangeRateForwardPaging(data?: object)`
 
 Create a new `MulticurrencyCollectionResponseExchangeRateForwardPaging` entity instance.
@@ -121,18 +145,6 @@ Create a new `MulticurrencyCollectionResponseExchangeRateForwardPaging` entity i
 
 **Returns:** `MulticurrencyCollectionResponseExchangeRateForwardPagingEntity` instance.
 
-#### `MulticurrencyCollectionResponseExchangeRateNoPaging(data?: object)`
-
-Create a new `MulticurrencyCollectionResponseExchangeRateNoPaging` entity instance.
-
-**Parameters:**
-
-| Name | Type | Description |
-| --- | --- | --- |
-| `data` | `object` | Initial entity data. |
-
-**Returns:** `MulticurrencyCollectionResponseExchangeRateNoPagingEntity` instance.
-
 #### `MulticurrencyCompanyCurrency(data?: object)`
 
 Create a new `MulticurrencyCompanyCurrency` entity instance.
@@ -144,18 +156,6 @@ Create a new `MulticurrencyCompanyCurrency` entity instance.
 | `data` | `object` | Initial entity data. |
 
 **Returns:** `MulticurrencyCompanyCurrencyEntity` instance.
-
-#### `MulticurrencyExchangeRate(data?: object)`
-
-Create a new `MulticurrencyExchangeRate` entity instance.
-
-**Parameters:**
-
-| Name | Type | Description |
-| --- | --- | --- |
-| `data` | `object` | Initial entity data. |
-
-**Returns:** `MulticurrencyExchangeRateEntity` instance.
 
 #### `TaxRate(data?: object)`
 
@@ -229,6 +229,18 @@ Create a new `TeamsTeamMember` entity instance.
 
 **Returns:** `TeamsTeamMemberEntity` instance.
 
+#### `UnsupportedCurrency(data?: object)`
+
+Create a new `UnsupportedCurrency` entity instance.
+
+**Parameters:**
+
+| Name | Type | Description |
+| --- | --- | --- |
+| `data` | `object` | Initial entity data. |
+
+**Returns:** `UnsupportedCurrencyEntity` instance.
+
 #### `User(data?: object)`
 
 Create a new `User` entity instance.
@@ -241,42 +253,6 @@ Create a new `User` entity instance.
 
 **Returns:** `UserEntity` instance.
 
-#### `UserProvisioningCollectionResponsePublicPermissionSetNo(data?: object)`
-
-Create a new `UserProvisioningCollectionResponsePublicPermissionSetNo` entity instance.
-
-**Parameters:**
-
-| Name | Type | Description |
-| --- | --- | --- |
-| `data` | `object` | Initial entity data. |
-
-**Returns:** `UserProvisioningCollectionResponsePublicPermissionSetNoEntity` instance.
-
-#### `UserProvisioningCollectionResponsePublicSeatNoPaging(data?: object)`
-
-Create a new `UserProvisioningCollectionResponsePublicSeatNoPaging` entity instance.
-
-**Parameters:**
-
-| Name | Type | Description |
-| --- | --- | --- |
-| `data` | `object` | Initial entity data. |
-
-**Returns:** `UserProvisioningCollectionResponsePublicSeatNoPagingEntity` instance.
-
-#### `UserProvisioningCollectionResponsePublicTeamNoPaging(data?: object)`
-
-Create a new `UserProvisioningCollectionResponsePublicTeamNoPaging` entity instance.
-
-**Parameters:**
-
-| Name | Type | Description |
-| --- | --- | --- |
-| `data` | `object` | Initial entity data. |
-
-**Returns:** `UserProvisioningCollectionResponsePublicTeamNoPagingEntity` instance.
-
 #### `UserProvisioningCollectionResponsePublicUserForwardPaging(data?: object)`
 
 Create a new `UserProvisioningCollectionResponsePublicUserForwardPaging` entity instance.
@@ -288,6 +264,42 @@ Create a new `UserProvisioningCollectionResponsePublicUserForwardPaging` entity 
 | `data` | `object` | Initial entity data. |
 
 **Returns:** `UserProvisioningCollectionResponsePublicUserForwardPagingEntity` instance.
+
+#### `UserProvisioningPublicPermissionSet(data?: object)`
+
+Create a new `UserProvisioningPublicPermissionSet` entity instance.
+
+**Parameters:**
+
+| Name | Type | Description |
+| --- | --- | --- |
+| `data` | `object` | Initial entity data. |
+
+**Returns:** `UserProvisioningPublicPermissionSetEntity` instance.
+
+#### `UserProvisioningPublicSeat(data?: object)`
+
+Create a new `UserProvisioningPublicSeat` entity instance.
+
+**Parameters:**
+
+| Name | Type | Description |
+| --- | --- | --- |
+| `data` | `object` | Initial entity data. |
+
+**Returns:** `UserProvisioningPublicSeatEntity` instance.
+
+#### `UserProvisioningPublicTeam(data?: object)`
+
+Create a new `UserProvisioningPublicTeam` entity instance.
+
+**Parameters:**
+
+| Name | Type | Description |
+| --- | --- | --- |
+| `data` | `object` | Initial entity data. |
+
+**Returns:** `UserProvisioningPublicTeamEntity` instance.
 
 #### `UserProvisioningPublicUser(data?: object)`
 
@@ -347,6 +359,74 @@ Alias for `HubspotSettingsSDK.test()`.
 
 ---
 
+## AddCurrencyEntity
+
+```ts
+const add_currency = client.AddCurrency()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `conversionRate` | `number` | Yes | The conversion rate between the to and from currency code of this exchange rate. |
+| `createdAt` | `string` | Yes | The date the exchange rate was created. |
+| `currencyCode` | `string` | Yes | The currency code being added to the HubSpot portal for use with central exchange rates. |
+| `effectiveAt` | `string` | Yes | The date the exchange rate is in effect. |
+| `fromCurrencyCode` | `string` | Yes | This represents the three-letter currency code (such as USD for US Dollar) of the currency you are converting from. |
+| `id` | `string` | Yes | A unique identifier for the exchange rate |
+| `toCurrencyCode` | `string` | Yes | This represents the three-letter currency code (such as USD for US Dollar) of the currency you are converting to. |
+| `updatedAt` | `string` | Yes | The date the exchange rate was last updated. |
+| `visibleInUI` | `boolean` | Yes | This indicates if the exchange rate is shown in the MultiCurrency settings page. |
+
+### Operations
+
+#### `create(data: object, ctrl?: object)`
+
+Create a new entity with the given data.
+
+```ts
+const result = await client.AddCurrency().create({
+  conversionRate: 1,
+  createdAt: 'example_createdAt',
+  currencyCode: 'example_currencyCode',
+  effectiveAt: 'example_effectiveAt',
+  fromCurrencyCode: 'example_fromCurrencyCode',
+  id: 'example_id',
+  toCurrencyCode: 'example_toCurrencyCode',
+  updatedAt: 'example_updatedAt',
+  visibleInUI: true,
+})
+```
+
+### Common Methods
+
+#### `data(data?: object)`
+
+Get or set the entity data. When called with data, sets the entity's
+internal data and returns the current data. When called without
+arguments, returns a copy of the current data.
+
+#### `match(match?: object)`
+
+Get or set the entity match criteria. Works the same as `data()`.
+
+#### `make()`
+
+Create a new `AddCurrencyEntity` instance with the same client and
+options.
+
+#### `client()`
+
+Return the parent `HubspotSettingsSDK` instance.
+
+#### `entopts()`
+
+Return a copy of the entity options.
+
+
+---
+
 ## BasicEntity
 
 ```ts
@@ -391,11 +471,145 @@ Return a copy of the entity options.
 
 ---
 
+## CodeEntity
+
+```ts
+const code = client.Code()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `currencyCode` | `string` | Yes | The three-letter code representing a specific currency (ex. |
+| `currencyName` | `string` | Yes | The full name of the currency (ex. |
+
+### Operations
+
+#### `list(match: object, ctrl?: object)`
+
+List entities matching the given criteria. Returns an array.
+
+```ts
+const results = await client.Code().list()
+```
+
+### Common Methods
+
+#### `data(data?: object)`
+
+Get or set the entity data. When called with data, sets the entity's
+internal data and returns the current data. When called without
+arguments, returns a copy of the current data.
+
+#### `match(match?: object)`
+
+Get or set the entity match criteria. Works the same as `data()`.
+
+#### `make()`
+
+Create a new `CodeEntity` instance with the same client and
+options.
+
+#### `client()`
+
+Return the parent `HubspotSettingsSDK` instance.
+
+#### `entopts()`
+
+Return a copy of the entity options.
+
+
+---
+
+## CurrentEntity
+
+```ts
+const current = client.Current()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `conversionRate` | `number` | Yes | The conversion rate between the to and from currency code of this exchange rate. |
+| `createdAt` | `string` | Yes | The date the exchange rate was created. |
+| `effectiveAt` | `string` | Yes | The date the exchange rate is in effect. |
+| `fromCurrencyCode` | `string` | Yes | This represents the three-letter currency code (such as USD for US Dollar) of the currency you are converting from. |
+| `id` | `string` | Yes | A unique identifier for the exchange rate |
+| `toCurrencyCode` | `string` | Yes | This represents the three-letter currency code (such as USD for US Dollar) of the currency you are converting to. |
+| `updatedAt` | `string` | Yes | The date the exchange rate was last updated. |
+| `visibleInUI` | `boolean` | Yes | This indicates if the exchange rate is shown in the MultiCurrency settings page. |
+
+### Operations
+
+#### `list(match: object, ctrl?: object)`
+
+List entities matching the given criteria. Returns an array.
+
+```ts
+const results = await client.Current().list()
+```
+
+### Common Methods
+
+#### `data(data?: object)`
+
+Get or set the entity data. When called with data, sets the entity's
+internal data and returns the current data. When called without
+arguments, returns a copy of the current data.
+
+#### `match(match?: object)`
+
+Get or set the entity match criteria. Works the same as `data()`.
+
+#### `make()`
+
+Create a new `CurrentEntity` instance with the same client and
+options.
+
+#### `client()`
+
+Return the parent `HubspotSettingsSDK` instance.
+
+#### `entopts()`
+
+Return a copy of the entity options.
+
+
+---
+
 ## ExchangeRateEntity
 
 ```ts
 const exchange_rate = client.ExchangeRate()
 ```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `conversionRate` | `number` | Yes | The conversion rate between the to and from currency code of this exchange rate. |
+| `createdAt` | `string` | Yes | The date the exchange rate was created. |
+| `effectiveAt` | `string` | Yes | The date the exchange rate is in effect. |
+| `fromCurrencyCode` | `string` | Yes | This represents the three-letter currency code (such as USD for US Dollar) of the currency you are converting from. |
+| `id` | `string` | Yes | A unique identifier for the exchange rate |
+| `toCurrencyCode` | `string` | Yes | This represents the three-letter currency code (such as USD for US Dollar) of the currency you are converting to. |
+| `updatedAt` | `string` | Yes | The date the exchange rate was last updated. |
+| `visibleInUI` | `boolean` | Yes | This indicates if the exchange rate is shown in the MultiCurrency settings page. |
+
+### Field Usage by Operation
+
+| Field | load | create | update |
+| --- | --- | --- | --- |
+| `conversionRate` | - | - | - |
+| `createdAt` | - | - | - |
+| `effectiveAt` | - | Yes | Yes |
+| `fromCurrencyCode` | - | - | - |
+| `id` | - | - | - |
+| `toCurrencyCode` | - | - | - |
+| `updatedAt` | - | - | - |
+| `visibleInUI` | - | - | - |
 
 ### Actions
 
@@ -425,6 +639,33 @@ Create a new entity with the given data.
 
 ```ts
 const result = await client.ExchangeRate().create({
+  conversionRate: 1,
+  createdAt: 'example_createdAt',
+  effectiveAt: 'example_effectiveAt',
+  fromCurrencyCode: 'example_fromCurrencyCode',
+  id: 'example_id',
+  toCurrencyCode: 'example_toCurrencyCode',
+  updatedAt: 'example_updatedAt',
+  visibleInUI: true,
+})
+```
+
+#### `load(match: object, ctrl?: object)`
+
+Load a single entity matching the given criteria.
+
+```ts
+const result = await client.ExchangeRate().load({ id: 'exchange_rate_id' })
+```
+
+#### `update(data: object, ctrl?: object)`
+
+Update an existing entity. The data must include the entity `id`.
+
+```ts
+const result = await client.ExchangeRate().update({
+  id: 'exchange_rate_id',
+  // Fields to update
 })
 ```
 
@@ -568,57 +809,6 @@ Return a copy of the entity options.
 
 ---
 
-## MulticurrencyCollectionResponseCurrencyCodeInfoNoPagingEntity
-
-```ts
-const multicurrency_collection_response_currency_code_info_no_paging = client.MulticurrencyCollectionResponseCurrencyCodeInfoNoPaging()
-```
-
-### Fields
-
-| Field | Type | Required | Description |
-| --- | --- | --- | --- |
-| `currencyCode` | `string` | Yes | The three-letter code representing a specific currency (ex. |
-| `currencyName` | `string` | Yes | The full name of the currency (ex. |
-
-### Operations
-
-#### `list(match: object, ctrl?: object)`
-
-List entities matching the given criteria. Returns an array.
-
-```ts
-const results = await client.MulticurrencyCollectionResponseCurrencyCodeInfoNoPaging().list()
-```
-
-### Common Methods
-
-#### `data(data?: object)`
-
-Get or set the entity data. When called with data, sets the entity's
-internal data and returns the current data. When called without
-arguments, returns a copy of the current data.
-
-#### `match(match?: object)`
-
-Get or set the entity match criteria. Works the same as `data()`.
-
-#### `make()`
-
-Create a new `MulticurrencyCollectionResponseCurrencyCodeInfoNoPagingEntity` instance with the same client and
-options.
-
-#### `client()`
-
-Return the parent `HubspotSettingsSDK` instance.
-
-#### `entopts()`
-
-Return a copy of the entity options.
-
-
----
-
 ## MulticurrencyCollectionResponseExchangeRateForwardPagingEntity
 
 ```ts
@@ -663,63 +853,6 @@ Get or set the entity match criteria. Works the same as `data()`.
 #### `make()`
 
 Create a new `MulticurrencyCollectionResponseExchangeRateForwardPagingEntity` instance with the same client and
-options.
-
-#### `client()`
-
-Return the parent `HubspotSettingsSDK` instance.
-
-#### `entopts()`
-
-Return a copy of the entity options.
-
-
----
-
-## MulticurrencyCollectionResponseExchangeRateNoPagingEntity
-
-```ts
-const multicurrency_collection_response_exchange_rate_no_paging = client.MulticurrencyCollectionResponseExchangeRateNoPaging()
-```
-
-### Fields
-
-| Field | Type | Required | Description |
-| --- | --- | --- | --- |
-| `conversionRate` | `number` | Yes | The conversion rate between the to and from currency code of this exchange rate. |
-| `createdAt` | `string` | Yes | The date the exchange rate was created. |
-| `effectiveAt` | `string` | Yes | The date the exchange rate is in effect. |
-| `fromCurrencyCode` | `string` | Yes | This represents the three-letter currency code (such as USD for US Dollar) of the currency you are converting from. |
-| `id` | `string` | Yes | A unique identifier for the exchange rate |
-| `toCurrencyCode` | `string` | Yes | This represents the three-letter currency code (such as USD for US Dollar) of the currency you are converting to. |
-| `updatedAt` | `string` | Yes | The date the exchange rate was last updated. |
-| `visibleInUI` | `boolean` | Yes | This indicates if the exchange rate is shown in the MultiCurrency settings page. |
-
-### Operations
-
-#### `list(match: object, ctrl?: object)`
-
-List entities matching the given criteria. Returns an array.
-
-```ts
-const results = await client.MulticurrencyCollectionResponseExchangeRateNoPaging().list()
-```
-
-### Common Methods
-
-#### `data(data?: object)`
-
-Get or set the entity data. When called with data, sets the entity's
-internal data and returns the current data. When called without
-arguments, returns a copy of the current data.
-
-#### `match(match?: object)`
-
-Get or set the entity match criteria. Works the same as `data()`.
-
-#### `make()`
-
-Create a new `MulticurrencyCollectionResponseExchangeRateNoPagingEntity` instance with the same client and
 options.
 
 #### `client()`
@@ -783,107 +916,6 @@ Get or set the entity match criteria. Works the same as `data()`.
 #### `make()`
 
 Create a new `MulticurrencyCompanyCurrencyEntity` instance with the same client and
-options.
-
-#### `client()`
-
-Return the parent `HubspotSettingsSDK` instance.
-
-#### `entopts()`
-
-Return a copy of the entity options.
-
-
----
-
-## MulticurrencyExchangeRateEntity
-
-```ts
-const multicurrency_exchange_rate = client.MulticurrencyExchangeRate()
-```
-
-### Fields
-
-| Field | Type | Required | Description |
-| --- | --- | --- | --- |
-| `conversionRate` | `number` | Yes | The conversion rate between the to and from currency code of this exchange rate. |
-| `createdAt` | `string` | Yes | The date the exchange rate was created. |
-| `currencyCode` | `string` | Yes | The currency code being added to the HubSpot portal for use with central exchange rates. |
-| `effectiveAt` | `string` | Yes | The date the exchange rate is in effect. |
-| `fromCurrencyCode` | `string` | Yes | This represents the three-letter currency code (such as USD for US Dollar) of the currency you are converting from. |
-| `id` | `string` | Yes | A unique identifier for the exchange rate |
-| `toCurrencyCode` | `string` | Yes | This represents the three-letter currency code (such as USD for US Dollar) of the currency you are converting to. |
-| `updatedAt` | `string` | Yes | The date the exchange rate was last updated. |
-| `visibleInUI` | `boolean` | Yes | This indicates if the exchange rate is shown in the MultiCurrency settings page. |
-
-### Field Usage by Operation
-
-| Field | load | create | update |
-| --- | --- | --- | --- |
-| `conversionRate` | - | - | - |
-| `createdAt` | - | - | - |
-| `currencyCode` | - | - | - |
-| `effectiveAt` | - | Yes | Yes |
-| `fromCurrencyCode` | - | - | - |
-| `id` | - | - | - |
-| `toCurrencyCode` | - | - | - |
-| `updatedAt` | - | - | - |
-| `visibleInUI` | - | - | - |
-
-### Operations
-
-#### `create(data: object, ctrl?: object)`
-
-Create a new entity with the given data.
-
-```ts
-const result = await client.MulticurrencyExchangeRate().create({
-  conversionRate: 1,
-  createdAt: 'example_createdAt',
-  currencyCode: 'example_currencyCode',
-  effectiveAt: 'example_effectiveAt',
-  fromCurrencyCode: 'example_fromCurrencyCode',
-  id: 'example_id',
-  toCurrencyCode: 'example_toCurrencyCode',
-  updatedAt: 'example_updatedAt',
-  visibleInUI: true,
-})
-```
-
-#### `load(match: object, ctrl?: object)`
-
-Load a single entity matching the given criteria.
-
-```ts
-const result = await client.MulticurrencyExchangeRate().load({ id: 'multicurrency_exchange_rate_id' })
-```
-
-#### `update(data: object, ctrl?: object)`
-
-Update an existing entity. The data must include the entity `id`.
-
-```ts
-const result = await client.MulticurrencyExchangeRate().update({
-  id: 'multicurrency_exchange_rate_id',
-  // Fields to update
-})
-```
-
-### Common Methods
-
-#### `data(data?: object)`
-
-Get or set the entity data. When called with data, sets the entity's
-internal data and returns the current data. When called without
-arguments, returns a copy of the current data.
-
-#### `match(match?: object)`
-
-Get or set the entity match criteria. Works the same as `data()`.
-
-#### `make()`
-
-Create a new `MulticurrencyExchangeRateEntity` instance with the same client and
 options.
 
 #### `client()`
@@ -1269,6 +1301,57 @@ Return a copy of the entity options.
 
 ---
 
+## UnsupportedCurrencyEntity
+
+```ts
+const unsupported_currency = client.UnsupportedCurrency()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `currencyCode` | `string` | Yes | The three-letter code representing a specific currency (ex. |
+| `currencyName` | `string` | Yes | The full name of the currency (ex. |
+
+### Operations
+
+#### `list(match: object, ctrl?: object)`
+
+List entities matching the given criteria. Returns an array.
+
+```ts
+const results = await client.UnsupportedCurrency().list()
+```
+
+### Common Methods
+
+#### `data(data?: object)`
+
+Get or set the entity data. When called with data, sets the entity's
+internal data and returns the current data. When called without
+arguments, returns a copy of the current data.
+
+#### `match(match?: object)`
+
+Get or set the entity match criteria. Works the same as `data()`.
+
+#### `make()`
+
+Create a new `UnsupportedCurrencyEntity` instance with the same client and
+options.
+
+#### `client()`
+
+Return the parent `HubspotSettingsSDK` instance.
+
+#### `entopts()`
+
+Return a copy of the entity options.
+
+
+---
+
 ## UserEntity
 
 ```ts
@@ -1300,163 +1383,6 @@ Get or set the entity match criteria. Works the same as `data()`.
 #### `make()`
 
 Create a new `UserEntity` instance with the same client and
-options.
-
-#### `client()`
-
-Return the parent `HubspotSettingsSDK` instance.
-
-#### `entopts()`
-
-Return a copy of the entity options.
-
-
----
-
-## UserProvisioningCollectionResponsePublicPermissionSetNoEntity
-
-```ts
-const user_provisioning_collection_response_public_permission_set_no = client.UserProvisioningCollectionResponsePublicPermissionSetNo()
-```
-
-### Fields
-
-| Field | Type | Required | Description |
-| --- | --- | --- | --- |
-| `id` | `string` | Yes | The unique identifier for the permission set. |
-| `name` | `string` | Yes | The name of the permission set. |
-| `requiresBillingWrite` | `boolean` | Yes | A boolean indicating whether the permission set requires billing write access. |
-
-### Operations
-
-#### `list(match: object, ctrl?: object)`
-
-List entities matching the given criteria. Returns an array.
-
-```ts
-const results = await client.UserProvisioningCollectionResponsePublicPermissionSetNo().list()
-```
-
-### Common Methods
-
-#### `data(data?: object)`
-
-Get or set the entity data. When called with data, sets the entity's
-internal data and returns the current data. When called without
-arguments, returns a copy of the current data.
-
-#### `match(match?: object)`
-
-Get or set the entity match criteria. Works the same as `data()`.
-
-#### `make()`
-
-Create a new `UserProvisioningCollectionResponsePublicPermissionSetNoEntity` instance with the same client and
-options.
-
-#### `client()`
-
-Return the parent `HubspotSettingsSDK` instance.
-
-#### `entopts()`
-
-Return a copy of the entity options.
-
-
----
-
-## UserProvisioningCollectionResponsePublicSeatNoPagingEntity
-
-```ts
-const user_provisioning_collection_response_public_seat_no_paging = client.UserProvisioningCollectionResponsePublicSeatNoPaging()
-```
-
-### Fields
-
-| Field | Type | Required | Description |
-| --- | --- | --- | --- |
-| `description` | `string` | No | A string providing additional details about the seat. |
-| `name` | `string` | Yes | The name of the seat. |
-| `remainingSeats` | `number` | No | An integer indicating the number of seats that are still available. |
-
-### Operations
-
-#### `list(match: object, ctrl?: object)`
-
-List entities matching the given criteria. Returns an array.
-
-```ts
-const results = await client.UserProvisioningCollectionResponsePublicSeatNoPaging().list()
-```
-
-### Common Methods
-
-#### `data(data?: object)`
-
-Get or set the entity data. When called with data, sets the entity's
-internal data and returns the current data. When called without
-arguments, returns a copy of the current data.
-
-#### `match(match?: object)`
-
-Get or set the entity match criteria. Works the same as `data()`.
-
-#### `make()`
-
-Create a new `UserProvisioningCollectionResponsePublicSeatNoPagingEntity` instance with the same client and
-options.
-
-#### `client()`
-
-Return the parent `HubspotSettingsSDK` instance.
-
-#### `entopts()`
-
-Return a copy of the entity options.
-
-
----
-
-## UserProvisioningCollectionResponsePublicTeamNoPagingEntity
-
-```ts
-const user_provisioning_collection_response_public_team_no_paging = client.UserProvisioningCollectionResponsePublicTeamNoPaging()
-```
-
-### Fields
-
-| Field | Type | Required | Description |
-| --- | --- | --- | --- |
-| `id` | `string` | Yes | The unique identifier for the team, represented as a string. |
-| `name` | `string` | Yes | The name of the team, represented as a string. |
-| `secondaryUserIds` | `any[]` | Yes | An array of strings representing the IDs of users who are secondary members of the team. |
-| `userIds` | `any[]` | Yes | An array of strings representing the IDs of users who are primary members of the team. |
-
-### Operations
-
-#### `list(match: object, ctrl?: object)`
-
-List entities matching the given criteria. Returns an array.
-
-```ts
-const results = await client.UserProvisioningCollectionResponsePublicTeamNoPaging().list()
-```
-
-### Common Methods
-
-#### `data(data?: object)`
-
-Get or set the entity data. When called with data, sets the entity's
-internal data and returns the current data. When called without
-arguments, returns a copy of the current data.
-
-#### `match(match?: object)`
-
-Get or set the entity match criteria. Works the same as `data()`.
-
-#### `make()`
-
-Create a new `UserProvisioningCollectionResponsePublicTeamNoPagingEntity` instance with the same client and
 options.
 
 #### `client()`
@@ -1517,6 +1443,163 @@ Get or set the entity match criteria. Works the same as `data()`.
 #### `make()`
 
 Create a new `UserProvisioningCollectionResponsePublicUserForwardPagingEntity` instance with the same client and
+options.
+
+#### `client()`
+
+Return the parent `HubspotSettingsSDK` instance.
+
+#### `entopts()`
+
+Return a copy of the entity options.
+
+
+---
+
+## UserProvisioningPublicPermissionSetEntity
+
+```ts
+const user_provisioning_public_permission_set = client.UserProvisioningPublicPermissionSet()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | Yes | The unique identifier for the permission set. |
+| `name` | `string` | Yes | The name of the permission set. |
+| `requiresBillingWrite` | `boolean` | Yes | A boolean indicating whether the permission set requires billing write access. |
+
+### Operations
+
+#### `list(match: object, ctrl?: object)`
+
+List entities matching the given criteria. Returns an array.
+
+```ts
+const results = await client.UserProvisioningPublicPermissionSet().list()
+```
+
+### Common Methods
+
+#### `data(data?: object)`
+
+Get or set the entity data. When called with data, sets the entity's
+internal data and returns the current data. When called without
+arguments, returns a copy of the current data.
+
+#### `match(match?: object)`
+
+Get or set the entity match criteria. Works the same as `data()`.
+
+#### `make()`
+
+Create a new `UserProvisioningPublicPermissionSetEntity` instance with the same client and
+options.
+
+#### `client()`
+
+Return the parent `HubspotSettingsSDK` instance.
+
+#### `entopts()`
+
+Return a copy of the entity options.
+
+
+---
+
+## UserProvisioningPublicSeatEntity
+
+```ts
+const user_provisioning_public_seat = client.UserProvisioningPublicSeat()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `description` | `string` | No | A string providing additional details about the seat. |
+| `name` | `string` | Yes | The name of the seat. |
+| `remainingSeats` | `number` | No | An integer indicating the number of seats that are still available. |
+
+### Operations
+
+#### `list(match: object, ctrl?: object)`
+
+List entities matching the given criteria. Returns an array.
+
+```ts
+const results = await client.UserProvisioningPublicSeat().list()
+```
+
+### Common Methods
+
+#### `data(data?: object)`
+
+Get or set the entity data. When called with data, sets the entity's
+internal data and returns the current data. When called without
+arguments, returns a copy of the current data.
+
+#### `match(match?: object)`
+
+Get or set the entity match criteria. Works the same as `data()`.
+
+#### `make()`
+
+Create a new `UserProvisioningPublicSeatEntity` instance with the same client and
+options.
+
+#### `client()`
+
+Return the parent `HubspotSettingsSDK` instance.
+
+#### `entopts()`
+
+Return a copy of the entity options.
+
+
+---
+
+## UserProvisioningPublicTeamEntity
+
+```ts
+const user_provisioning_public_team = client.UserProvisioningPublicTeam()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | Yes | The unique identifier for the team, represented as a string. |
+| `name` | `string` | Yes | The name of the team, represented as a string. |
+| `secondaryUserIds` | `any[]` | Yes | An array of strings representing the IDs of users who are secondary members of the team. |
+| `userIds` | `any[]` | Yes | An array of strings representing the IDs of users who are primary members of the team. |
+
+### Operations
+
+#### `list(match: object, ctrl?: object)`
+
+List entities matching the given criteria. Returns an array.
+
+```ts
+const results = await client.UserProvisioningPublicTeam().list()
+```
+
+### Common Methods
+
+#### `data(data?: object)`
+
+Get or set the entity data. When called with data, sets the entity's
+internal data and returns the current data. When called without
+arguments, returns a copy of the current data.
+
+#### `match(match?: object)`
+
+Get or set the entity match criteria. Works the same as `data()`.
+
+#### `make()`
+
+Create a new `UserProvisioningPublicTeamEntity` instance with the same client and
 options.
 
 #### `client()`
@@ -1634,14 +1717,14 @@ Return a copy of the entity options.
 
 | Feature | Version | Description |
 | --- | --- | --- |
-| `debug` | 0.0.1 | Request/response capture ring buffer for debugging |
-| `idempotency` | 0.0.1 | Idempotency keys for safe retries of mutating operations |
-| `metrics` | 0.0.1 | Statistics capture: per-operation counters and latency |
-| `paging` | 0.0.1 | Pagination signals for list operations |
-| `ratelimit` | 0.0.1 | Client-side rate limiting via a token bucket |
-| `retry` | 0.0.1 | Automatic retry of transient failures with exponential backoff |
-| `test` | 0.0.1 | In-memory mock transport for testing without a live server |
-| `timeout` | 0.0.1 | Per-request timeout with transport abort |
+| `debug` | 0.0.1 | Debug capture |
+| `idempotency` | 0.0.1 | Idempotency |
+| `metrics` | 0.0.1 | Metrics |
+| `paging` | 0.0.1 | Paging |
+| `ratelimit` | 0.0.1 | Rate limiting |
+| `retry` | 0.0.1 | Retry |
+| `test` | 0.0.1 | Test transport |
+| `timeout` | 0.0.1 | Timeout |
 
 
 Features are activated via the `feature` option:
@@ -1687,7 +1770,7 @@ rather than the transport, so their order does not affect what they observe.
 
 #### `debug`
 
-Request/response capture ring buffer for debugging.
+Debug capture.
 
 **Configuration**
 
@@ -1718,7 +1801,7 @@ its default unless you name it.
 
 #### `idempotency`
 
-Idempotency keys for safe retries of mutating operations.
+Idempotency.
 
 **Configuration**
 
@@ -1749,7 +1832,7 @@ its default unless you name it.
 
 #### `metrics`
 
-Statistics capture: per-operation counters and latency.
+Metrics.
 
 **Configuration**
 
@@ -1777,7 +1860,7 @@ its default unless you name it.
 
 #### `paging`
 
-Pagination signals for list operations.
+Paging.
 
 **Configuration**
 
@@ -1812,7 +1895,7 @@ its default unless you name it.
 
 #### `ratelimit`
 
-Client-side rate limiting via a token bucket.
+Rate limiting.
 
 **Configuration**
 
@@ -1843,7 +1926,7 @@ its default unless you name it.
 
 #### `retry`
 
-Automatic retry of transient failures with exponential backoff.
+Retry.
 
 **Configuration**
 
@@ -1877,7 +1960,7 @@ its default unless you name it.
 
 #### `test`
 
-In-memory mock transport for testing without a live server.
+Test transport.
 
 **Configuration**
 
@@ -1908,7 +1991,7 @@ its default unless you name it.
 
 #### `timeout`
 
-Per-request timeout with transport abort.
+Timeout.
 
 **Configuration**
 

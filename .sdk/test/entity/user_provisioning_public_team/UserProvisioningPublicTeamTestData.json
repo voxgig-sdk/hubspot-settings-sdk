@@ -1,0 +1,40 @@
+{
+  "existing": {
+    "user_provisioning_public_team": {
+      "USER_PROVISIONING_PUBLIC_TEAM00": {
+        "id": "USER_PROVISIONING_PUBLIC_TEAM00",
+        "name": "s29",
+        "secondaryUserIds": [],
+        "userIds": []
+      },
+      "USER_PROVISIONING_PUBLIC_TEAM01": {
+        "id": "USER_PROVISIONING_PUBLIC_TEAM01",
+        "name": "s51",
+        "secondaryUserIds": [],
+        "userIds": []
+      },
+      "USER_PROVISIONING_PUBLIC_TEAM02": {
+        "id": "USER_PROVISIONING_PUBLIC_TEAM02",
+        "name": "s79",
+        "secondaryUserIds": [],
+        "userIds": []
+      }
+    }
+  },
+  "new": {
+    "user_provisioning_public_team": {
+      "user_provisioning_public_team_ref01": {
+        "name": "sa1",
+        "secondaryUserIds": [],
+        "userIds": []
+      }
+    }
+  },
+  "requests": {
+    "GET /settings/users/2026-09/teams": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}
